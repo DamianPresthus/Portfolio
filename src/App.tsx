@@ -1,4 +1,3 @@
-// App.tsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS
 import "./App.css";
@@ -20,7 +19,8 @@ AOS.init({
 
 function App() {
   return (
-    <Router>
+    // Set basename to "/Portfolio" so routes work correctly on GitHub Pages
+    <Router basename="/Portfolio">
       <div
         className="app"
         style={{
@@ -49,12 +49,11 @@ function App() {
                 element={<HarmoniCaseStudy />}
               />
               <Route
-                path="case-study/MatSpar"
+                path="/case-study/MatSpar"
                 element={<MatSparCaseStudy />}
-              ></Route>
-
-              <Route path="/case-study/F1" element={<F1CaseStudy />}></Route>
-              <Route path="/pages/AboutMe" element={<AboutMe />}></Route>
+              />
+              <Route path="/case-study/F1" element={<F1CaseStudy />} />
+              <Route path="/pages/AboutMe" element={<AboutMe />} />
             </Routes>
           </div>
         </div>
