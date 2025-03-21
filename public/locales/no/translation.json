@@ -3,7 +3,7 @@
     "portfolio": "Portefølje",
     "description": "Detaljerte case-studier for nysgjerrige besøkende.",
     "profileAlt": "Profilbilde av {{name}}",
-    "intro": "Jeg er en <1>UX/UI-designer</1> med <br/> full-stack erfaring, som fokuserer på å skape brukersentrerte grensesnitt.",
+    "intro": "Jeg er en <strong>UX/UI-designer</strong> med full-stack erfaring, som fokuserer på å skape brukersentrerte grensesnitt.",
     "contact": "Ta kontakt",
     "aboutMe": "Om meg"
   },
@@ -701,5 +701,3 @@
     "uiBranding": "04 Læringsbytte "
   }
 }
-
-
