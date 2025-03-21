@@ -3,7 +3,7 @@
     "portfolio": "Portfolio",
     "description": "Detailed case studies for curious visitors.",
     "profileAlt": "Profile picture of {{name}}",
-    "intro": "I am a <1>UX/UI designer</1> with <br/> full-stack experience, focusing on creating user-centered interfaces.",
+    "intro": "I am a <strong>UX/UI designer</strong> with full-stack experience, focusing on creating user-centered interfaces.",
     "contact": "Get in Touch",
     "aboutMe": "About Me"
   },
