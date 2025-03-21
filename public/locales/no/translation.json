@@ -1,0 +1,705 @@
+{
+  "header": {
+    "portfolio": "Portefølje",
+    "description": "Detaljerte case-studier for nysgjerrige besøkende.",
+    "profileAlt": "Profilbilde av {{name}}",
+    "intro": "Jeg er en <1>UX/UI-designer</1> med <br/> full-stack erfaring, som fokuserer på å skape brukersentrerte grensesnitt.",
+    "contact": "Ta kontakt",
+    "aboutMe": "Om meg"
+  },
+  "projects": {
+    "harmoni": {
+      "title": "Harmoni",
+      "description": "App-design, brukertesting og prototyping.",
+      "alt": "Harmoni brukergrensesnitt"
+    },
+    "matspar": {
+      "title": "MatSpar",
+      "description": "App-design, brukertesting og prototyping.",
+      "alt": "MatSpar brukergrensesnitt"
+    },
+    "f1": {
+      "title": "Full-Stack F1 Web-løsning",
+      "description": ".Net, C#, React",
+      "alt": "Formel-1 Inspirert Nettside"
+    },
+    "onehub": {
+      "title": "One-Hub",
+      "description": "App-design, brukertesting og prototyping.",
+      "alt": "OneHub brukergrensesnitt"
+    }
+  },
+  "contact": {
+    "title": "Ta kontakt",
+    "copied": "Kopiert!"
+  },
+  "harmoniCaseStudy": {
+    "header": {
+      "title": "Harmoni",
+      "subtitle": "Case-studie av en mental helse app"
+    },
+    "intro": {
+      "heading": "Første øyekast",
+      "text": "Harmoni er en mental helse-app designet for å hjelpe unge voksne med å finne balanse og styrke sin mentale helse. Appen tilbyr brukervennlige ressurser og verktøy som er lett tilgjengelige og enkle å bruke. Prosjektet var en del av et gruppeprosjekt ved Kristiania og ble gjennomført over en semesterperiode.",
+      "projectInfo": {
+        "groupProject": {
+          "title": "Gruppe prosjekt",
+          "description": "Konseptuell modell, brukerinnsikt, og design"
+        },
+        "role": {
+          "title": "Min rolle",
+          "description": "Product Designer, User Research, Visual Design"
+        },
+        "timeline": {
+          "title": "Timeline",
+          "description": "Aug 2024 – Des 2024"
+        },
+        "tools": {
+          "title": "Tools",
+          "description": "Figma"
+        }
+      }
+    },
+    "summary": {
+      "heading": "Problemstilling",
+      "text": "I en verden der øyeblikkelig tilfredsstillelse og digitale distraksjoner dominerer hverdagen, velger mange unge voksne å ignorere sine psykiske utfordringer. Dette forsterker et stigma rundt psykisk helse og hindrer åpen dialog om reelle behov.",
+      "quote": "\"Hvordan kan vi designe en app som reduserer stigmaet rundt psykisk helse og oppmuntrer til åpenhet og dialog?\"",
+      "description": "Med en kombinasjon av brukersentrert design og forskningsbaserte metoder, ønsker vi å skape en plattform der unge voksne får et verktøy for å møte sine følelser på en moden og støttende måte.",
+      "homeScreen": {
+        "title": "Hjemskjerm",
+        "text": "På hjemskjermen møter brukeren et oversiktlig oppsett med en toppmeny som gir rask tilgang til ulike seksjoner som Anbefalt, Artikler, Podcast og Hjelp en venn. I Anbefalt-seksjonen finner man et utvalg av innhold, inkludert dagens øvelse som inviterer til refleksjon gjennom varierte selvøvelser.",
+        "alt": "Description of the image"
+      },
+      "thoughtVirus": {
+        "title": "Tankevirus",
+        "text": "Dagens øvelse Tankevirus inviterer brukeren til å reflektere over et oppdiktet scenario som utfordrer negative tankemønstre. Gjennom en interaktiv dialog med intuitive valg, får man innsikt i hvordan negative tanker dannes og kan omformes.",
+        "alt": "Description of the image"
+      },
+      "moodTracker": {
+        "title": "Humør-tracker",
+        "text": "Humør-tracker-skjermen gir en oversiktlig visualisering av brukerens følelsesmessige utvikling over tid. Gjennom et enkelt diagram kan man se daglige svingninger, og en kort AI-basert oppsummering gir innsikt i hvordan ulike faktorer påvirker humøret. Ved å følge endringer fra uke til uke, blir det enklere å forstå egne mønstre og ta grep for bedre mental helse.",
+        "alt": "Description of the image"
+      }
+    },
+    "Ws": {
+      "heading": "Designprosess",
+      "text": "Designprosessen for Harmoni startet med en grundig forståelse av brukerbehovene og utfordringene knyttet til psykisk helse. Gjennom innsiktsarbeid og brukertesting utforsket vi hvordan digitale løsninger kan redusere stigma og fremme åpenhet.",
+      "subHeading": "01 Prosjekt Visjon",
+      "col1": {
+        "title": "Hvorfor?",
+        "text1": "I en digital hverdag preget av informasjonsflyt og øyeblikkelig tilfredsstillelse blir mental helse ofte nedprioritert blant unge voksne.",
+        "text2": "Vi ønsket å utvikle en app som gjør det enklere å ta vare på sin egen psykiske helse, samtidig som den oppmuntrer til åpenhet og refleksjon."
+      },
+      "col2": {
+        "title": "Hva?",
+        "text1": "<strong>Harmoni</strong> er en app som gir brukeren verktøy for å håndtere tanker og følelser på en strukturert måte.",
+        "list": ["Humør-tracker", "Tankevirus-øvelser", "Anbefalte artikler"],
+        "text2": "Målet er å gjøre refleksjon rundt mental helse like naturlig som å sjekke sosiale medier – men på en positiv og konstruktiv måte."
+      },
+      "col3": {
+        "title": "Hvem?",
+        "text1": "Vår primære målgruppe er unge voksne i alderen <strong>18-30 år</strong>, en gruppe som ofte opplever stress, angst og usikkerhet, men som ikke nødvendigvis søker profesjonell hjelp.",
+        "text2": "Vi ønsker å møte dem der de er – <strong>på mobilen</strong> – og gi dem en løsning som føles intuitiv, trygg og motiverende å bruke."
+      }
+    },
+    "define": {
+      "heading": "02 Konseptuell Modell",
+      "col1": {
+        "title": "Mål",
+        "text": "I utviklingen av Harmoni, var det avgjørende å skape en konseptuell modell som speilet brukernes behov og forventninger. Målet var å designe en digital plattform som føltes intuitiv, trygg og tilgjengelig, uten å virke klinisk eller overveldende."
+      },
+      "col2": {
+        "title": "Utfordringen",
+        "text": "Mange apper innen mental helse tilbyr informasjon og øvelser, men mangler en helhetlig tilnærming som kombinerer selvhjelp med sosial støtte. Vi ønsket å skape en løsning hvor brukeren ikke bare kunne jobbe med egen mental helse, men også få verktøy til å støtte andre – alt i et miljø som føltes personlig og trygt."
+      },
+      "col3": {
+        "title": "Løsningen",
+        "text": "For at brukerne skulle forstå og ta i bruk Harmoni uten unødvendig friksjon, bygget vi interaksjonsdesignet rundt kjente metaforer og handlingsmønstre:"
+      },
+      "col4": {
+        "title": "Brukeropplevelse og navigasjon",
+        "text": "For å sikre en intuitiv og sammenhengende opplevelse, strukturerte vi appen slik at den alltid leder brukeren mot handling:"
+      }
+    },
+    "design": {
+      "heading": "03 Fra idé til første skisser",
+      "col1": {
+        "title": "Oversiktskart",
+        "text": "For å visualisere appens struktur og sikre en intuitiv brukeropplevelse, startet vi tidlig i designprosessen med å lage wireframes. Dette gjorde det mulig for oss å teste og iterere på designet før vi utviklet den endelige løsningen. Vi begynte med å utarbeide et oversiktskart for å definere appens informasjonsarkitektur. Dette kartet ga en helhetlig forståelse av hvordan de ulike funksjonene skulle kobles sammen, og sikret en logisk flyt i brukerreisen."
+      },
+      "col2": {
+        "title": "Tråskisser",
+        "text": "Basert på oversiktskartet utviklet vi trådskisser (wireframes) i Figma, som visualiserte hvordan de viktigste skjermene skulle se ut. I den første fasen prioriterte vi funksjoner som direkte støttet brukerens mentale helse:",
+        "list": [
+          "💡 Humørsporing: Hjelper brukeren å identifisere mønstre i sin mentale helse.",
+          "📖 Råd og tips: En ressursseksjon med artikler og podcaster.",
+          "👐 Hjelp en venn: En funksjon for å veilede brukeren i å støtte andre.",
+          "🚑 Nødtelefon: Rask tilgang til profesjonell hjelp i krisesituasjoner."
+        ]
+      }
+    },
+    "testing": {
+      "heading": "04 Brukertesting",
+      "col1": {
+        "title": "Hensikt",
+        "text": "I utviklingen av Harmoni, var det avgjørende å skape en konseptuell modell som speilet brukernes behov og forventninger. Målet var å designe en digital plattform som føltes intuitiv, trygg og tilgjengelig, uten å virke klinisk eller overveldende."
+      },
+      "col2": {
+        "title": "Testmetode",
+        "text": "Vi gjennomførte en moderert brukertest med fem deltakere, hvor vi observerte deres interaksjon med en interaktiv prototype. Testen besto av ti oppgaver, inkludert registrering, navigasjon til ulike funksjoner (artikler, nødtelefon, chatbot), og fullføring av en daglig øvelse. Etter testingen hadde vi en kort samtale med hver deltaker for å få deres subjektive opplevelse av appen."
+      },
+      "col3": {
+        "title": "Tilbakemeldinger & drøfting",
+        "text": "Vi observerte også at brukerne hadde utfordringer med en mer statisk opplevelse og ønsket mer visuell variasjon for å gjøre innholdet mer engasjerende."
+      },
+      "col4": {
+        "title": "Videre justeringer",
+        "text": "Basert på funnene fra testresultatene gjorde vi spesifikke justeringer: Justerte spacing og fargebruk for et mer oversiktlig grensesnitt. Implementerte en mer dynamisk navigasjonsopplevelse. Utviklet en onboarding-seksjon for nye brukere. Brukertestene ga oss verdifull innsikt og sørget for at den endelige prototypen ble mer brukervennlig, intuitiv og tilpasset målgruppen."
+      }
+    },
+    "finalUI": {
+      "heading": "05 UI",
+      "col1": {
+        "title": "Hensikt",
+        "text": "Utformingen av Harmoni-appen fokuserer på å skape en rolig, intuitiv og inkluderende brukeropplevelse. Gjennom nøye utvalgte farger, typografi og designelementer, har vi utviklet en visuell identitet som støtter appens formål: å gi brukerne et trygt og støttende miljø for mental helse."
+      },
+      "col2": {
+        "title": "Visuelt uttrykk",
+        "text": "For å skape en helhetlig opplevelse har vi valgt en moderne og minimalistisk designstil, inspirert av neo-brutalisme. Dette innebærer en tydelig kobling mellom tekst og bilder gjennom illustrasjoner som speiler innholdet, slik at brukeren lett kan navigere og forstå appens funksjoner​."
+      },
+      "col3": {
+        "title": "Fargevalg",
+        "text": "Fargepaletten er utviklet for å balansere ro og energi, med farger som vekker de rette følelsene hos brukerne: Oransje representerer entusiasme, vitalitet og varme, noe som gir et innbydende preg. Blå skaper ro og trygghet, noe som reduserer stress. Grønn symboliserer balanse og harmoni, og knytter appen til naturens beroligende egenskaper​."
+      },
+      "col4": {
+        "title": "Typografi",
+        "text": "Vi har valgt en kombinasjon av Clarendon Normal og Space Grotesk for å skape en balansert lesbarhet: Clarendon Normal brukes til overskrifter og gir et klassisk og elegant uttrykk. Space Grotesk brukes til brødtekst og er optimalisert for god lesbarhet på skjermer."
+      },
+      "col5": {
+        "title": "Tilgjengelighet",
+        "text": "Harmoni-appen er designet med universell utforming i fokus for å sikre at den er tilgjengelig for alle brukere, uavhengig av funksjonsevne. Teksten kan forstørres opptil 200 % uten at funksjonaliteten går tapt, i henhold til WCAG 2.1-retningslinjer​."
+      },
+      "col6": {
+        "title": "Brukervennlighet",
+        "text": "Vi har implementert autoutfylling i skjemaer og sikret tilstrekkelig fargekontrast med verktøy som Color Contrast Analyser, slik at innholdet er lesbart også for brukere med nedsatt syn. Harmoni-appen er estetisk tiltalende, intuitiv og tilgjengelig for alle."
+      }
+    },
+    "nextSteps": {
+      "heading": "06 Refleksjon & Videre arbeid",
+      "col1": {
+        "title": "Et blikk i bakspeilet",
+        "text": "Prosjektet har vært en lærerik prosess hvor vi har fått testet brukersentrert design i praksis. Noen av de viktigste lærdommene inkluderer:"
+      },
+      "col2": {
+        "title": "Veien videre",
+        "text": "For å sikre at appen forblir relevant og engasjerende over tid, kan vi:"
+      }
+    },
+    "harmoniChangesList": [
+      {
+        "icon": "✔",
+        "text": "Scroll-funksjon ble implementert på sider der brukerne forventet det."
+      },
+      {
+        "icon": "✔",
+        "text": "Onboarding ble utvidet med en kort veiledning som introduserer hovedfunksjonene."
+      },
+      {
+        "icon": "✔",
+        "text": "\"Råd og tips\" ble flyttet til en mer synlig plassering i navigasjonsmenyen."
+      },
+      {
+        "icon": "✔",
+        "text": "Mer farge og visuelle elementer ble lagt til for å gjøre grensesnittet mer engasjerende."
+      }
+    ],
+    "appFeaturesList": [
+      {
+        "icon": "💡",
+        "title": "Personlig coach",
+        "text": "En virtuell assistent hjelper brukerne med daglige øvelser og refleksjoner, på samme måte som en livscoach eller terapeut ville gjort."
+      },
+      {
+        "icon": "🔒",
+        "title": "Trygt rom",
+        "text": "Appen er designet for å være en anonym og sikker plattform, med BankID-autentisering for å beskytte sensitiv informasjon."
+      },
+      {
+        "icon": "🧰",
+        "title": "Verktøykasse for mental helse",
+        "text": "Brukeren har tilgang til mindfulness-øvelser, humørsporing og en hjelpeseksjon som gir innsikt i hvordan man kan støtte seg selv og andre."
+      }
+    ],
+    "supportFeaturesList": [
+      {
+        "icon": "📅",
+        "title": "Daglige øvelser",
+        "text": "Presentert som små, håndterbare utfordringer for å fremme bevissthet og refleksjon."
+      },
+      {
+        "icon": "💬",
+        "title": "Chatbot for emosjonell støtte",
+        "text": "En lavterskel samtalepartner som gir umiddelbar respons basert på brukerens behov."
+      },
+      {
+        "icon": "🤝",
+        "title": "Hjelp en venn",
+        "text": "En guide for å gjenkjenne tegn på psykisk ubehag hos andre og hvordan man kan tilby støtte."
+      },
+      {
+        "icon": "🚨",
+        "title": "Akutthjelp",
+        "text": "Umiddelbar tilgang til nødnumre og profesjonell bistand i krisesituasjoner."
+      }
+    ],
+
+    "keyLearnings": [
+      {
+        "icon": "💡",
+        "text": "Brukertesting er essensielt. Flere designvalg vi trodde ville fungere godt, måtte justeres etter tilbakemeldinger. Navigasjonsendringene var et konkret eksempel på dette​."
+      },
+      {
+        "icon": "💡",
+        "text": "Iterasjon er nøkkelen til godt design. Den første prototypen hadde flere svakheter, men ved å jobbe iterativt har vi skapt en langt mer brukervennlig løsning."
+      },
+      {
+        "icon": "💡",
+        "text": "Balansen mellom funksjonalitet og enkelhet er utfordrende. Vi har hele tiden jobbet med å tilby nyttige funksjoner uten at appen føles overveldende."
+      }
+    ],
+    "futureImprovements": [
+      {
+        "icon": "🔹",
+        "text": "Regelmessig oppdatere innhold som daglige øvelser, artikler og podcaster for å unngå repetisjon og holde brukeropplevelsen dynamisk​."
+      },
+      {
+        "icon": "🔹",
+        "text": "Videreutvikle funksjonen \"Hjelp en venn\" ved å legge til muligheten for å dele profiler og følge opp venner tettere. Dette kan bidra til en sterkere sosial støttefunksjon i appen​."
+      },
+      {
+        "icon": "🔹",
+        "text": "Gjennomføre en ny runde med brukertesting, hvor vi inkluderer et bredere spekter av testdeltakere – både vanlige brukere og fagpersoner innen psykisk helse. Dette vil gi oss verdifull innsikt i hvordan ulike brukergrupper opplever appen og hvordan vi kan optimalisere funksjonalitet og innhold​."
+      },
+      {
+        "icon": "🔹",
+        "text": "Teste personaliseringsmuligheter, som tilpassede innholdsanbefalinger basert på brukerens behov og preferanser​."
+      },
+      {
+        "icon": "🔹",
+        "text": "Implementere flere innstillingsvalg, som dark mode, språkvalg og justerbare varsler for en mer fleksibel og brukervennlig opplevelse​."
+      }
+    ],
+
+    "feedbackList": [
+      {
+        "icon": "✅",
+        "text": "Intuitiv navigasjon – De fleste deltakerne fant raskt frem til de viktigste funksjonene."
+      },
+      {
+        "icon": "⚠️",
+        "text": "Manglende scroll-funksjonalitet – Flere forsøkte å scrolle på sider som ikke støttet dette."
+      },
+      {
+        "icon": "⚠️",
+        "text": "Utydelig onboarding – Noen brukere følte at de fikk for lite informasjon om hva appen kunne tilby."
+      },
+      {
+        "icon": "⚠️",
+        "text": "Vanskelig å finne \"Råd og tips\" – Flere slet med å identifisere hvor de kunne finne informasjon om psykisk helse."
+      }
+    ]
+  },
+
+  "matSparCaseStudy": {
+    "header": {
+      "title": "MatSpar",
+      "subtitle": "Case-studie av en matplanleggingsapp"
+    },
+    "intro": {
+      "heading": "Første øyekast",
+      "text": "MatSpar er en mobilapp utviklet for å hjelpe brukere med å redusere matsvinn og spare penger ved smart måltidsplanlegging og budsjettstyring. Appen kombinerer automatiserte handlelister, personlige oppskriftsanbefalinger og butikkprissammenligning for å optimalisere innkjøp og forbruk av matvarer."
+    },
+    "projectInfo": {
+      "groupProject": {
+        "title": "Gruppe prosjekt",
+        "description": "Lean UX, brukerinnsikt, og design"
+      },
+      "role": {
+        "title": "Min rolle",
+        "description": "Product Designer, User Research, Visual Design"
+      },
+      "timeline": {
+        "title": "Timeline",
+        "description": "Aug 2024 – Des 2024"
+      },
+      "tools": {
+        "title": "Tools",
+        "description": "Figma"
+      }
+    },
+    "summary": {
+      "heading": "Problemstilling",
+      "text": "Mange studenter og familier opplever utfordringer med å planlegge måltider effektivt, noe som fører til unødvendig matsvinn og økte matutgifter.",
+      "quote": "\"Hvordan kan vi designe en app som gjør måltidsplanlegging enklere, mer økonomisk og bærekraftig for studenter og familier?\"",
+      "description": "Vår hypotese var at en brukervennlig app kunne hjelpe brukerne med å planlegge innkjøp smartere, redusere matsvinn og samtidig kutte kostnader."
+    },
+    "showCase": {
+      "homeScreen": {
+        "title": "Hjemskjerm",
+        "text": "På hjemskjermen får brukeren en oversikt over hvor mye penger som er brukt på mat, og hvor mye mat som er spart. Ukens matplan vises med kategoriene Middag, Frokost og Lunsj, illustrert med store bilder for inspirasjon."
+      },
+      "newMealPlan": {
+        "title": "Ny Matplan",
+        "text": "Når brukeren vil lage ny matplan kan man enkelt bla gjennom et utvalg av retter fordelt på Middag, Lunsj og Frokost. En budsjettfilter-funksjon gjør det mulig å tilpasse utvalget basert på pris."
+      },
+      "add": {
+        "title": "Legg til",
+        "text": "Når brukeren har valgt matretter får man forslag til retter basert på resterende ingredienser fra matplanen. Denne funksjonen gjør det enkelt å redusere matsvinn og samtidig spare penger."
+      }
+    },
+    "research": {
+      "heading": "Designprosess",
+      "text": "For å sikre en effektiv og brukersentrert designprosess valgte vi å følge Lean UX-metodikken, som kombinerer prinsipper fra Lean Startup, designtenkning og smidig utvikling. Prosessen er delt i fire deler: innsikt, idegenerering, prototyping og testing.",
+      "subHeading": "01 Innsikt",
+      "col1": {
+        "title": "Målgruppe og brukerantagelser",
+        "text1": "Vi startet innsiktsarbeidet med å segmentere målgruppen til MatSpar, for deretter å skrive ned antagelser vi har av dette kundesegmentet. Målgruppen for MatSpar består av personer som ønsker å redusere matsvinn og spare penger på matinnkjøp.",
+        "text2": "Vi antok at det målgruppen hadde til felles er et ønske om en mer strukturert hverdag, hvor enkle og tilgjengelige løsninger hjelper dem med å handle smartere, bruke opp rester og planlegge måltider mer effektivt. Mange opplever at matinnkjøp og planlegging kan være tidkrevende og utfordrende, spesielt i en hektisk hverdag. Derfor trenger de verktøy som gir bedre oversikt, reduserer matsvinn og gjør det enklere å følge et matbudsjett."
+      },
+      "col2": {
+        "title": "Gjennomføring av brukerintervjuer",
+        "text": "For å teste antagelsene våre og få en dypere forståelse av brukernes reelle behov, gjennomførte vi fem semistrukturerte intervjuer med representanter fra målgruppen: fire studenter og en alenemor. Intervjuene var basert på en intervjuguide med spørsmål om matvaner, måltidsplanlegging og reduksjon av matsvinn.",
+        "text2": "Det var tydelig at flere delte lignende utfordringer og rutiner når det gjelder matplanlegging. Intervjuobjektene, som varierte i alder og livssituasjon, uttrykte et felles behov for bedre organisering og effektivisering av sine måltidsrutiner. Et gjennomgående tema var utfordringen med å holde oversikt over hvilke matvarer de allerede hadde hjemme, noe som ofte førte til unødvendige kjøp eller overforbruk."
+      },
+      "col3": {
+        "title": "Personas",
+        "text": "Basert på innsikten fra intervjuene utviklet vi personas for å representere ulike brukergrupper. Lisa, en student med stramt budsjett, søker enkle og rimelige måltider. André, en matentusiast, ønsker inspirasjon og variasjon i kostholdet. Anna, en mor med familie, prioriterer effektiv matplanlegging og ønsker å redusere matsvinn."
+      },
+      "col4": {
+        "title": "Konkurrentanalyse",
+        "text": "For å forstå markedet og differensiere oss, gjennomførte vi en konkurranserevisjon av eksisterende apper som AllRecipes, Mealime, Yummly og HelloFresh. Mange av disse tilbyr enten måltidsplanlegging eller budsjettverktøy, men ingen kombinerer begge aspektene sømløst med fokus på matsvinn. MatSpar sin styrke ligger i å tilby en helhetlig løsning som forener økonomisk planlegging, bærekraft og en intuitiv brukeropplevelse."
+      }
+    },
+    "define": {
+      "heading": "02 Idegenerering og konseptualisering",
+      "col1": {
+        "title": "Brainstorm",
+        "text": "Basert på innsikten vi samlet inn, gjennomførte vi en brainstormingprosess for å definere MatSpar sine kjernefunksjoner. Målet var å utvikle en løsning som effektivt adresserer brukernes største utfordringer, som budsjettstyring, reduksjon av matsvinn og enklere måltidsplanlegging. Vi utforsket funksjoner som automatiserte handlelister, personlige oppskriftsanbefalinger basert på tilgjengelige ingredienser og butikkprissammenligning for å hjelpe brukerne med å gjøre smartere og mer kostnadseffektive matinnkjøp.",
+
+        "text2": "Kjernefunksjoner:"
+      },
+      "col2": {
+        "title": "Wireframes",
+        "text": "For å visualisere konseptene utviklet vi low-fidelity wireframes og brukerflytdiagrammer i Figma. Dette ga oss muligheten til raskt å teste informasjonsarkitektur og navigasjonsflyt før vi investerte tid i detaljert design. Vi fokuserte på en intuitiv hovedmeny, hvor brukeren enkelt kunne navigere mellom måltidsplanlegging, handlelister og budsjettstyring. Wireframes hjalp oss med å identifisere forbedringsområder tidlig, som plassering av viktige funksjoner og hvordan brukeren naturlig ville bevege seg gjennom appen. Ved å iterere på disse skissene fikk vi en solid grunnmur for den videre utviklingen​."
+      }
+    },
+    "design": {
+      "heading": "03 Prototyping og iterativ design",
+      "col1": {
+        "title": "Detaljert design: Finpussing av brukergrensesnittet",
+        "text": "Etter flere iterasjoner gikk vi videre med å finpusse brukergrensesnittet for å sikre et helhetlig og visuelt tiltalende design. Vi optimaliserte fargebruk, typografi og spacing for å forbedre lesbarhet og navigasjon, samtidig som vi opprettholdt et minimalistisk uttrykk for å redusere kognitiv belastning. Spesielt la vi vekt på tydelige hierarkier i informasjonen, slik at brukeren enkelt kunne finne måltidsplaner, handlelister og budsjettoversikt uten unødvendige steg. I tillegg integrerte vi visuelle markører for prisbesparelser og matsvinnreduksjon, noe som gjorde appen mer engasjerende og motiverende å bruke."
+      },
+      "col2": {
+        "title": "Interaksjonsdesign: Sikre en intuitiv brukerreise",
+        "text": "For å skape en sømløs og intuitiv opplevelse jobbet vi med interaksjonsdesign som speilet brukernes forventninger og vaner. Vi definerte klare touch-punkter som gjorde det enkelt å legge til, fjerne og justere ingredienser i handlelisten, samt tilpasse oppskrifter etter antall porsjoner. For å forbedre flyten mellom ulike funksjoner i appen implementerte vi mikrointeraksjoner, som små animasjoner og fargeendringer, for å gi umiddelbar tilbakemelding på brukerens handlinger. Dette bidro til å skape en mer responsiv og engasjerende opplevelse, hvor brukeren følte seg veiledet gjennom hele måltidsplanleggingsprosessen."
+      }
+    },
+    "testing": {
+      "heading": "04 Testing og validering",
+      "col1": {
+        "title": "Brukertesting",
+        "text": "Etter at den interaktive prototypen var utviklet i Figma, gjennomførte vi en brukertest med fem deltakere for å identifisere potensielle forbedringsområder. Deltakerne, som besto av fire studenter og en alenemor, fikk konkrete oppgaver som å planlegge en ukesmeny, generere en handleliste og sammenligne matvarepriser i ulike butikker. Under testingen observerte vi hvordan brukerne navigerte i appen, hvor de støtte på utfordringer, og hvilke funksjoner de verdsatte mest. Et viktig funn var at mange brukere forventet en mer intuitiv måte å redigere handlelisten på, og at informasjon om prisbesparelser burde presenteres mer tydelig. I tillegg ønsket flere en enklere måte å justere oppskrifter basert på antall porsjoner."
+      },
+      "col2": {
+        "title": "Testmetode",
+        "text": "Basert på innsikten fra brukertestene gjorde vi flere viktige justeringer i designet. Navigasjonen ble forenklet, blant annet ved å plassere handlelisten i hovedmenyen for raskere tilgang. Vi forbedret også personaliseringen av oppskrifter ved å implementere en dynamisk porsjonskontroll, slik at brukerne enkelt kunne tilpasse oppskriftene etter husholdningens størrelse. Videre ble visuelle elementer justert for å gjøre prisbesparelser mer fremtredende, med fargekoding og tydelige indikatorer for hvor mye brukeren kunne spare. Disse forbedringene sikret at MatSpar ble mer intuitiv, brukervennlig og skreddersydd for målgruppens behov."
+      }
+    },
+
+    "solution": {
+      "heading": "05 Løsningen: Hvordan MatSpar fungerer",
+      "features": {
+        "title": "Kjernefunksjoner i MatSpar",
+        "text": "MatSpar er designet for å hjelpe brukere med effektiv måltidsplanlegging, budsjettstyring og matsvinnreduksjon. Appen kombinerer smarte oppskriftsforslag, automatiske handlelister og prissammenligning for å gjøre matinnkjøp enklere og mer økonomisk. Ved å analysere brukerens tidligere kjøp og tilgjengelige ingredienser, tilpasses måltidsforslagene slik at mest mulig av innkjøpte matvarer brukes optimalt.",
+        "items": [
+          {
+            "icon": "✅",
+            "text": "<strong>Automatisk måltidsplanlegging: </strong> Brukeren kan velge retter basert på ingredienser de allerede har, eller få forslag til balanserte måltidsplaner for en hel uke."
+          },
+          {
+            "icon": "✅",
+            "text": "<strong>Personal Shopping List:</strong> Ingredients from the meal plan are automatically added to the shopping list, with easy editing or removal options."
+          },
+          {
+            "icon": "✅",
+            "text": "<strong>Budsjettstyring og prissammenligning:</strong> Appen gir en oversikt over forventede kostnader og viser hvilke butikker som tilbyr de beste prisene på nødvendige varer."
+          },
+          {
+            "icon": "✅",
+            "text": "<strong>Matsvinnreduksjon:</strong> Brukeren får forslag til oppskrifter som utnytter ingredienser fra tidligere innkjøp, slik at minst mulig mat går til spille."
+          },
+          {
+            "icon": "✅",
+            "text": "<strong>Tilpasning og allergifilter: </strong>Appen lar brukeren velge matpreferanser og allergier, slik at måltidsplanene tilpasses individuelle behov."
+          }
+        ]
+      },
+
+      "uvp": {
+        "title": "UVP",
+        "text": "MatSpar skiller seg ut ved å kombinere måltidsplanlegging, budsjettstyring og matsvinnreduksjon i én sømløs løsning. I motsetning til eksisterende apper som enten fokuserer på oppskrifter eller handlelister, tilbyr MatSpar en helhetlig og automatisert opplevelse som hjelper brukere med å spare penger, minimere matsvinn og forenkle matinnkjøp."
+      }
+    },
+    "UI": {
+      "heading": "06 UI",
+      "col1": {
+        "title": "Design og UI i MatSpar",
+        "text": "MatSpar er designet med et enkelt og intuitivt grensesnitt som gir brukerne en rask oversikt over økonomi og matforbruk. Hjemmeskjermen viser tydelig hvor mye penger som er brukt på mat, samt hvor mye mat som er spart, noe som skaper en umiddelbar følelse av bevissthet og mestring."
+      },
+      "col2": {
+        "title": "Brukersentrert navigasjon og informasjonsarkitektur",
+        "text": "Appen er bygget med en hierarkisk informasjonsstruktur, hvor hovedmenyen inneholder de viktigste funksjonene: \"Hjem\", \"Handleliste\" og \"Profil\". Brukeren kan enkelt dykke dypere inn i kategorier som \"Middag\", \"Frokost\" og \"Lunsj\", noe som gir en intuitiv og logisk brukerreise. Denne tilnærmingen støtter brukervanene til målgruppen og sikrer at nødvendig informasjon alltid er lett tilgjengelig."
+      }
+    },
+    "nextSteps": {
+      "heading": "07 Konklusjon og Læringsbytte",
+      "conclusion": {
+        "title": "Konklusjon",
+        "text": "MatSpar har utviklet seg til en brukervennlig, helhetlig løsning for måltidsplanlegging, budsjettstyring og matsvinnreduksjon. Gjennom en iterativ designprosess og tett samarbeid med brukerne har vi skapt en app som dekker reelle behov hos studenter og familier. Ved å kombinere økonomisk innsikt, bærekraftige valg og intuitivt design, skiller MatSpar seg fra eksisterende løsninger på markedet. Erfaringene fra dette prosjektet har vist oss verdien av brukersentrert design, smidig utvikling og kontinuerlig forbedring, noe vi vil ta med oss videre i fremtidige prosjekter."
+      },
+      "keyLearnings": {
+        "title": "Læringsbytte",
+        "text": "Gjennom utviklingen av MatSpar har vi tilegnet oss verdifull erfaring innen brukersentrert design, iterativ utvikling og Lean UX-metodikk. Arbeidet har vist oss hvor viktig det er å ha en tydelig problemdefinisjon før designprosessen starter, slik at vi kan fokusere på faktiske brukerbehov og unngå unødvendige omveier. Vi har også lært at en dyp forståelse av målgruppen og markedet er avgjørende for å skape en løsning som gir reell verdi. Innsikt fra brukertester og konkurranseanalyser har hjulpet oss med å tilpasse designet og differensiere MatSpar fra andre apper. Bruken av Lean UX har gjort det mulig å jobbe smidig og iterativt, hvor vi raskt kunne teste hypoteser og justere designet basert på tilbakemeldinger. Denne tilnærmingen har gjort oss mer fleksible og effektive i utviklingsprosessen."
+      }
+    }
+  },
+
+  "F1CaseStudy": {
+    "header": {
+      "title": "F1 Inspirert Nettside",
+      "subtitle": "For learning purposes only"
+    },
+    "intro": {
+      "heading": "Første øyekast",
+      "text": "Dette prosjektet gikk ut på å utvikle en F1-inspirert nettside med både backend- og frontend-funksjonalitet. Nettsiden kombinerer informasjon om førere, team og løp med en interaktiv quiz for å gjøre opplevelsen både informativ og underholdende. Tech stack inkluderer .NET Web API for backend og React for frontend, med et sterkt fokus på universell utforming og CRUD-funksjonalitet for å sikre en brukervennlig og tilgjengelig løsning."
+    },
+    "projectInfo": {
+      "techStack": "Tech stack",
+      "techStackValue": ".Net, C#, React, Bootstrap",
+      "role": "Min rolle",
+      "roleValue": "Utvikler, Produkt Designer",
+      "timeline": "Timeline",
+      "timelineValue": "6. Nov - 27. Nov 2023",
+      "tools": "Tools",
+      "toolsValue": "VSCode, MySQL"
+    },
+
+    "summary": {
+      "heading": "Problemstilling",
+      "text": "For å skape en nettside som både informerer og engasjerer F1-fans, var det avgjørende å finne en balanse mellom teknisk ytelse, intuitivt design og dynamisk innhold.",
+      "quote": "\"Hvordan kan vi utvikle en teknisk solid, brukervennlig og engasjerende nettside for F1-entusiaster?\"",
+      "description": "For å besvare denne problemstillingen ble det valgt en fullstack-tilnærming med moderne teknologier, hvor både backend og frontend ble utviklet for å levere en rask, interaktiv og tilgjengelig opplevelse."
+    },
+    "showCase": {
+      "drivers": {
+        "title": "Førere",
+        "text": "Oversikt over F1-førere (2023) med navn, alder, nasjonalitet og bilde. Søkfunksjon er også tilgjengelig øverst til høyre.",
+        "imageAlt": "F1Førere"
+      },
+      "event": {
+        "title": "Event",
+        "text": "Event siden tillater brukere å melde seg på en F1 Event som førere, med navn, alder, nasjonalitet og bilde. Brukeren har også mulighet for å endre på info til førere og fjerne de fra lista.",
+        "imageAlt": "F1 Event Screen"
+      },
+      "races": {
+        "title": "F1-Løp",
+        "text": "Oversikt over alle F1-løp i 2023 med info om vinner, seierstid, og antall runder i løpet.",
+        "imageAlt": "F1-Løp"
+      }
+    },
+
+    "technicalSolution": {
+      "heading": "Teknisk Løsning og Designvalg",
+      "text": "Utviklingen av den Formel 1-inspirerte nettsiden har vært et full-stack-prosjekt, der både backend og frontend er nøye planlagt for å sikre ytelse, skalerbarhet og brukervennlighet. De følgende kapitlene gir en detaljert gjennomgang av backend-strukturen, frontend-arkitekturen og designvalgene som ligger til grunn for nettsidens funksjonalitet og brukeropplevelse.",
+      "backendHeading": "01 Backend – .NET Web API",
+      "col1": {
+        "title": "Backend-struktur og Teknologivalg",
+        "text1": "Backend-løsningen for den Formel 1-inspirerte nettsiden er bygget med .NET 7 Web API og SQL Server, og følger en RESTful-arkitektur for effektiv datahåndtering. API-et fungerer som et mellomledd mellom databasen og frontend-applikasjonen og eksponerer endepunkter for å hente informasjon om førere, team og løp. CRUD-funksjonalitet (Create, Read, Update, Delete) er implementert gjennom et repository-lag, noe som sikrer separasjon av ansvar og enklere vedlikehold.",
+        "text2": "Koden benytter Dependency Injection (DI) for en modulær og testbar arkitektur. Service-laget og interfaces skiller forretningslogikk fra resten av applikasjonen, noe som forbedrer vedlikeholdbarhet og skalerbarhet. API-et dokumenteres automatisk med Swagger, som gir en interaktiv oversikt over tilgjengelige endepunkter.",
+        "text3": "For å optimalisere ytelsen håndteres databaseforespørsler via Entity Framework Core, som sikrer effektiv og sikker kommunikasjon med SQL Server. Bildeopplastning er implementert med IFormFile, der filer lagres i en egen katalog (wwwroot/images) med en referanse i databasen."
+      },
+      "col2": {
+        "title": "Utfordringer og Løsninger"
+      }
+    },
+    "projectFeaturesList": [
+      {
+        "icon": "✅",
+        "title": "Effektiv datahåndtering",
+        "text": "Nettsiden håndterer store datamengder med informasjon om førere, team og løp. Lazy Loading ble brukt for å hente data kun ved behov, noe som reduserer unødvendige databaseforespørsler og forbedrer ytelsen."
+      },
+      {
+        "icon": "✅",
+        "title": "Asynkron API-kommunikasjon",
+        "text": "For å forbedre responstiden ble asynkrone metoder (async/await) implementert i API-kallene. Dette sørger for at data hentes uten å blokkere hovedtråden, noe som gir en smidigere brukeropplevelse."
+      },
+      {
+        "icon": "✅",
+        "title": "Filhåndtering og skalering",
+        "text": "Opplasting av bilder krevde en løsning som balanserte lagringsplass og ytelse. Ved å bruke komprimering og caching kan nettsiden laste bilder raskere uten å bruke unødvendige ressurser."
+      },
+      {
+        "icon": "✅",
+        "title": "Dokumentasjon og brukervennlighet",
+        "text": "API-et dokumenteres automatisk med Swagger, noe som gjør det enkelt for utviklere å utforske og teste tilgjengelige endepunkter. Dette forenkler både utvikling og videreutvikling av tjenesten."
+      }
+    ],
+    "frontend": {
+      "heading": "02 Frontend – React",
+      "col1": {
+        "title": "Modulær Arkitektur og Komponentbasert Struktur",
+        "text": "For å sikre en fleksibel og vedlikeholdbar frontend ble React valgt som rammeverk. Nettsiden er bygget opp av gjenbrukbare komponenter. Hver komponent har en bestemt funksjon, for eksempel å vise informasjon om en fører, et team eller å håndtere quiz-spørsmål. Ved å strukturere koden på denne måten kan utviklingsteamet raskt implementere nye funksjoner og forbedringer. Hvis en ny funksjon skal legges til, kan utviklerne lage en ny komponent eller oppdatere en eksisterende, uten at det påvirker resten av nettsiden. Dette sparer tid og reduserer risikoen for feil."
+      },
+      "col2": {
+        "title": "State Management og API-integrasjon",
+        "text": "For å håndtere tilstand og dataflyt benyttes React Hooks som useState og useEffect. Disse brukes for å håndtere brukerinteraksjoner og oppdatere grensesnittet basert på API-responser. Context API er også implementert for å dele global tilstand mellom komponenter, noe som reduserer behovet for prop-drilling og gjør koden mer oversiktlig. Nettsiden kommuniserer med en .NET-basert backend via HTTP-requests, og dynamisk rendering sørger for at brukeren alltid har oppdatert informasjon uten å måtte laste inn hele siden på nytt."
+      },
+      "row2": {
+        "col1": {
+          "title": "Responsivt Design med CSS Grid og Bootstrap",
+          "text": "For å sikre en god brukeropplevelse på tvers av enheter er nettsiden designet med CSS Grid og Bootstrap. CSS Grid brukes til å skape komplekse layouter som tilpasser seg skjermstørrelser, mens Bootstrap bidrar med ferdige UI-komponenter som effektiviserer utviklingsprosessen. Dette gjør at nettsiden fungerer like godt på mobile enheter som på store skjermer, og brukeren får en sømløs opplevelse uansett hvilken plattform de benytter."
+        },
+        "col2": {
+          "title": "Utfordringer og Løsninger",
+          "text": "En av hovedutfordringene i prosjektet var å håndtere asynkron datalasting uten at det påvirket brukeropplevelsen negativt. Dette ble løst ved å implementere lastetilstander og feilhåndtering med useEffect, slik at brukeren informeres om eventuelle forsinkelser eller feil. State management med Context API bidro til en strømlinjeformet dataflyt mellom komponentene, samtidig som det ble viktig å unngå unødvendige oppdateringer som kunne påvirke ytelsen. Ved å gjennomføre grundig testing på tvers av enheter og nettlesere ble det sikret at nettsiden leverte en konsistent og optimal opplevelse for alle brukere."
+        }
+      }
+    },
+    "universalDesign": {
+      "heading": "03 Designvalg og Universell Utforming",
+      "row1": {
+        "col1": {
+          "title": "Tilgjengelighet for Alle",
+          "text": "For å sikre at F1-nettsiden er tilgjengelig for alle brukere, inkludert personer med funksjonsnedsettelser, har prosjektet fulgt retningslinjer for universell utforming (UU). Dette innebærer at alle brukere, uavhengig av evner eller tekniske forutsetninger, skal kunne navigere nettsiden og forstå innholdet uten hindringer."
+        },
+        "col2": {
+          "title": "Visuell Klarhet og Kontrast",
+          "text": "God kontrast er avgjørende for at tekst og interaktive elementer skal være lesbare for brukere med nedsatt syn eller fargeblindhet. Nettsiden benytter WCAG-retningslinjer for kontrastforhold mellom tekst og bakgrunn. Ved hjelp av verktøy som TPGi fargekontrastkontroll er fargevalgene testet for å oppfylle minimumskravene. Dette bidrar til at knapper, lenker og informasjonsbokser skiller seg tydelig fra bakgrunnen og gir en bedre brukeropplevelse for alle."
+        }
+      },
+      "row2": {
+        "col1": {
+          "title": "Semantisk Koding for Tilgjengelighet",
+          "text": "Semantisk HTML sikrer at nettsiden er strukturert på en måte som gjør den lett å navigere for både mennesker og hjelpemidler som skjermlesere. Dette forbedrer både tilgjengelighet og SEO, samtidig som det gir en logisk og lettfattelig innholdshierarki for brukerne."
+        },
+        "col2": {
+          "title": "Intuitiv Navigasjon og Brukervennlighet",
+          "text": "For at nettsiden skal være enkel å bruke for en mangfoldig brukergruppe, er den designet med en konsistent struktur og intuitiv navigasjon. Dette betyr at navigasjonsmenyen er enkel og oversiktlig, slik at brukerne raskt finner informasjon om førere, team og løp; tastaturnavigasjon er fullt ut støttet, slik at brukere som ikke kan bruke mus enkelt kan bevege seg gjennom innholdet; og interaktive elementer er tydelig merket med klare instruksjoner og tilbakemeldinger."
+        }
+      }
+    },
+    "learningAndDevelopment": {
+      "heading": "04 Læringsbytte og videreutvikling",
+      "col1": {
+        "title": "Læringsutbytte og Erfaringer",
+        "text": "Gjennom utviklingen av F1-nettsiden har prosjektet gitt verdifull erfaring innen fullstack-utvikling, systemarkitektur og universell utforming. Arbeidet med å integrere backend og frontend på en sømløs måte har styrket forståelsen for API-design, tilstandshåndtering og asynkron databehandling. Videre har bruken av modulære komponenter i React og en godt strukturert database i SQL Server bidratt til et mer effektivt og vedlikeholdbart system. Tilpasning til ulike skjermstørrelser og tilgjengelighetskrav har også gitt innsikt i hvordan universell utforming kan implementeres i praksis."
+      },
+      "col2": {
+        "title": "Videreutvikling og Muligheter",
+        "text": "Med en solid teknisk grunnmur er det flere muligheter for videreutvikling av nettsiden. Fremtidige forbedringer kan inkludere mer avansert datavisualisering, personaliserte brukeropplevelser og sanntidsoppdateringer av F1-statistikk via eksterne API-er. Videre kan optimalisering av ytelse og lastetider gjennom caching og effektivisering av API-kall forbedre brukeropplevelsen ytterligere. Til slutt kan nettsiden utvides med flerspråklig støtte og mer omfattende interaktive elementer for å engasjere et bredere publikum."
+      }
+    }
+  },
+  "aboutMe": {
+    "header": {
+      "title": "Om meg",
+      "subtitle": "Kort fortalt"
+    },
+    "intro": {
+      "paragraph1": "Jeg er en <strong>interaksjonsdesigner</strong> som brenner for å skape intuitive, visuelt tiltalende og meningsfulle digitale opplevelser.",
+      "paragraph2": "Med en utdanning i interaksjonsdesign fra Høyskolen Kristiania har jeg opparbeidet en sterk forståelse for brukersentrert design, universell utforming og utvikling av tekniske løsninger. I tillegg har jeg relevante ferdigheter innen problemløsning, kommunikasjon og tjenesteoptimalisering gjennom tidligere arbeidserfaring.",
+      "paragraph3": "Jeg ønsker å anvende og videreutvikle ferdighetene mine i arbeidslivet, der jeg kan kombinere design, teknologi og innsikt i brukerbehov for å skape intuitive løsninger. Jeg brenner spesielt for å bygge produkter som løser reelle problemer og som skaper verdi for både bedrifter og brukere."
+    },
+    "projectInfo": {
+      "role": {
+        "title": "Min rolle",
+        "value": "UX-designer"
+      },
+      "education": {
+        "title": "Utdanning",
+        "value": "IT - Interaksjonsdesign\nBachelor"
+      },
+      "skills": {
+        "title": "Ferdigheter",
+        "value": "UX / UI, Figma, React, Java"
+      }
+    },
+    "experience": {
+      "heading": "Erfaring",
+      "jobs": {
+        "position": "Administrasjonsassistent, Prospera Stiftelsen",
+        "description": "Gjennom mitt arbeid i Prospera Stiftelsen fikk jeg praktisk erfaring med weboppdateringer, grafisk design og brukertesting, som har gitt meg et sterkt grunnlag innen UI-design og UX-research. Arbeidet ga meg også innsikt i hvordan digitale produkter kan utvikles for å møte både brukernes og organisasjonens behov, noe som er en kjerneverdi i UX-design.",
+        "position2": "Kundebehandler, City Self-Storage",
+        "description2": "Som kundebehandler i City Self-Storage har jeg fått verdifull erfaring med brukerkommunikasjon, problemløsning og tjenesteoptimalisering. Håndtering av kundehenvendelser og avvik har lært meg å forstå brukerbehov og smertepunkter, noe som er essensielt innen UX-design.",
+        "position3": "Slusevakt, Ullevål Universitetssykehus",
+        "description3": "I rollen som slusevakt var hovedoppgaven å veilede mennesker gjennom smittevernsprosedyrer og sørge for et trygt miljø. Dette krevde klare og effektive kommunikasjonsferdigheter, samt empati med pasienter og pårørende."
+      }
+    },
+
+    "Education": {
+      "heading": "Education",
+      "text": {
+        "title": "Bachelor i IT - Interaction Design",
+        "description": "Jeg har en bachelorgrad i Informasjonsteknologi – Interaksjonsdesign, hvor jeg har lært å kombinere design og teknologi for å skape brukervennlige digitale løsninger. Studiet har vært praktisk rettet med reelle kundecaser, noe som har gitt meg erfaring med brukertesting, interaksjonsdesign og analyse. Gjennom fag som brukertesting, kreativt webprosjekt og informasjonssikkerhet har jeg fått en god forståelse av hvordan man designer løsninger basert på brukerbehov og data. Utdanningen har også gitt meg erfaring med å samarbeide med utviklere og jobbe metodisk for å skape intuitive og effektive digitale produkter."
+      }
+    },
+    "Values": {
+      "heading": "Design Values",
+      "Empathy": {
+        "title": "Empati",
+        "text": "For meg handler godt design om å forstå menneskene som skal bruke løsningen. Gjennom brukerintervjuer og testing i case-studiene mine har jeg lært hvor viktig det er å sette seg inn i brukernes behov, utfordringer og mål. I MatSpar-prosjektet jobbet jeg med semistrukturerte intervjuer for å avdekke hvordan folk planlegger måltider og håndterer matsvinn. Innsiktene fra disse intervjuene påvirket funksjonaliteten i appen, blant annet ved å foreslå retter basert på ingredienser brukeren allerede hadde. Denne tilnærmingen sikrer at løsningene jeg designer ikke bare ser bra ut, men faktisk løser reelle problemer."
+      },
+      "Accessibility": {
+        "title": "Tilgjengelighet og Inkludering – Design for Alle",
+        "text": "Jeg tror på at gode digitale produkter skal være tilgjengelige for alle, uavhengig av funksjonsevne eller teknologisk erfaring. I den F1-inspirerte nettsiden fulgte jeg WCAG-retningslinjer for kontrast og tastaturnavigasjon, slik at brukere med synshemninger eller motoriske utfordringer også kunne navigere siden uten problemer. Ved å implementere semantisk HTML og ARIA-labels sørget jeg for at skjermlesere kunne tolke innholdet korrekt. Dette har lært meg at tilgjengelighet ikke er en ettertanke, men en integrert del av god UX-design."
+      },
+      "Collaboration": {
+        "title": "3. Brukerorientert Funksjonalitet – Intuitiv og Effektiv Interaksjon",
+        "text": "En løsning er kun vellykket hvis den er intuitiv og enkel å bruke. I arbeidet med MatSpar prioriterte vi brukertesting av interaktive prototyper, noe som avdekket behovet for forenklet navigasjon og tydeligere tilbakemelding i appen. Dette førte til at vi justerte designet slik at brukeren raskt kunne forstå hvor de var i prosessen, for eksempel gjennom progressive handlingsknapper og tydelige veivisere. Jeg er opptatt av å designe løsninger som fjerner friksjon og hjelper brukeren med å oppnå målet sitt raskt og enkelt."
+      },
+      "TeamPlayer": {
+        "title": "4. Spille andre gode - Være en lagspiller",
+        "text": "Jeg anser meg selv som en god lagspiller fordi jeg trives med å samarbeide og tror på at de beste løsningene skapes når ulike perspektiver møtes. Jeg liker å jobbe i tverrfaglige team, der designere, utviklere og andre fagfolk kan utfylle hverandre og finne de beste løsningene sammen. For meg handler samarbeid om å lytte, forstå og bygge videre på andres innsikt. Dette skaper ikke bare bedre produkter, men også et mer inspirerende og effektivt arbeidsmiljø."
+      }
+    }
+  },
+
+  "sections": {
+    "harmoni": "Harmoni",
+    "ws": "01 Prosjekt Visjon",
+    "design": "02 Konsept Modell",
+    "testing": "03 Første skisser",
+    "uiBranding": "04 Brukertesting",
+    "finalUI": "05 UI",
+    "nextSteps": "06 Videreutvikling"
+  },
+  "TOCMatSpar": {
+    "harmoni": "MatSpar",
+    "ws": "01 Innsikt",
+    "design": "02 Idegenerering ",
+    "testing": "03 Prototyping",
+    "uiBranding": "04 Brukertesting",
+    "finalUI": "05 Løsningen",
+    "nextSteps": "06 UI",
+    "Konklusjon": "07 Konklusjon"
+  },
+  "TOCF1": {
+    "harmoni": "F1",
+    "ws": "01 Backend",
+    "design": "02 Frontend",
+    "testing": "03 Designvalg ",
+    "uiBranding": "04 Læringsbytte "
+  }
+}
+
+

@@ -1,0 +1,694 @@
+{
+  "header": {
+    "portfolio": "Portfolio",
+    "description": "Detailed case studies for curious visitors.",
+    "profileAlt": "Profile picture of {{name}}",
+    "intro": "I am a <1>UX/UI designer</1> with <br/> full-stack experience, focusing on creating user-centered interfaces.",
+    "contact": "Get in Touch",
+    "aboutMe": "About Me"
+  },
+  "projects": {
+    "harmoni": {
+      "title": "Harmoni",
+      "description": "App design, user testing, and prototyping.",
+      "alt": "Harmoni user interface"
+    },
+    "matspar": {
+      "title": "MatSpar",
+      "description": "App design, user testing, and prototyping.",
+      "alt": "MatSpar user interface"
+    },
+    "f1": {
+      "title": "Full-Stack F1 Web Solution",
+      "description": ".Net, C#, React",
+      "alt": "Formula 1 inspired website"
+    },
+    "Fristil": {
+      "title": "Fristil Records (WIP)",
+      "description": "Web design, Web development, Wix",
+      "alt": "OneHub user interface"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "copied": "Copied!"
+  },
+
+  "harmoniCaseStudy": {
+    "header": {
+      "title": "Harmoni",
+      "subtitle": "Case study of a mental health app"
+    },
+    "intro": {
+      "heading": "First Impression",
+      "text": "Harmoni is a mental health app designed to help young adults find balance and strengthen their mental well‑being. The app offers user‑friendly resources and tools that are easily accessible and simple to use. The project was part of a group project at Kristiania and was carried out over one semester."
+    },
+    "projectInfo": {
+      "groupProject": {
+        "title": "Group Project",
+        "description": "Conceptual model, user insights, and design"
+      },
+      "role": {
+        "title": "My Role",
+        "description": "Product Designer, User Research, Visual Design"
+      },
+      "timeline": {
+        "title": "Timeline",
+        "description": "Aug 2024 – Dec 2024"
+      },
+      "tools": {
+        "title": "Tools",
+        "description": "Figma"
+      }
+    },
+    "summary": {
+      "heading": "Problem Statement",
+      "text": "In a world dominated by instant gratification and digital distractions, many young adults choose to ignore their mental challenges. This reinforces a stigma around mental health and prevents open dialogue about real needs.",
+      "quote": "\"How can we design an app that reduces the stigma around mental health and encourages openness and dialogue?\"",
+      "description": "By combining user‑centered design with research‑based methods, we aim to create a platform that provides young adults with a tool to address their emotions in a mature and supportive way."
+    },
+    "Ws": {
+      "heading": "Design Process",
+      "text": "The design process for Harmoni started with a deep understanding of the users’ needs and challenges related to mental health. Through insight work and user testing, we explored how digital solutions can reduce stigma and promote openness.",
+      "subHeading": "01 Project Vision",
+      "col1": {
+        "title": "Why?",
+        "text1": "In a digital everyday life characterized by information flow and instant gratification, mental health is often deprioritized among young adults.",
+        "text2": "We wanted to develop an app that makes it easier to take care of one’s own mental health while encouraging openness and reflection."
+      },
+      "col2": {
+        "title": "What?",
+        "text1": "<strong>Harmoni</strong> is an app that provides the user with tools to manage thoughts and feelings in a structured way.",
+        "list": [
+          "Mood Tracker",
+          "Thought Virus Exercises",
+          "Recommended Articles"
+        ],
+        "text2": "The goal is to make reflection on mental health as natural as checking social media – but in a positive and constructive way."
+      },
+      "col3": {
+        "title": "Who?",
+        "text1": "Our primary target group is young adults aged <strong>18-30</strong>, a group that often experiences stress, anxiety, and uncertainty, but does not necessarily seek professional help.",
+        "text2": "We want to meet them where they are – <strong>on their phones</strong> – and provide them with a solution that feels intuitive, safe, and motivating to use."
+      }
+    },
+    "define": {
+      "heading": "02 Conceptual Model",
+      "col1": {
+        "title": "Goal",
+        "text": "In developing Harmoni, it was crucial to create a conceptual model that reflected the users’ needs and expectations. The goal was to design a digital platform that felt intuitive, safe, and accessible without seeming clinical or overwhelming."
+      },
+      "col2": {
+        "title": "The Challenge",
+        "text": "Many mental health apps offer information and exercises, but lack a holistic approach that combines self-help with social support. We wanted to create a solution where the user could not only work on their own mental health but also receive tools to support others – all in an environment that felt personal and safe."
+      },
+      "col3": {
+        "title": "The Solution",
+        "text": "To ensure users understood and adopted Harmoni with minimal friction, we built the interaction design around familiar metaphors and patterns of behavior."
+      },
+      "col4": {
+        "title": "User Experience & Navigation",
+        "text": "To ensure an intuitive and cohesive experience, we structured the app so that it always guides the user toward action."
+      }
+    },
+    "design": {
+      "heading": "03 From Idea to First Sketches",
+      "col1": {
+        "title": "Overview Map",
+        "text": "To visualize the app’s structure and ensure an intuitive user experience, we began early in the design process by creating wireframes. This allowed us to test and iterate on the design before developing the final solution. We started by drafting an overview map to define the app’s information architecture. This map provided a holistic understanding of how the various functions should connect and ensured a logical flow in the user journey."
+      },
+      "col2": {
+        "title": "Wireframes",
+        "text": "Based on the overview map, we developed wireframes in Figma that visualized how the most important screens should look. In the initial phase, we prioritized features that directly supported the user’s mental health:",
+        "list": [
+          "💡 Mood Tracking",
+          "📖 Advice and Tips",
+          "👐 Help a Friend",
+          "🚑 Emergency Call"
+        ]
+      }
+    },
+    "testing": {
+      "heading": "04 User Testing",
+      "col1": {
+        "title": "Purpose",
+        "text": "In developing Harmoni, it was crucial to create a conceptual model that reflected the users’ needs and expectations. The goal was to design a digital platform that felt intuitive, safe, and accessible without seeming clinical or overwhelming."
+      },
+      "col2": {
+        "title": "Testing Method",
+        "text": "We conducted a moderated user test with five participants, where we observed their interaction with an interactive prototype. The test consisted of ten tasks, including registration, navigation to various features (articles, emergency call, chatbot), and completion of a daily exercise. After testing, we held a short conversation with each participant to capture their subjective experience of the app."
+      },
+      "col3": {
+        "title": "Feedback & Discussion",
+        "text": "We also observed that users experienced challenges with a more static experience and desired more visual variety to make the content more engaging."
+      },
+      "col4": {
+        "title": "Further Adjustments",
+        "text": "Based on the test results, we made specific adjustments: modified spacing and color usage for a clearer interface, implemented a more dynamic navigation experience, and developed an onboarding section for new users. The user tests provided valuable insights and ensured that the final prototype was more user-friendly, intuitive, and tailored to the target group."
+      }
+    },
+    "finalUI": {
+      "heading": "05 Final UI",
+      "col1": {
+        "title": "Purpose",
+        "text": "The design of the Harmoni app focuses on creating a calm, intuitive, and inclusive user experience. Through carefully selected colors, typography, and design elements, we have developed a visual identity that supports the app’s purpose: to provide users with a safe and supportive environment for mental health."
+      },
+      "col2": {
+        "title": "Visual Expression",
+        "text": "To create a cohesive experience, we chose a modern and minimalist design style inspired by neo-brutalism. This involves a clear connection between text and images through illustrations that mirror the content, making it easy for the user to navigate and understand the app’s features."
+      },
+      "col3": {
+        "title": "Color palette",
+        "text": "The color palette is designed to balance calm and energy, with colors that evoke the right emotions in users: Orange represents enthusiasm, vitality, and warmth, which creates a welcoming feel. Blue creates calm and security, which reduces stress. Green symbolizes balance and harmony, connecting the app to the calming properties of nature."
+      },
+      "col4": {
+        "title": "Typography",
+        "text": "We have chosen a combination of Clarendon Normal and Space Grotesk to create a balanced readability: Clarendon Normal is used for headings and gives a classic and elegant look. Space Grotesk is used for body text and is optimized for good readability on screens."
+      },
+      "col5": {
+        "title": "Accessibility",
+        "text": "The Harmoni app is designed with universal design in mind to ensure it is accessible to all users, regardless of ability. Text can be enlarged up to 200% without loss of functionality, in accordance with WCAG 2.1 guidelines."
+      },
+      "col6": {
+        "title": "User-friendliness",
+        "text": "We have implemented autofill in forms and ensured sufficient color contrast with tools like Color Contrast Analyser, so that the content is readable even for users with low vision. The Harmoni app is aesthetically pleasing, intuitive and accessible to everyone."
+      }
+    },
+
+    "nextSteps": {
+      "heading": "06 Reflection & Future Work",
+      "col1": {
+        "title": "A Look Back",
+        "text": "The project has been an educational process where we tested user‑centered design in practice. Some of the key lessons include:"
+      },
+      "col2": {
+        "title": "The Road Ahead",
+        "text": "To ensure the app remains relevant and engaging over time, we can:"
+      }
+    },
+
+    "harmoniChangesList": [
+      {
+        "icon": "✔",
+        "text": "Scroll functionality was implemented on pages where users expected it."
+      },
+      {
+        "icon": "✔",
+        "text": "The onboarding process was expanded with a short guide introducing the main features."
+      },
+      {
+        "icon": "✔",
+        "text": "\"Advice and tips\" was moved to a more visible location in the navigation menu."
+      },
+      {
+        "icon": "✔",
+        "text": "More color and visual elements were added to make the interface more engaging."
+      }
+    ],
+    "appFeaturesList": [
+      {
+        "icon": "💡",
+        "title": "Person coach",
+        "text": "A virtual assistant helps users with daily exercises and reflections, just like a life coach or therapist would."
+      },
+      {
+        "icon": "🔒",
+        "title": "Safe space",
+        "text": "The app is designed to be an anonymous and secure platform, with BankID authentication to protect sensitive information."
+      },
+      {
+        "icon": "🧰",
+        "title": "Mental Health Toolbox",
+        "text": "Users have access to mindfulness exercises, mood tracking, and a help section that provides insight into how to support themselves and others."
+      }
+    ],
+    "supportFeaturesList": [
+      {
+        "icon": "📅",
+        "title": "Daily Exercises",
+        "text": "Presented as small, manageable challenges to promote awareness and reflection."
+      },
+      {
+        "icon": "💬",
+        "title": "Chatbot for Emotional Support",
+        "text": "A low-threshold conversation partner that provides immediate responses based on user needs."
+      },
+      {
+        "icon": "🤝",
+        "title": "Help a Friend",
+        "text": "A guide to recognize signs of emotional distress in others and how to offer support."
+      },
+      {
+        "icon": "🚨",
+        "title": "Emergency Assistance",
+        "text": "Immediate access to emergency numbers and professional aid in crisis situations."
+      }
+    ],
+    "keyLearnings": [
+      {
+        "icon": "💡",
+        "text": "User testing is essential. Several design choices we thought would work well had to be adjusted based on feedback. The changes in navigation were a concrete example of this."
+      },
+      {
+        "icon": "💡",
+        "text": "Iteration is the key to good design. The first prototype had several weaknesses, but by working iteratively we have created a much more user-friendly solution."
+      },
+      {
+        "icon": "💡",
+        "text": "Balancing functionality and simplicity is challenging. We have constantly worked on offering useful features without making the app feel overwhelming."
+      }
+    ],
+    "futureImprovements": [
+      {
+        "icon": "🔹",
+        "text": "Regularly update content such as daily exercises, articles, and podcasts to avoid repetition and keep the user experience dynamic."
+      },
+      {
+        "icon": "🔹",
+        "text": "Further develop the 'Help a Friend' feature by adding the ability to share profiles and follow up with friends more closely. This can contribute to a stronger social support function in the app."
+      },
+      {
+        "icon": "🔹",
+        "text": "Conduct a new round of user testing, including a broader range of participants – both regular users and mental health professionals. This will provide valuable insights into how different user groups experience the app and how we can optimize functionality and content."
+      },
+      {
+        "icon": "🔹",
+        "text": "Test personalization options, such as tailored content recommendations based on the user's needs and preferences."
+      },
+      {
+        "icon": "🔹",
+        "text": "Implement more settings options, such as dark mode, language selection, and adjustable notifications, for a more flexible and user-friendly experience."
+      }
+    ],
+    "feedbackList": [
+      {
+        "icon": "✅",
+        "text": "Intuitive navigation – Most participants quickly found the most important features."
+      },
+      {
+        "icon": "⚠️",
+        "text": "Missing scroll functionality – Several attempted to scroll on pages that did not support it."
+      },
+      {
+        "icon": "⚠️",
+        "text": "Unclear onboarding – Some users felt they received too little information about what the app could offer."
+      },
+      {
+        "icon": "⚠️",
+        "text": "Difficult to find 'Advice and Tips' – Many struggled to identify where to find information about mental health."
+      }
+    ]
+  },
+
+  "matSparCaseStudy": {
+    "header": {
+      "title": "MatSpar",
+      "subtitle": "Case study of a meal planning app"
+    },
+    "intro": {
+      "heading": "First Impression",
+      "text": "MatSpar is a mobile app developed to help users reduce food waste and save money through smart meal planning and budget management."
+    },
+    "projectInfo": {
+      "groupProject": {
+        "title": "Group Project",
+        "description": "Lean UX, user insights, and design"
+      },
+      "role": {
+        "title": "My Role",
+        "description": "Product Designer, User Research, Visual Design"
+      },
+      "timeline": {
+        "title": "Timeline",
+        "description": "Aug 2024 – Dec 2024"
+      },
+      "tools": {
+        "title": "Tools",
+        "description": "Figma"
+      }
+    },
+    "summary": {
+      "heading": "Problem Statement",
+      "text": "Many students and families struggle to plan meals effectively, leading to unnecessary food waste and increased expenses.",
+      "quote": "\"How can we design an app that makes meal planning easier, more economical, and sustainable for students and families?\"",
+      "description": "Our hypothesis was that a user-friendly app could help users plan purchases smarter, reduce food waste, and cut costs."
+    },
+    "showCase": {
+      "homeScreen": {
+        "title": "Home Screen",
+        "text": "On the home screen, users see an overview of how much money has been spent on food and how much has been saved. The weekly meal plan is shown with categories for Dinner, Breakfast, and Lunch, illustrated with large images for inspiration."
+      },
+      "newMealPlan": {
+        "title": "New Meal Plan",
+        "text": "When the user wants to create a new meal plan, they can easily browse a selection of dishes divided into Dinner, Lunch, and Breakfast. A budget filter function allows tailoring the selection based on price."
+      },
+      "add": {
+        "title": "Add Dish",
+        "text": "After selecting dishes, suggestions are provided based on the remaining ingredients in the meal plan, making it easy to reduce food waste and save money."
+      }
+    },
+    "research": {
+      "heading": "Design Process",
+      "text": "The design process for MatSpar began with a deep understanding of the users' needs and challenges regarding meal planning. We combined Lean UX principles, design thinking, and agile development into four phases: insights, ideation, prototyping, and testing.",
+      "subHeading": "01 Insights",
+      "col1": {
+        "title": "Target Group and Assumptions",
+        "text1": "We started by segmenting the target audience for MatSpar and writing down our assumptions about this customer segment.",
+        "text2": "The target group includes those who want to reduce food waste and save money on grocery shopping."
+      },
+      "col2": {
+        "title": "User Interviews",
+        "text": "We conducted semi-structured interviews with representatives from the target group to understand their real needs and challenges with meal planning.",
+        "list": [
+          "Identifying common challenges",
+          "Understanding grocery habits",
+          "Evaluating meal planning routines"
+        ],
+        "text2": "A recurring theme was the difficulty in keeping track of food items already available, leading to unnecessary purchases."
+      },
+      "col3": {
+        "title": "Personas",
+        "text": "Based on the insights from the interviews, we developed personas to represent different user groups. Lisa, a student on a tight budget, seeks simple and affordable meals. André, a food enthusiast, wants inspiration and variety in her diet. Anna, a mother with a family, prioritizes efficient meal planning and wants to reduce food waste."
+      },
+      "col4": {
+        "title": "Competitor analysis",
+        "text": "To understand the market and differentiate ourselves, we conducted a competitive audit of existing apps such as AllRecipes, Mealime, Yummly and HelloFresh. Many of these offer either meal planning or budgeting tools, but none seamlessly combine both aspects with a focus on food waste. MatSpar’s strength lies in offering a holistic solution that unites financial planning, sustainability and an intuitive user experience."
+      }
+    },
+    "define": {
+      "heading": "02 Idea Generation and Conceptualization",
+      "col1": {
+        "title": "Brainstorm",
+        "text": "Based on the insights we gathered, we conducted a brainstorming process to define MatSpar’s core features. The goal was to develop a solution that effectively addresses users’ biggest challenges, such as budget management, reducing food waste, and simplifying meal planning. We explored features such as automated shopping lists, personalized recipe recommendations based on available ingredients, and store price comparison to help users make smarter and more cost-effective grocery purchases.",
+        "text2": "Core functions:"
+      },
+      "col2": {
+        "title": "Wireframes",
+        "text": "To visualize the concepts, we developed low-fidelity wireframes and user flow diagrams in Figma. This gave us the opportunity to quickly test the information architecture and navigation flow before investing time in detailed design. We focused on an intuitive main menu, where the user could easily navigate between meal planning, shopping lists, and budget management. Wireframes helped us identify areas for improvement early on, such as the placement of important features and how the user would naturally move through the app. By iterating on these sketches, we got a solid foundation for further development."
+      }
+    },
+    "design": {
+      "heading": "03 Prototyping and Iterative Design",
+      "col1": {
+        "title": "Detailed Design",
+        "text": "After several iterations, we continued tomaintaining a minimalistic look to reduce cognitive load. In particular, we emphasized clear hierarchies in the information, so that the user could easily find meal plans, shopping lists, and budget overviews without unnecessary steps. In addition, we integrated visual markers for price savings and food waste reduction, making the app more engaging and motivating to use."
+      },
+      "col2": {
+        "title": "Interaction Design",
+        "text": "To create a seamless and intuitive experience, we worked with interaction design that reflected users’ expectations and habits. We defined clear touchpoints that made it easy to add, remove, and adjust ingredients in the shopping list, as well as customize recipes by serving size. To improve the flow between different features in the app, we implemented microinteractions, such as small animations and color changes, to provide immediate feedback on the user’s actions."
+      }
+    },
+    "testing": {
+      "heading": "04 Testing and Validation",
+      "col1": {
+        "title": "User Testing",
+        "text": "After the interactive prototype was developed in Figma, we conducted a user test with five participants to identify potential areas for improvement. The participants, who consisted of four students and a single mother, were given concrete tasks such as planning a weekly menu, generating a shopping list, and comparing food prices in different stores. During the testing, we observed how users navigated the app, where they encountered challenges, and which features they valued the most. A key finding was that many users expected a more intuitive way to edit their shopping list, and that information about price savings should be presented more clearly. In addition, several wanted an easier way to adjust recipes based on the number of servings."
+      },
+      "col2": {
+        "title": "Test Method",
+        "text": "Based on the insights from user testing, we made several key design adjustments. Navigation was simplified, including placing the shopping list in the main menu for faster access. We also improved recipe personalization by implementing dynamic portion control, so users could easily adjust recipes to their household size. Visual elements were also adjusted to make price savings more prominent, with color coding and clear indicators of how much the user could save. These improvements ensured that MatSpar became more intuitive, user-friendly, and tailored to the needs of the target audience."
+      }
+    },
+    "solution": {
+      "heading": "05 The Solution: How MatSpar Works",
+      "features": {
+        "title": "Core Features of MatSpar",
+        "text": "MatSpar is designed to help users with efficient meal planning, budget management and food waste reduction. The app combines smart recipe suggestions, automatic shopping lists and price comparison to make food shopping easier and more economical. By analyzing the user's previous purchases and available ingredients, MatSpar adapts meal suggestions so that the most of the purchased food is used optimally.",
+        "items": [
+          {
+            "icon": "✅",
+            "text": "<strong>Automatic Meal Planning:</strong> Users can select dishes based on ingredients they already have."
+          },
+          {
+            "icon": "✅",
+            "text": "<strong>Personal Shopping List:</strong> Ingredients from the meal plan are automatically added to the shopping list, with easy editing or removal options."
+          },
+          {
+            "icon": "✅",
+            "text": "<strong>Budget Management and Price Comparison:</strong> The app provides an overview of expected costs and shows which stores offer the best prices on necessary items."
+          },
+          {
+            "icon": "✅",
+            "text": "<strong>Food Waste Reduction:</strong> It suggests recipes that utilize ingredients from previous purchases so that minimal food is wasted."
+          },
+          {
+            "icon": "✅",
+            "text": "<strong>Customization and Allergy Filter:</strong> The app allows users to choose food preferences and allergies, ensuring meal plans are tailored to individual needs."
+          }
+        ]
+      },
+      "uvp": {
+        "title": "Unique Value Proposition",
+        "text": "MatSpar stands out by combining meal planning, budget management and food waste reduction into one seamless solution. Unlike existing apps that focus on either recipes or shopping lists, MatSpar offers a holistic and automated experience that helps users save money, minimize food waste and simplify food shopping. By integrating price comparison, personalized recipes and dynamic shopping lists, MatSpar gives users full control over their food budget and resources in an intuitive and user-friendly way."
+      }
+    },
+    "UI": {
+      "heading": "06 UI",
+      "col1": {
+        "title": "Design and UI in MatSpar",
+        "text": "MatSpar features a simple and intuitive interface that provides users with a quick overview of their food expenses and savings. The home screen clearly displays spending and savings, promoting awareness and empowerment."
+      },
+      "col2": {
+        "title": "User-Centered Navigation and Information Architecture",
+        "text": "The app is built with a hierarchical information structure, making essential functions easily accessible from the main menu. This approach supports user habits and ensures that necessary information is always within reach."
+      }
+    },
+    "nextSteps": {
+      "heading": "07 Conclusion and Key Learnings",
+      "conclusion": {
+        "title": "Conclusion",
+        "text": "MatSpar has evolved into a user-friendly, comprehensive solution for meal planning, budget management and food waste reduction. Through an iterative design process and close collaboration with users, we have created an app that meets the real needs of students and families. By combining financial insight, sustainable choices and intuitive design, MatSpar stands out from existing solutions on the market. The experience from this project has shown us the value of user-centered design, agile development and continuous improvement, something we will take with us in future projects."
+      },
+      "keyLearnings": {
+        "title": "Key Learnings",
+        "text": "Through the development of MatSpar, we have gained valuable experience in user-centered design, iterative development, and Lean UX methodology. The work has shown us how important it is to have a clear problem definition before the design process starts, so that we can focus on actual user needs and avoid unnecessary detours. We have also learned that a deep understanding of the target audience and market is crucial to creating a solution that provides real value. Insights from user testing and competitive analysis have helped us adapt the design and differentiate MatSpar from other apps. The use of Lean UX has made it possible to work agilely and iteratively, where we could quickly test hypotheses and adjust the design based on feedback. This approach has made us more flexible and efficient in the development process."
+      }
+    }
+  },
+
+  "F1CaseStudy": {
+    "header": {
+      "title": "F1 Inspired Website",
+      "subtitle": "For learning purposes only"
+    },
+    "intro": {
+      "heading": "First Impression",
+      "text": "This project involved developing an F1-inspired website with both backend and frontend functionality. The website combines information about drivers, teams, and races with an interactive quiz to make the experience both informative and entertaining. The tech stack includes .NET Web API for the backend and React for the frontend, with a strong focus on universal design and CRUD functionality to ensure a user-friendly and accessible solution."
+    },
+    "projectInfo": {
+      "techStack": "Tech stack",
+      "techStackValue": ".Net, C#, React, Bootstrap",
+      "role": "My Role",
+      "roleValue": "Developer, Product Designer",
+      "timeline": "Timeline",
+      "timelineValue": "Nov 6 - Nov 27 2023",
+      "tools": "Tools",
+      "toolsValue": "VSCode, MySQL"
+    },
+    "summary": {
+      "heading": "Problem Statement",
+      "text": "To create a website that both informs and engages F1 fans, it was crucial to find a balance between technical performance, intuitive design, and dynamic content.",
+      "quote": "\"How can we develop a technically solid, user-friendly, and engaging website for F1 enthusiasts?\"",
+      "description": "To answer this problem, a fullstack approach with modern technologies was chosen, with both backend and frontend developed to deliver a fast, interactive, and accessible experience."
+    },
+    "showCase": {
+      "drivers": {
+        "title": "Drivers",
+        "text": "Overview of F1 drivers (2023) with name, age, nationality, and image. A search function is also available at the top right.",
+        "imageAlt": "F1 Drivers"
+      },
+      "event": {
+        "title": "Event",
+        "text": "The event page allows users to sign up for an F1 event as drivers, with name, age, nationality, and image. The user also has the option to change driver information and remove them from the list.",
+        "imageAlt": "F1 Event Screen"
+      },
+      "races": {
+        "title": "F1 Races",
+        "text": "Overview of all F1 races in 2023 with information on the winner, winning time, and number of laps in the race.",
+        "imageAlt": "F1 Races"
+      }
+    },
+
+    "technicalSolution": {
+      "heading": "Technical Solution and Design Choices",
+      "text": "The development of the Formula 1-inspired website was a full-stack project, where both backend and frontend were meticulously planned to ensure performance, scalability, and user-friendliness. The following chapters provide a detailed review of the backend structure, frontend architecture, and design choices that form the basis for the website's functionality and user experience.",
+      "backendHeading": "01 Backend – .NET Web API",
+      "col1": {
+        "title": "Backend Structure and Technology Choices",
+        "text1": "The backend solution for the Formula 1-inspired website is built with .NET 7 Web API and SQL Server, and follows a RESTful architecture for efficient data handling. The API serves as an intermediary between the database and the frontend application, exposing endpoints to retrieve information about drivers, teams, and races. CRUD functionality (Create, Read, Update, Delete) is implemented through a repository layer, ensuring separation of concerns and easier maintenance.",
+        "text2": "The code utilizes Dependency Injection (DI) for a modular and testable architecture. The service layer and interfaces separate business logic from the rest of the application, improving maintainability and scalability. The API is automatically documented with Swagger, which provides an interactive overview of available endpoints.",
+        "text3": "To optimize performance, database queries are handled via Entity Framework Core, ensuring efficient and secure communication with SQL Server. Image uploading is implemented using IFormFile, where files are stored in a separate directory (wwwroot/images) with a reference in the database."
+      },
+      "col2": {
+        "title": "Challenges and Solutions"
+      }
+    },
+    "projectFeaturesList": [
+      {
+        "icon": "✅",
+        "title": "Efficient Data Handling",
+        "text": "The website handles large amounts of data about drivers, teams, and races. Lazy Loading was used to fetch data only when needed, reducing unnecessary database queries and improving performance."
+      },
+      {
+        "icon": "✅",
+        "title": "Asynchronous API Communication",
+        "text": "To improve response time, asynchronous methods (async/await) were implemented in API calls. This ensures that data is fetched without blocking the main thread, resulting in a smoother user experience."
+      },
+      {
+        "icon": "✅",
+        "title": "File Management and Scaling",
+        "text": "Uploading images required a solution that balanced storage space and performance. By using compression and caching, the website can load images faster without using unnecessary resources."
+      },
+      {
+        "icon": "✅",
+        "title": "Documentation and Usability",
+        "text": "The API is automatically documented with Swagger, making it easy for developers to explore and test available endpoints. This simplifies both development and further evolution of the service."
+      }
+    ],
+    "frontend": {
+      "heading": "02 Frontend – React",
+      "col1": {
+        "title": "Modular Architecture and Component-Based Structure",
+        "text": "To ensure a flexible and maintainable frontend, React was chosen as the framework. The website is built from reusable components. Each component serves a specific function, for example, to display information about a driver, a team, or to handle quiz questions. By structuring the code this way, the development team can quickly implement new features and improvements. If a new feature needs to be added, developers can create a new component or update an existing one without affecting the rest of the website. This saves time and reduces the risk of errors."
+      },
+      "col2": {
+        "title": "State Management and API Integration",
+        "text": "To handle state and data flow, React Hooks such as useState and useEffect are used. These manage user interactions and update the interface based on API responses. The Context API is also implemented to share global state between components, reducing the need for prop drilling and making the code more organized. The website communicates with a .NET-based backend via HTTP requests, and dynamic rendering ensures that users always have updated information without reloading the entire page."
+      },
+      "row2": {
+        "col1": {
+          "title": "Responsive Design with CSS Grid and Bootstrap",
+          "text": "To ensure a good user experience across devices, the website is designed with CSS Grid and Bootstrap. CSS Grid is used to create complex layouts that adapt to various screen sizes, while Bootstrap provides ready-made UI components that streamline the development process. This ensures the website works equally well on mobile devices and large screens, giving the user a seamless experience regardless of the platform."
+        },
+        "col2": {
+          "title": "Challenges and Solutions",
+          "text": "One of the main challenges in the project was handling asynchronous data loading without negatively impacting the user experience. This was solved by implementing loading states and error handling with useEffect, so that the user is informed of any delays or errors. State management with Context API contributed to a streamlined data flow between components while avoiding unnecessary updates that could affect performance. Thorough testing across devices and browsers ensured that the website delivered a consistent and optimal experience for all users."
+        }
+      }
+    },
+    "universalDesign": {
+      "heading": "03 Design Choices and Universal Design",
+      "row1": {
+        "col1": {
+          "title": "Accessibility for All",
+          "text": "To ensure that the F1 website is accessible to all users, including people with disabilities, the project followed guidelines for universal design (UD). This means that all users, regardless of abilities or technical conditions, should be able to navigate the website and understand the content without obstacles."
+        },
+        "col2": {
+          "title": "Visual Clarity and Contrast",
+          "text": "Good contrast is essential for text and interactive elements to be readable for users with impaired vision or color blindness. The website uses WCAG guidelines for contrast between text and background. With tools such as the TPGi Color Contrast Analyzer, the color choices have been tested to meet minimum requirements. This ensures that buttons, links, and information boxes stand out clearly from the background, providing a better user experience for everyone."
+        }
+      },
+      "row2": {
+        "col1": {
+          "title": "Semantic Coding for Accessibility",
+          "text": "Semantic HTML ensures that the website is structured in a way that makes it easy to navigate for both people and assistive technologies like screen readers. This improves both accessibility and SEO, while providing a logical and easy-to-understand content hierarchy for users."
+        },
+        "col2": {
+          "title": "Intuitive Navigation and Usability",
+          "text": "To ensure that the website is easy to use for a diverse audience, it is designed with a consistent structure and intuitive navigation. This means that the navigation menu is simple and clear, allowing users to quickly find information about drivers, teams, and races; keyboard navigation is fully supported for users who cannot use a mouse; and interactive elements are clearly labeled with instructions and feedback."
+        }
+      }
+    },
+    "learningAndDevelopment": {
+      "heading": "04 Learning Outcomes and Further Development",
+      "col1": {
+        "title": "Key Learnings and Experiences",
+        "text": "Through the development of the F1 website, the project has provided valuable experience in full-stack development, system architecture, and universal design. Working on seamlessly integrating backend and frontend has strengthened our understanding of API design, state management, and asynchronous data processing. Furthermore, the use of modular components in React and a well-structured SQL Server database has contributed to a more efficient and maintainable system. Adapting to various screen sizes and accessibility requirements has also provided insights into how universal design can be implemented in practice."
+      },
+      "col2": {
+        "title": "Further Development and Opportunities",
+        "text": "With a solid technical foundation, there are several opportunities for further development of the website. Future improvements may include more advanced data visualization, personalized user experiences, and real-time updates of F1 statistics via external APIs. Additionally, performance optimization and reduced load times through caching and streamlining API calls could further enhance the user experience. Finally, the website can be expanded with multilingual support and more comprehensive interactive elements to engage a broader audience."
+      }
+    }
+  },
+
+  "aboutMe": {
+    "header": {
+      "title": "About Me",
+      "subtitle": "Briefly told"
+    },
+    "intro": {
+      "paragraph1": "I am an <strong>UX/UI-designer</strong> who is passionate about creating intuitive, visually appealing, and meaningful digital experiences.",
+      "paragraph2": "With a degree in interaction design from Høyskolen Kristiania, I have developed a strong understanding of user-centered design, universal design, and the development of technical solutions. Additionally, I possess relevant skills in problem-solving, communication, and service optimization from previous work experience.",
+      "paragraph3": "I aim to apply and further develop my skills in the workforce, where I can combine design, technology, and insights into user needs to create intuitive solutions. I am especially passionate about building products that solve real problems and create value for both companies and users."
+    },
+    "projectInfo": {
+      "role": {
+        "title": "My Role",
+        "value": "UX Designer"
+      },
+      "education": {
+        "title": "Education",
+        "value": "IT - Interaction Design\nBachelor"
+      },
+      "skills": {
+        "title": "Main Skills",
+        "value": "UX / UI, Figma, React"
+      }
+    },
+    "experience": {
+      "heading": "Experience",
+      "jobs": {
+        "position": "Administrative Assistant, Prospera Foundation",
+        "description": "Through my work at Prospera Foundation, I gained practical experience with website updates, graphic design, and user testing, which provided me with a strong foundation in UI design and UX research. The work also gave me insight into how digital products can be developed to meet both users' and the organization's needs, a core value in UX design.",
+        "position2": "Customer Service Representative, City Self-Storage",
+        "description2": "As a customer service representative at City Self-Storage, I gained valuable experience in user communication, problem-solving, and service optimization. Handling customer inquiries and deviations taught me to understand user needs and pain points, which is essential in UX design.",
+        "position3": "COVID-19 Access Control Officer, Ullevål University Hospital",
+        "description3": "My main task was to guide people through infection control procedures and ensure a safe environment. This required clear and effective communication skills as well as empathy with patients and their relatives."
+      }
+    },
+    "Education": {
+      "heading": "Education",
+      "text": {
+        "title": "Bachelor in IT - Interaction Design",
+        "description": "I have a bachelor's degree in Information Technology - Interaction Design, where I have learned to combine design and technology to create user-friendly digital solutions. The study has been practically oriented with real customer cases, which has given me experience with user testing, interaction design and analysis. Through subjects such as user testing, creative web project and information security, I have gained a good understanding of how to design solutions based on user needs and data. The education has also given me experience in collaborating with developers and working methodically to create intuitive and effective digital products."
+      }
+    },
+    "Values": {
+      "heading": "Design Values",
+      "Empathy": {
+        "title": "1. Empathy - Design med Brukeren i Fokus",
+        "text": "For me, good design is about understanding the people who will use the solution. Through user interviews and testing in my case studies, I have learned how important it is to understand the users' needs, challenges and goals. In the MatSpar project, I worked with semi-structured interviews to uncover how people plan meals and manage food waste. The insights from these interviews influenced the functionality of the app, including suggesting dishes based on ingredients the user already had. This approach ensures that the solutions I design don't just look good, but actually solve real problems."
+      },
+      "Accessibility": {
+        "title": "2. Accessibility and Inclusion – Design for All",
+        "text": "I believe that great digital products should be accessible to everyone, regardless of their ability or technological experience. In the F1-inspired website, I followed WCAG guidelines for contrast and keyboard navigation, so that users with visual impairments or motor challenges could also navigate the site without problems. By implementing semantic HTML and ARIA labels, I ensured that screen readers could interpret the content correctly. This has taught me that accessibility is not an afterthought, but an integral part of good UX design."
+      },
+      "Collaboration": {
+        "title": "3. User-Oriented Functionality – Intuitive and Efficient Interaction",
+        "text": "A solution is only successful if it is intuitive and easy to use. In our work with MatSpar, we prioritized user testing of interactive prototypes, which revealed the need for simplified navigation and clearer feedback in the app. This led us to adjust the design so that the user could quickly understand where they were in the process, for example through progressive action buttons and clear navigation. I am committed to designing solutions that remove friction and help the user achieve their goal quickly and easily."
+      },
+      "TeamPlayer": {
+        "title": "4. Playing others well - Being a team player",
+        "text": "I consider myself a good team player because I enjoy collaborating and believe that the best solutions are created when different perspectives meet. I enjoy working in multidisciplinary teams, where designers, developers and other professionals can complement each other and find the best solutions together. For me, collaboration is about listening, understanding and building on the insights of others. This not only creates better products, but also a more inspiring and efficient work environment."
+      }
+    }
+  },
+
+  "sections": {
+    "harmoni": "Harmoni",
+    "ws": "01 Project Vision",
+    "design": "02 Conceptual Model",
+    "testing": "03 First Sketches",
+    "uiBranding": "04 User Testing",
+    "finalUI": "05 Final UI",
+    "nextSteps": "06 Next Steps"
+  },
+  "TOCMatSpar": {
+    "harmoni": "MatSpar",
+    "ws": "01 Insights",
+    "design": "02 Ideation",
+    "testing": "03 Prototyping",
+    "uiBranding": "04 User Testing",
+    "finalUI": "05 Solution",
+    "nextSteps": "06 UI",
+    "Konklusjon": "07 Conclusion"
+  },
+  "TOCF1": {
+    "harmoni": "F1",
+    "ws": "01 Backend",
+    "design": "02 Frontend",
+    "testing": "03 Design Choices",
+    "uiBranding": "04 Lessons "
+  }
+}

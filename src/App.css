@@ -1,0 +1,461 @@
+/* App.css */
+
+.body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.margin-wrapper {
+  max-width: 1200px; /* Optimal width for large screens */
+  width: 100%;
+  margin: 0 auto; /* Centers content */
+
+  transition: padding 0.5s ease;
+  align-items: left;
+}
+
+/* 🔹 Large Tablets (992px - 1199px) */
+@media (max-width: 1199px) {
+  .margin-wrapper {
+    max-width: 1000px; /* Slightly reduced width */
+    padding: 0 1.5rem; /* Adjusted padding */
+  }
+}
+
+/* 🔹 Tablets (768px - 991px) */
+@media (max-width: 991px) {
+  .margin-wrapper {
+    max-width: 100%; /* Keeps width responsive */
+    padding: 0 1.5rem; /* Prevents text touching edges */
+  }
+}
+
+/* 🔹 Mobile Devices (< 768px) */
+@media (max-width: 767px) {
+  .margin-wrapper {
+    max-width: 100%; /* Uses full width */
+    padding: 0 1rem; /* Reduces side padding for smaller screens */
+  }
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Ensures content starts from the left */
+}
+
+.header-container .title-container {
+  width: 100%;
+  text-align: left;
+}
+
+.header-container .d-flex {
+  align-items: flex-start; /* Makes sure image and text are aligned at the top */
+}
+
+.text-content {
+  text-align: left;
+}
+
+/* Container for uferdige prosjekter */
+.wip-container {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Overlayet ligger absolutt over kortet og er usynlig til å begynne med */
+.wip-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Når musen går over containeren, vis overlayet */
+.wip-container:hover .wip-overlay {
+  opacity: 1;
+}
+
+/* Stiler for teksten i overlayet */
+.wip-message {
+  text-align: center;
+  color: #333;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/*------------------------- header ------------------------------*/
+
+.header {
+  max-width: 450px;
+}
+
+/* Profile Image */
+.profile-img {
+  width: 155px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Buttons */
+.custom-btn {
+  border-radius: 12px;
+  background-color: #000000 !important;
+  border: none;
+  color: #fff789;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.custom-btn:hover {
+  background-color: #2e2e2e !important;
+}
+
+.custom-btn-outline {
+  border-radius: 12px;
+  border: 2px solid #e2e2e2 !important;
+  color: #1e1e1e;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.custom-btn-outline:hover {
+  background-color: #e2e2e2 !important;
+}
+
+/* -------------------- Project Crads --------------------------*/
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+}
+
+/* Default mobile margin */
+.project-img {
+  transition: margin-top 0.5s ease;
+}
+
+.app {
+  background-color: #ffffff;
+}
+
+.custom-img {
+  transform: scale(1) rotate(-10deg);
+}
+
+.special-image {
+  transform: scale(1.4) rotate(-10deg) translateY(34px);
+}
+
+.custom-row {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping into multiple rows */
+  gap: 40px; /* Spacing *only* between cards */
+}
+
+.custom-column {
+  flex: 1 1 calc(50% - 20px); /* Each card takes up half the width minus half the gap */
+  max-width: calc(50% - 20px); /* Ensures it doesn't overflow */
+}
+
+@media (max-width: 768px) {
+  .custom-column {
+    flex: 1 1 100%; /* Full width on small screens */
+    max-width: 100%; /* Stacks in one column */
+  }
+}
+/* ------------------------ Table of contents ----------------------------*/
+.toc-container {
+  position: fixed;
+  top: 50%;
+  right: 20px; /* Adjust right margin as needed */
+  transform: translateY(-50%);
+  background: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  /* Remove box-shadow */
+  z-index: 1000;
+}
+
+.toc-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-menu li {
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+
+.toc-menu li.active {
+  color: black;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/*Texts*/
+
+/*Subheader LINE */
+
+.portfolio-line {
+  width: 100%;
+  max-width: 450px; /* Adjust width as needed */
+  height: 1px;
+  background-color: #d3d3d3; /* Light grey */
+  margin: auto 0; /* Center it */
+}
+
+/* ---------------------------------- Navbar -------------------------------------- */
+
+/* -------------------------------  Typography ----------------------------------*/
+
+.display-large {
+  font-size: 47px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.display-sub {
+  max-width: 100%;
+  font-family: "freight-sans-pro", sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  margin-top: 0.4rem;
+  line-height: 1.9rem;
+  color: #777;
+  margin-left: 0;
+}
+
+h2 {
+  font-size: 37px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+h3 {
+  /* H3 */
+  font-size: 28px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+h4 {
+  font-size: 20px; /*eller 20px*/
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 18px;
+  color: #000000;
+  line-height: 1.5;
+}
+li {
+  font-family: "freight-sans-pro", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  font-size: 18px;
+  color: #000000;
+  line-height: 1.5;
+}
+li span.text {
+  flex: 1;
+}
+
+.navbar .text-name {
+  font-weight: 300;
+  color: #2e2e2e;
+  font-size: 20px;
+  font-family: "freight-sans-pro", sans-serif;
+}
+
+/* -------------------------- Harmoni Case study -------------------------------*/
+/* Full-width container: spans 100% of the viewport */
+.case-study-fullwidth {
+  /* No need for an explicit width here */
+  background: inherit;
+}
+
+/* Constrained container for case study content */
+.case-study-content {
+  /* Removed fixed width; content will fill available space */
+  margin: 0;
+}
+
+/* Case study container */
+.case-study {
+  padding: 50px 0;
+  background: #ffffff;
+}
+
+/* Ensure text elements within case study content align left */
+.case-study-content .case-header,
+.case-study-content .case-section,
+.case-study-content .text-content {
+  text-align: left;
+}
+
+/* Case study sections */
+.case-section {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 120px;
+  padding-bottom: 80px;
+}
+
+/* Section intros and content */
+.case-section-intro {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  max-width: 600px; /* Limit width on larger screens */
+  line-height: 1.6;
+}
+
+.case-section-content {
+  max-width: 400px;
+}
+
+#case-section-content-right {
+  max-width: 400px;
+  margin-bottom: 60px;
+}
+
+/* Show case section */
+.show-case {
+  margin-top: 200px;
+
+  padding-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Problemstilling block */
+#problemstilling {
+  color: #d44545;
+  font-weight: 600;
+  text-align: center;
+  max-width: 400px; /* Constrain text to a reasonable width */
+  margin: 0 auto;
+}
+
+/* Case header styling */
+.case-header {
+  margin-bottom: 50px;
+}
+
+/* Project info */
+.project-info {
+  display: flex;
+  justify-content: center; /* Centers the columns horizontally */
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 2rem auto;
+  gap: 2rem;
+}
+
+.info-block {
+  text-align: left;
+}
+
+.info-block h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.info-block p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+/* -------------------------  ImageWithText  --------------------------------------*/
+
+.image-with-text-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-with-text-section .image-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Image on right */
+}
+
+.image-with-text-section .text-container {
+  flex: 1;
+  max-width: 500px;
+  text-align: left;
+}
+
+/* Flipped image/text */
+.image-with-text-section.flipped .image-container {
+  justify-content: flex-start; /* Image on left */
+}
+
+.image-with-text-section.flipped .text-container {
+  justify-content: flex-end;
+  text-align: left;
+}
+
+/* -------------------- Horizontal Layout -------------------------*/
+ul {
+  all: unset; /* Resets all inherited and default styles */
+}
+
+/* Additional responsive adjustments if needed */
+ul {
+  list-style: none;
+}
+
+strong {
+  font-weight: bold !important;
+}
+
+.custom-margin {
+  margin-left: 175px;
+}
+
+.custom-list li {
+  display: grid;
+  grid-template-columns: auto 1fr; /* icon column, then text column */
+  column-gap: 0.5rem; /* space between icon and text */
+  align-items: start; /* top-align the icon and text */
+}
