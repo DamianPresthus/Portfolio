@@ -11,6 +11,13 @@ const Navbar: React.FC = () => {
     const handleScroll = () => {
       if (!navRef.current) return;
 
+      // If we're near the top, always show the navbar
+      if (window.scrollY < 50) {
+        navRef.current.style.top = "0";
+        lastScrollY.current = window.scrollY;
+        return;
+      }
+
       if (window.scrollY > lastScrollY.current) {
         // Scrolling down: hide the navbar
         navRef.current.style.top = "-100px"; // Adjust as needed based on navbar height
@@ -19,7 +26,6 @@ const Navbar: React.FC = () => {
         navRef.current.style.top = "0";
       }
 
-      // Update the last scroll position to the current one
       lastScrollY.current = window.scrollY;
     };
 

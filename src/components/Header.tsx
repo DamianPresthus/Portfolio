@@ -22,8 +22,8 @@ const Header: React.FC = () => {
       </div>
 
       <div className="header">
-        {/* Image and text side by side on all devices */}
-        <div className="d-flex gap-3 mb-3">
+        {/* Image and text side by side on all devices with responsive alignment */}
+        <div className="d-flex gap-3 mb-3 align-items-end align-items-md-center">
           <img
             src={profileImage}
             alt={t("header.profileAlt", { name: "Damian" })}
