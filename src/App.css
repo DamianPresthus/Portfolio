@@ -203,7 +203,6 @@
   background: white;
   padding: 10px 20px;
   border-radius: 12px;
-  /* Remove box-shadow */
   z-index: 1000;
 }
 
@@ -227,6 +226,25 @@
   color: black;
   font-weight: 700;
   text-decoration: underline;
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .toc-container {
+    /* Position to bottom right on mobile */
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    transform: none;
+
+    /* Glassmorphism background */
+    background: rgba(255, 255, 255, 0.42);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.6px);
+    -webkit-backdrop-filter: blur(5.6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
 }
 
 /*Texts*/
