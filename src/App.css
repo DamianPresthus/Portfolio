@@ -143,12 +143,19 @@
   background-color: #e2e2e2 !important;
 }
 
-
 /* -------------------- Project Crads --------------------------*/
 .project-card {
+  min-height: 28rem; /* Adjust as needed */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Keeps text from pushing the image off the bottom */
 }
-
+@media (max-width: 768px) {
+  .project-card {
+    min-height: auto;
+  }
+}
 .project-card:hover {
   transform: scale(1.02);
 }
