@@ -25,17 +25,17 @@ const ContactButtons: React.FC = () => {
           onClick={handleCopy}
           className="btn btn-outline-secondary"
           style={{
-    
             height: "50px",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
-            paddingLeft: "80px",
+            paddingLeft: "30px",
             paddingRight: "20px",
             backgroundColor: "#000000",
             color: "#ffffff",
             border: "none",
+            width: "320px",
           }}
         >
           <span style={{ textAlign: "left", flex: 1 }}>{email}</span>
@@ -55,7 +55,6 @@ const ContactButtons: React.FC = () => {
           rel="noopener noreferrer"
           className="btn btn-outline-secondary"
           style={{
-            width: "400px",
             height: "50px",
             display: "flex",
             flexDirection: "row",

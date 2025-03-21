@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="mt-5">
+    <header className="mt-5 mb-5">
       <div className="title-container">
         <h1 className="display-large">{t("header.portfolio")}</h1>
         <p className="display-sub text-muted">{t("header.description")}</p>
