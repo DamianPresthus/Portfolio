@@ -22,8 +22,8 @@ const Header: React.FC = () => {
       </div>
 
       <div className="header">
-        {/* Image and Text Side by Side */}
-        <div className="d-flex gap-3 mb-5">
+        {/* Image and text side by side on all devices */}
+        <div className="d-flex gap-3 mb-3">
           <img
             src={profileImage}
             alt={t("header.profileAlt", { name: "Damian" })}
@@ -37,7 +37,8 @@ const Header: React.FC = () => {
                 interfaces.
               </Trans>
             </p>
-            <div className="d-flex gap-1">
+            {/* Desktop: buttons inline with text */}
+            <div className="d-none d-md-flex gap-1">
               <button
                 className="btn custom-btn flex-grow-1"
                 onClick={scrollToBottom}
@@ -53,7 +54,21 @@ const Header: React.FC = () => {
             </div>
           </div>
         </div>
-        {/* Buttons Below */}
+        {/* Mobile: buttons on a new row, arranged horizontally */}
+        <div className="d-flex d-md-none gap-1 mb-5">
+          <button
+            className="btn custom-btn flex-grow-1"
+            onClick={scrollToBottom}
+          >
+            {t("header.contact")}
+          </button>
+          <Link
+            to="/pages/AboutMe"
+            className="btn custom-btn-outline flex-grow-1"
+          >
+            {t("header.aboutMe")}
+          </Link>
+        </div>
       </div>
     </header>
   );

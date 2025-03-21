@@ -127,6 +127,7 @@
 
 .custom-btn:hover {
   background-color: #2e2e2e !important;
+  color: #fff789;
 }
 
 .custom-btn-outline {
@@ -141,6 +142,7 @@
 .custom-btn-outline:hover {
   background-color: #e2e2e2 !important;
 }
+
 
 /* -------------------- Project Crads --------------------------*/
 .project-card {

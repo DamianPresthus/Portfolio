@@ -25,7 +25,7 @@ const ContactButtons: React.FC = () => {
           onClick={handleCopy}
           className="btn btn-outline-secondary"
           style={{
-            width: "400px",
+    
             height: "50px",
             display: "flex",
             flexDirection: "row",
