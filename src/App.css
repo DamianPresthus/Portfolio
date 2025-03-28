@@ -198,7 +198,7 @@
 .toc-container {
   position: fixed;
   top: 50%;
-  right: 20px; /* Adjust right margin as needed */
+  right: 20px;
   transform: translateY(-50%);
   background: white;
   padding: 10px 20px;
@@ -209,7 +209,7 @@
 .toc-menu {
   list-style: none;
   display: flex;
-  flex-direction: column; /* Stack vertically */
+  flex-direction: column;
   gap: 15px;
   padding: 0;
   margin: 0;
@@ -231,19 +231,7 @@
 /* Mobile styles */
 @media (max-width: 767px) {
   .toc-container {
-    /* Position to bottom right on mobile */
-    top: auto;
-    bottom: 20px;
-    right: 20px;
-    transform: none;
-
-    /* Glassmorphism background */
-    background: rgba(255, 255, 255, 0.42);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5.6px);
-    -webkit-backdrop-filter: blur(5.6px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: none;
   }
 }
 

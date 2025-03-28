@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const sections = [
-  { id: "intro", labelKey: "sections.harmoni" },
-  { id: "TekniskLøsning", labelKey: "sections.ws" },
-  { id: "define", labelKey: "sections.design" },
-  { id: "design", labelKey: "sections.testing" },
-  { id: "testing", labelKey: "sections.uiBranding" },
+  { id: "header", labelKey: "TOCF1.F1" },
+  { id: "TekniskLøsning", labelKey: "TOCF1.backend" },
+  { id: "define", labelKey: "TOCF1.frontend" },
+  { id: "design", labelKey: "TOCF1.design" },
+  { id: "testing", labelKey: "TOCF1.lessons" },
 ];
 
 const TOCF1: React.FC = () => {

@@ -685,10 +685,10 @@
     "Konklusjon": "07 Conclusion"
   },
   "TOCF1": {
-    "harmoni": "F1",
-    "ws": "01 Backend",
-    "design": "02 Frontend",
-    "testing": "03 Design Choices",
-    "uiBranding": "04 Lessons "
+    "F1": "F1 Full-Stack",
+    "backend": "01 Backend",
+    "frontend": "02 Frontend",
+    "design": "03 Design Choices",
+    "lessons": "04 Lessons "
   }
 }
