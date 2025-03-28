@@ -65,7 +65,22 @@
       "heading": "Problem Statement",
       "text": "In a world dominated by instant gratification and digital distractions, many young adults choose to ignore their mental challenges. This reinforces a stigma around mental health and prevents open dialogue about real needs.",
       "quote": "\"How can we design an app that reduces the stigma around mental health and encourages openness and dialogue?\"",
-      "description": "By combining user‑centered design with research‑based methods, we aim to create a platform that provides young adults with a tool to address their emotions in a mature and supportive way."
+      "description": "By combining user‑centered design with research‑based methods, we aim to create a platform that provides young adults with a tool to address their emotions in a mature and supportive way.",
+      "homeScreen": {
+        "title": "Homescreen",
+        "text": "On the home screen, the user is presented with a clear layout with a top menu that provides quick access to various sections such as Recommended, Articles, Podcast and Help a Friend. In the Recommended section, you will find a selection of content, including today's exercise that invites reflection through varied self-exercises.",
+        "alt": "Description of the image"
+      },
+      "thoughtVirus": {
+        "title": "Thought Virus Exercise",
+        "text": "Today's exercise, Thought Virus, invites the user to reflect on a fictional scenario that challenges negative thought patterns. Through an interactive dialogue with intuitive choices, one gains insight into how negative thoughts are formed and can be transformed.",
+        "alt": "Description of the image"
+      },
+      "moodTracker": {
+        "title": "Humør-tracker",
+        "text": "The mood tracker screen provides a clear visualization of the user's emotional development over time. A simple chart shows daily fluctuations, and a short AI-based summary provides insight into how different factors affect mood. By following changes from week to week, it becomes easier to understand your own patterns and take action for better mental health.",
+        "alt": "Description of the image"
+      }
     },
     "Ws": {
       "heading": "Design Process",

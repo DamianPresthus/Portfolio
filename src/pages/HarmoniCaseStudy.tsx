@@ -98,26 +98,26 @@ const HarmoniCaseStudy: React.FC = () => {
               </div>
               <div className="show-case">
                 <ImageWithTextFlipped
-                  title={t("harmoniCaseStudy.design.col1.title")}
-                  text={t("harmoniCaseStudy.design.col1.text")}
+                  title={t("harmoniCaseStudy.summary.homeScreen.title")}
+                  text={t("harmoniCaseStudy.summary.homeScreen.text")}
                   imageUrl={HarmoniHjem}
-                  alt={t("harmoniCaseStudy.design.col1.title")}
+                  alt={t("harmoniCaseStudy.summary.homeScreen.alt")}
                 />
               </div>
               <div className="show-case">
                 <ImageWithText
-                  title={t("harmoniCaseStudy.design.col2.title")}
-                  text={t("harmoniCaseStudy.design.col2.text")}
+                  title={t("harmoniCaseStudy.summary.thoughtVirus.title")}
+                  text={t("harmoniCaseStudy.summary.thoughtVirus.text")}
                   imageUrl={HarmoniTankevirus}
-                  alt={t("harmoniCaseStudy.design.col2.title")}
+                  alt={t("harmoniCaseStudy.summary.thoughtVirus.alt")}
                 />
               </div>
               <div className="show-case">
                 <ImageWithTextFlipped
-                  title={t("harmoniCaseStudy.design.col1.title")}
-                  text={t("harmoniCaseStudy.design.col1.text")}
+                  title={t("harmoniCaseStudy.summary.moodTracker.title")}
+                  text={t("harmoniCaseStudy.summary.moodTracker.text")}
                   imageUrl={HarmoniHumor}
-                  alt={t("harmoniCaseStudy.design.col1.title")}
+                  alt={t("harmoniCaseStudy.summary.moodTracker.alt")}
                 />
               </div>
             </Container>
