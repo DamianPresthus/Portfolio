@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS
 import "./App.css";
 import Header from "./components/Header"; // Import the Header component
@@ -19,8 +19,8 @@ AOS.init({
 
 function App() {
   return (
-    // Set basename to "/Portfolio" so routes work correctly on GitHub Pages
-    <Router basename="/Portfolio">
+    // With HashRouter, you might not need a basename
+    <Router>
       <div
         className="app"
         style={{
