@@ -77,7 +77,7 @@
         "alt": "Description of the image"
       },
       "moodTracker": {
-        "title": "Humør-tracker",
+        "title": "Mood Tracker",
         "text": "The mood tracker screen provides a clear visualization of the user's emotional development over time. A simple chart shows daily fluctuations, and a short AI-based summary provides insight into how different factors affect mood. By following changes from week to week, it becomes easier to understand your own patterns and take action for better mental health.",
         "alt": "Description of the image"
       }
@@ -662,7 +662,7 @@
     "Values": {
       "heading": "Design Values",
       "Empathy": {
-        "title": "1. Empathy - Design med Brukeren i Fokus",
+        "title": "1. Empathy - Design with the User in Mind",
         "text": "For me, good design is about understanding the people who will use the solution. Through user interviews and testing in my case studies, I have learned how important it is to understand the users' needs, challenges and goals. In the MatSpar project, I worked with semi-structured interviews to uncover how people plan meals and manage food waste. The insights from these interviews influenced the functionality of the app, including suggesting dishes based on ingredients the user already had. This approach ensures that the solutions I design don't just look good, but actually solve real problems."
       },
       "Accessibility": {
