@@ -60,32 +60,33 @@ const F1CaseStudy: React.FC = () => {
 
           <section id="summary" className="case-section w-100">
             <Container fluid>
-              <div className="case-section-content w-75">
+              <div className="case-section-content w-100 w-md-75 px-3 px-md-0">
                 <h3>{t("F1CaseStudy.summary.heading")}</h3>
                 <p>{t("F1CaseStudy.summary.text")}</p>
               </div>
 
               <p
-                className="mt-5 d-flex justify-content-lg-end justify-content-left"
+                className="mt-5 d-flex justify-content-lg-end justify-content-start px-3 px-md-0"
                 id="problemstilling"
               >
                 {t("F1CaseStudy.summary.quote")}
               </p>
-              <div className="mt-5 d-flex justify-content-lg-end justify-content-left">
-                <p className="w-75" id="case-section-content-right">
+
+              <div className="mt-5 d-flex justify-content-lg-end justify-content-start px-3 px-md-0">
+                <p className="w-100 w-md-75" id="case-section-content-right">
                   {t("F1CaseStudy.summary.description")}
                 </p>
               </div>
+
+              {/* Show-case section */}
               <div className="show-case">
                 <Row className="align-items-center">
-                  {/* Text Column: on mobile, order 1; on md+, order 2 */}
                   <Col md={6} sm={12} className="order-1 order-md-2 mb-4">
-                    <div className="w-75 custom-margin">
+                    <div className="w-100 w-md-75 px-3 px-md-0">
                       <h3>{t("F1CaseStudy.showCase.drivers.title")}</h3>
                       <p>{t("F1CaseStudy.showCase.drivers.text")}</p>
                     </div>
                   </Col>
-                  {/* Image Column: on mobile, order 2; on md+, order 1 */}
                   <Col
                     md={6}
                     sm={12}
@@ -95,28 +96,25 @@ const F1CaseStudy: React.FC = () => {
                       src={F1Drivers}
                       alt={t("F1CaseStudy.showCase.drivers.imageAlt")}
                       className="img-fluid"
-                      style={{ width: "100%" }}
                     />
                   </Col>
                 </Row>
               </div>
 
+              {/* Repeat the same change for the next sections... */}
               <div className="show-case">
                 <Row className="align-items-center">
-                  {/* Left Column: Text */}
                   <Col md={6} sm={12} className="mb-4">
-                    <div className="w-75">
+                    <div className="w-100 w-md-75 px-3 px-md-0">
                       <h3>{t("F1CaseStudy.showCase.event.title")}</h3>
                       <p>{t("F1CaseStudy.showCase.event.text")}</p>
                     </div>
                   </Col>
-                  {/* Right Column: Image */}
                   <Col md={6} sm={12} className="text-center">
                     <img
                       src={F1Event}
                       alt={t("F1CaseStudy.showCase.event.imageAlt")}
                       className="img-fluid"
-                      style={{ width: "100%" }}
                     />
                   </Col>
                 </Row>
@@ -124,14 +122,12 @@ const F1CaseStudy: React.FC = () => {
 
               <div className="show-case">
                 <Row className="align-items-center">
-                  {/* Text Column: on mobile, order 1; on md+, order 2 */}
                   <Col md={6} sm={12} className="order-1 order-md-2 mb-4">
-                    <div className="w-75 custom-margin">
+                    <div className="w-100 w-md-75 px-3 px-md-0">
                       <h3>{t("F1CaseStudy.showCase.races.title")}</h3>
                       <p>{t("F1CaseStudy.showCase.races.text")}</p>
                     </div>
                   </Col>
-                  {/* Image Column: on mobile, order 2; on md+, order 1 */}
                   <Col
                     md={6}
                     sm={12}
@@ -141,7 +137,6 @@ const F1CaseStudy: React.FC = () => {
                       src={F1Races}
                       alt={t("F1CaseStudy.showCase.races.imageAlt")}
                       className="img-fluid"
-                      style={{ width: "100%" }}
                     />
                   </Col>
                 </Row>
