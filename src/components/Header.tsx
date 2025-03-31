@@ -2,6 +2,7 @@ import React from "react";
 import profileImage from "/assets/proffil.jpg";
 import { Link } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
+import i18n from "../i18n";
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -46,7 +47,7 @@ const Header: React.FC = () => {
                 {t("header.contact")}
               </button>
               <Link
-                to="/pages/AboutMe"
+                to={`/${i18n.language}/pages/AboutMe`}
                 className="btn custom-btn-outline flex-grow-1"
               >
                 {t("header.aboutMe")}
@@ -63,7 +64,7 @@ const Header: React.FC = () => {
             {t("header.contact")}
           </button>
           <Link
-            to="/pages/AboutMe"
+            to={`/${i18n.language}/pages/AboutMe`}
             className="btn custom-btn-outline flex-grow-1"
           >
             {t("header.aboutMe")}

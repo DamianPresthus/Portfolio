@@ -95,13 +95,13 @@ const F1CaseStudy: React.FC = () => {
                       src={F1Drivers}
                       alt={t("F1CaseStudy.showCase.drivers.imageAlt")}
                       className="img-fluid"
-                      style={{ maxWidth: "600px" }}
+                      style={{ width: "100%" }}
                     />
                   </Col>
                 </Row>
               </div>
 
-              <div className="show-case" >
+              <div className="show-case">
                 <Row className="align-items-center">
                   {/* Left Column: Text */}
                   <Col md={6} sm={12} className="mb-4">
@@ -116,7 +116,7 @@ const F1CaseStudy: React.FC = () => {
                       src={F1Event}
                       alt={t("F1CaseStudy.showCase.event.imageAlt")}
                       className="img-fluid"
-                      style={{ maxWidth: "600px" }}
+                      style={{ width: "100%" }}
                     />
                   </Col>
                 </Row>
@@ -141,7 +141,7 @@ const F1CaseStudy: React.FC = () => {
                       src={F1Races}
                       alt={t("F1CaseStudy.showCase.races.imageAlt")}
                       className="img-fluid"
-                      style={{ maxWidth: "600px" }}
+                      style={{ width: "100%" }}
                     />
                   </Col>
                 </Row>

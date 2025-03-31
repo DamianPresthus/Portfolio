@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom"; // ✅ Moved together
 import ProjectCard from "./ProjectCard";
 import HarmoniCard from "/assets/HarmoniCard.png";
 import MatSparCard from "/assets/MatSparCard.png";
@@ -18,8 +18,9 @@ interface Project {
 
 export const Projects: React.FC = () => {
   const { t } = useTranslation();
+  const { lng } = useParams(); // ✅ Correct usage
+  const langPrefix = `/${lng ?? "no"}`; // ✅ Use URL param for routing
 
-  // Prosjektlisten med dynamisk t() for oversettelser.
   const projectList: Project[] = [
     {
       id: 1,
@@ -27,7 +28,7 @@ export const Projects: React.FC = () => {
       description: t("projects.harmoni.description"),
       imageUrl: HarmoniCard,
       alt: t("projects.harmoni.alt"),
-      link: "/case-study/harmoni",
+      link: `${langPrefix}/case-study/harmoni`,
     },
     {
       id: 2,
@@ -35,7 +36,7 @@ export const Projects: React.FC = () => {
       description: t("projects.matspar.description"),
       imageUrl: MatSparCard,
       alt: t("projects.matspar.alt"),
-      link: "/case-study/matspar",
+      link: `${langPrefix}/case-study/matspar`,
     },
     {
       id: 3,
@@ -43,7 +44,7 @@ export const Projects: React.FC = () => {
       description: t("projects.f1.description"),
       imageUrl: F1,
       alt: t("projects.f1.alt"),
-      link: "/case-study/F1",
+      link: `${langPrefix}/case-study/F1`,
     },
     {
       id: 4,
@@ -51,7 +52,7 @@ export const Projects: React.FC = () => {
       description: t("projects.Fristil.description"),
       imageUrl: fristilImage,
       alt: t("projects.onehub.alt"),
-      link: "", // Uferdig prosjekt: ingen link
+      link: "", // still in progress
     },
   ];
 

@@ -33,6 +33,7 @@
     "title": "Ta kontakt",
     "copied": "Kopiert!"
   },
+
   "harmoniCaseStudy": {
     "header": {
       "title": "Harmoni",
@@ -40,24 +41,24 @@
     },
     "intro": {
       "heading": "Første øyekast",
-      "text": "Harmoni er en mental helse-app designet for å hjelpe unge voksne med å finne balanse og styrke sin mentale helse. Appen tilbyr brukervennlige ressurser og verktøy som er lett tilgjengelige og enkle å bruke. Prosjektet var en del av et gruppeprosjekt ved Kristiania og ble gjennomført over en semesterperiode.",
-      "projectInfo": {
-        "groupProject": {
-          "title": "Gruppe prosjekt",
-          "description": "Konseptuell modell, brukerinnsikt, og design"
-        },
-        "role": {
-          "title": "Min rolle",
-          "description": "Product Designer, User Research, Visual Design"
-        },
-        "timeline": {
-          "title": "Timeline",
-          "description": "Aug 2024 – Des 2024"
-        },
-        "tools": {
-          "title": "Tools",
-          "description": "Figma"
-        }
+      "text": "Harmoni er en mental helse-app designet for å hjelpe unge voksne med å finne balanse og styrke sin mentale helse. Appen tilbyr brukervennlige ressurser og verktøy som er lett tilgjengelige og enkle å bruke. Prosjektet var en del av et gruppeprosjekt ved Kristiania og ble gjennomført over en semesterperiode."
+    },
+    "projectInfo": {
+      "groupProject": {
+        "title": "Gruppe prosjekt",
+        "description": "Konseptuell modell, brukerinnsikt, og design"
+      },
+      "role": {
+        "title": "Min rolle",
+        "description": "Product Designer, User Research, Visual Design"
+      },
+      "timeline": {
+        "title": "Timeline",
+        "description": "Aug 2024 – Des 2024"
+      },
+      "tools": {
+        "title": "Tools",
+        "description": "Figma"
       }
     },
     "summary": {
@@ -694,10 +695,10 @@
     "Konklusjon": "07 Konklusjon"
   },
   "TOCF1": {
-    "harmoni": "F1",
-    "ws": "01 Backend",
-    "design": "02 Frontend",
-    "testing": "03 Designvalg ",
-    "uiBranding": "04 Læringsbytte "
+    "F1": "F1",
+    "backend": "01 Backend",
+    "frontend": "02 Frontend",
+    "design": "03 Designvalg ",
+    "lessons": "04 Læringsbytte "
   }
 }

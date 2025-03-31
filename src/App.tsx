@@ -1,26 +1,24 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap CSS
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Header from "./components/Header"; // Import the Header component
+import Header from "./components/Header";
 import { Projects } from "./components/Projects";
 import Navbar from "./components/Navbar";
 import Kontakt from "./components/Kontakt";
 import HarmoniCaseStudy from "./pages/HarmoniCaseStudy.tsx";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import MatSparCaseStudy from "./pages/MatSparCaseStudy.tsx";
 import F1CaseStudy from "./pages/F1CaseStudy.tsx";
 import AboutMe from "./pages/AboutMe.tsx";
+import LanguageLayout from "./LanguageLayout";
 import "./i18n";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-AOS.init({
-  duration: 800, // Animation duration in milliseconds
-});
+AOS.init({ duration: 800 });
 
 function App() {
   return (
-    // With HashRouter, you might not need a basename
-    <Router>
+    <HashRouter>
       <div
         className="app"
         style={{
@@ -30,35 +28,41 @@ function App() {
         }}
       >
         <Navbar />
-        <div style={{ height: "40px" }} /> {/* Spacer element */}
+        <div style={{ height: "40px" }} />
         <div className="margin-wrapper">
           <div className="body-container">
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Header />
-                    <Projects />
-                    <Kontakt />
-                  </>
-                }
-              />
-              <Route
-                path="/case-study/harmoni"
-                element={<HarmoniCaseStudy />}
-              />
-              <Route
-                path="/case-study/MatSpar"
-                element={<MatSparCaseStudy />}
-              />
-              <Route path="/case-study/F1" element={<F1CaseStudy />} />
-              <Route path="/pages/AboutMe" element={<AboutMe />} />
+              {/* Redirect "/" to "/no" by default */}
+              <Route path="/" element={<Navigate to="/no" replace />} />
+
+              {/* Language-specific routes */}
+              <Route path="/:lng" element={<LanguageLayout />}>
+                <Route
+                  index
+                  element={
+                    <>
+                      <Header />
+                      <Projects />
+                      <Kontakt />
+                    </>
+                  }
+                />
+                <Route
+                  path="case-study/harmoni"
+                  element={<HarmoniCaseStudy />}
+                />
+                <Route
+                  path="case-study/MatSpar"
+                  element={<MatSparCaseStudy />}
+                />
+                <Route path="case-study/F1" element={<F1CaseStudy />} />
+                <Route path="pages/AboutMe" element={<AboutMe />} />
+              </Route>
             </Routes>
           </div>
         </div>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 

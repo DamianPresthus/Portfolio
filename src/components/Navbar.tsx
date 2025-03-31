@@ -1,17 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const { i18n } = useTranslation();
   const navRef = useRef<HTMLElement>(null);
   const lastScrollY = useRef(window.scrollY);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       if (!navRef.current) return;
 
-      // If we're near the top, always show the navbar
       if (window.scrollY < 50) {
         navRef.current.style.top = "0";
         lastScrollY.current = window.scrollY;
@@ -19,10 +20,8 @@ const Navbar: React.FC = () => {
       }
 
       if (window.scrollY > lastScrollY.current) {
-        // Scrolling down: hide the navbar
-        navRef.current.style.top = "-100px"; // Adjust as needed based on navbar height
+        navRef.current.style.top = "-100px";
       } else {
-        // Scrolling up: show the navbar
         navRef.current.style.top = "0";
       }
 
@@ -34,19 +33,28 @@ const Navbar: React.FC = () => {
   }, []);
 
   const handleLanguageSwitch = () => {
-    const newLanguage = i18n.language === "en" ? "no" : "en";
-    i18n.changeLanguage(newLanguage);
+    const newLang = i18n.language === "en" ? "no" : "en";
+    const currentPath = location.pathname;
+
+    // Replace /no or /en with the new language
+    const newPath = currentPath.replace(/^\/(no|en)/, `/${newLang}`);
+
+    i18n.changeLanguage(newLang);
+    navigate(newPath + location.search);
   };
 
   return (
     <nav
       ref={navRef}
       className="navbar navbar-expand-lg navbar-light shadow-sm bg-white fixed-top"
-      style={{ transition: "top 0.3s ease-in-out" }} // Smooth transition effect
+      style={{ transition: "top 0.3s ease-in-out" }}
     >
       <div className="w-100">
         <div className="margin-wrapper d-flex align-items-center justify-content-between w-100">
-          <Link className="navbar-brand fw-bold text-name" to="/">
+          <Link
+            className="navbar-brand fw-bold text-name"
+            to={`/${i18n.language}`} // 👈 Use current language in path
+          >
             Damian Aaby Præsthus
           </Link>
           <button
