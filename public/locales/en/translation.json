@@ -41,7 +41,8 @@
     },
     "intro": {
       "heading": "First Impression",
-      "text": "Harmoni is a mental health app designed to help young adults find balance and strengthen their mental well‑being. The app offers user‑friendly resources and tools that are easily accessible and simple to use. The project was part of a group project at Kristiania and was carried out over one semester."
+      "text": "Harmoni is a mental health app designed to help young adults deal with everyday mental challenges through reflection, coping tools, and emotional support – all in a safe and user-friendly digital environment.",
+      "text2": "The app combines daily exercises, a mood tracker, articles, and a chatbot for emotional support, as well as tools to help a friend. The goal is to make mental health as accessible and natural to talk about as any other part of everyday life."
     },
     "projectInfo": {
       "groupProject": {
@@ -644,8 +645,10 @@
     "experience": {
       "heading": "Experience",
       "jobs": {
-        "position": "Administrative Assistant, Prospera Foundation",
-        "description": "Through my work at Prospera Foundation, I gained practical experience with website updates, graphic design, and user testing, which provided me with a strong foundation in UI design and UX research. The work also gave me insight into how digital products can be developed to meet both users' and the organization's needs, a core value in UX design.",
+        "position": "Web Design & Development Intern, Fristil Records",
+        "description": "Designed and developed a responsive showcase website to highlight the label's artists and services. We started by creating a prototype in Figma, and conducted user tests to uncover areas for improvement related to navigation and usability. Based on the insights, we further developed the solution in WIX into a functional and user-friendly website.",
+        "position1": "Administrasjonsassistent, Prospera Stiftelsen",
+        "description1": "Gjennom mitt arbeid i Prospera Stiftelsen fikk jeg praktisk erfaring med weboppdateringer, grafisk design og brukertesting, som har gitt meg et sterkt grunnlag innen UI-design og UX-research. Arbeidet ga meg også innsikt i hvordan digitale produkter kan utvikles for å møte både brukernes og organisasjonens behov, noe som er en kjerneverdi i UX-design.",
         "position2": "Customer Service Representative, City Self-Storage",
         "description2": "As a customer service representative at City Self-Storage, I gained valuable experience in user communication, problem-solving, and service optimization. Handling customer inquiries and deviations taught me to understand user needs and pain points, which is essential in UX design.",
         "position3": "COVID-19 Access Control Officer, Ullevål University Hospital",
@@ -662,7 +665,7 @@
     "Values": {
       "heading": "Design Values",
       "Empathy": {
-        "title": "1. Empathy - Design with the User in Mind",
+        "title": "4. Empathy - Design with the User in Mind",
         "text": "For me, good design is about understanding the people who will use the solution. Through user interviews and testing in my case studies, I have learned how important it is to understand the users' needs, challenges and goals. In the MatSpar project, I worked with semi-structured interviews to uncover how people plan meals and manage food waste. The insights from these interviews influenced the functionality of the app, including suggesting dishes based on ingredients the user already had. This approach ensures that the solutions I design don't just look good, but actually solve real problems."
       },
       "Accessibility": {
@@ -674,7 +677,7 @@
         "text": "A solution is only successful if it is intuitive and easy to use. In our work with MatSpar, we prioritized user testing of interactive prototypes, which revealed the need for simplified navigation and clearer feedback in the app. This led us to adjust the design so that the user could quickly understand where they were in the process, for example through progressive action buttons and clear navigation. I am committed to designing solutions that remove friction and help the user achieve their goal quickly and easily."
       },
       "TeamPlayer": {
-        "title": "4. Playing others well - Being a team player",
+        "title": "1. Playing others well - Being a team player",
         "text": "I consider myself a good team player because I enjoy collaborating and believe that the best solutions are created when different perspectives meet. I enjoy working in multidisciplinary teams, where designers, developers and other professionals can complement each other and find the best solutions together. For me, collaboration is about listening, understanding and building on the insights of others. This not only creates better products, but also a more inspiring and efficient work environment."
       }
     }

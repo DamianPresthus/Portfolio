@@ -52,6 +52,7 @@ const HarmoniCaseStudy: React.FC = () => {
             <div className="case-section-intro">
               <h2>{t("harmoniCaseStudy.intro.heading")}</h2>
               <p>{t("harmoniCaseStudy.intro.text")}</p>
+              <p>{t("harmoniCaseStudy.intro.text2")}</p>
               <div className="project-info">
                 <div className="info-block">
                   <h4>

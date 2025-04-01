@@ -79,21 +79,20 @@ const AboutMe: React.FC = () => {
                   <h4>{t("aboutMe.experience.jobs.position")}</h4>
                   <p>{t("aboutMe.experience.jobs.description")}</p>
                 </Col>
-
                 <Col lg={6} md={12} sm={12}>
-                  <h4>{t("aboutMe.experience.jobs.position2")}</h4>
-                  <p>{t("aboutMe.experience.jobs.description2")}</p>
+                  <h4>{t("aboutMe.experience.jobs.position1")}</h4>
+                  <p>{t("aboutMe.experience.jobs.description1")}</p>
                 </Col>
               </Row>
               <Row className="g-5 mb-3">
                 <Col lg={6} md={12} sm={12}>
-                  <h4>{t("aboutMe.experience.jobs.position3")}</h4>
-                  <p>{t("aboutMe.experience.jobs.description3")}</p>
+                  <h4>{t("aboutMe.experience.jobs.position2")}</h4>
+                  <p>{t("aboutMe.experience.jobs.description2")}</p>
                 </Col>
 
                 <Col lg={6} md={12} sm={12}>
-                  <h4></h4>
-                  <p></p>
+                  <h4>{t("aboutMe.experience.jobs.position3")}</h4>
+                  <p>{t("aboutMe.experience.jobs.description3")}</p>
                 </Col>
               </Row>
             </Container>
@@ -140,8 +139,8 @@ const AboutMe: React.FC = () => {
 
               <Row className="g-5 mb-3">
                 <Col lg={6} md={12} sm={12}>
-                  <h4>{t("aboutMe.Values.Empathy.title")}</h4>
-                  <p>{t("aboutMe.Values.Empathy.text")}</p>
+                  <h4>{t("aboutMe.Values.TeamPlayer.title")}</h4>
+                  <p>{t("aboutMe.Values.TeamPlayer.text")}</p>
                 </Col>
 
                 <Col lg={6} md={12} sm={12}>
@@ -156,8 +155,8 @@ const AboutMe: React.FC = () => {
                 </Col>
 
                 <Col lg={6} md={12} sm={12}>
-                  <h4>{t("aboutMe.Values.TeamPlayer.title")}</h4>
-                  <p>{t("aboutMe.Values.TeamPlayer.text")}</p>
+                  <h4>{t("aboutMe.Values.Empathy.title")}</h4>
+                  <p>{t("aboutMe.Values.Empathy.text")}</p>
                 </Col>
               </Row>
             </Container>
