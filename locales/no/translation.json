@@ -2,7 +2,7 @@
   "header": {
     "portfolio": "Portefølje",
     "description": "Detaljerte case-studier for nysgjerrige besøkende.",
-    "profileAlt": "Profilbilde av {{name}}",
+    "profileAlt": "Profilbilde av meg",
     "intro": "Jeg er en <strong>UX/UI-designer</strong> med full-stack erfaring, som fokuserer på å skape brukersentrerte grensesnitt.",
     "contact": "Ta kontakt",
     "aboutMe": "Om meg"
@@ -23,10 +23,10 @@
       "description": ".Net, C#, React",
       "alt": "Formel-1 Inspirert Nettside"
     },
-    "onehub": {
-      "title": "One-Hub",
-      "description": "App-design, brukertesting og prototyping.",
-      "alt": "OneHub brukergrensesnitt"
+    "Fristil": {
+      "title": "Fristil Records (WIP)",
+      "description": "Web design, Web utviling, Wix",
+      "alt": "OneHub user interface"
     }
   },
   "contact": {
@@ -41,7 +41,8 @@
     },
     "intro": {
       "heading": "Første øyekast",
-      "text": "Harmoni er en mental helse-app designet for å hjelpe unge voksne med å finne balanse og styrke sin mentale helse. Appen tilbyr brukervennlige ressurser og verktøy som er lett tilgjengelige og enkle å bruke. Prosjektet var en del av et gruppeprosjekt ved Kristiania og ble gjennomført over en semesterperiode."
+      "text": "Harmoni er en mental helse-app utviklet for å hjelpe unge voksne med å håndtere hverdagslige psykiske utfordringer gjennom refleksjon, mestringsverktøy og emosjonell støtte – alt samlet i et trygt og brukervennlig digitalt miljø.",
+      "text2": "Appen kombinerer daglige øvelser, en humør-tracker, artikler, og en chatbot for emosjonell støtte, samt verktøy for å hjelpe en venn. Målet er å gjøre psykisk helse like tilgjengelig og naturlig å snakke om som hvilken som helst annen del av hverdagen."
     },
     "projectInfo": {
       "groupProject": {
@@ -93,8 +94,8 @@
       },
       "col2": {
         "title": "Hva?",
-        "text1": "<strong>Harmoni</strong> er en app som gir brukeren verktøy for å håndtere tanker og følelser på en strukturert måte.",
-        "list": ["Humør-tracker", "Tankevirus-øvelser", "Anbefalte artikler"],
+        "text1": "Harmoni er en app som gir brukeren verktøy for å håndtere tanker og følelser på en strukturert måte.",
+
         "text2": "Målet er å gjøre refleksjon rundt mental helse like naturlig som å sjekke sosiale medier – men på en positiv og konstruktiv måte."
       },
       "col3": {
@@ -638,8 +639,10 @@
     "experience": {
       "heading": "Erfaring",
       "jobs": {
-        "position": "Administrasjonsassistent, Prospera Stiftelsen",
-        "description": "Gjennom mitt arbeid i Prospera Stiftelsen fikk jeg praktisk erfaring med weboppdateringer, grafisk design og brukertesting, som har gitt meg et sterkt grunnlag innen UI-design og UX-research. Arbeidet ga meg også innsikt i hvordan digitale produkter kan utvikles for å møte både brukernes og organisasjonens behov, noe som er en kjerneverdi i UX-design.",
+        "position": "UX-designer, MatSpar App",
+        "description": "Designet og utviklet vi en responsiv showcase-nettside for å fremheve plateselskapets artister og tjenester. Vi startet med å lage en prototype i Figma, og gjennomførte brukertester for å avdekke forbedringspunkter knyttet til navigasjon og brukervennlighet. Basert på innsikten videreutviklet vi løsningen i WIX til en funksjonell og brukervennlig nettside.",
+        "position1": "Administrasjonsassistent, Prospera Stiftelsen",
+        "description1": "Gjennom mitt arbeid i Prospera Stiftelsen fikk jeg praktisk erfaring med weboppdateringer, grafisk design og brukertesting, som har gitt meg et sterkt grunnlag innen UI-design og UX-research. Arbeidet ga meg også innsikt i hvordan digitale produkter kan utvikles for å møte både brukernes og organisasjonens behov, noe som er en kjerneverdi i UX-design.",
         "position2": "Kundebehandler, City Self-Storage",
         "description2": "Som kundebehandler i City Self-Storage har jeg fått verdifull erfaring med brukerkommunikasjon, problemløsning og tjenesteoptimalisering. Håndtering av kundehenvendelser og avvik har lært meg å forstå brukerbehov og smertepunkter, noe som er essensielt innen UX-design.",
         "position3": "Slusevakt, Ullevål Universitetssykehus",
@@ -657,11 +660,11 @@
     "Values": {
       "heading": "Design Values",
       "Empathy": {
-        "title": "Empati",
+        "title": "4. Empati",
         "text": "For meg handler godt design om å forstå menneskene som skal bruke løsningen. Gjennom brukerintervjuer og testing i case-studiene mine har jeg lært hvor viktig det er å sette seg inn i brukernes behov, utfordringer og mål. I MatSpar-prosjektet jobbet jeg med semistrukturerte intervjuer for å avdekke hvordan folk planlegger måltider og håndterer matsvinn. Innsiktene fra disse intervjuene påvirket funksjonaliteten i appen, blant annet ved å foreslå retter basert på ingredienser brukeren allerede hadde. Denne tilnærmingen sikrer at løsningene jeg designer ikke bare ser bra ut, men faktisk løser reelle problemer."
       },
       "Accessibility": {
-        "title": "Tilgjengelighet og Inkludering – Design for Alle",
+        "title": "2. Tilgjengelighet og Inkludering – Design for Alle",
         "text": "Jeg tror på at gode digitale produkter skal være tilgjengelige for alle, uavhengig av funksjonsevne eller teknologisk erfaring. I den F1-inspirerte nettsiden fulgte jeg WCAG-retningslinjer for kontrast og tastaturnavigasjon, slik at brukere med synshemninger eller motoriske utfordringer også kunne navigere siden uten problemer. Ved å implementere semantisk HTML og ARIA-labels sørget jeg for at skjermlesere kunne tolke innholdet korrekt. Dette har lært meg at tilgjengelighet ikke er en ettertanke, men en integrert del av god UX-design."
       },
       "Collaboration": {
@@ -669,7 +672,7 @@
         "text": "En løsning er kun vellykket hvis den er intuitiv og enkel å bruke. I arbeidet med MatSpar prioriterte vi brukertesting av interaktive prototyper, noe som avdekket behovet for forenklet navigasjon og tydeligere tilbakemelding i appen. Dette førte til at vi justerte designet slik at brukeren raskt kunne forstå hvor de var i prosessen, for eksempel gjennom progressive handlingsknapper og tydelige veivisere. Jeg er opptatt av å designe løsninger som fjerner friksjon og hjelper brukeren med å oppnå målet sitt raskt og enkelt."
       },
       "TeamPlayer": {
-        "title": "4. Spille andre gode - Være en lagspiller",
+        "title": "1. Spille andre gode - Være en lagspiller",
         "text": "Jeg anser meg selv som en god lagspiller fordi jeg trives med å samarbeide og tror på at de beste løsningene skapes når ulike perspektiver møtes. Jeg liker å jobbe i tverrfaglige team, der designere, utviklere og andre fagfolk kan utfylle hverandre og finne de beste løsningene sammen. For meg handler samarbeid om å lytte, forstå og bygge videre på andres innsikt. Dette skaper ikke bare bedre produkter, men også et mer inspirerende og effektivt arbeidsmiljø."
       }
     }
