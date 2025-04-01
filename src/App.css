@@ -109,7 +109,7 @@
 
 /* Profile Image */
 .profile-img {
-  width: 155px;
+  width: 145px;
   height: 150px;
   object-fit: cover;
 }
@@ -141,6 +141,56 @@
 
 .custom-btn-outline:hover {
   background-color: #e2e2e2 !important;
+}
+
+/*----------------------- Figma button ----- ---------------------*/
+.Figma-btn-wrapper {
+  display: flex;
+
+  margin: 40px 0;
+}
+
+/* Shared button styles */
+.Figma-btn,
+.FigmaFile-btn {
+  border-radius: 12px;
+  padding: 12px 64px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+}
+
+/* Figma Prototype button */
+.Figma-btn {
+  background-color: #442458 !important;
+  color: #fff789;
+  border-color: #442458;
+}
+
+.Figma-btn:hover {
+  background-color: #ffffff !important;
+  color: #442458;
+  border: 2px solid #442458;
+  transform: scale(1.05);
+}
+
+/* Figma File button */
+.FigmaFile-btn {
+  background-color: #ffffff;
+  color: #1e1e1e;
+  border-color: #e2e2e2 !important;
+}
+
+.FigmaFile-btn:hover {
+  background-color: #ffffff !important;
+  color: #442458;
+  border: 2px solid #442458;
+  transform: scale(1.05);
 }
 
 /* -------------------- Project Crads --------------------------*/

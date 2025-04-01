@@ -46,6 +46,27 @@ const HarmoniCaseStudy: React.FC = () => {
                 alt={t("harmoniCaseStudy.header.title")}
               />
             </div>
+            <div className="Figma-btn-wrapper mt-5">
+              <div className="d-flex flex-wrap justify-content-center gap-3">
+                <a
+                  href="https://www.figma.com/proto/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn Figma-btn"
+                >
+                  Open Figma Prototype
+                </a>
+
+                <a
+                  href="https://www.figma.com/design/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn FigmaFile-btn"
+                >
+                  Open Figma File
+                </a>
+              </div>
+            </div>
           </header>
 
           <section id="intro" className="case-section">
