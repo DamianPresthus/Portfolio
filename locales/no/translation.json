@@ -703,5 +703,11 @@
     "frontend": "02 Frontend",
     "design": "03 Designvalg ",
     "lessons": "04 Læringsbytte "
+  },
+  
+  "caseStudy": {
+    "figmaPrototype": "Åpne Figma Prototype",
+    "figmaFile": "Åpne Figma Fil"
   }
 }
+

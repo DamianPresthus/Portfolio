@@ -708,5 +708,10 @@
     "frontend": "02 Frontend",
     "design": "03 Design Choices",
     "lessons": "04 Lessons "
+  },
+
+  "caseStudy": {
+    "figmaPrototype": "Open Figma Prototype",
+    "figmaFile": "Open Figma File"
   }
 }
