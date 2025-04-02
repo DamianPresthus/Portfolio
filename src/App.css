@@ -205,6 +205,40 @@
   }
 }
 
+/*------------------- GitHub button --------------------------*/
+
+.Github-btn {
+  border-radius: 12px;
+  padding: 12px 64px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  max-width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Github-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  transform: scale(1.05);
+}
+
+/* Make full-width on mobile */
+@media (max-width: 767px) {
+  .Github-btn {
+    width: 100%;
+  }
+}
+
 /* -------------------- Project Crads --------------------------*/
 .project-card {
   min-height: 28rem; /* Adjust as needed */

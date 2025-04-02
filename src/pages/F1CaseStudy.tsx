@@ -9,6 +9,7 @@ import F1Event from "/assets/F1Event.png";
 import F1Races from "/assets/F1Races.png";
 import FeaturesList from "../components/F1FeaturesList.tsx";
 import { useTranslation } from "react-i18next";
+import { FaGithub } from "react-icons/fa";
 
 const F1CaseStudy: React.FC = () => {
   const { t } = useTranslation();
@@ -31,6 +32,19 @@ const F1CaseStudy: React.FC = () => {
                 style={{ width: "100%" }}
                 alt={t("F1CaseStudy.header.title")}
               />
+            </div>
+            <div className="Figma-btn-wrapper mt-5">
+              <div className="d-flex flex-wrap justify-content-center gap-3 w-100">
+                <a
+                  href="https://github.com/mark26reyes/Eksamen-Web-utvikling-H23"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn Github-btn d-flex align-items-center justify-content-center gap-2"
+                >
+                  <FaGithub size={20} />
+                  View GitHub Repository
+                </a>
+              </div>
             </div>
           </header>
           <section id="intro" className="case-section">
