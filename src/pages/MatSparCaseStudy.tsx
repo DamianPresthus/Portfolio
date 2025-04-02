@@ -55,7 +55,7 @@ const MatSparCaseStudy: React.FC = () => {
                   className="btn Figma-btn d-flex align-items-center justify-content-center gap-2"
                 >
                   <MdPreview size={20} />
-                  Open Figma Prototype
+                  {t("caseStudy.figmaPrototype")}
                 </a>
 
                 <a
@@ -65,7 +65,7 @@ const MatSparCaseStudy: React.FC = () => {
                   className="btn FigmaFile-btn d-flex align-items-center justify-content-center gap-2"
                 >
                   <FaFigma size={20} />
-                  Open Figma File
+                  {t("caseStudy.figmaFile")}
                 </a>
               </div>
             </div>
