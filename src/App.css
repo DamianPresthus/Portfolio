@@ -115,32 +115,94 @@
 }
 
 /* Buttons */
-.custom-btn {
+.custom-btn,
+.custom-btn-outline {
   border-radius: 12px;
-  background-color: #000000 !important;
-  border: none;
-  color: #fff789;
-  padding: 10px 20px;
+  padding: 10px 24px;
   font-size: 14px;
   font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Filled button (like Figma dark theme) */
+.custom-btn {
+  background-color: #000000 !important;
+  color: #fff789;
+  border: 2px solid #000000;
 }
 
 .custom-btn:hover {
-  background-color: #2e2e2e !important;
-  color: #fff789;
+  background-color: #ffffff !important;
+  color: #000000;
+  transform: scale(1.05);
+  border: 2px solid #000000;
 }
 
+/* Outline button (like Figma file button) */
 .custom-btn-outline {
-  border-radius: 12px;
-  border: 2px solid #e2e2e2 !important;
+  background-color: transparent;
   color: #1e1e1e;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+  border: 2px solid #e2e2e2 !important;
 }
 
 .custom-btn-outline:hover {
-  background-color: #e2e2e2 !important;
+  background-color: #f3f3f3 !important;
+  color: #000000;
+  transform: scale(1.05);
+  border-color: #000000;
+}
+
+/*--------------------------Contact buttons ---------------------*/
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 64px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: auto;
+  max-width: 100%;
+  text-align: center;
+}
+
+/* Email button */
+.email-btn {
+  background-color: #000000;
+  color: #fff789;
+  border: 2px solid #000000;
+  width: 350px; /* or whatever matches your Figma-style buttons */
+  text-align: center;
+}
+
+.email-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+/* LinkedIn button */
+.linkedin-btn {
+  background-color: #ffffff;
+  color: #2e2e2e;
+  border: 2px solid #e2e2e2;
+  text-decoration: none;
+}
+
+.linkedin-btn:hover {
+  background-color: #e2e2e2;
+  color: #000000;
+  transform: scale(1.05);
 }
 
 /*----------------------- Figma button ----- ---------------------*/

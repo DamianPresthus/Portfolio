@@ -39,7 +39,7 @@ const Header: React.FC = () => {
               </Trans>
             </p>
             {/* Desktop: buttons inline with text */}
-            <div className="d-none d-md-flex gap-1">
+            <div className="d-none d-md-flex gap-2">
               <button
                 className="btn custom-btn flex-grow-1"
                 onClick={scrollToBottom}
