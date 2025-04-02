@@ -187,10 +187,22 @@
 }
 
 .FigmaFile-btn:hover {
-  background-color: #ffffff !important;
+  background-color: #e2e2e2 !important;
   color: #442458;
   border: 2px solid #442458;
   transform: scale(1.05);
+}
+.Figma-btn,
+.FigmaFile-btn {
+  width: 350px; /* set to whatever width looks good */
+  text-align: center;
+  display: inline-block;
+}
+@media (max-width: 767px) {
+  .Figma-btn,
+  .FigmaFile-btn {
+    width: 100%;
+  }
 }
 
 /* -------------------- Project Crads --------------------------*/

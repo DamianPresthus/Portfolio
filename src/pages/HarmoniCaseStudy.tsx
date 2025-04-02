@@ -19,6 +19,8 @@ import FutureImprovements from "../components/HarmoniForbedringerListe.tsx";
 import KeyLearnings from "../components/HarmoniKeyLearnings.tsx";
 import FeaturesList from "../components/HarmoniFeaturesList.tsx";
 import SupportFeaturesList from "../components/HarmoniSupportFeatures.tsx";
+import { FaFigma } from "react-icons/fa";
+import { MdPreview } from "react-icons/md";
 
 const HarmoniCaseStudy: React.FC = () => {
   const { t } = useTranslation();
@@ -47,13 +49,14 @@ const HarmoniCaseStudy: React.FC = () => {
               />
             </div>
             <div className="Figma-btn-wrapper mt-5">
-              <div className="d-flex flex-wrap justify-content-center gap-3">
+              <div className="d-flex flex-wrap flex-column flex-md-row justify-content-center gap-3 w-100">
                 <a
                   href="https://www.figma.com/proto/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn Figma-btn"
+                  className="btn Figma-btn d-flex align-items-center justify-content-center gap-2"
                 >
+                  <MdPreview size={20} />
                   Open Figma Prototype
                 </a>
 
@@ -61,8 +64,9 @@ const HarmoniCaseStudy: React.FC = () => {
                   href="https://www.figma.com/design/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn FigmaFile-btn"
+                  className="btn FigmaFile-btn d-flex align-items-center justify-content-center gap-2"
                 >
+                  <FaFigma size={20} />
                   Open Figma File
                 </a>
               </div>

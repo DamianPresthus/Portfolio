@@ -18,6 +18,8 @@ import Logo from "/assets/MatSparLogo.png";
 import Spacing from "/assets/MatSparSpacing.png";
 import Dulting from "/assets/MatSparDulting.png";
 import CoreFeatures from "../components/matSparCoreFeatures.tsx";
+import { FaFigma } from "react-icons/fa";
+import { MdPreview } from "react-icons/md";
 
 const MatSparCaseStudy: React.FC = () => {
   const { t } = useTranslation();
@@ -43,6 +45,29 @@ const MatSparCaseStudy: React.FC = () => {
                 style={{ width: "100%" }}
                 alt={t("matSparCaseStudy.header.title")}
               />
+            </div>
+            <div className="Figma-btn-wrapper mt-5">
+              <div className="d-flex flex-wrap flex-column flex-md-row justify-content-center gap-3 w-100">
+                <a
+                  href="https://www.figma.com/proto/ObFSRwwNMJGFbuidoVTQcM/MatSpar?node-id=420-3691&t=0hFbH7kNJmOqYqhd-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn Figma-btn d-flex align-items-center justify-content-center gap-2"
+                >
+                  <MdPreview size={20} />
+                  Open Figma Prototype
+                </a>
+
+                <a
+                  href="https://www.figma.com/design/ObFSRwwNMJGFbuidoVTQcM/MatSpar?node-id=420-3691&t=0hFbH7kNJmOqYqhd-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn FigmaFile-btn d-flex align-items-center justify-content-center gap-2"
+                >
+                  <FaFigma size={20} />
+                  Open Figma File
+                </a>
+              </div>
             </div>
           </header>
 
