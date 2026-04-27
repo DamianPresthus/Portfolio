@@ -169,6 +169,34 @@
   filter: saturate(0.92) contrast(0.96) brightness(0.98);
 }
 
+.heroPortrait__frame {
+  transform: translateY(-24px) scale(1.04);
+  transform-origin: bottom left;
+}
+
+.heroPortrait__image {
+  position: relative;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 66%,
+    rgba(0, 0, 0, 0.96) 76%,
+    rgba(0, 0, 0, 0.72) 87%,
+    rgba(0, 0, 0, 0.24) 97%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 66%,
+    rgba(0, 0, 0, 0.96) 76%,
+    rgba(0, 0, 0, 0.72) 87%,
+    rgba(0, 0, 0, 0.24) 97%,
+    transparent 100%
+  );
+}
+
 /* Warm ambient spill behind portrait */
 .heroPortrait::before {
   content: "";
@@ -188,16 +216,23 @@
 .heroPortrait::after {
   content: "";
   position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: -10px;
-  height: 40px;
+  left: 2%;
+  right: 12%;
+  bottom: -34px;
+  height: 96px;
   pointer-events: none;
 
-  background: radial-gradient(closest-side,
-    rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0)
+  background: radial-gradient(ellipse 68% 42% at 44% 26%,
+    rgba(19, 24, 30, 0.36),
+    rgba(19, 24, 30, 0.16) 42%,
+    rgba(19, 24, 30, 0) 76%
   );
-  opacity: 0.6;
-  filter: blur(10px);
+  opacity: 0.5;
+  filter: blur(18px);
+}
+
+@media (min-width: 1024px) {
+  .heroPortrait__frame {
+    transform: translateY(-32px) scale(1.04);
+  }
 }

@@ -1,12 +1,11 @@
 import imgPortrait from "../../assets/optimized/damian-portrait-1200.webp";
 import svgPaths from "../../imports/svg-fa3xoaab76";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 
 export function HeroSection() {
-  const lineRef = useRef<HTMLDivElement>(null);
   const [availHovered, setAvailHovered] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -26,37 +25,8 @@ export function HeroSection() {
     }
   };
 
-  useEffect(() => {
-    const el = lineRef.current;
-    if (!el) return;
-
-    // Respect reduced motion preferences
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
-      return;
-    }
-
-    // Initial state
-    el.style.opacity = "0";
-    el.style.transform = "translateY(4px)";
-
-    // Trigger animation on next frame
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        el.style.transition = "opacity 800ms ease-out, transform 800ms ease-out";
-        el.style.opacity = "1";
-        el.style.transform = "translateY(0)";
-      });
-    });
-  }, []);
-
   return (
-    <section ref={heroRef} className="relative w-full bg-[#161A1F] overflow-hidden">
+    <section ref={heroRef} className="relative w-full overflow-hidden">
       {/* Hero container + line wrapper */}
       <div className="relative">
         {/* Hero container — fixed height, no border-radius */}
@@ -102,15 +72,17 @@ export function HeroSection() {
                     className="heroPortrait heroEntrance--portrait w-full max-w-[360px] lg:max-w-[380px] flex items-end"
                     style={{ y: prefersReducedMotion ? 0 : portraitY }}
                   >
-                    <img
-                      src={imgPortrait}
-                      alt="Damian A Præsthus"
-                      width={1200}
-                      height={1600}
-                      loading="eager"
-                      decoding="async"
-                      className="w-full h-auto block object-contain max-h-[400px] lg:max-h-[450px]"
-                    />
+                    <div className="heroPortrait__frame">
+                      <img
+                        src={imgPortrait}
+                        alt="Damian A Præsthus"
+                        width={1200}
+                        height={1600}
+                        loading="eager"
+                        decoding="async"
+                        className="heroPortrait__image w-full h-auto block object-contain max-h-[400px] lg:max-h-[450px]"
+                      />
+                    </div>
                   </motion.div>
                 </div>
 
@@ -125,7 +97,7 @@ export function HeroSection() {
                         behavior: "smooth",
                       })
                     }
-                    className="heroEntrance--availability inline-flex items-center gap-[6px] cursor-pointer group mt-10 md:mt-14 mb-2.5 w-fit no-underline bg-transparent border-0 p-0"
+                    className="heroEntrance--availability inline-flex items-center gap-[6px] cursor-pointer group mt-10 md:mt-14 mb-1 md:mb-2.5 w-fit no-underline bg-transparent border-0 p-0"
                     aria-label="Available for UX roles — scroll to contact footer"
                     onMouseEnter={() => setAvailHovered(true)}
                     onMouseLeave={() => setAvailHovered(false)}
@@ -158,23 +130,23 @@ export function HeroSection() {
                   </button>
 
                   {/* Identity line */}
-                  <p className="heroEntrance--meta font-['Plus_Jakarta_Sans',sans-serif] text-[13px] sm:text-[14px] tracking-[0.08em] uppercase text-white/80 font-medium leading-[20px] sm:leading-[21px]">
-                    <span className="block sm:inline">DAMIAN A PR&AElig;STHUS</span>
-                    <span className="block sm:inline mt-0.5 sm:mt-0">
-                      <span className="text-white/45 sm:mx-1">/</span>{" "}
+                  <p className="heroEntrance--meta hidden md:block font-['Plus_Jakarta_Sans',sans-serif] text-[14px] tracking-[0.08em] uppercase text-white/80 font-medium leading-[21px]">
+                    DAMIAN A PR&AElig;STHUS{" "}
+                    <span>
+                      <span className="text-white/45 mx-1">/</span>{" "}
                       <span className="font-normal text-white/55">
-                      UX DESIGNER + FRONT-END
+                        UX DESIGNER + FRONT-END
                       </span>
                     </span>
                   </p>
 
                   {/* 22px spacer */}
-                  <div className="h-[18px] md:h-[22px]" />
+                  <div className="h-2 md:h-[22px]" />
 
                   {/* Headline */}
                   <div className="heroEntrance--headline max-w-[560px]">
                     {/* Orange accent dots */}
-                    <div className="flex items-center gap-[6px] mb-4">
+                    <div className="hidden md:flex items-center gap-[6px] mb-4">
                       {[0, 1, 2].map((i) => (
                         <motion.span
                           key={i}
@@ -216,14 +188,10 @@ export function HeroSection() {
                                       ? false
                                       : {
                                           opacity: 0,
-                                          filter:
-                                            "blur(4px) drop-shadow(0 0 0 rgba(249,142,31,0))",
                                         }
                                   }
                                   animate={{
                                     opacity: 1,
-                                    filter:
-                                      "blur(0px) drop-shadow(0 0 14px rgba(249,142,31,0.32)) drop-shadow(0 0 28px rgba(249,142,31,0.16))",
                                   }}
                                   transition={{
                                     delay: prefersReducedMotion ? 0 : 1.0,
@@ -320,18 +288,6 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Soft transition wash into the projects surface */}
-        <div
-          ref={lineRef}
-          aria-hidden="true"
-          className="absolute left-0 right-0 bottom-[-34px] z-20 h-24 pointer-events-none"
-          style={{
-            opacity: 0,
-            transform: "translateY(4px)",
-            background:
-              "linear-gradient(180deg, rgba(22,26,31,0) 0%, rgba(22,26,31,0.76) 54%, #161A1F 100%)",
-          }}
-        />
       </div>
 
       {/* Scroll indicator */}
