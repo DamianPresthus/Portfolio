@@ -56,7 +56,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative w-full">
+    <section ref={heroRef} className="relative w-full bg-[#161A1F] overflow-hidden">
       {/* Hero container + line wrapper */}
       <div className="relative">
         {/* Hero container — fixed height, no border-radius */}
@@ -158,11 +158,13 @@ export function HeroSection() {
                   </button>
 
                   {/* Identity line */}
-                  <p className="heroEntrance--meta font-['Plus_Jakarta_Sans',sans-serif] text-[14px] tracking-[0.08em] uppercase text-white/80 font-medium leading-[21px]">
-                    DAMIAN A PR&AElig;STHUS{" "}
-                    <span className="text-white/45 mx-1">/</span>{" "}
-                    <span className="font-normal text-white/55">
+                  <p className="heroEntrance--meta font-['Plus_Jakarta_Sans',sans-serif] text-[13px] sm:text-[14px] tracking-[0.08em] uppercase text-white/80 font-medium leading-[20px] sm:leading-[21px]">
+                    <span className="block sm:inline">DAMIAN A PR&AElig;STHUS</span>
+                    <span className="block sm:inline mt-0.5 sm:mt-0">
+                      <span className="text-white/45 sm:mx-1">/</span>{" "}
+                      <span className="font-normal text-white/55">
                       UX DESIGNER + FRONT-END
+                      </span>
                     </span>
                   </p>
 
@@ -318,42 +320,18 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* White gradient separation line — Figma spec */}
+        {/* Soft transition wash into the projects surface */}
         <div
           ref={lineRef}
           aria-hidden="true"
-          className="absolute left-0 right-0 bottom-0 z-20 pointer-events-none"
-          style={{ opacity: 0, transform: "translateY(4px)" }}
-        >
-          <svg
-            className="block w-full"
-            height="1"
-            fill="none"
-            preserveAspectRatio="none"
-            viewBox="0 0 1171 1"
-          >
-            <line
-              x1="0"
-              y1="0.5"
-              x2="1171"
-              y2="0.5"
-              stroke="url(#heroLineGrad)"
-            />
-            <defs>
-              <linearGradient
-                id="heroLineGrad"
-                gradientUnits="userSpaceOnUse"
-                x1="0"
-                y1="1.5"
-                x2="1171"
-                y2="1.5"
-              >
-                <stop stopColor="white" stopOpacity="0.85" />
-                <stop offset="1" stopColor="white" stopOpacity="0.35" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+          className="absolute left-0 right-0 bottom-[-34px] z-20 h-24 pointer-events-none"
+          style={{
+            opacity: 0,
+            transform: "translateY(4px)",
+            background:
+              "linear-gradient(180deg, rgba(22,26,31,0) 0%, rgba(22,26,31,0.76) 54%, #161A1F 100%)",
+          }}
+        />
       </div>
 
       {/* Scroll indicator */}

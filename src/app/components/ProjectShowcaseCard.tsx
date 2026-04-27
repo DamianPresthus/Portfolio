@@ -111,10 +111,10 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
             </div>
           </div>
         ) : isDualPhone ? (
-          <div className="relative z-10 flex items-end justify-center h-full px-8 sm:px-12 md:px-14 lg:px-16 pt-3 md:pt-4 pb-1 md:pb-2">
+          <div className="project-card-dual-phone-shell relative z-10 flex items-end justify-center h-full px-8 sm:px-12 md:px-14 lg:px-16">
             <div className="flex items-end justify-center gap-2 md:gap-3 transition-transform duration-300 ease-out group-hover:scale-[1.015]">
               {/* Phone 1 — Onboarding (natural baseline, primary) */}
-              <div className="w-[37%] max-w-[165px]">
+              <div className="w-[30%] sm:w-[34%] md:w-[37%] max-w-[165px]">
                 <ImageWithFallback
                   src={project.image}
                   alt={project.imageAlt}
@@ -128,11 +128,7 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
               </div>
               {/* Phone 2 — Homepage (raised + subtly scaled for depth) */}
               <div
-                className="w-[37%] max-w-[165px]"
-                style={{
-                  transform: "translateY(-20px) scale(0.975)",
-                  transformOrigin: "bottom center",
-                }}
+                className="project-card-dual-phone-secondary w-[30%] sm:w-[34%] md:w-[37%] max-w-[165px]"
               >
                 <ImageWithFallback
                   src={project.secondImage || project.image}

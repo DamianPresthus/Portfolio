@@ -66,8 +66,16 @@ const PROJECTS: ProjectData[] = [
 
 export function ProjectsSection() {
   return (
-    <section id="selected-projects" className="w-full px-8 md:px-12 lg:px-16 pt-10 md:pt-14 lg:pt-16 pb-20 md:pb-24 lg:pb-28">
-      <div className="max-w-[1200px] mx-auto">
+    <section id="selected-projects" className="relative w-full overflow-hidden bg-[#161A1F] px-8 md:px-12 lg:px-16 pt-8 md:pt-12 lg:pt-14 pb-20 md:pb-24 lg:pb-28">
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 52% at 50% 0%, rgba(249,142,31,0.035), rgba(22,26,31,0) 66%), linear-gradient(180deg, rgba(11,15,18,0.18) 0%, rgba(22,26,31,0) 100%)",
+        }}
+      />
+      <div className="relative z-10 max-w-[1200px] mx-auto">
         {/* Section header */}
         <div className="mb-14 md:mb-16">
           <div className="flex items-center gap-3 mb-4">

@@ -2,3 +2,51 @@
 @import './tailwind.css';
 @import './theme.css';
 @import './hero.css';
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: #161A1F;
+}
+
+html {
+  background: #161A1F;
+}
+
+body {
+  min-width: 320px;
+  background: #161A1F;
+}
+
+.project-card-dual-phone-shell {
+  padding-top: 24px;
+  padding-bottom: 14px;
+}
+
+.project-card-dual-phone-secondary {
+  transform: translateY(-10px) scale(0.975);
+  transform-origin: bottom center;
+}
+
+@media (min-width: 640px) {
+  .project-card-dual-phone-shell {
+    padding-top: 26px;
+    padding-bottom: 10px;
+  }
+
+  .project-card-dual-phone-secondary {
+    transform: translateY(-16px) scale(0.975);
+  }
+}
+
+@media (min-width: 768px) {
+  .project-card-dual-phone-shell {
+    padding-top: 16px;
+    padding-bottom: 8px;
+  }
+
+  .project-card-dual-phone-secondary {
+    transform: translateY(-20px) scale(0.975);
+  }
+}
