@@ -22,7 +22,7 @@ export function SiteFooter() {
           <div className="md:col-span-7">
             <div className="flex items-center gap-3 mb-6">
               <span aria-hidden="true" className="w-6 h-px bg-[#F98E1F]/45" />
-              <span className="text-[11px] tracking-[0.26em] uppercase text-white/45 font-medium">
+              <span className="text-[11px] tracking-[0.26em] uppercase text-white/58 font-medium">
                 Get in touch
               </span>
             </div>
@@ -37,7 +37,7 @@ export function SiteFooter() {
               <span className="sm:inline"> project in mind?</span>
             </h2>
 
-            <p className="text-white/65 text-[15px] md:text-[16px] leading-[1.7] max-w-[520px]">
+            <p className="text-white/72 text-[15px] md:text-[16px] leading-[1.7] max-w-[520px]">
               Based in Cork, open to relocation opportunities across Europe
               and remote roles.
             </p>
@@ -98,10 +98,10 @@ export function SiteFooter() {
               <a
                 href={`mailto:${contact.email}`}
                 aria-label={`Email ${contact.email}`}
-                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/50 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
+                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
               >
                 <Mail
-                  className="w-[15px] h-[15px] text-white/35 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
+                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
                   strokeWidth={1.5}
                 />
                 <span className="text-[13px]">{contact.email}</span>
@@ -111,10 +111,10 @@ export function SiteFooter() {
               <a
                 href={contact.phoneHref}
                 aria-label={`Call ${contact.phone}`}
-                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/50 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
+                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
               >
                 <Phone
-                  className="w-[15px] h-[15px] text-white/35 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
+                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
                   strokeWidth={1.5}
                 />
                 <span className="text-[13px]">{contact.phone}</span>
@@ -126,10 +126,10 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile (opens in new tab)"
-                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/50 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
+                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
               >
                 <Linkedin
-                  className="w-[15px] h-[15px] text-white/35 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
+                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
                   strokeWidth={1.5}
                 />
                 <span className="text-[13px]">LinkedIn</span>
@@ -141,10 +141,10 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub profile (opens in new tab)"
-                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/50 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
+                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
               >
                 <Github
-                  className="w-[15px] h-[15px] text-white/35 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
+                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
                   strokeWidth={1.5}
                 />
                 <span className="text-[13px]">GitHub</span>
@@ -152,7 +152,7 @@ export function SiteFooter() {
             </li>
           </ul>
 
-          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 text-[12px] text-white/40">
+          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 text-[12px] text-white/48">
             <span className="inline-flex items-center gap-2">
               <MapPin className="w-[13px] h-[13px]" strokeWidth={1.5} />
               {contact.location}

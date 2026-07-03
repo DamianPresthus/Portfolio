@@ -44,6 +44,41 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* ───────────────────────────────────────────────────────────
+     Readable-text contrast tiers (accessibility floors).
+     The site enforces these four opacities for any readable copy;
+     nothing readable falls below the label floor (0.48). The
+     Tailwind opacity utilities used throughout map 1:1 to these:
+       primary   → text-white/92 · text-[#161A1F]/92
+       secondary → text-white/72 · text-[#161A1F]/72
+       muted     → text-white/58 · text-[#161A1F]/58
+       label     → text-white/48 · text-[#161A1F]/48
+     Purely decorative glyphs (giant watermark numerals, faint
+     icons) are exempt and may sit below the label floor.
+     ─────────────────────────────────────────────────────────── */
+  --text-on-dark-primary: rgba(255, 255, 255, 0.92);
+  --text-on-dark-secondary: rgba(255, 255, 255, 0.72);
+  --text-on-dark-muted: rgba(255, 255, 255, 0.58);
+  --text-on-dark-label: rgba(255, 255, 255, 0.48);
+  --text-on-light-primary: rgba(22, 26, 31, 0.92);
+  --text-on-light-secondary: rgba(22, 26, 31, 0.72);
+  --text-on-light-muted: rgba(22, 26, 31, 0.58);
+  --text-on-light-label: rgba(22, 26, 31, 0.48);
+}
+
+/* Semantic text utilities mapped to the contrast tiers above.
+   Available for reuse; the existing Tailwind opacity convention
+   (text-white/NN) is standardized to the same four floors. */
+@layer utilities {
+  .text-on-dark-primary { color: var(--text-on-dark-primary); }
+  .text-on-dark-secondary { color: var(--text-on-dark-secondary); }
+  .text-on-dark-muted { color: var(--text-on-dark-muted); }
+  .text-on-dark-label { color: var(--text-on-dark-label); }
+  .text-on-light-primary { color: var(--text-on-light-primary); }
+  .text-on-light-secondary { color: var(--text-on-light-secondary); }
+  .text-on-light-muted { color: var(--text-on-light-muted); }
+  .text-on-light-label { color: var(--text-on-light-label); }
 }
 
 .dark {

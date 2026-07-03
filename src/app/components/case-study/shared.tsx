@@ -6,7 +6,8 @@
  * place and makes cross-page consistency trivial to maintain.
  */
 
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Link } from "react-router";
 
 /* ───────────────────────────────────────────────────
@@ -129,7 +130,7 @@ export function CaseStudyNav() {
       <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-6">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors duration-200 group"
+          className="inline-flex items-center gap-2 text-white/72 hover:text-white/92 transition-colors duration-200 group"
         >
           <ArrowLeft
             className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
@@ -145,12 +146,80 @@ export function CaseStudyNav() {
 }
 
 /* ───────────────────────────────────────────────────
+   ResourceLink — external proof link (live site / prototype / source)
+
+   One shared pill so every case study links out with identical
+   spacing, focus ring, and hover behaviour.
+     • variant "solid" — filled orange, for the strongest proof
+       (a shipped, live product). Reads well on light or dark.
+     • variant "ghost" — bordered, secondary. Pass `tone` to match
+       the background it sits on ("dark" = white border/text,
+       "light" = ink border/text).
+   ─────────────────────────────────────────────────── */
+
+interface ResourceLinkProps {
+  href: string;
+  label: string;
+  /** Optional leading icon (a trailing ↗ is always appended). */
+  icon?: LucideIcon;
+  variant?: "solid" | "ghost";
+  /** Background the ghost link sits on. Ignored for the solid variant. */
+  tone?: "dark" | "light";
+  className?: string;
+}
+
+export function ResourceLink({
+  href,
+  label,
+  icon: Icon,
+  variant = "ghost",
+  tone = "dark",
+  className = "",
+}: ResourceLinkProps) {
+  const isSolid = variant === "solid";
+
+  const solidClasses =
+    "bg-[#F98E1F] text-[#161A1F] shadow-[0_8px_24px_-12px_rgba(249,142,31,0.55)] hover:bg-[#FFA13E] hover:-translate-y-[1px]";
+  const ghostDark =
+    "border border-white/20 text-white/75 hover:text-white hover:border-white/40 hover:-translate-y-[1px]";
+  const ghostLight =
+    "border border-[#161A1F]/20 text-[#161A1F]/72 hover:text-[#161A1F] hover:border-[#161A1F]/40 hover:-translate-y-[1px]";
+
+  const variantClasses = isSolid
+    ? solidClasses
+    : tone === "light"
+      ? ghostLight
+      : ghostDark;
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${label} — opens in new tab`}
+      className={`group inline-flex items-center gap-2.5 h-12 rounded-full px-6 font-['Plus_Jakarta_Sans',sans-serif] text-[14px] font-medium tracking-[0.2px] no-underline transition-all duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F98E1F] ${variantClasses} ${className}`}
+    >
+      {Icon ? (
+        <Icon className="w-[16px] h-[16px] shrink-0" strokeWidth={1.75} />
+      ) : null}
+      <span>{label}</span>
+      <ArrowUpRight
+        className={`w-[15px] h-[15px] shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-[2px] group-hover:-translate-y-[2px] ${
+          isSolid ? "" : "opacity-70"
+        }`}
+        strokeWidth={1.75}
+      />
+    </a>
+  );
+}
+
+/* ───────────────────────────────────────────────────
    BackToProjects — footer CTA link
    ─────────────────────────────────────────────────── */
 
 export function BackToProjects({ light = false }: { light?: boolean }) {
-  const baseColor = light ? "text-[#161A1F]/40" : "text-white/40";
-  const hoverColor = light ? "hover:text-[#161A1F]/70" : "hover:text-white/70";
+  const baseColor = light ? "text-[#161A1F]/48" : "text-white/48";
+  const hoverColor = light ? "hover:text-[#161A1F]/72" : "hover:text-white/72";
   const borderColor = light
     ? "border-[#161A1F]/[0.05]"
     : "border-white/[0.05]";
@@ -161,9 +230,6 @@ export function BackToProjects({ light = false }: { light?: boolean }) {
         to="/"
         className={`group inline-flex items-center gap-3 ${baseColor} ${hoverColor} transition-colors duration-300`}
       >
-        <span className="text-[13px] md:text-[14px] tracking-wide font-medium">
-          Back to Projects
-        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -174,11 +240,14 @@ export function BackToProjects({ light = false }: { light?: boolean }) {
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="transition-transform duration-200 group-hover:translate-x-1"
+          className="transition-transform duration-200 group-hover:-translate-x-1"
         >
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
+          <path d="M19 12H5" />
+          <path d="m12 19-7-7 7-7" />
         </svg>
+        <span className="text-[13px] md:text-[14px] tracking-wide font-medium">
+          Back to Projects
+        </span>
       </Link>
     </div>
   );

@@ -14,7 +14,7 @@ const PROJECTS: ProjectData[] = [
     title: "Harmoni",
     type: "Mental health app prototype",
     role: "UX research, UI design",
-    outcome: "Task completion improved from 2/5 to 5/5 after iteration",
+    outcome: "First-session task initiation rose from 3/5 to 5/5 in testing",
     image: imgHarmoniOnboarding,
     imageAlt: "Harmoni app onboarding screen showing a friendly wave illustration",
     mockupType: "dualPhone",
@@ -72,11 +72,11 @@ export function ProjectsSection() {
         <div className="mb-14 md:mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <span className="block font-['Plus_Jakarta_Sans',sans-serif] text-[16px] tracking-[1.8px] uppercase text-[rgba(255,255,255,0.5)] font-medium leading-[18px]">
+            <span className="block font-['Plus_Jakarta_Sans',sans-serif] text-[16px] tracking-[1.8px] uppercase text-[rgba(255,255,255,0.58)] font-medium leading-[18px]">
               Selected Projects
             </span>
           </div>
-          <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-[rgba(255,255,255,0.65)] text-[16px] md:text-[18px] leading-[28px] max-w-[440px]">
+          <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-[rgba(255,255,255,0.72)] text-[16px] md:text-[18px] leading-[28px] max-w-[440px]">
             Digital products shaped through structure, testing, and implementation.
           </p>
         </div>

@@ -23,6 +23,7 @@ import imgColors from "figma:asset/32c9691357f95709704a14b42cc7f9796a4b5293.png"
 import imgTypography from "figma:asset/45b12c0c244867215ba66a150274b72142d34951.png";
 // Figma-imported Profil screen component
 import ProfilScreen from "../../imports/Group82";
+import { ResourceLink, BackToProjects } from "../components/case-study/shared";
 
 const fadeUp = {
   initial: { opacity: 0, y: 14 },
@@ -156,7 +157,7 @@ export default function HarmoniCaseStudy() {
         <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 text-white/72 hover:text-white/92 transition-colors duration-200 group"
           >
             <ArrowLeft
               className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
@@ -194,7 +195,7 @@ export default function HarmoniCaseStudy() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-20 md:py-24 w-full">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-14 md:py-20 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
             {/* Left — Content */}
             <motion.div
@@ -203,13 +204,13 @@ export default function HarmoniCaseStudy() {
               transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as const }}
               className="flex flex-col"
             >
-              <h1 className="font-['Lora',serif] font-normal text-white text-[56px] md:text-[68px] lg:text-[80px] leading-[1.05] tracking-[-0.03em] mb-7">
+              <h1 className="font-['Lora',serif] font-normal text-white text-[56px] md:text-[68px] lg:text-[80px] leading-[1.05] tracking-[-0.03em] mb-4">
                 Harmoni
               </h1>
-              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/70 text-[20px] md:text-[22px] leading-[1.4] tracking-[-0.01em] mb-10">
+              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/72 text-[20px] md:text-[22px] leading-[1.4] tracking-[-0.01em] mb-6">
                 Mental health app focused on daily habit activation
               </h2>
-              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/65 text-[16px] md:text-[17px] leading-[1.65] max-w-[540px] mb-14">
+              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/72 text-[16px] md:text-[17px] leading-[1.65] max-w-[540px] mb-8">
                 A mental health concept app designed to help users start one
                 meaningful daily action with less friction. Usability testing
                 revealed hesitation during onboarding and unclear next steps,
@@ -221,7 +222,7 @@ export default function HarmoniCaseStudy() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] as const }}
-                className="mt-10 max-w-[460px] flex flex-col gap-[15px]"
+                className="mt-2 max-w-[460px] flex flex-col gap-[15px]"
               >
                 {[
                   { label: "Role", value: "Product Designer" },
@@ -229,22 +230,36 @@ export default function HarmoniCaseStudy() {
                   { label: "Year", value: "2024" },
                 ].map((row) => (
                   <div key={row.label} className="flex items-baseline gap-5">
-                    <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/40 font-medium">
+                    <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/48 font-medium">
                       {row.label}
                     </span>
-                    <span className="text-[15px] md:text-[16px] text-white/65 font-medium tracking-[-0.01em]">
+                    <span className="text-[15px] md:text-[16px] text-white/72 font-medium tracking-[-0.01em]">
                       {row.value}
                     </span>
                   </div>
                 ))}
                 <div className="flex items-baseline gap-5">
-                  <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/40 font-medium">
+                  <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/48 font-medium">
                     Outcome
                   </span>
                   <span className="text-[15px] md:text-[16px] text-white/75 font-medium tracking-[-0.01em]">
-                    Improved <span className="text-white/85">first-session activation</span>
+                    Improved <span className="text-white/92">first-session activation</span>
                   </span>
                 </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.28, ease: [0.25, 0.1, 0.25, 1] as const }}
+                className="mt-8"
+              >
+                <ResourceLink
+                  href="https://www.figma.com/proto/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1"
+                  label="Open Figma prototype"
+                  variant="ghost"
+                  tone="dark"
+                />
               </motion.div>
             </motion.div>
 
@@ -336,7 +351,7 @@ export default function HarmoniCaseStudy() {
             className="flex items-center gap-3 mb-10 md:mb-14"
           >
             <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/50 font-medium">
+            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/58 font-medium">
               Problem &amp; Structure
             </p>
           </motion.div>
@@ -346,15 +361,15 @@ export default function HarmoniCaseStudy() {
             <div className="lg:col-span-5">
               <motion.h2
                 {...fadeUp}
-                className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] mb-8"
+                className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] mb-8"
               >
                 The challenge was structural,{" "}
-                <span className="text-white/55">not visual.</span>
+                <span className="text-white/58">not visual.</span>
               </motion.h2>
 
               <motion.p
                 {...fadeUpDelay(0.08)}
-                className="text-white/50 text-[15px] md:text-[16px] leading-[1.75] max-w-[460px]"
+                className="text-white/58 text-[15px] md:text-[16px] leading-[1.75] max-w-[460px]"
               >
                 Retention in mental health products often depends on whether
                 users take action in the first session. If the first interaction
@@ -364,7 +379,7 @@ export default function HarmoniCaseStudy() {
 
               <motion.p
                 {...fadeUpDelay(0.11)}
-                className="text-white/55 text-[15px] md:text-[16px] leading-[1.75] max-w-[460px] mt-5"
+                className="text-white/58 text-[15px] md:text-[16px] leading-[1.75] max-w-[460px] mt-5"
               >
                 Users opened the app and did not know where to begin. The home
                 screen displayed multiple tools without indicating priority.
@@ -375,7 +390,7 @@ export default function HarmoniCaseStudy() {
 
               <motion.p
                 {...fadeUpDelay(0.13)}
-                className="text-white/50 text-[14px] md:text-[15px] leading-[1.65] max-w-[460px] mt-5 italic"
+                className="text-white/58 text-[14px] md:text-[15px] leading-[1.65] max-w-[460px] mt-5 italic"
               >
                 Five moderated usability tests using ten task scenarios
                 confirmed the pattern.
@@ -393,7 +408,7 @@ export default function HarmoniCaseStudy() {
                 ].map((point, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-white/20 mt-2 shrink-0" />
-                    <p className="text-white/40 text-[14px] leading-[1.6]">
+                    <p className="text-white/48 text-[14px] leading-[1.6]">
                       {point}
                     </p>
                   </div>
@@ -402,7 +417,7 @@ export default function HarmoniCaseStudy() {
 
               <motion.p
                 {...fadeUpDelay(0.18)}
-                className="mt-14 md:mt-16 text-white/60 text-[15px] md:text-[16px] leading-[1.75] max-w-[580px]"
+                className="mt-14 md:mt-16 text-white/72 text-[15px] md:text-[16px] leading-[1.75] max-w-[580px]"
               >
                 The issue was not missing functionality. It was hierarchy.
               </motion.p>
@@ -435,7 +450,7 @@ export default function HarmoniCaseStudy() {
             className="flex items-center gap-3 mb-10 md:mb-14"
           >
             <div className="w-5 h-px bg-[#F98E1F]/30" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/55 font-medium">
+            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/58 font-medium">
               Core Experience
             </p>
           </motion.div>
@@ -449,7 +464,7 @@ export default function HarmoniCaseStudy() {
 
           <motion.p
             {...fadeUpDelay(0.08)}
-            className="text-[#161A1F]/65 text-[15px] md:text-[16px] leading-[1.7] max-w-[520px] mb-16 md:mb-20"
+            className="text-[#161A1F]/72 text-[15px] md:text-[16px] leading-[1.7] max-w-[520px] mb-16 md:mb-20"
           >
             I redefined the product around one measurable goal: first session
             task initiation. Each screen was assigned one primary purpose.
@@ -509,7 +524,7 @@ export default function HarmoniCaseStudy() {
                     className="w-full h-auto"
                   />
                 </div>
-                <p className="mt-4 text-[12px] md:text-[13px] tracking-[1.6px] uppercase text-[#161A1F]/55 font-medium">
+                <p className="mt-4 text-[12px] md:text-[13px] tracking-[1.6px] uppercase text-[#161A1F]/58 font-medium">
                   {screen.label}
                 </p>
               </motion.div>
@@ -540,26 +555,35 @@ export default function HarmoniCaseStudy() {
             className="flex items-center gap-3 mb-10 md:mb-14"
           >
             <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/50 font-medium">
+            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/58 font-medium">
               Process
             </p>
           </motion.div>
 
           <motion.h2
             {...fadeUp}
-            className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] max-w-[680px] mb-6"
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] max-w-[680px] mb-6"
           >
             From early structure{" "}
-            <span className="text-white/55">to resolved interface.</span>
+            <span className="text-white/58">to resolved interface.</span>
           </motion.h2>
 
           <motion.p
             {...fadeUpDelay(0.06)}
-            className="text-white/55 text-[15px] md:text-[16px] leading-[1.7] max-w-[540px] mb-16 md:mb-24"
+            className="text-white/58 text-[15px] md:text-[16px] leading-[1.7] max-w-[540px] mb-16 md:mb-24"
           >
             Wireframes defined layout decisions before visual styling began.
             Structure was tested before polish.
           </motion.p>
+
+          <motion.div {...fadeUpDelay(0.09)} className="-mt-8 mb-16 md:mb-24">
+            <ResourceLink
+              href="https://www.figma.com/proto/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1"
+              label="Explore the prototype"
+              variant="ghost"
+              tone="dark"
+            />
+          </motion.div>
 
           {/* Before / After comparison */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
@@ -569,7 +593,7 @@ export default function HarmoniCaseStudy() {
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-2 h-2 rounded-full bg-white/15" />
-                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/30 font-medium">
+                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/48 font-medium">
                   Early exploration
                 </p>
               </div>
@@ -582,7 +606,7 @@ export default function HarmoniCaseStudy() {
                   className="w-full h-auto rounded opacity-85"
                 />
               </div>
-              <p className="text-white/30 text-[13px] md:text-[14px] leading-[1.65] mt-5 max-w-[480px]">
+              <p className="text-white/48 text-[13px] md:text-[14px] leading-[1.65] mt-5 max-w-[480px]">
                 The first version exposed multiple features at once. The layout
                 assumed users would explore freely. Testing showed hesitation
                 instead. I defined first session task initiation as the primary
@@ -597,7 +621,7 @@ export default function HarmoniCaseStudy() {
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-2 h-2 rounded-full bg-white/40" />
-                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/50 font-medium">
+                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/58 font-medium">
                   Resolved interface
                 </p>
               </div>
@@ -621,7 +645,7 @@ export default function HarmoniCaseStudy() {
                   />
                 </div>
               </div>
-              <p className="text-white/55 text-[13px] md:text-[14px] leading-[1.65] mt-5 max-w-[480px]">
+              <p className="text-white/58 text-[13px] md:text-[14px] leading-[1.65] mt-5 max-w-[480px]">
                 The home screen was reduced to one clear action. Other features
                 remained accessible but were visually secondary. I chose
                 clarity over immediate discoverability. Some content became less
@@ -635,7 +659,7 @@ export default function HarmoniCaseStudy() {
             {...fadeUpDelay(0.1)}
             className="mt-16 md:mt-20 pt-10 border-t border-white/[0.05] max-w-[580px]"
           >
-            <p className="text-white/35 text-[14px] md:text-[15px] leading-[1.7] italic border-l-2 border-[#F98E1F]/25 pl-6">
+            <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.7] italic border-l-2 border-[#F98E1F]/25 pl-6">
               What changed most was not visual polish. It was removal of
               competing actions.
             </p>
@@ -653,7 +677,7 @@ export default function HarmoniCaseStudy() {
             className="flex items-center gap-3 mb-10 md:mb-14"
           >
             <div className="w-5 h-px bg-[#F98E1F]/30" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium">
+            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium">
               Design System &middot; Color
             </p>
           </motion.div>
@@ -671,12 +695,12 @@ export default function HarmoniCaseStudy() {
                 {...fadeUpDelay(0.08)}
                 className="space-y-5 max-w-[440px]"
               >
-                <p className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.75]">
+                <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75]">
                   Color was assigned by function rather than preference. Red
                   was reserved exclusively for emergency support. Green
                   indicated completion or progress.
                 </p>
-                <p className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.75]">
+                <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75]">
                   Neutral tones carried the majority of content to reduce
                   emotional overload. Contrast ratios were tested to meet
                   accessibility guidelines while maintaining warmth.
@@ -719,7 +743,7 @@ export default function HarmoniCaseStudy() {
             className="flex items-center gap-3 mb-10 md:mb-14"
           >
             <div className="w-5 h-px bg-[#F98E1F]/30" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium">
+            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium">
               Design System &middot; Typography
             </p>
           </motion.div>
@@ -737,12 +761,12 @@ export default function HarmoniCaseStudy() {
                 {...fadeUpDelay(0.08)}
                 className="space-y-5 max-w-[440px]"
               >
-                <p className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.75]">
+                <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75]">
                   The type system reinforces hierarchy in emotionally
                   sensitive contexts. Headlines guide focus. Body text remains
                   readable at minimum supported sizes.
                 </p>
-                <p className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.75]">
+                <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75]">
                   Line height was increased to reduce visual density on
                   smaller screens. Accessibility informed minimum sizing and
                   contrast decisions.
@@ -792,24 +816,24 @@ export default function HarmoniCaseStudy() {
             className="flex items-center gap-3 mb-10 md:mb-14"
           >
             <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium">
+            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium">
               Outcome
             </p>
           </motion.div>
 
           <motion.h2
             {...fadeUpDelay(0.04)}
-            className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[42px] lg:text-[50px] leading-[1.1] tracking-[-0.02em] max-w-[780px] mb-6 md:mb-8"
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[42px] lg:text-[50px] leading-[1.1] tracking-[-0.02em] max-w-[780px] mb-6 md:mb-8"
           >
             Three behavioral shifts{" "}
-            <span className="text-white/45">
+            <span className="text-white/58">
               between version one and version two.
             </span>
           </motion.h2>
 
           <motion.p
             {...fadeUpDelay(0.08)}
-            className="text-white/40 text-[15px] md:text-[16px] leading-[1.7] max-w-[580px] mb-20 md:mb-28"
+            className="text-white/48 text-[15px] md:text-[16px] leading-[1.7] max-w-[580px] mb-20 md:mb-28"
           >
             Each change in the interface was tested against a specific
             behavioral metric. The following results reflect what five
@@ -837,10 +861,10 @@ export default function HarmoniCaseStudy() {
                     01
                   </span>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/20 font-medium mb-1">
+                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-1">
                       Behavior
                     </p>
-                    <h3 className="text-white/85 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
+                    <h3 className="text-white/92 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
                       Task Initiation
                     </h3>
                   </div>
@@ -850,10 +874,10 @@ export default function HarmoniCaseStudy() {
               {/* V1 / Design Change / V2 grid */}
               <div className="grid grid-cols-1 md:grid-cols-3">
                 <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/20 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     Version One
                   </p>
-                  <p className="text-white/35 text-[14px] md:text-[15px] leading-[1.6]">
+                  <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.6]">
                     2 of 5 participants hesitated on the home screen. Multiple
                     elements competed for attention and no single action was
                     visually prioritized.
@@ -861,17 +885,17 @@ export default function HarmoniCaseStudy() {
                 </div>
 
                 <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/20 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     What Changed
                   </p>
-                  <p className="text-white/50 text-[14px] md:text-[15px] leading-[1.6]">
+                  <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.6]">
                     Reduced the home screen to one primary action. Secondary
                     modules were moved below the first viewport.
                   </p>
                 </div>
 
                 <div className="px-7 md:px-9 py-5 md:py-6">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/30 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     Version Two
                   </p>
                   <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.6] font-medium">
@@ -900,10 +924,10 @@ export default function HarmoniCaseStudy() {
                     02
                   </span>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/20 font-medium mb-1">
+                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-1">
                       Behavior
                     </p>
-                    <h3 className="text-white/85 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
+                    <h3 className="text-white/92 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
                       Layout Navigation
                     </h3>
                   </div>
@@ -912,27 +936,27 @@ export default function HarmoniCaseStudy() {
 
               <div className="grid grid-cols-1 md:grid-cols-3">
                 <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/20 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     Version One
                   </p>
-                  <p className="text-white/35 text-[14px] md:text-[15px] leading-[1.6]">
+                  <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.6]">
                     3 of 5 participants attempted to scroll on static screens
                     and encountered dead ends in the layout.
                   </p>
                 </div>
 
                 <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/20 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     What Changed
                   </p>
-                  <p className="text-white/50 text-[14px] md:text-[15px] leading-[1.6]">
+                  <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.6]">
                     Converted static screen layouts to scroll based flows with
                     continuous content hierarchy.
                   </p>
                 </div>
 
                 <div className="px-7 md:px-9 py-5 md:py-6">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/30 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     Version Two
                   </p>
                   <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.6] font-medium">
@@ -961,10 +985,10 @@ export default function HarmoniCaseStudy() {
                     03
                   </span>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/20 font-medium mb-1">
+                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-1">
                       Behavior
                     </p>
-                    <h3 className="text-white/85 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
+                    <h3 className="text-white/92 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
                       Onboarding Comprehension
                     </h3>
                   </div>
@@ -973,27 +997,27 @@ export default function HarmoniCaseStudy() {
 
               <div className="grid grid-cols-1 md:grid-cols-3">
                 <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/20 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     Version One
                   </p>
-                  <p className="text-white/35 text-[14px] md:text-[15px] leading-[1.6]">
+                  <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.6]">
                     2 of 5 participants could not describe the app's core
                     purpose after completing onboarding.
                   </p>
                 </div>
 
                 <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/20 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     What Changed
                   </p>
-                  <p className="text-white/50 text-[14px] md:text-[15px] leading-[1.6]">
+                  <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.6]">
                     Shortened the onboarding sequence and introduced a live
                     preview of the daily exercise before requiring commitment.
                   </p>
                 </div>
 
                 <div className="px-7 md:px-9 py-5 md:py-6">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/30 font-medium mb-3">
+                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
                     Version Two
                   </p>
                   <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.6] font-medium">
@@ -1012,11 +1036,11 @@ export default function HarmoniCaseStudy() {
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-5 h-px bg-[#F98E1F]/40" />
-              <p className="text-[10px] uppercase tracking-[2.4px] text-white/20 font-medium">
+              <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium">
                 Scope
               </p>
             </div>
-            <p className="text-white/30 text-[14px] md:text-[15px] leading-[1.65]">
+            <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.65]">
               Testing measured first session usability only. Participants
               completed one guided session with the revised prototype. Long
               term retention and repeat engagement were not tested.
@@ -1033,28 +1057,28 @@ export default function HarmoniCaseStudy() {
               className="flex items-center gap-3 mb-10"
             >
               <div className="w-5 h-px bg-[#F98E1F]/40" />
-              <h3 className="font-['Lora',serif] font-normal text-white/80 text-[24px] md:text-[28px] leading-[1.2] tracking-[-0.01em]">
+              <h3 className="font-['Lora',serif] font-normal text-white/92 text-[24px] md:text-[28px] leading-[1.2] tracking-[-0.01em]">
                 What changed in my approach
               </h3>
             </motion.div>
             <motion.div {...fadeUpDelay(0.06)} className="space-y-6">
-              <p className="text-white/50 text-[15px] md:text-[16px] leading-[1.8]">
+              <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.8]">
                 I initially assumed clear layout and labeling would be
                 sufficient. Testing showed that{" "}
-                <span className="text-white/70 font-medium">
+                <span className="text-white/72 font-medium">
                   hierarchy and action priority
                 </span>{" "}
                 mattered more than visual clarity alone.
               </p>
 
-              <p className="text-white/50 text-[15px] md:text-[16px] leading-[1.8]">
+              <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.8]">
                 Defining one primary action per screen reduced hesitation more
                 effectively than adding explanation. I now define the primary
                 behavioral metric before designing additional features and
                 validate structure before layering functionality.
               </p>
 
-              <p className="text-white/40 text-[15px] md:text-[16px] leading-[1.8]">
+              <p className="text-white/48 text-[15px] md:text-[16px] leading-[1.8]">
                 If the project continued, the next step would be measuring
                 repeat engagement across multiple sessions rather than focusing
                 solely on first use.
@@ -1062,6 +1086,7 @@ export default function HarmoniCaseStudy() {
             </motion.div>
           </div>
 
+          <BackToProjects />
         </div>
       </section>
     </div>

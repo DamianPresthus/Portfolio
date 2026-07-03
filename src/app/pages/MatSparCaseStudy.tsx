@@ -3,12 +3,9 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import imgMatSparHome from "figma:asset/2725c4cc5e8b21295821c9bfcd4d6ee4b35b016f.png";
 import imgMatSparList from "figma:asset/d0851995c5ff43e23af849b5a4cf32224e13b4f2.png";
-
-// Reuse the two confirmed working assets for the flow mockups
-const imgMealPlan = imgMatSparHome;
-const imgLeftovers = imgMatSparList;
-const imgOverview = imgMatSparHome;
-const imgShoppingList = imgMatSparList;
+import { ResourceLink, BackToProjects } from "../components/case-study/shared";
+import imgLeggTil from "../../assets/MatSparLeggTil.png";
+import imgOversikt from "../../assets/MatSparMatplan.png";
 
 /* ───────────────────────────────────────────────────
    Shared animation config
@@ -153,7 +150,7 @@ export default function MatSparCaseStudy() {
         <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 text-white/72 hover:text-white/92 transition-colors duration-200 group"
           >
             <ArrowLeft
               className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
@@ -204,11 +201,11 @@ export default function MatSparCaseStudy() {
                 MatSpar
               </h1>
 
-              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/70 text-[20px] md:text-[22px] leading-[1.4] tracking-[-0.01em] mb-10">
+              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/72 text-[20px] md:text-[22px] leading-[1.4] tracking-[-0.01em] mb-10">
                 Meal planning and budgeting app prototype
               </h2>
 
-              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/65 text-[16px] md:text-[17px] leading-[1.65] max-w-[540px] mb-14">
+              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/72 text-[16px] md:text-[17px] leading-[1.65] max-w-[540px] mb-14">
                 A mobile concept designed to reduce food waste and grocery
                 overspending by connecting meal planning, ingredient awareness,
                 and real-time budget visibility.
@@ -221,24 +218,38 @@ export default function MatSparCaseStudy() {
                 className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] md:text-[13px] uppercase tracking-[2px] font-medium"
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="text-white/25 tracking-[2.2px]">Role</span>
-                  <span className="text-white/65">Product Designer</span>
+                  <span className="text-white/48 tracking-[2.2px]">Role</span>
+                  <span className="text-white/72">Product Designer</span>
                 </div>
                 <div
                   className="w-px h-3 bg-white/10"
                   aria-hidden="true"
                 />
-                <span className="text-white/50">User Research</span>
+                <span className="text-white/58">User Research</span>
                 <div
                   className="w-px h-3 bg-white/10"
                   aria-hidden="true"
                 />
-                <span className="text-white/50">Interaction Design</span>
+                <span className="text-white/58">Interaction Design</span>
                 <div
                   className="w-px h-3 bg-white/10"
                   aria-hidden="true"
                 />
-                <span className="text-white/50">Group Project</span>
+                <span className="text-white/58">Group Project</span>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ ...baseTrans, delay: 0.22 }}
+                className="mt-10"
+              >
+                <ResourceLink
+                  href="https://www.figma.com/proto/ObFSRwwNMJGFbuidoVTQcM/MatSpar?node-id=420-3691&t=0hFbH7kNJmOqYqhd-1"
+                  label="Open Figma prototype"
+                  variant="ghost"
+                  tone="dark"
+                />
               </motion.div>
             </motion.div>
 
@@ -327,7 +338,7 @@ export default function MatSparCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Core Challenge
           </motion.p>
@@ -345,9 +356,9 @@ export default function MatSparCaseStudy() {
                   "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.04) 100%)",
               }}
             />
-            <h2 className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em]">
+            <h2 className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em]">
               Connecting planning, inventory, and cost{" "}
-              <span className="text-white/50">
+              <span className="text-white/58">
                 into one predictable flow
               </span>
             </h2>
@@ -358,12 +369,12 @@ export default function MatSparCaseStudy() {
             transition={{ ...baseTrans, delay: 0.12 }}
             className="max-w-[640px] space-y-5"
           >
-            <p className="text-white/55 text-[15px] md:text-[16px] leading-[1.75]">
+            <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.75]">
               Interviews revealed two recurring problems: users forgot what
               ingredients they already had, and grocery spending felt
               unpredictable.
             </p>
-            <p className="text-white/55 text-[15px] md:text-[16px] leading-[1.75]">
+            <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.75]">
               Participants described buying duplicates and realizing
               overspending only after checkout. Planning and budgeting happened
               in separate mental spaces, never connected.
@@ -382,7 +393,7 @@ export default function MatSparCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Research
           </motion.p>
@@ -393,7 +404,7 @@ export default function MatSparCaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-12 md:mb-16"
           >
             Behavioral patterns{" "}
-            <span className="text-[#161A1F]/45">behind grocery waste</span>
+            <span className="text-[#161A1F]/58">behind grocery waste</span>
           </motion.h2>
 
           <motion.div
@@ -401,11 +412,11 @@ export default function MatSparCaseStudy() {
             transition={{ ...baseTrans, delay: 0.08 }}
             className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] md:text-[13px] uppercase tracking-[2px] font-medium mb-20 md:mb-28"
           >
-            <span className="text-[#161A1F]/55">5 Interviews</span>
+            <span className="text-[#161A1F]/58">5 Interviews</span>
             <div className="w-px h-3 bg-[#161A1F]/10" aria-hidden="true" />
-            <span className="text-[#161A1F]/50">Behavior Mapping</span>
+            <span className="text-[#161A1F]/58">Behavior Mapping</span>
             <div className="w-px h-3 bg-[#161A1F]/10" aria-hidden="true" />
-            <span className="text-[#161A1F]/50">Flow Analysis</span>
+            <span className="text-[#161A1F]/58">Flow Analysis</span>
           </motion.div>
 
           {/* Insight Cards — matching Harmoni pattern */}
@@ -422,7 +433,7 @@ export default function MatSparCaseStudy() {
                   style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[11px] uppercase tracking-[2.4px] text-[#161A1F]/20 font-medium">
+                    <span className="text-[11px] uppercase tracking-[2.4px] text-[#161A1F]/48 font-medium">
                       Insight
                     </span>
                     <span className="font-['Lora',serif] text-[#161A1F]/15 text-[28px] md:text-[32px] leading-none tracking-[-0.02em]">
@@ -430,24 +441,24 @@ export default function MatSparCaseStudy() {
                     </span>
                   </div>
 
-                  <h3 className="text-[#161A1F]/85 text-[16px] md:text-[17px] font-medium leading-[1.45] mb-5">
+                  <h3 className="text-[#161A1F]/92 text-[16px] md:text-[17px] font-medium leading-[1.45] mb-5">
                     {insight.title}
                   </h3>
 
                   <div className="mb-5">
-                    <p className="text-[10px] uppercase tracking-[2px] text-[#161A1F]/20 font-medium mb-2">
+                    <p className="text-[10px] uppercase tracking-[2px] text-[#161A1F]/48 font-medium mb-2">
                       Evidence
                     </p>
-                    <p className="text-[#161A1F]/40 text-[13px] md:text-[14px] leading-[1.65]">
+                    <p className="text-[#161A1F]/48 text-[13px] md:text-[14px] leading-[1.65]">
                       {insight.evidence}
                     </p>
                   </div>
 
                   <div className="pt-5 border-t border-[#161A1F]/[0.06]">
-                    <p className="text-[10px] uppercase tracking-[2px] text-[#161A1F]/20 font-medium mb-2">
+                    <p className="text-[10px] uppercase tracking-[2px] text-[#161A1F]/48 font-medium mb-2">
                       Implication
                     </p>
-                    <p className="text-[#161A1F]/65 text-[14px] md:text-[15px] leading-[1.55] font-medium">
+                    <p className="text-[#161A1F]/72 text-[14px] md:text-[15px] leading-[1.55] font-medium">
                       {insight.implication}
                     </p>
                   </div>
@@ -477,7 +488,7 @@ export default function MatSparCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Product Structure
           </motion.p>
@@ -488,18 +499,27 @@ export default function MatSparCaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
           >
             Four connected{" "}
-            <span className="text-[#161A1F]/45">flows</span>
+            <span className="text-[#161A1F]/58">flows</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-[#161A1F]/45 text-[15px] md:text-[16px] leading-[1.65] max-w-[620px] mb-20 md:mb-28"
+            className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[620px] mb-20 md:mb-28"
           >
             The system reduced manual coordination by connecting meal planning,
             leftover optimization, overview, and grocery generation into one
             continuous structure.
           </motion.p>
+
+          <motion.div {...fadeUpCard} transition={{ ...baseTrans, delay: 0.1 }} className="-mt-12 mb-20 md:mb-28">
+            <ResourceLink
+              href="https://www.figma.com/proto/ObFSRwwNMJGFbuidoVTQcM/MatSpar?node-id=420-3691&t=0hFbH7kNJmOqYqhd-1"
+              label="Walk through the prototype"
+              variant="ghost"
+              tone="light"
+            />
+          </motion.div>
 
           {/* ── Flow 01: Create Meal Plan ── */}
           <motion.div
@@ -514,20 +534,20 @@ export default function MatSparCaseStudy() {
                   <span className="font-['Lora',serif] text-[#161A1F]/10 text-[48px] md:text-[56px] leading-none tracking-[-0.03em]">
                     01
                   </span>
-                  <h3 className="text-[#161A1F]/90 text-[20px] md:text-[22px] font-medium leading-[1.3] tracking-[-0.01em]">
+                  <h3 className="text-[#161A1F]/92 text-[20px] md:text-[22px] font-medium leading-[1.3] tracking-[-0.01em]">
                     Create Meal Plan
                   </h3>
                 </div>
                 <div className="space-y-4 max-w-[540px]">
-                  <p className="text-[#161A1F]/50 text-[14px] md:text-[15px] leading-[1.7]">
+                  <p className="text-[#161A1F]/58 text-[14px] md:text-[15px] leading-[1.7]">
                     Users build a weekly plan by selecting dishes across
                     categories such as Dinner, Lunch, and Breakfast.
                   </p>
-                  <p className="text-[#161A1F]/45 text-[13px] md:text-[14px] leading-[1.65]">
+                  <p className="text-[#161A1F]/58 text-[13px] md:text-[14px] leading-[1.65]">
                     Suggestions can be filtered by budget level, allowing users
                     to control cost before committing to a plan.
                   </p>
-                  <p className="text-[#161A1F]/40 text-[13px] md:text-[14px] leading-[1.65]">
+                  <p className="text-[#161A1F]/48 text-[13px] md:text-[14px] leading-[1.65]">
                     Each selected meal contributes its ingredients to a shared
                     ingredient pool, forming the structural foundation for the
                     rest of the system.
@@ -538,8 +558,8 @@ export default function MatSparCaseStudy() {
               <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2">
                 <div className="w-[220px] md:w-[240px] rounded-2xl overflow-hidden">
                   <img
-                    src={imgMealPlan}
-                    alt="Ny Matplan screen showing meal categories with budget filter"
+                    src={imgMatSparHome}
+                    alt="MatSpar weekly meal plan screen (Ukens Matplan) with recipe cards and budget overview"
                     className="w-full h-auto block"
                   />
                 </div>
@@ -570,8 +590,8 @@ export default function MatSparCaseStudy() {
               <div className="lg:col-span-5 flex justify-center lg:justify-start order-2 lg:order-1">
                 <div className="w-[220px] md:w-[240px] rounded-2xl overflow-hidden">
                   <img
-                    src={imgLeftovers}
-                    alt="Legg til screen showing leftover-based meal suggestions"
+                    src={imgLeggTil}
+                    alt="Legg til screen (Legg til) suggesting extra dishes that reuse leftover ingredients from the plan"
                     className="w-full h-auto block"
                   />
                 </div>
@@ -582,21 +602,21 @@ export default function MatSparCaseStudy() {
                   <span className="font-['Lora',serif] text-[#161A1F]/10 text-[48px] md:text-[56px] leading-none tracking-[-0.03em]">
                     02
                   </span>
-                  <h3 className="text-[#161A1F]/90 text-[20px] md:text-[22px] font-medium leading-[1.3] tracking-[-0.01em]">
+                  <h3 className="text-[#161A1F]/92 text-[20px] md:text-[22px] font-medium leading-[1.3] tracking-[-0.01em]">
                     Leftover Suggestions
                   </h3>
                 </div>
                 <div className="space-y-4 max-w-[540px]">
-                  <p className="text-[#161A1F]/50 text-[14px] md:text-[15px] leading-[1.7]">
+                  <p className="text-[#161A1F]/58 text-[14px] md:text-[15px] leading-[1.7]">
                     While building the plan, the system identifies ingredient
                     overlap and suggests additional dishes that reuse ingredients
                     already selected.
                   </p>
-                  <p className="text-[#161A1F]/30 text-[13px] md:text-[14px] leading-[1.65] italic">
+                  <p className="text-[#161A1F]/48 text-[13px] md:text-[14px] leading-[1.65] italic">
                     &ldquo;Save your wallet and the environment by using
                     leftover ingredients for these dishes&rdquo;
                   </p>
-                  <p className="text-[#161A1F]/40 text-[13px] md:text-[14px] leading-[1.65]">
+                  <p className="text-[#161A1F]/48 text-[13px] md:text-[14px] leading-[1.65]">
                     Instead of requiring users to log their entire pantry, the
                     system highlights meals that require only a few additional
                     ingredients to become complete. This lowers interaction cost
@@ -632,20 +652,20 @@ export default function MatSparCaseStudy() {
                   <span className="font-['Lora',serif] text-[#161A1F]/10 text-[48px] md:text-[56px] leading-none tracking-[-0.03em]">
                     03
                   </span>
-                  <h3 className="text-[#161A1F]/90 text-[20px] md:text-[22px] font-medium leading-[1.3] tracking-[-0.01em]">
+                  <h3 className="text-[#161A1F]/92 text-[20px] md:text-[22px] font-medium leading-[1.3] tracking-[-0.01em]">
                     Overview
                   </h3>
                 </div>
                 <div className="space-y-4 max-w-[540px]">
-                  <p className="text-[#161A1F]/50 text-[14px] md:text-[15px] leading-[1.7]">
+                  <p className="text-[#161A1F]/58 text-[14px] md:text-[15px] leading-[1.7]">
                     The overview aggregates selected meals and total ingredient
                     quantities before activation.
                   </p>
-                  <p className="text-[#161A1F]/45 text-[13px] md:text-[14px] leading-[1.65]">
+                  <p className="text-[#161A1F]/58 text-[13px] md:text-[14px] leading-[1.65]">
                     Users see how dishes connect through shared ingredients and
                     how portion adjustments affect the full plan.
                   </p>
-                  <p className="text-[#161A1F]/40 text-[13px] md:text-[14px] leading-[1.65]">
+                  <p className="text-[#161A1F]/48 text-[13px] md:text-[14px] leading-[1.65]">
                     This step creates clarity before generating the final
                     grocery list.
                   </p>
@@ -655,8 +675,8 @@ export default function MatSparCaseStudy() {
               <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2">
                 <div className="w-[220px] md:w-[240px] rounded-2xl overflow-hidden">
                   <img
-                    src={imgOverview}
-                    alt="Oversikt screen showing selected meals ready for activation"
+                    src={imgOversikt}
+                    alt="Oversikt screen (Oversikt) showing selected meals with an Aktiver Matplan action before generating the list"
                     className="w-full h-auto block"
                   />
                 </div>
@@ -687,8 +707,8 @@ export default function MatSparCaseStudy() {
               <div className="lg:col-span-5 flex justify-center lg:justify-start order-2 lg:order-1">
                 <div className="w-[220px] md:w-[240px] rounded-2xl overflow-hidden">
                   <img
-                    src={imgShoppingList}
-                    alt="Handleliste screen showing structured grocery list with ingredients"
+                    src={imgMatSparList}
+                    alt="MatSpar shopping list screen (Handleliste) with consolidated grocery ingredients"
                     className="w-full h-auto block"
                   />
                 </div>
@@ -699,16 +719,16 @@ export default function MatSparCaseStudy() {
                   <span className="font-['Lora',serif] text-[#161A1F]/10 text-[48px] md:text-[56px] leading-none tracking-[-0.03em]">
                     04
                   </span>
-                  <h3 className="text-[#161A1F]/90 text-[20px] md:text-[22px] font-medium leading-[1.3] tracking-[-0.01em]">
+                  <h3 className="text-[#161A1F]/92 text-[20px] md:text-[22px] font-medium leading-[1.3] tracking-[-0.01em]">
                     Shopping List
                   </h3>
                 </div>
                 <div className="space-y-4 max-w-[540px]">
-                  <p className="text-[#161A1F]/50 text-[14px] md:text-[15px] leading-[1.7]">
+                  <p className="text-[#161A1F]/58 text-[14px] md:text-[15px] leading-[1.7]">
                     The system consolidates required ingredients into a
                     structured grocery list.
                   </p>
-                  <p className="text-[#161A1F]/40 text-[13px] md:text-[14px] leading-[1.65]">
+                  <p className="text-[#161A1F]/48 text-[13px] md:text-[14px] leading-[1.65]">
                     Quantities reflect portion adjustments and overlapping use
                     across meals.
                   </p>
@@ -748,12 +768,12 @@ export default function MatSparCaseStudy() {
                 <span
                   className={`text-[11px] md:text-[12px] uppercase tracking-[2px] font-medium ${
                     i === 0
-                      ? "text-[#161A1F]/25"
+                      ? "text-[#161A1F]/48"
                       : i === 1
-                        ? "text-[#161A1F]/30"
+                        ? "text-[#161A1F]/48"
                         : i === 2
-                          ? "text-[#161A1F]/40"
-                          : "text-[#161A1F]/50"
+                          ? "text-[#161A1F]/48"
+                          : "text-[#161A1F]/58"
                   }`}
                 >
                   {step}
@@ -784,7 +804,7 @@ export default function MatSparCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Design Decisions
           </motion.p>
@@ -792,16 +812,16 @@ export default function MatSparCaseStudy() {
           <motion.h2
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.05 }}
-            className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
           >
             Structural changes that{" "}
-            <span className="text-white/50">reduced friction</span>
+            <span className="text-white/58">reduced friction</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-white/45 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-20 md:mb-28"
+            className="text-white/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-20 md:mb-28"
           >
             Each decision addressed a specific coordination failure identified
             during research.
@@ -824,7 +844,7 @@ export default function MatSparCaseStudy() {
                       <span className="font-['Lora',serif] text-white/10 text-[40px] md:text-[48px] leading-none tracking-[-0.03em]">
                         {decision.id}
                       </span>
-                      <h3 className="text-white/90 text-[18px] md:text-[20px] font-medium leading-[1.35] tracking-[-0.01em]">
+                      <h3 className="text-white/92 text-[18px] md:text-[20px] font-medium leading-[1.35] tracking-[-0.01em]">
                         {decision.title}
                       </h3>
                     </div>
@@ -833,28 +853,28 @@ export default function MatSparCaseStudy() {
                   {/* Problem → Change → Outcome */}
                   <div className="grid grid-cols-1 md:grid-cols-3">
                     <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                      <p className="text-[10px] uppercase tracking-[2px] text-white/20 font-medium mb-2.5">
+                      <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-2.5">
                         Problem
                       </p>
-                      <p className="text-white/40 text-[14px] md:text-[15px] leading-[1.6]">
+                      <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.6]">
                         {decision.problem}
                       </p>
                     </div>
 
                     <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                      <p className="text-[10px] uppercase tracking-[2px] text-white/20 font-medium mb-2.5">
+                      <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-2.5">
                         Change
                       </p>
-                      <p className="text-white/50 text-[14px] md:text-[15px] leading-[1.6]">
+                      <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.6]">
                         {decision.change}
                       </p>
                     </div>
 
                     <div className="px-7 md:px-9 py-5 md:py-6">
-                      <p className="text-[10px] uppercase tracking-[2px] text-white/25 font-medium mb-2.5">
+                      <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-2.5">
                         Outcome
                       </p>
-                      <p className="text-white/70 text-[14px] md:text-[15px] leading-[1.6] font-medium">
+                      <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.6] font-medium">
                         {decision.outcome}
                       </p>
                     </div>
@@ -885,7 +905,7 @@ export default function MatSparCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Testing
           </motion.p>
@@ -893,16 +913,16 @@ export default function MatSparCaseStudy() {
           <motion.h2
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.05 }}
-            className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
           >
             Five participants,{" "}
-            <span className="text-white/50">three adjustments</span>
+            <span className="text-white/58">three adjustments</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-white/45 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-16 md:mb-20"
+            className="text-white/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-16 md:mb-20"
           >
             Prototype testing revealed navigation assumptions that didn&rsquo;t
             match actual behavior.
@@ -914,7 +934,7 @@ export default function MatSparCaseStudy() {
             transition={{ ...baseTrans, delay: 0.1 }}
             className="mb-16 md:mb-20"
           >
-            <p className="text-[10px] uppercase tracking-[2.4px] text-white/20 font-medium mb-6">
+            <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-6">
               Observed Issues
             </p>
             <div className="max-w-[580px] space-y-3.5">
@@ -925,7 +945,7 @@ export default function MatSparCaseStudy() {
               ].map((finding, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-1 h-1 rounded-full bg-white/15 mt-2 shrink-0" />
-                  <p className="text-white/45 text-[14px] md:text-[15px] leading-[1.55]">
+                  <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.55]">
                     {finding}
                   </p>
                 </div>
@@ -939,7 +959,7 @@ export default function MatSparCaseStudy() {
             transition={{ ...baseTrans, delay: 0.14 }}
             className="mb-16 md:mb-20"
           >
-            <p className="text-[10px] uppercase tracking-[2.4px] text-white/25 font-medium mb-6">
+            <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-6">
               Adjustments
             </p>
             <div className="max-w-[580px] space-y-3.5">
@@ -950,7 +970,7 @@ export default function MatSparCaseStudy() {
               ].map((adjustment, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-1 h-1 rounded-full bg-white/25 mt-2 shrink-0" />
-                  <p className="text-white/60 text-[14px] md:text-[15px] leading-[1.55]">
+                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.55]">
                     {adjustment}
                   </p>
                 </div>
@@ -964,7 +984,7 @@ export default function MatSparCaseStudy() {
             transition={{ ...baseTrans, delay: 0.18 }}
             className="relative rounded-lg border border-white/[0.08] bg-white/[0.02] px-7 md:px-9 py-6 md:py-7 max-w-[580px]"
           >
-            <p className="text-[10px] uppercase tracking-[2.4px] text-white/25 font-medium mb-3">
+            <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-3">
               Result
             </p>
             <p className="text-white/75 text-[15px] md:text-[16px] leading-[1.6] font-medium">
@@ -993,7 +1013,7 @@ export default function MatSparCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Visual Design
           </motion.p>
@@ -1004,7 +1024,7 @@ export default function MatSparCaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[700px] mb-12 md:mb-16"
           >
             Decisions shaped by{" "}
-            <span className="text-[#161A1F]/45">behavior, not aesthetics</span>
+            <span className="text-[#161A1F]/58">behavior, not aesthetics</span>
           </motion.h2>
 
           <motion.div
@@ -1020,7 +1040,7 @@ export default function MatSparCaseStudy() {
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div className="w-1 h-1 rounded-full bg-[#161A1F]/20 mt-2 shrink-0" />
-                <p className="text-[#161A1F]/50 text-[14px] md:text-[15px] leading-[1.6]">
+                <p className="text-[#161A1F]/58 text-[14px] md:text-[15px] leading-[1.6]">
                   {item}
                 </p>
               </div>
@@ -1037,7 +1057,7 @@ export default function MatSparCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Reflection
           </motion.p>
@@ -1048,14 +1068,14 @@ export default function MatSparCaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[700px] mb-16 md:mb-20"
           >
             Coordination determines{" "}
-            <span className="text-[#161A1F]/45">usability</span>
+            <span className="text-[#161A1F]/58">usability</span>
           </motion.h2>
 
           <div className="max-w-[600px] space-y-10 md:space-y-12">
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.08 }}
-              className="text-[#161A1F]/55 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               Meal planning is a{" "}
               <span className="text-[#161A1F]/75 font-medium">
@@ -1068,12 +1088,12 @@ export default function MatSparCaseStudy() {
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.14 }}
-              className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               Small structural decisions, when cost appears, how portions
               update, whether ingredients auto-calculate, determine whether the
               system feels{" "}
-              <span className="text-[#161A1F]/70 font-medium">
+              <span className="text-[#161A1F]/72 font-medium">
                 helpful or complicated
               </span>
               .
@@ -1096,13 +1116,14 @@ export default function MatSparCaseStudy() {
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.22 }}
-              className="text-[#161A1F]/40 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-[#161A1F]/48 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               If continued, the next step would be measuring real grocery
               savings over multiple weeks to validate behavioral impact.
             </motion.p>
           </div>
 
+          <BackToProjects light />
         </div>
       </section>
     </div>

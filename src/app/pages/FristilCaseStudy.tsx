@@ -1,6 +1,7 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
+import { ResourceLink, BackToProjects } from "../components/case-study/shared";
 import imgFristil from "../../assets/optimized/fristil-records-homepage-1600.webp";
 import imgNewsletter from "../../assets/optimized/fristil-records-newsletter-1600.webp";
 import imgNyheter from "../../assets/optimized/fristil-records-news-1600.webp";
@@ -162,7 +163,7 @@ export default function FristilCaseStudy() {
         <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 text-white/72 hover:text-white/92 transition-colors duration-200 group"
           >
             <ArrowLeft
               className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
@@ -212,10 +213,10 @@ export default function FristilCaseStudy() {
               <h1 className="font-['Lora',serif] font-normal text-white text-[56px] md:text-[68px] lg:text-[80px] leading-[1.05] tracking-[-0.03em] mb-7">
                 Fristil Records
               </h1>
-              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/70 text-[20px] md:text-[22px] leading-[1.4] tracking-[-0.01em] mb-10">
+              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/72 text-[20px] md:text-[22px] leading-[1.4] tracking-[-0.01em] mb-10">
                 Artist label website design and implementation
               </h2>
-              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/65 text-[16px] md:text-[17px] leading-[1.65] max-w-[540px] mb-14">
+              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/72 text-[16px] md:text-[17px] leading-[1.65] max-w-[540px] mb-14">
                 Fristil Records was entering a growth phase and needed a
                 centralized digital presence. I designed and built a website
                 that introduced the label, structured its offering, and created
@@ -234,22 +235,36 @@ export default function FristilCaseStudy() {
                   { label: "Duration", value: "3 month project" },
                 ].map((row) => (
                   <div key={row.label} className="flex items-baseline gap-5">
-                    <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/40 font-medium">
+                    <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/48 font-medium">
                       {row.label}
                     </span>
-                    <span className="text-[15px] md:text-[16px] text-white/65 font-medium tracking-[-0.01em]">
+                    <span className="text-[15px] md:text-[16px] text-white/72 font-medium tracking-[-0.01em]">
                       {row.value}
                     </span>
                   </div>
                 ))}
                 <div className="flex items-baseline gap-5">
-                  <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/40 font-medium">
+                  <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/48 font-medium">
                     Outcome
                   </span>
                   <span className="text-[15px] md:text-[16px] text-white/75 font-medium tracking-[-0.01em]">
-                    Centralized <span className="text-white/85">digital presence for growth</span>
+                    Centralized <span className="text-white/92">digital presence for growth</span>
                   </span>
                 </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ ...baseTrans, delay: 0.22 }}
+                className="mt-10"
+              >
+                <ResourceLink
+                  href="https://www.fristilrecords.no/"
+                  label="Visit live site"
+                  icon={ExternalLink}
+                  variant="solid"
+                />
               </motion.div>
             </motion.div>
 
@@ -443,7 +458,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Core Challenge
           </motion.p>
@@ -465,16 +480,16 @@ export default function FristilCaseStudy() {
                       "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.04) 100%)",
                   }}
                 />
-                <h2 className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em]">
+                <h2 className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em]">
                   Fristil Records operated{" "}
-                  <span className="text-white/50">without a dedicated website.</span>
+                  <span className="text-white/58">without a dedicated website.</span>
                 </h2>
               </motion.div>
 
               <motion.p
                 {...fadeUp}
                 transition={{ ...baseTrans, delay: 0.1 }}
-                className="text-white/35 text-[15px] md:text-[16px] italic tracking-[-0.005em] mb-12 md:mb-16 max-w-[600px]"
+                className="text-white/48 text-[15px] md:text-[16px] italic tracking-[-0.005em] mb-12 md:mb-16 max-w-[600px]"
               >
                 Artists were promoted through social media and streaming platforms. Services such as production and management were communicated through direct contact.
               </motion.p>
@@ -484,12 +499,12 @@ export default function FristilCaseStudy() {
                 transition={{ ...baseTrans, delay: 0.12 }}
                 className="max-w-[640px] space-y-5"
               >
-                <p className="text-white/55 text-[15px] md:text-[16px] leading-[1.75]">
+                <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.75]">
                   There was no single place that explained what the label
                   represented. The challenge was not visual expression. It was
                   defining how the label should present itself publicly.
                 </p>
-                <p className="text-white/45 text-[15px] md:text-[16px] leading-[1.75]">
+                <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.75]">
                   The platform needed to:
                 </p>
               </motion.div>
@@ -508,7 +523,7 @@ export default function FristilCaseStudy() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-1 h-1 rounded-full bg-white/20 mt-2 shrink-0" />
-                    <p className="text-white/50 text-[14px] md:text-[15px] leading-[1.55]">
+                    <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.55]">
                       {item}
                     </p>
                   </div>
@@ -518,7 +533,7 @@ export default function FristilCaseStudy() {
               <motion.p
                 {...fadeUp}
                 transition={{ ...baseTrans, delay: 0.18 }}
-                className="mt-10 text-white/55 text-[15px] md:text-[16px] leading-[1.75] max-w-[640px]"
+                className="mt-10 text-white/58 text-[15px] md:text-[16px] leading-[1.75] max-w-[640px]"
               >
                 This required building both hierarchy and positioning from the
                 ground up.
@@ -538,7 +553,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Research
           </motion.p>
@@ -549,13 +564,13 @@ export default function FristilCaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-12 md:mb-16"
           >
             Defining structure through{" "}
-            <span className="text-[#161A1F]/45">stakeholder input and industry review</span>
+            <span className="text-[#161A1F]/58">stakeholder input and industry review</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.75] max-w-[640px] mb-10 md:mb-12"
+            className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75] max-w-[640px] mb-10 md:mb-12"
           >
             To understand how the label should be represented, I
             conducted stakeholder interviews, reviewed comparable independent
@@ -567,11 +582,11 @@ export default function FristilCaseStudy() {
             transition={{ ...baseTrans, delay: 0.1 }}
             className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] md:text-[13px] uppercase tracking-[2px] font-medium mb-20 md:mb-28"
           >
-            <span className="text-[#161A1F]/50">Stakeholder Interviews</span>
+            <span className="text-[#161A1F]/58">Stakeholder Interviews</span>
             <div className="w-px h-3 bg-[#161A1F]/10" aria-hidden="true" />
-            <span className="text-[#161A1F]/50">Comparative Analysis</span>
+            <span className="text-[#161A1F]/58">Comparative Analysis</span>
             <div className="w-px h-3 bg-[#161A1F]/10" aria-hidden="true" />
-            <span className="text-[#161A1F]/50">Goal Definition</span>
+            <span className="text-[#161A1F]/58">Goal Definition</span>
           </motion.div>
 
           {/* Insight Cards — 2x2 grid matching Harmoni research */}
@@ -588,7 +603,7 @@ export default function FristilCaseStudy() {
                   style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[11px] uppercase tracking-[2.4px] text-[#161A1F]/20 font-medium">
+                    <span className="text-[11px] uppercase tracking-[2.4px] text-[#161A1F]/48 font-medium">
                       Insight
                     </span>
                     <span className="font-['Lora',serif] text-[#161A1F]/15 text-[28px] md:text-[32px] leading-none tracking-[-0.02em]">
@@ -596,24 +611,24 @@ export default function FristilCaseStudy() {
                     </span>
                   </div>
 
-                  <h3 className="text-[#161A1F]/85 text-[16px] md:text-[17px] font-medium leading-[1.45] mb-5">
+                  <h3 className="text-[#161A1F]/92 text-[16px] md:text-[17px] font-medium leading-[1.45] mb-5">
                     {insight.title}
                   </h3>
 
                   <div className="mb-5">
-                    <p className="text-[10px] uppercase tracking-[2px] text-[#161A1F]/20 font-medium mb-2">
+                    <p className="text-[10px] uppercase tracking-[2px] text-[#161A1F]/48 font-medium mb-2">
                       Evidence
                     </p>
-                    <p className="text-[#161A1F]/40 text-[13px] md:text-[14px] leading-[1.65]">
+                    <p className="text-[#161A1F]/48 text-[13px] md:text-[14px] leading-[1.65]">
                       {insight.evidence}
                     </p>
                   </div>
 
                   <div className="pt-5 border-t border-[#161A1F]/[0.06]">
-                    <p className="text-[10px] uppercase tracking-[2px] text-[#161A1F]/20 font-medium mb-2">
+                    <p className="text-[10px] uppercase tracking-[2px] text-[#161A1F]/48 font-medium mb-2">
                       Implication
                     </p>
-                    <p className="text-[#161A1F]/65 text-[14px] md:text-[15px] leading-[1.55] font-medium">
+                    <p className="text-[#161A1F]/72 text-[14px] md:text-[15px] leading-[1.55] font-medium">
                       {insight.implication}
                     </p>
                   </div>
@@ -635,7 +650,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Information Architecture
           </motion.p>
@@ -646,13 +661,13 @@ export default function FristilCaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
           >
             Building the structure{" "}
-            <span className="text-[#161A1F]/45">from zero</span>
+            <span className="text-[#161A1F]/58">from zero</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.65] max-w-[600px] mb-16 md:mb-20"
+            className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[600px] mb-16 md:mb-20"
           >
             With no existing platform, the information architecture was defined
             from scratch. I structured the site around three primary categories:
@@ -667,7 +682,7 @@ export default function FristilCaseStudy() {
             {["Artists", "Services", "About"].map((cat) => (
               <span
                 key={cat}
-                className="px-5 py-2.5 rounded-md border border-[#161A1F]/[0.08] bg-white text-[#161A1F]/70 text-[14px] md:text-[15px] font-medium tracking-[-0.005em]"
+                className="px-5 py-2.5 rounded-md border border-[#161A1F]/[0.08] bg-white text-[#161A1F]/72 text-[14px] md:text-[15px] font-medium tracking-[-0.005em]"
               >
                 {cat}
               </span>
@@ -683,10 +698,10 @@ export default function FristilCaseStudy() {
             >
               <div className="relative h-full rounded-lg border border-[#161A1F]/[0.06] bg-white overflow-hidden" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
                 <div className="px-7 md:px-9 pt-7 md:pt-8 pb-5 border-b border-[#161A1F]/[0.05]">
-                  <p className="text-[10px] uppercase tracking-[2.4px] text-[#161A1F]/20 font-medium mb-2">
+                  <p className="text-[10px] uppercase tracking-[2.4px] text-[#161A1F]/48 font-medium mb-2">
                     Before
                   </p>
-                  <h3 className="text-[#161A1F]/60 text-[17px] md:text-[18px] font-medium leading-[1.35]">
+                  <h3 className="text-[#161A1F]/72 text-[17px] md:text-[18px] font-medium leading-[1.35]">
                     Unclear hierarchy
                   </h3>
                 </div>
@@ -699,7 +714,7 @@ export default function FristilCaseStudy() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="w-1 h-1 rounded-full bg-[#161A1F]/15 mt-2 shrink-0" />
-                      <p className="text-[#161A1F]/40 text-[14px] md:text-[15px] leading-[1.55]">
+                      <p className="text-[#161A1F]/48 text-[14px] md:text-[15px] leading-[1.55]">
                         {item}
                       </p>
                     </div>
@@ -715,10 +730,10 @@ export default function FristilCaseStudy() {
             >
               <div className="relative h-full rounded-lg border border-[#161A1F]/[0.08] bg-white overflow-hidden" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
                 <div className="px-7 md:px-9 pt-7 md:pt-8 pb-5 border-b border-[#161A1F]/[0.05]">
-                  <p className="text-[10px] uppercase tracking-[2.4px] text-[#161A1F]/25 font-medium mb-2">
+                  <p className="text-[10px] uppercase tracking-[2.4px] text-[#161A1F]/48 font-medium mb-2">
                     After
                   </p>
-                  <h3 className="text-[#161A1F]/85 text-[17px] md:text-[18px] font-medium leading-[1.35]">
+                  <h3 className="text-[#161A1F]/92 text-[17px] md:text-[18px] font-medium leading-[1.35]">
                     Defined structure
                   </h3>
                 </div>
@@ -731,7 +746,7 @@ export default function FristilCaseStudy() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="w-1 h-1 rounded-full bg-[#161A1F]/25 mt-2 shrink-0" />
-                      <p className="text-[#161A1F]/65 text-[14px] md:text-[15px] leading-[1.55]">
+                      <p className="text-[#161A1F]/72 text-[14px] md:text-[15px] leading-[1.55]">
                         {item}
                       </p>
                     </div>
@@ -744,7 +759,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUpCard}
             transition={{ ...baseTrans, delay: 0.15 }}
-            className="mt-14 md:mt-16 text-[#161A1F]/35 text-[15px] md:text-[16px] leading-[1.65] max-w-[560px]"
+            className="mt-14 md:mt-16 text-[#161A1F]/48 text-[15px] md:text-[16px] leading-[1.65] max-w-[560px]"
           >
             Each section was intentionally separated to remove ambiguity and
             clarify what the label offers.
@@ -764,7 +779,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Design Decisions
           </motion.p>
@@ -772,16 +787,16 @@ export default function FristilCaseStudy() {
           <motion.h2
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.05 }}
-            className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
           >
             Structural choices that{" "}
-            <span className="text-white/50">defined the platform</span>
+            <span className="text-white/58">defined the platform</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-white/45 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-20 md:mb-28"
+            className="text-white/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-20 md:mb-28"
           >
             Each decision addressed a positioning question rather than a visual preference.
           </motion.p>
@@ -803,11 +818,11 @@ export default function FristilCaseStudy() {
                     </span>
                     <div className="flex flex-col gap-2 pt-1 flex-1">
                       <div className="relative pl-5 border-l-2 border-white/[0.12]">
-                        <h3 className="text-white/90 text-[18px] md:text-[20px] font-medium leading-[1.35] tracking-[-0.01em]">
+                        <h3 className="text-white/92 text-[18px] md:text-[20px] font-medium leading-[1.35] tracking-[-0.01em]">
                           {decision.title}
                         </h3>
                       </div>
-                      <p className="text-white/45 text-[14px] md:text-[15px] leading-[1.6] pl-5 mt-1">
+                      <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.6] pl-5 mt-1">
                         {decision.description}
                       </p>
                     </div>
@@ -831,7 +846,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Design System
           </motion.p>
@@ -839,16 +854,16 @@ export default function FristilCaseStudy() {
           <motion.h2
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.05 }}
-            className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
           >
             A restrained visual system{" "}
-            <span className="text-white/50">supporting credibility</span>
+            <span className="text-white/58">supporting credibility</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-white/45 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-20 md:mb-28"
+            className="text-white/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-20 md:mb-28"
           >
             The visual language supported hierarchy and professionalism rather
             than stylistic experimentation.
@@ -883,13 +898,13 @@ export default function FristilCaseStudy() {
                 className="relative group"
               >
                 <div className="relative h-full rounded-lg p-6 md:p-7 border border-white/[0.06] bg-white/[0.015]">
-                  <p className="text-[11px] uppercase tracking-[2.4px] text-white/20 font-medium mb-5">
+                  <p className="text-[11px] uppercase tracking-[2.4px] text-white/48 font-medium mb-5">
                     {sub.label}
                   </p>
-                  <h3 className="text-white/80 text-[15px] md:text-[16px] font-medium leading-[1.45] mb-3">
+                  <h3 className="text-white/92 text-[15px] md:text-[16px] font-medium leading-[1.45] mb-3">
                     {sub.title}
                   </h3>
-                  <p className="text-white/40 text-[13px] md:text-[14px] leading-[1.65]">
+                  <p className="text-white/48 text-[13px] md:text-[14px] leading-[1.65]">
                     {sub.description}
                   </p>
                 </div>
@@ -900,7 +915,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUpCard}
             transition={baseTrans}
-            className="text-white/35 text-[15px] md:text-[16px] leading-[1.65] max-w-[560px]"
+            className="text-white/48 text-[15px] md:text-[16px] leading-[1.65] max-w-[560px]"
           >
             Reusable components included navigation, artist cards, service
             sections, and footer, ensuring consistency as the site grows.
@@ -967,7 +982,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Development
           </motion.p>
@@ -978,13 +993,13 @@ export default function FristilCaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
           >
             From concept to{" "}
-            <span className="text-[#161A1F]/45">launch</span>
+            <span className="text-[#161A1F]/58">launch</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.65] max-w-[600px] mb-20 md:mb-28"
+            className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[600px] mb-20 md:mb-28"
           >
             After defining the structure in Figma, I implemented the site and
             prepared it for launch.
@@ -1023,17 +1038,17 @@ export default function FristilCaseStudy() {
                   style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}
                 >
                   <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[11px] uppercase tracking-[2.4px] text-[#161A1F]/20 font-medium">
+                    <span className="text-[11px] uppercase tracking-[2.4px] text-[#161A1F]/48 font-medium">
                       Implementation
                     </span>
                     <span className="font-['Lora',serif] text-[#161A1F]/15 text-[28px] md:text-[32px] leading-none tracking-[-0.02em]">
                       {item.id}
                     </span>
                   </div>
-                  <h3 className="text-[#161A1F]/85 text-[16px] md:text-[17px] font-medium leading-[1.45] mb-4">
+                  <h3 className="text-[#161A1F]/92 text-[16px] md:text-[17px] font-medium leading-[1.45] mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-[#161A1F]/40 text-[13px] md:text-[14px] leading-[1.65]">
+                  <p className="text-[#161A1F]/48 text-[13px] md:text-[14px] leading-[1.65]">
                     {item.description}
                   </p>
                 </div>
@@ -1054,7 +1069,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Measured Impact
           </motion.p>
@@ -1065,13 +1080,13 @@ export default function FristilCaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[820px] mb-8 md:mb-10"
           >
             First month after{" "}
-            <span className="text-[#161A1F]/45">launch</span>
+            <span className="text-[#161A1F]/58">launch</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-[#161A1F]/45 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-16 md:mb-20"
+            className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[580px] mb-16 md:mb-20"
           >
             The site launched in April 2025. During the first measured month,
             the platform recorded:
@@ -1086,10 +1101,10 @@ export default function FristilCaseStudy() {
                 transition={stagger(index, 0.06)}
               >
                 <div className="relative rounded-lg border border-[#161A1F]/[0.06] bg-white p-6 md:p-7 text-center transition-colors duration-300 hover:bg-white/80 hover:border-[#161A1F]/[0.09]" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-                  <p className="font-['Lora',serif] text-[#161A1F]/85 text-[36px] md:text-[42px] leading-none tracking-[-0.02em] mb-3">
+                  <p className="font-['Lora',serif] text-[#161A1F]/92 text-[36px] md:text-[42px] leading-none tracking-[-0.02em] mb-3">
                     {metric.value}
                   </p>
-                  <p className="text-[11px] uppercase tracking-[2px] text-[#161A1F]/30 font-medium">
+                  <p className="text-[11px] uppercase tracking-[2px] text-[#161A1F]/48 font-medium">
                     {metric.label}
                   </p>
                 </div>
@@ -1100,7 +1115,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUpCard}
             transition={{ ...baseTrans, delay: 0.06 }}
-            className="text-[#161A1F]/35 text-[14px] md:text-[15px] leading-[1.65] max-w-[520px] mb-6"
+            className="text-[#161A1F]/48 text-[14px] md:text-[15px] leading-[1.65] max-w-[520px] mb-6"
           >
             Visitors moved beyond the homepage and explored both artist and
             service pages within the same session.
@@ -1109,11 +1124,20 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUpCard}
             transition={baseTrans}
-            className="text-[#161A1F]/30 text-[14px] md:text-[15px] leading-[1.65] max-w-[520px]"
+            className="text-[#161A1F]/48 text-[14px] md:text-[15px] leading-[1.65] max-w-[520px]"
           >
             These metrics reflect early engagement. Inquiry conversion and long
             term retention were not measured at this stage.
           </motion.p>
+
+          <motion.div {...fadeUpCard} transition={{ ...baseTrans, delay: 0.08 }} className="mt-12 md:mt-14">
+            <ResourceLink
+              href="https://www.fristilrecords.no/"
+              label="See the live site"
+              icon={ExternalLink}
+              variant="solid"
+            />
+          </motion.div>
         </div>
 
         <SectionDivider position="bottom" light />
@@ -1127,7 +1151,7 @@ export default function FristilCaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-14"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-14"
           >
             Case Study&ensp;&middot;&ensp;Reflection
           </motion.p>
@@ -1135,17 +1159,17 @@ export default function FristilCaseStudy() {
           <motion.h2
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.05 }}
-            className="font-['Lora',serif] font-normal text-white/90 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[700px] mb-16 md:mb-20"
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[48px] leading-[1.15] tracking-[-0.02em] max-w-[700px] mb-16 md:mb-20"
           >
             Deciding what to{" "}
-            <span className="text-white/50">lead with</span>
+            <span className="text-white/58">lead with</span>
           </motion.h2>
 
           <div className="max-w-[600px] space-y-10 md:space-y-12">
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.08 }}
-              className="text-white/55 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-white/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               The most difficult part of this project was deciding what Fristil
               Records should lead with.
@@ -1154,7 +1178,7 @@ export default function FristilCaseStudy() {
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.11 }}
-              className="text-white/55 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-white/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               Artists, services, and company information all mattered. Giving
               them equal weight made the message unclear. Prioritizing{" "}
@@ -1168,7 +1192,7 @@ export default function FristilCaseStudy() {
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.14 }}
-              className="text-white/50 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-white/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               Because there was no existing structure, every navigation choice
               defined how the label would be perceived.
@@ -1177,10 +1201,10 @@ export default function FristilCaseStudy() {
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.17 }}
-              className="text-white/50 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-white/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               Creating{" "}
-              <span className="text-white/70 font-medium">
+              <span className="text-white/72 font-medium">
                 templates early
               </span>{" "}
               forced consistency and prevented ad hoc content decisions as new
@@ -1190,7 +1214,7 @@ export default function FristilCaseStudy() {
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.20 }}
-              className="text-white/45 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-white/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               If the project continued, I would measure how visitors move
               between artist profiles and service pages, and whether service
@@ -1214,7 +1238,7 @@ export default function FristilCaseStudy() {
             <motion.p
               {...fadeUpCard}
               transition={{ ...baseTrans, delay: 0.26 }}
-              className="text-white/60 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+              className="text-white/72 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
             >
               This project reinforced that{" "}
               <span className="text-white/75 font-medium">
@@ -1224,6 +1248,7 @@ export default function FristilCaseStudy() {
             </motion.p>
           </div>
 
+          <BackToProjects />
         </div>
       </section>
     </div>

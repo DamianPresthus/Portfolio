@@ -27,7 +27,7 @@ function AboutNav() {
       <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-6">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors duration-200 group"
+          className="inline-flex items-center gap-2 text-white/72 hover:text-white/92 transition-colors duration-200 group"
         >
           <ArrowLeft
             className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
@@ -154,7 +154,7 @@ export default function About() {
             className="flex items-center gap-3 mb-16 md:mb-20"
           >
             <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] tracking-[2.4px] uppercase text-white/40 font-medium">
+            <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium">
               About
             </p>
           </motion.div>
@@ -187,13 +187,13 @@ export default function About() {
                 {/* Body copy */}
                 <motion.p
                   {...fadeUpDelay(0.18)}
-                  className="text-white/55 text-[15px] md:text-[16px] leading-[28px] mt-4"
+                  className="text-white/58 text-[15px] md:text-[16px] leading-[28px] mt-4"
                 >
                   Working with real interaction data has shaped how I approach design. At Apple, I analyze how people communicate with AI systems, how intent is expressed through language, and how small differences in phrasing change system interpretation.
                 </motion.p>
                 <motion.p
                   {...fadeUpDelay(0.22)}
-                  className="text-white/55 text-[15px] md:text-[16px] leading-[28px] mt-4"
+                  className="text-white/58 text-[15px] md:text-[16px] leading-[28px] mt-4"
                 >
                   Users rarely behave the way systems expect. They adapt, retry, and work around limitations. Observing that has reinforced a simple principle.
                 </motion.p>
@@ -207,7 +207,7 @@ export default function About() {
                   className="my-12 border-l-2 border-[#F98E1F]/25 pl-6"
                 >
                   <p
-                    className="font-['Lora',serif] font-normal text-white/80 text-[20px] md:text-[23px] max-w-[540px]"
+                    className="font-['Lora',serif] font-normal text-white/92 text-[20px] md:text-[23px] max-w-[540px]"
                     style={{ lineHeight: "1.45", letterSpacing: "-0.3px" }}
                   >
                     The next step should always be clear.
@@ -217,7 +217,7 @@ export default function About() {
                 {/* Continued body copy */}
                 <motion.p
                   {...fadeUpDelay(0.28)}
-                  className="text-white/55 text-[15px] md:text-[16px] leading-[28px]"
+                  className="text-white/58 text-[15px] md:text-[16px] leading-[28px]"
                 >
                   My process starts by identifying what the user is trying to achieve, then defining a clear entry point and reducing competing actions. Each flow should feel predictable, intuitive, and easy to navigate.
                 </motion.p>
@@ -267,10 +267,10 @@ export default function About() {
                   {...fadeUpDelay(0.2)}
                   className="mt-4 text-center"
                 >
-                  <p className="text-white/80 text-[15px] font-medium font-['Plus_Jakarta_Sans',sans-serif] tracking-wide">
+                  <p className="text-white/92 text-[15px] font-medium font-['Plus_Jakarta_Sans',sans-serif] tracking-wide">
                     Damian Aaby Præsthus
                   </p>
-                  <p className="text-white/40 text-[12px] tracking-[1.6px] uppercase mt-1">
+                  <p className="text-white/48 text-[12px] tracking-[1.6px] uppercase mt-1">
                     UX Designer &amp; Developer
                   </p>
                 </motion.div>
@@ -302,7 +302,7 @@ export default function About() {
               {/* Section label */}
               <div className="flex items-center gap-3 mb-10">
                 <div className="w-5 h-px bg-[#F98E1F]/40" />
-                <p className="text-[10px] tracking-[2.4px] uppercase text-white/40 font-medium">
+                <p className="text-[10px] tracking-[2.4px] uppercase text-white/48 font-medium">
                   Capabilities
                 </p>
               </div>
@@ -316,14 +316,14 @@ export default function About() {
                     transition={stagger(i, 0.08)}
                     className={`${i > 0 ? "sm:border-l sm:border-white/[0.06] sm:pl-10 md:pl-12" : ""} ${i < PROFILE_COLUMNS.length - 1 ? "sm:pr-10 md:pr-12" : ""}`}
                   >
-                    <p className="text-[10px] tracking-[2.4px] uppercase text-white/30 font-medium mb-5">
+                    <p className="text-[10px] tracking-[2.4px] uppercase text-white/48 font-medium mb-5">
                       {col.label}
                     </p>
                     <ul className="space-y-3">
                       {col.items.map((item) => (
                         <li
                           key={item}
-                          className="text-white/70 text-[15px] md:text-[16px] cursor-default"
+                          className="text-white/72 text-[15px] md:text-[16px] cursor-default"
                           style={{ lineHeight: "1.5" }}
                         >
                           {item}
@@ -350,7 +350,7 @@ export default function About() {
             className="flex items-center gap-3 mb-3"
           >
             <div className="w-5 h-px bg-[#F98E1F]/30" />
-            <p className="text-[11px] tracking-[2.4px] uppercase text-[#161A1F]/40 font-medium">
+            <p className="text-[11px] tracking-[2.4px] uppercase text-[#161A1F]/48 font-medium">
               Experience
             </p>
           </motion.div>
@@ -380,13 +380,13 @@ export default function About() {
                       {exp.company}
                     </h3>
                     <p
-                      className="text-[14px] md:text-[15px] text-[#161A1F]/55 mt-[5px]"
+                      className="text-[14px] md:text-[15px] text-[#161A1F]/58 mt-[5px]"
                       style={{ lineHeight: "1.4" }}
                     >
                       {exp.role}
                     </p>
                     {exp.meta && (
-                      <p className="text-[12px] md:text-[13px] text-[#161A1F]/35 mt-[4px]">
+                      <p className="text-[12px] md:text-[13px] text-[#161A1F]/48 mt-[4px]">
                         {exp.meta}
                       </p>
                     )}
@@ -394,7 +394,7 @@ export default function About() {
 
                   {/* Right — Description */}
                   <div className="md:col-span-7">
-                    <p className="text-[#161A1F]/55 text-[15px] md:text-[16px] leading-[28px] max-w-[540px]">
+                    <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[28px] max-w-[540px]">
                       {exp.description}
                     </p>
                   </div>
@@ -416,7 +416,7 @@ export default function About() {
             className="flex items-center gap-3 mb-3"
           >
             <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] tracking-[2.4px] uppercase text-white/40 font-medium">
+            <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium">
               Education
             </p>
           </motion.div>
@@ -434,7 +434,7 @@ export default function About() {
               {...fadeUpDelay(0.12)}
               className="md:col-span-6"
             >
-              <p className="text-[11px] tracking-[2.4px] uppercase text-white/35 font-medium mb-6">
+              <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium mb-6">
                 Degree
               </p>
               <h3
@@ -444,15 +444,15 @@ export default function About() {
                 Bachelor in IT &mdash; Interaction Design
               </h3>
               <p
-                className="text-[14px] md:text-[15px] text-white/55 mt-[5px]"
+                className="text-[14px] md:text-[15px] text-white/58 mt-[5px]"
                 style={{ lineHeight: "1.4" }}
               >
                 Kristiania University of Applied Sciences
               </p>
-              <p className="text-[12px] md:text-[13px] text-white/35 mt-[4px]">
+              <p className="text-[12px] md:text-[13px] text-white/48 mt-[4px]">
                 Oslo, Norway &middot; 2022 &ndash; 2025
               </p>
-              <p className="text-white/50 text-[15px] md:text-[16px] leading-[28px] mt-5 max-w-[500px]">
+              <p className="text-white/58 text-[15px] md:text-[16px] leading-[28px] mt-5 max-w-[500px]">
                 The program focused on user-centred design, interaction design, and front-end development. Coursework included usability testing, digital product development, and information security.
               </p>
             </motion.div>
@@ -462,55 +462,55 @@ export default function About() {
               {...fadeUpDelay(0.18)}
               className="md:col-span-6 md:border-l md:border-white/[0.06] md:pl-16"
             >
-              <p className="text-[11px] tracking-[2.4px] uppercase text-white/35 font-medium mb-6">
+              <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium mb-6">
                 Selected Courses
               </p>
 
               <div className="space-y-7">
                 <div>
                   <h4
-                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/85 text-[15px] md:text-[16px]"
+                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px]"
                     style={{ lineHeight: "1.4" }}
                   >
                     AI Data Fairness and Bias
                   </h4>
-                  <p className="text-[12px] md:text-[13px] text-white/35 mt-[4px]">
+                  <p className="text-[12px] md:text-[13px] text-white/48 mt-[4px]">
                     LearnQuest &middot; 2026
                   </p>
                 </div>
 
                 <div>
                   <h4
-                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/85 text-[15px] md:text-[16px]"
+                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px]"
                     style={{ lineHeight: "1.4" }}
                   >
                     AI, Business &amp; the Future of Work
                   </h4>
-                  <p className="text-[12px] md:text-[13px] text-white/35 mt-[4px]">
+                  <p className="text-[12px] md:text-[13px] text-white/48 mt-[4px]">
                     Lund University &middot; 2026
                   </p>
                 </div>
 
                 <div>
                   <h4
-                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/85 text-[15px] md:text-[16px]"
+                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px]"
                     style={{ lineHeight: "1.4" }}
                   >
                     AI: Ethics &amp; Societal Challenges
                   </h4>
-                  <p className="text-[12px] md:text-[13px] text-white/35 mt-[4px]">
+                  <p className="text-[12px] md:text-[13px] text-white/48 mt-[4px]">
                     Lund University &middot; 2025
                   </p>
                 </div>
 
                 <div>
                   <h4
-                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/85 text-[15px] md:text-[16px]"
+                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px]"
                     style={{ lineHeight: "1.4" }}
                   >
                     Google UX Design Certificate
                   </h4>
-                  <p className="text-[12px] md:text-[13px] text-white/35 mt-[4px]">
+                  <p className="text-[12px] md:text-[13px] text-white/48 mt-[4px]">
                     Coursera &middot; 2023
                   </p>
                 </div>
@@ -534,7 +534,7 @@ export default function About() {
             className="flex items-center gap-3 mb-3"
           >
             <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] tracking-[2.4px] uppercase text-white/40 font-medium">
+            <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium">
               Principles
             </p>
           </motion.div>
@@ -565,7 +565,7 @@ export default function About() {
                 >
                   {p.title}
                 </h3>
-                <p className="text-white/55 text-[14px] leading-[24px]">
+                <p className="text-white/58 text-[14px] leading-[24px]">
                   {p.description}
                 </p>
               </motion.div>

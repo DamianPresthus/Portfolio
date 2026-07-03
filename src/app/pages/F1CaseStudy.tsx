@@ -1,6 +1,7 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Github } from "lucide-react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
+import { ResourceLink, BackToProjects } from "../components/case-study/shared";
 import imgF1Hero from "../../assets/optimized/f1-platform-overview-1600.webp";
 import imgTeams from "../../assets/optimized/f1-teams-screen-1600.webp";
 import imgDrivers from "../../assets/optimized/f1-drivers-screen-1600.webp";
@@ -128,7 +129,7 @@ export default function F1CaseStudy() {
         <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-6">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 text-white/72 hover:text-white/92 transition-colors duration-200 group"
           >
             <ArrowLeft
               className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
@@ -169,7 +170,7 @@ export default function F1CaseStudy() {
               className="flex flex-col"
             >
               {/* Project type label */}
-              <span className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/25 font-medium mb-8">
+              <span className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-8">
                 Fullstack System Study
               </span>
 
@@ -179,11 +180,11 @@ export default function F1CaseStudy() {
                 Web Platform
               </h1>
 
-              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/65 text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.01em] mb-8">
+              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/72 text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.01em] mb-8">
                 Fullstack system experiment
               </h2>
 
-              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/50 text-[15px] md:text-[16px] leading-[1.65] max-w-[500px] mb-12">
+              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[500px] mb-12">
                 A fullstack web platform exploring dynamic data handling, CRUD
                 interaction patterns, and frontend performance under
                 asynchronous load.
@@ -197,25 +198,35 @@ export default function F1CaseStudy() {
               >
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2.5 text-[12px] md:text-[13px] uppercase tracking-[2px] font-medium">
                   <div className="flex items-center gap-2.5">
-                    <span className="text-white/25 tracking-[2.2px]">Role</span>
-                    <span className="text-white/60">
+                    <span className="text-white/48 tracking-[2.2px]">Role</span>
+                    <span className="text-white/72">
                       Designer & Fullstack Dev
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] md:text-[12px] uppercase tracking-[1.8px] font-medium">
-                  <span className="text-white/35">React</span>
+                  <span className="text-white/48">React</span>
                   <div className="w-px h-2.5 bg-white/10" aria-hidden="true" />
-                  <span className="text-white/35">.NET 7 Web API</span>
+                  <span className="text-white/48">.NET 7 Web API</span>
                   <div className="w-px h-2.5 bg-white/10" aria-hidden="true" />
-                  <span className="text-white/35">EF Core</span>
+                  <span className="text-white/48">EF Core</span>
                 </div>
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] md:text-[12px] uppercase tracking-[1.8px] font-medium">
-                  <span className="text-white/45">Async UX</span>
+                  <span className="text-white/58">Async UX</span>
                   <div className="w-px h-2.5 bg-white/10" aria-hidden="true" />
-                  <span className="text-white/45">State Coordination</span>
+                  <span className="text-white/58">State Coordination</span>
                   <div className="w-px h-2.5 bg-white/10" aria-hidden="true" />
-                  <span className="text-white/45">Performance</span>
+                  <span className="text-white/58">Performance</span>
+                </div>
+
+                <div className="pt-8">
+                  <ResourceLink
+                    href="https://github.com/mark26reyes/Eksamen-Web-utvikling-H23"
+                    label="View source (group project)"
+                    icon={Github}
+                    variant="ghost"
+                    tone="dark"
+                  />
                 </div>
               </motion.div>
             </motion.div>
@@ -386,7 +397,7 @@ export default function F1CaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-12"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-12"
           >
             System Study&ensp;&middot;&ensp;Core Challenge
           </motion.p>
@@ -404,9 +415,9 @@ export default function F1CaseStudy() {
                   "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.04) 100%)",
               }}
             />
-            <h2 className="font-['Lora',serif] font-normal text-white/90 text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em]">
+            <h2 className="font-['Lora',serif] font-normal text-white/92 text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em]">
               Stabilizing UI behavior{" "}
-              <span className="text-white/50">under asynchronous load</span>
+              <span className="text-white/58">under asynchronous load</span>
             </h2>
           </motion.div>
 
@@ -415,7 +426,7 @@ export default function F1CaseStudy() {
             transition={{ ...baseTrans, delay: 0.1 }}
             className="max-w-[580px] space-y-4"
           >
-            <p className="text-white/50 text-[15px] md:text-[16px] leading-[1.75]">
+            <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.75]">
               Live data updates caused UI blocking. Early builds exposed layout
               shifts as components rendered before data was ready. The interface
               felt unstable — not because the data was wrong, but because the
@@ -435,7 +446,7 @@ export default function F1CaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-12"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-12"
           >
             System Study&ensp;&middot;&ensp;Requirements
           </motion.p>
@@ -446,7 +457,7 @@ export default function F1CaseStudy() {
             className="font-['Lora',serif] font-normal text-[#161A1F] text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em] max-w-[700px] mb-12 md:mb-16"
           >
             What the platform{" "}
-            <span className="text-[#161A1F]/45">needed to do</span>
+            <span className="text-[#161A1F]/58">needed to do</span>
           </motion.h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-[900px]">
@@ -457,10 +468,10 @@ export default function F1CaseStudy() {
                 transition={stagger(index, 0.05)}
               >
                 <div className="h-full rounded-md border border-[#161A1F]/[0.08] bg-white/60 px-5 py-4 flex items-start gap-3">
-                  <span className="text-[#161A1F]/20 text-[12px] font-mono mt-0.5 shrink-0">
+                  <span className="text-[#161A1F]/48 text-[12px] font-mono mt-0.5 shrink-0">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-[#161A1F]/60 text-[13px] md:text-[14px] leading-[1.55]">
+                  <p className="text-[#161A1F]/72 text-[13px] md:text-[14px] leading-[1.55]">
                     {req}
                   </p>
                 </div>
@@ -480,7 +491,7 @@ export default function F1CaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-12"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-12"
           >
             System Study&ensp;&middot;&ensp;Architecture
           </motion.p>
@@ -494,13 +505,13 @@ export default function F1CaseStudy() {
                 className="font-['Lora',serif] font-normal text-[#161A1F] text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em] max-w-[700px] mb-6 md:mb-8"
               >
                 Separation of{" "}
-                <span className="text-[#161A1F]/45">concerns</span>
+                <span className="text-[#161A1F]/58">concerns</span>
               </motion.h2>
 
               <motion.p
                 {...fadeUp}
                 transition={{ ...baseTrans, delay: 0.08 }}
-                className="text-[#161A1F]/40 text-[15px] md:text-[16px] leading-[1.65] max-w-[520px] mb-14 md:mb-16"
+                className="text-[#161A1F]/48 text-[15px] md:text-[16px] leading-[1.65] max-w-[520px] mb-14 md:mb-16"
               >
                 Business logic isolated in the API layer. Presentation handled
                 entirely by React. Each layer testable and deployable independently.
@@ -514,14 +525,14 @@ export default function F1CaseStudy() {
               >
                 {/* Backend */}
                 <div className="flex-1 rounded-md border border-[#161A1F]/[0.06] bg-white p-5 md:p-6" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-                  <p className="text-[10px] uppercase tracking-[2.4px] text-[#161A1F]/20 font-medium mb-4">
+                  <p className="text-[10px] uppercase tracking-[2.4px] text-[#161A1F]/48 font-medium mb-4">
                     Backend
                   </p>
                   <div className="space-y-2">
-                    <p className="text-[#161A1F]/65 text-[14px] md:text-[15px] font-medium">
+                    <p className="text-[#161A1F]/72 text-[14px] md:text-[15px] font-medium">
                       .NET 7 Web API
                     </p>
-                    <p className="text-[#161A1F]/40 text-[13px] md:text-[14px]">
+                    <p className="text-[#161A1F]/48 text-[13px] md:text-[14px]">
                       Entity Framework Core
                     </p>
                   </div>
@@ -535,18 +546,32 @@ export default function F1CaseStudy() {
 
                 {/* Frontend */}
                 <div className="flex-1 rounded-md border border-[#161A1F]/[0.06] bg-white p-5 md:p-6" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-                  <p className="text-[10px] uppercase tracking-[2.4px] text-[#161A1F]/20 font-medium mb-4">
+                  <p className="text-[10px] uppercase tracking-[2.4px] text-[#161A1F]/48 font-medium mb-4">
                     Frontend
                   </p>
                   <div className="space-y-2">
-                    <p className="text-[#161A1F]/65 text-[14px] md:text-[15px] font-medium">
+                    <p className="text-[#161A1F]/72 text-[14px] md:text-[15px] font-medium">
                       React
                     </p>
-                    <p className="text-[#161A1F]/40 text-[13px] md:text-[14px]">
+                    <p className="text-[#161A1F]/48 text-[13px] md:text-[14px]">
                       Bootstrap
                     </p>
                   </div>
                 </div>
+              </motion.div>
+
+              <motion.div
+                {...fadeUp}
+                transition={{ ...baseTrans, delay: 0.14 }}
+                className="mt-12 md:mt-14"
+              >
+                <ResourceLink
+                  href="https://github.com/mark26reyes/Eksamen-Web-utvikling-H23"
+                  label="Read the code on GitHub"
+                  icon={Github}
+                  variant="ghost"
+                  tone="light"
+                />
               </motion.div>
             </div>
 
@@ -583,7 +608,7 @@ export default function F1CaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-12"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-12"
           >
             System Study&ensp;&middot;&ensp;Technical Decisions
           </motion.p>
@@ -591,16 +616,16 @@ export default function F1CaseStudy() {
           <motion.h2
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.05 }}
-            className="font-['Lora',serif] font-normal text-white/90 text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em] max-w-[760px] mb-6 md:mb-8"
+            className="font-['Lora',serif] font-normal text-white/92 text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em] max-w-[760px] mb-6 md:mb-8"
           >
             Architecture choices that{" "}
-            <span className="text-white/50">shaped perceived stability</span>
+            <span className="text-white/58">shaped perceived stability</span>
           </motion.h2>
 
           <motion.p
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.08 }}
-            className="text-white/50 text-[15px] md:text-[16px] leading-[1.65] max-w-[560px] mb-16 md:mb-20"
+            className="text-white/58 text-[15px] md:text-[16px] leading-[1.65] max-w-[560px] mb-16 md:mb-20"
           >
             Three technical decisions had the most direct impact on how the
             interface felt to use.
@@ -624,7 +649,7 @@ export default function F1CaseStudy() {
                       <span className="font-['Lora',serif] text-white/10 text-[40px] md:text-[48px] leading-none tracking-[-0.03em]">
                         {decision.id}
                       </span>
-                      <h3 className="text-white/85 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
+                      <h3 className="text-white/92 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
                         {decision.title}
                       </h3>
                     </div>
@@ -632,26 +657,26 @@ export default function F1CaseStudy() {
                     {/* Problem / Solution / Outcome grid */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
                       <div>
-                        <p className="text-[10px] uppercase tracking-[2px] text-white/25 font-medium mb-2.5">
+                        <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-2.5">
                           Problem
                         </p>
-                        <p className="text-white/45 text-[13px] md:text-[14px] leading-[1.6]">
+                        <p className="text-white/58 text-[13px] md:text-[14px] leading-[1.6]">
                           {decision.problem}
                         </p>
                       </div>
                       <div>
-                        <p className="text-[10px] uppercase tracking-[2px] text-white/25 font-medium mb-2.5">
+                        <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-2.5">
                           Solution
                         </p>
-                        <p className="text-white/55 text-[13px] md:text-[14px] leading-[1.6]">
+                        <p className="text-white/58 text-[13px] md:text-[14px] leading-[1.6]">
                           {decision.solution}
                         </p>
                       </div>
                       <div>
-                        <p className="text-[10px] uppercase tracking-[2px] text-white/30 font-medium mb-2.5">
+                        <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-2.5">
                           UX Impact
                         </p>
-                        <p className="text-white/65 text-[13px] md:text-[14px] leading-[1.6] font-medium">
+                        <p className="text-white/72 text-[13px] md:text-[14px] leading-[1.6] font-medium">
                           {decision.outcome}
                         </p>
                       </div>
@@ -676,10 +701,10 @@ export default function F1CaseStudy() {
                 <span
                   className={`text-[11px] md:text-[12px] uppercase tracking-[2px] font-medium ${
                     i === 0
-                      ? "text-white/25"
+                      ? "text-white/48"
                       : i === 1
-                        ? "text-white/40"
-                        : "text-white/60"
+                        ? "text-white/48"
+                        : "text-white/72"
                   }`}
                 >
                   {label}
@@ -701,7 +726,7 @@ export default function F1CaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/30 font-medium mb-10 md:mb-12"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium mb-10 md:mb-12"
           >
             System Study&ensp;&middot;&ensp;Accessibility
           </motion.p>
@@ -712,10 +737,10 @@ export default function F1CaseStudy() {
               <motion.h2
                 {...fadeUp}
                 transition={{ ...baseTrans, delay: 0.05 }}
-                className="font-['Lora',serif] font-normal text-white/90 text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em] max-w-[700px] mb-8 md:mb-10"
+                className="font-['Lora',serif] font-normal text-white/92 text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em] max-w-[700px] mb-8 md:mb-10"
               >
                 Integrated during{" "}
-                <span className="text-white/50">development</span>
+                <span className="text-white/58">development</span>
               </motion.h2>
 
               <motion.div
@@ -731,7 +756,7 @@ export default function F1CaseStudy() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-1 h-1 rounded-full bg-white/20 mt-2 shrink-0" />
-                    <p className="text-white/50 text-[14px] md:text-[15px] leading-[1.55]">
+                    <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.55]">
                       {item}
                     </p>
                   </div>
@@ -771,7 +796,7 @@ export default function F1CaseStudy() {
           <motion.p
             {...fadeUp}
             transition={baseTrans}
-            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/35 font-medium mb-10 md:mb-12"
+            className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium mb-10 md:mb-12"
           >
             System Study&ensp;&middot;&ensp;Reflection
           </motion.p>
@@ -785,14 +810,14 @@ export default function F1CaseStudy() {
                 className="font-['Lora',serif] font-normal text-[#161A1F] text-[28px] md:text-[36px] lg:text-[42px] leading-[1.15] tracking-[-0.02em] max-w-[640px] mb-12 md:mb-16"
               >
                 System architecture shapes{" "}
-                <span className="text-[#161A1F]/45">perceived usability</span>
+                <span className="text-[#161A1F]/58">perceived usability</span>
               </motion.h2>
 
               <div className="max-w-[560px] space-y-8 md:space-y-10">
                 <motion.p
                   {...fadeUpCard}
                   transition={{ ...baseTrans, delay: 0.08 }}
-                  className="text-[#161A1F]/55 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+                  className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
                 >
                   Async calls, image handling, and state management directly affect
                   how stable an interface feels. These aren&rsquo;t visual design
@@ -806,7 +831,7 @@ export default function F1CaseStudy() {
                 <motion.p
                   {...fadeUpCard}
                   transition={{ ...baseTrans, delay: 0.12 }}
-                  className="text-[#161A1F]/50 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
+                  className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.8] tracking-[-0.005em]"
                 >
                   Backend decisions influence frontend trust. When the API layer is
                   predictable, the interface can be too.
@@ -829,7 +854,7 @@ export default function F1CaseStudy() {
                 <motion.p
                   {...fadeUpCard}
                   transition={{ ...baseTrans, delay: 0.18 }}
-                  className="text-[#161A1F]/45 text-[14px] md:text-[15px] leading-[1.75] tracking-[-0.005em]"
+                  className="text-[#161A1F]/58 text-[14px] md:text-[15px] leading-[1.75] tracking-[-0.005em]"
                 >
                   If continued: pagination, caching, and automated API testing would
                   be the next areas of focus.
@@ -856,6 +881,8 @@ export default function F1CaseStudy() {
               </div>
             </motion.div>
           </div>
+
+          <BackToProjects light />
         </div>
       </section>
 

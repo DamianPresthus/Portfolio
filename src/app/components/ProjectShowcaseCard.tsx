@@ -312,7 +312,7 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
       {/* Info zone */}
       <div className="flex flex-col px-7 pt-5 pb-7 gap-0 flex-1">
         {/* Type eyebrow */}
-        <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-[rgba(255,255,255,0.55)] font-medium leading-[16px]">
+        <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-[rgba(255,255,255,0.58)] font-medium leading-[16px]">
           {project.type}
         </span>
 
@@ -328,7 +328,7 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
             aria-hidden="true"
           >
             <ArrowUpRight
-              className="w-[18px] h-[18px] transition-all duration-300 text-white/35 group-hover:text-[#F98E1F] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              className="w-[18px] h-[18px] transition-all duration-300 text-white/48 group-hover:text-[#F98E1F] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               strokeWidth={1.5}
             />
           </span>
@@ -337,7 +337,7 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
         {project.description ? (
           <>
             <div className="h-2" />
-            <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-[rgba(255,255,255,0.6)] text-[14px] md:text-[15px] leading-[23.25px] max-w-[420px]">
+            <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-[rgba(255,255,255,0.72)] text-[14px] md:text-[15px] leading-[23.25px] max-w-[420px]">
               {project.description}
             </p>
           </>
@@ -345,16 +345,16 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
 
         {/* Meta block — Role + Outcome */}
         <div className="mt-5 pt-5 border-t border-white/[0.06] grid grid-cols-[78px_1fr] gap-x-5 gap-y-[10px] max-w-[460px]">
-          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-white/40 leading-[18px]">
+          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-white/48 leading-[18px]">
             Role
           </span>
-          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[13px] md:text-[14px] text-white/70 leading-[20px]">
+          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[13px] md:text-[14px] text-white/72 leading-[20px]">
             {project.role}
           </span>
-          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-white/40 leading-[18px]">
+          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-white/48 leading-[18px]">
             Outcome
           </span>
-          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[13px] md:text-[14px] text-white/85 leading-[20px]">
+          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[13px] md:text-[14px] text-white/92 leading-[20px]">
             {project.outcome}
           </span>
         </div>

@@ -54,10 +54,16 @@ export function HeroSection() {
             <nav aria-label="Site navigation" className="w-full max-w-[1200px] mx-auto flex items-center justify-between pt-8 shrink-0">
               <Link
                 to="/"
-                aria-label="Damian A Præsthus home"
-                className="text-white/90 font-['Plus_Jakarta_Sans',sans-serif] font-bold text-[18px] leading-[27px] tracking-[0.4px] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F98E1F]"
+                aria-label="Damian A Præsthus — home"
+                className="group inline-flex items-end gap-[3px] no-underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[6px] focus-visible:outline-[#F98E1F]"
               >
-                DAP
+                <span className="font-['Lora',serif] font-medium text-[23px] leading-[0.9] tracking-[0.05em] text-white/92 transition-colors duration-300 group-hover:text-white">
+                  DAP
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="mb-[3px] h-[5px] w-[5px] rounded-full bg-[#F98E1F] transition-transform duration-300 ease-out group-hover:scale-125"
+                />
               </Link>
               <span aria-hidden="true" />
             </nav>
@@ -66,10 +72,11 @@ export function HeroSection() {
             <div className="flex-1 w-full max-w-[1200px] mx-auto flex items-end">
               {/* Two-column layout */}
               <div className="w-full grid grid-cols-1 md:grid-cols-12 items-end h-full">
-                {/* Left column — Portrait */}
-                <div className="hidden md:flex md:col-span-5 items-end self-end h-full">
+                {/* Left column — Portrait (bottom padding matches the right
+                    column so the portrait base aligns with the CTA row) */}
+                <div className="hidden md:flex md:col-span-5 items-end self-end h-full md:pb-12 lg:pb-[48px]">
                   <motion.div
-                    className="heroPortrait heroEntrance--portrait w-full max-w-[360px] lg:max-w-[380px] flex items-end"
+                    className="heroPortrait heroEntrance--portrait w-full max-w-[400px] lg:max-w-[430px] flex items-end"
                     style={{ y: prefersReducedMotion ? 0 : portraitY }}
                   >
                     <div className="heroPortrait__frame">
@@ -80,7 +87,7 @@ export function HeroSection() {
                         height={1600}
                         loading="eager"
                         decoding="async"
-                        className="heroPortrait__image w-full h-auto block object-contain max-h-[400px] lg:max-h-[450px]"
+                        className="heroPortrait__image w-full h-auto block object-contain max-h-[450px] lg:max-h-[500px]"
                       />
                     </div>
                   </motion.div>
@@ -110,7 +117,7 @@ export function HeroSection() {
                       <span className="absolute inset-0 rounded-full bg-[#22C55E] animate-[dotPulse_2.8s_ease-in-out_infinite]" />
                     </span>
                     {/* Text */}
-                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.14em] uppercase text-white/60 font-medium leading-[18px] transition-all duration-300 group-hover:text-white/75">
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.14em] uppercase text-white/72 font-medium leading-[18px] transition-all duration-300 group-hover:text-white/75">
                       Available for UX Roles
                     </span>
                     {/* Hover arrow + "Contact" hint */}
@@ -122,19 +129,19 @@ export function HeroSection() {
                       }}
                       aria-hidden="true"
                     >
-                      <ArrowRight className="w-3 h-3 text-white/50 shrink-0" strokeWidth={1.5} />
-                      <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[0.06em] text-white/50 whitespace-nowrap">
+                      <ArrowRight className="w-3 h-3 text-white/58 shrink-0" strokeWidth={1.5} />
+                      <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[0.06em] text-white/58 whitespace-nowrap">
                         Contact
                       </span>
                     </span>
                   </button>
 
                   {/* Identity line */}
-                  <p className="heroEntrance--meta hidden md:block font-['Plus_Jakarta_Sans',sans-serif] text-[14px] tracking-[0.08em] uppercase text-white/80 font-medium leading-[21px]">
+                  <p className="heroEntrance--meta hidden md:block font-['Plus_Jakarta_Sans',sans-serif] text-[14px] tracking-[0.08em] uppercase text-white/92 font-medium leading-[21px]">
                     DAMIAN A PR&AElig;STHUS{" "}
                     <span>
-                      <span className="text-white/45 mx-1">/</span>{" "}
-                      <span className="font-normal text-white/55">
+                      <span className="text-white/58 mx-1">/</span>{" "}
+                      <span className="font-normal text-white/58">
                         UX DESIGNER + FRONT-END
                       </span>
                     </span>
@@ -213,7 +220,7 @@ export function HeroSection() {
 
                   {/* Subline — concrete role clarity */}
                   <motion.p
-                    className="mt-6 max-w-[480px] font-['Plus_Jakarta_Sans',sans-serif] text-[15px] md:text-[16px] leading-[1.6] text-white/60"
+                    className="mt-6 max-w-[480px] font-['Plus_Jakarta_Sans',sans-serif] text-[15px] md:text-[16px] leading-[1.6] text-white/72"
                     initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
@@ -223,9 +230,9 @@ export function HeroSection() {
                     }}
                   >
                     UX/UI designer combining{" "}
-                    <span className="text-white/80">research</span>,{" "}
-                    <span className="text-white/80">interface design</span>, and{" "}
-                    <span className="text-white/80">implementation</span>{" "}
+                    <span className="text-white/92">research</span>,{" "}
+                    <span className="text-white/92">interface design</span>, and{" "}
+                    <span className="text-white/92">implementation</span>{" "}
                     to create clear products people actually use.
                   </motion.p>
 
@@ -274,7 +281,7 @@ export function HeroSection() {
                     {/* Secondary — About me */}
                     <Link
                       to="/about"
-                      className="h-12 min-w-[118px] rounded-full px-6 font-['Plus_Jakarta_Sans',sans-serif] font-medium text-[15px] text-white/60 tracking-[0.2px] leading-[14px] hover:text-white/80 hover:border-white/35 transition-colors cursor-pointer bg-transparent inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F98E1F]"
+                      className="h-12 min-w-[118px] rounded-full px-6 font-['Plus_Jakarta_Sans',sans-serif] font-medium text-[15px] text-white/72 tracking-[0.2px] leading-[14px] hover:text-white/92 hover:border-white/35 transition-colors cursor-pointer bg-transparent inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F98E1F]"
                       style={{
                         border: "1.5px solid rgba(255,255,255,0.2)",
                       }}
