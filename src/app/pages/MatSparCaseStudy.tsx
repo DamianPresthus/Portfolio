@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import imgMatSparHome from "figma:asset/2725c4cc5e8b21295821c9bfcd4d6ee4b35b016f.png";
 import imgMatSparList from "figma:asset/d0851995c5ff43e23af849b5a4cf32224e13b4f2.png";
-import { ResourceLink, BackToProjects } from "../components/case-study/shared";
+import { ResourceLink, NextProjectNav, caseStudyNav } from "../components/case-study/shared";
 import imgLeggTil from "../../assets/MatSparLeggTil.png";
 import imgOversikt from "../../assets/MatSparMatplan.png";
 
@@ -1123,7 +1123,7 @@ export default function MatSparCaseStudy() {
             </motion.p>
           </div>
 
-          <BackToProjects light />
+          <NextProjectNav {...caseStudyNav("/work/matspar")} light />
         </div>
       </section>
     </div>

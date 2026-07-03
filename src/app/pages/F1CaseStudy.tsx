@@ -1,7 +1,7 @@
 import { ArrowLeft, Github } from "lucide-react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { ResourceLink, BackToProjects } from "../components/case-study/shared";
+import { ResourceLink, NextProjectNav, caseStudyNav } from "../components/case-study/shared";
 import imgF1Hero from "../../assets/optimized/f1-platform-overview-1600.webp";
 import imgTeams from "../../assets/optimized/f1-teams-screen-1600.webp";
 import imgDrivers from "../../assets/optimized/f1-drivers-screen-1600.webp";
@@ -882,7 +882,7 @@ export default function F1CaseStudy() {
             </motion.div>
           </div>
 
-          <BackToProjects light />
+          <NextProjectNav {...caseStudyNav("/work/f1-platform")} light />
         </div>
       </section>
 

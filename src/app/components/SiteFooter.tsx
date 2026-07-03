@@ -38,8 +38,8 @@ export function SiteFooter() {
             </h2>
 
             <p className="text-white/72 text-[15px] md:text-[16px] leading-[1.7] max-w-[520px]">
-              Based in Cork, open to relocation opportunities across Europe
-              and remote roles.
+              Based in Cork, Ireland, open to relocation opportunities across
+              Europe and remote roles.
             </p>
           </div>
 

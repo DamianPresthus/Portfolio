@@ -1,7 +1,7 @@
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { ResourceLink, BackToProjects } from "../components/case-study/shared";
+import { ResourceLink, NextProjectNav, caseStudyNav } from "../components/case-study/shared";
 import imgFristil from "../../assets/optimized/fristil-records-homepage-1600.webp";
 import imgNewsletter from "../../assets/optimized/fristil-records-newsletter-1600.webp";
 import imgNyheter from "../../assets/optimized/fristil-records-news-1600.webp";
@@ -1248,7 +1248,7 @@ export default function FristilCaseStudy() {
             </motion.p>
           </div>
 
-          <BackToProjects />
+          <NextProjectNav {...caseStudyNav("/work/fristil")} />
         </div>
       </section>
     </div>

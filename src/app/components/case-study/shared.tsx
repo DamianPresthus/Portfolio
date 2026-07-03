@@ -252,3 +252,117 @@ export function BackToProjects({ light = false }: { light?: boolean }) {
     </div>
   );
 }
+
+/* ───────────────────────────────────────────────────
+   NextProjectNav — previous / next case study + back to work.
+   Lets a reviewer move between projects without returning home.
+   ─────────────────────────────────────────────────── */
+
+type ProjectNavLink = {
+  title: string;
+  href: string;
+  label: "Previous" | "Next";
+};
+
+/** Reading order used for prev/next (cyclic, so nothing dead-ends). */
+const CASE_STUDY_ORDER: { title: string; href: string }[] = [
+  { title: "Harmoni", href: "/work/harmoni" },
+  { title: "Fristil Records", href: "/work/fristil" },
+  { title: "F1 Platform", href: "/work/f1-platform" },
+  { title: "MatSpar", href: "/work/matspar" },
+];
+
+/** Returns the cyclic previous/next links for a given case-study href. */
+export function caseStudyNav(current: string): {
+  previous: ProjectNavLink;
+  next: ProjectNavLink;
+} {
+  const n = CASE_STUDY_ORDER.length;
+  const idx = CASE_STUDY_ORDER.findIndex((p) => p.href === current);
+  const i = idx < 0 ? 0 : idx;
+  return {
+    previous: { ...CASE_STUDY_ORDER[(i - 1 + n) % n], label: "Previous" },
+    next: { ...CASE_STUDY_ORDER[(i + 1) % n], label: "Next" },
+  };
+}
+
+export function NextProjectNav({
+  previous,
+  next,
+  light = false,
+}: {
+  previous?: ProjectNavLink;
+  next?: ProjectNavLink;
+  light?: boolean;
+}) {
+  const cardBorder = light
+    ? "border-[#161A1F]/10 hover:border-[#161A1F]/25"
+    : "border-white/10 hover:border-white/25";
+  const labelClass = light ? "text-on-light-label" : "text-on-dark-label";
+  const titleClass = light ? "text-on-light-primary" : "text-on-dark-primary";
+  const arrowClass = light ? "text-[#161A1F]/45" : "text-white/45";
+  const groupArrow = light
+    ? "group-hover:text-[#161A1F]/75"
+    : "group-hover:text-white/75";
+  const backColor = light
+    ? "text-[#161A1F]/48 hover:text-[#161A1F]/72"
+    : "text-white/48 hover:text-white/72";
+  const focusRing =
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]";
+
+  return (
+    <nav
+      aria-label="Case study pagination"
+      className={`mt-24 md:mt-32 pt-10 border-t ${
+        light ? "border-[#161A1F]/10" : "border-white/10"
+      }`}
+    >
+      <div className="grid gap-4 md:grid-cols-2">
+        {previous && (
+          <Link
+            to={previous.href}
+            className={`group flex flex-col rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5 no-underline ${cardBorder} ${focusRing}`}
+          >
+            <span className={`inline-flex items-center gap-2 text-[11px] uppercase tracking-[2px] font-medium ${labelClass}`}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-200 group-hover:-translate-x-0.5 ${arrowClass}`} aria-hidden="true">
+                <path d="M19 12H5" /><path d="m12 19-7-7 7-7" />
+              </svg>
+              {previous.label}
+            </span>
+            <span className={`mt-2 font-['Lora',serif] text-[19px] md:text-[21px] leading-[1.2] tracking-[-0.01em] ${titleClass}`}>
+              {previous.title}
+            </span>
+          </Link>
+        )}
+        {next && (
+          <Link
+            to={next.href}
+            className={`group flex flex-col rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5 no-underline md:items-end md:text-right ${cardBorder} ${focusRing}`}
+          >
+            <span className={`inline-flex items-center gap-2 text-[11px] uppercase tracking-[2px] font-medium ${labelClass}`}>
+              {next.label}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={`transition-transform duration-200 group-hover:translate-x-0.5 ${arrowClass} ${groupArrow}`} aria-hidden="true">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+              </svg>
+            </span>
+            <span className={`mt-2 font-['Lora',serif] text-[19px] md:text-[21px] leading-[1.2] tracking-[-0.01em] ${titleClass}`}>
+              {next.title}
+            </span>
+          </Link>
+        )}
+      </div>
+
+      <div className="mt-8 flex justify-center">
+        <Link
+          to="/"
+          className={`group inline-flex items-center gap-2 text-[13px] tracking-wide font-medium transition-colors duration-300 rounded-sm ${backColor} ${focusRing}`}
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-200 group-hover:-translate-x-1" aria-hidden="true">
+            <path d="M19 12H5" /><path d="m12 19-7-7 7-7" />
+          </svg>
+          Back to all work
+        </Link>
+      </div>
+    </nav>
+  );
+}

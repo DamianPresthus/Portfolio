@@ -23,7 +23,7 @@ import imgColors from "figma:asset/32c9691357f95709704a14b42cc7f9796a4b5293.png"
 import imgTypography from "figma:asset/45b12c0c244867215ba66a150274b72142d34951.png";
 // Figma-imported Profil screen component
 import ProfilScreen from "../../imports/Group82";
-import { ResourceLink, BackToProjects } from "../components/case-study/shared";
+import { ResourceLink, NextProjectNav, caseStudyNav } from "../components/case-study/shared";
 
 const fadeUp = {
   initial: { opacity: 0, y: 14 },
@@ -36,6 +36,58 @@ const fadeUpDelay = (delay: number) => ({
   ...fadeUp,
   transition: { ...fadeUp.transition, delay },
 });
+
+/* First-session flow — real screens, in the order a new user meets them. */
+type FlowStep = {
+  step: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  /** Optional interaction-state tag (e.g. Feedback, Completion). */
+  state?: string;
+};
+
+const firstSessionFlow: FlowStep[] = [
+  {
+    step: "01",
+    title: "Welcome",
+    imageSrc: imgHarmoniOnboarding,
+    imageAlt:
+      "Welcome screen — a friendly illustration, one line of purpose, and a single Kom i gang button",
+    description:
+      "One line of purpose and a single button. Value is shown before any account wall.",
+  },
+  {
+    step: "02",
+    title: "Start the session",
+    imageSrc: imgHeroScreen,
+    imageAlt:
+      "Home screen opening on one primary action — Start today's exercise",
+    description:
+      "Home opens on one primary action. Activities and articles wait below the fold.",
+  },
+  {
+    step: "03",
+    state: "Feedback",
+    title: "Reflect",
+    imageSrc: imgMood,
+    imageAlt:
+      "Mood check-in screen with an AI summary that reflects the entry back to the user",
+    description:
+      "A lightweight mood check-in. The AI summary reflects the entry back — a response, not a form.",
+  },
+  {
+    step: "04",
+    state: "Completion",
+    title: "See progress",
+    imageSrc: imgProfilScreen,
+    imageAlt:
+      "Profile screen showing an active-day streak and progress toward a wellbeing goal",
+    description:
+      "Streak and goal progress close the loop and give a reason to return tomorrow.",
+  },
+];
 
 function SectionDivider({ light = false }: { light?: boolean }) {
   return (
@@ -556,24 +608,28 @@ export default function HarmoniCaseStudy() {
           >
             <div className="w-5 h-px bg-[#F98E1F]/40" />
             <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/58 font-medium">
-              Process
+              Key Interaction &middot; First Session
             </p>
           </motion.div>
 
           <motion.h2
             {...fadeUp}
-            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] max-w-[680px] mb-6"
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] max-w-[720px] mb-6"
           >
-            From early structure{" "}
-            <span className="text-white/58">to resolved interface.</span>
+            From hesitation{" "}
+            <span className="text-white/58">to first action.</span>
           </motion.h2>
 
           <motion.p
             {...fadeUpDelay(0.06)}
-            className="text-white/58 text-[15px] md:text-[16px] leading-[1.7] max-w-[540px] mb-16 md:mb-24"
+            className="text-white/72 text-[15px] md:text-[16px] leading-[1.75] max-w-[620px] mb-16 md:mb-24"
           >
-            Wireframes defined layout decisions before visual styling began.
-            Structure was tested before polish.
+            The main issue was not that users disliked the interface. They were
+            unsure what action the product expected from them first. In the
+            first version, multiple entry points competed for attention, so
+            participants hesitated before starting the session. I redesigned the
+            first session around one clear primary action and moved supporting
+            content lower in the hierarchy.
           </motion.p>
 
           <motion.div {...fadeUpDelay(0.09)} className="-mt-8 mb-16 md:mb-24">
@@ -585,85 +641,190 @@ export default function HarmoniCaseStudy() {
             />
           </motion.div>
 
-          {/* Before / After comparison */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
-            {/* Before — Wireframes */}
-            <motion.div
-              {...fadeUpDelay(0.08)}
-            >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-2 h-2 rounded-full bg-white/15" />
-                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/48 font-medium">
-                  Early exploration
+          {/* Before / After comparison — annotated */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-start">
+            {/* V1 — competing entry points */}
+            <motion.div {...fadeUpDelay(0.08)}>
+              <div className="flex items-center gap-2.5 mb-5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E08A3C]" aria-hidden="true" />
+                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/58 font-medium">
+                  Version 1 &middot; Competing entry points
+                </p>
+              </div>
+              <div className="w-full rounded-lg overflow-hidden bg-white/[0.03] border border-white/[0.06] p-4 md:p-6">
+                <img
+                  src={imgWireframes}
+                  alt="First version — early wireframes exposing session, activities, podcast, and articles with equal visual weight"
+                  className="w-full h-auto rounded opacity-90"
+                />
+              </div>
+              <div className="mt-6 space-y-3.5 max-w-[480px]">
+                <div className="flex items-start gap-3">
+                  <span className="mt-[7px] w-2 h-2 rounded-full bg-[#E08A3C] shrink-0" aria-hidden="true" />
+                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.65]">
+                    <span className="text-white/92 font-medium">Competing entry points.</span>{" "}
+                    Session, activities, and podcast all read as equally
+                    actionable — no single starting point was prioritized.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="mt-[7px] w-2 h-2 rounded-full bg-white/25 shrink-0" aria-hidden="true" />
+                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.65]">
+                    <span className="text-white/92 font-medium">2 of 5 participants</span>{" "}
+                    hesitated before starting the session.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* V2 — single primary action */}
+            <motion.div {...fadeUpDelay(0.14)}>
+              <div className="flex items-center gap-2.5 mb-5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#4FB477]" aria-hidden="true" />
+                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/58 font-medium">
+                  Version 2 &middot; Single primary action
                 </p>
               </div>
               <div
-                className="w-full rounded-lg overflow-hidden bg-white/[0.03] border border-white/[0.06] p-4 md:p-6"
+                className="w-full max-w-[300px] rounded-[18px] overflow-hidden border border-white/[0.06]"
+                style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.35)" }}
               >
                 <img
-                  src={imgWireframes}
-                  alt="Early wireframe explorations — home, emergency, activities, and profile screens in grayscale"
-                  className="w-full h-auto rounded opacity-85"
+                  src={imgHeroScreen}
+                  alt="Second version — home screen with one dominant Start action for today's exercise"
+                  className="w-full h-auto block"
                 />
               </div>
-              <p className="text-white/48 text-[13px] md:text-[14px] leading-[1.65] mt-5 max-w-[480px]">
-                The first version exposed multiple features at once. The layout
-                assumed users would explore freely. Testing showed hesitation
-                instead. I defined first session task initiation as the primary
-                success metric and deprioritized feature exposure until that
-                metric improved.
-              </p>
-            </motion.div>
-
-            {/* After — Final UI */}
-            <motion.div
-              {...fadeUpDelay(0.14)}
-            >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-2 h-2 rounded-full bg-white/40" />
-                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/58 font-medium">
-                  Resolved interface
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-3 md:gap-4">
-                <div
-                  className="rounded-lg overflow-hidden bg-white/[0.03] border border-white/[0.06]"
-                >
-                  <img
-                    src={imgHeroScreen}
-                    alt="Final home screen — single daily action, clear primary CTA"
-                    className="w-full h-auto"
-                  />
+              <div className="mt-6 space-y-3.5 max-w-[480px]">
+                <div className="flex items-start gap-3">
+                  <span className="mt-[7px] w-2 h-2 rounded-full bg-[#4FB477] shrink-0" aria-hidden="true" />
+                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.65]">
+                    <span className="text-white/92 font-medium">One dominant action.</span>{" "}
+                    &ldquo;Start today&rsquo;s exercise&rdquo; leads; activities
+                    and articles moved below the first viewport.
+                  </p>
                 </div>
-                <div
-                  className="rounded-lg overflow-hidden bg-white/[0.03] border border-white/[0.06]"
-                >
-                  <img
-                    src={imgProfilScreen}
-                    alt="Harmoni profile screen — mood check-in, health metrics, and activity tracking"
-                    className="w-full h-auto block"
-                  />
+                <div className="flex items-start gap-3">
+                  <span className="mt-[7px] w-2 h-2 rounded-full bg-[#4FB477] shrink-0" aria-hidden="true" />
+                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.65]">
+                    <span className="text-white/92 font-medium">5 of 5 participants</span>{" "}
+                    initiated the session without hesitation.
+                  </p>
                 </div>
               </div>
-              <p className="text-white/58 text-[13px] md:text-[14px] leading-[1.65] mt-5 max-w-[480px]">
-                The home screen was reduced to one clear action. Other features
-                remained accessible but were visually secondary. I chose
-                clarity over immediate discoverability. Some content became less
-                prominent, but hesitation disappeared in testing.
-              </p>
             </motion.div>
           </div>
 
-          {/* Iteration insight */}
+          {/* Usability test signal — raw artifact */}
           <motion.div
             {...fadeUpDelay(0.1)}
-            className="mt-16 md:mt-20 pt-10 border-t border-white/[0.05] max-w-[580px]"
+            className="mt-16 md:mt-20 max-w-[720px] rounded-xl border border-white/[0.08] bg-white/[0.02] p-7 md:p-9"
           >
-            <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.7] italic border-l-2 border-[#F98E1F]/25 pl-6">
-              What changed most was not visual polish. It was removal of
-              competing actions.
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-5 h-px bg-[#F98E1F]/50" />
+              <p className="text-[10px] uppercase tracking-[2.4px] text-white/58 font-medium">
+                Usability test signal
+              </p>
+            </div>
+            <dl className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-1 sm:gap-5">
+                <dt className="text-[11px] uppercase tracking-[1.6px] text-white/48 font-medium pt-0.5">Task</dt>
+                <dd className="text-white/72 text-[14px] md:text-[15px] leading-[1.6]">
+                  Start today&rsquo;s guided session.
+                </dd>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-1 sm:gap-5">
+                <dt className="text-[11px] uppercase tracking-[1.6px] text-white/48 font-medium pt-0.5">Observation</dt>
+                <dd className="text-white/72 text-[14px] md:text-[15px] leading-[1.6]">
+                  2 of 5 participants paused on the first screen because the
+                  podcast card and session card appeared equally actionable.
+                </dd>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-1 sm:gap-5">
+                <dt className="text-[11px] uppercase tracking-[1.6px] text-white/48 font-medium pt-0.5">Design response</dt>
+                <dd className="text-white/92 text-[14px] md:text-[15px] leading-[1.6] font-medium">
+                  I reduced the competing card hierarchy and made the session CTA
+                  the only primary action.
+                </dd>
+              </div>
+            </dl>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          4B. FIRST SESSION FLOW — Dark
+          ═══════════════════════════════════════ */}
+      <section className="relative w-full bg-[#161A1F] overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute top-[22%] left-1/2 -translate-x-1/2 w-[1000px] h-[560px] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(140,170,210,0.03) 0%, transparent 70%)",
+            filter: "blur(60px)",
+          }}
+        />
+        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40">
+          <motion.div {...fadeUp} className="flex items-center gap-3 mb-10 md:mb-14">
+            <div className="w-5 h-px bg-[#F98E1F]/40" />
+            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/58 font-medium">
+              First Session Flow
             </p>
           </motion.div>
+
+          <motion.h2
+            {...fadeUpDelay(0.04)}
+            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] max-w-[680px] mb-6"
+          >
+            Start to reflection, without a dead end.
+          </motion.h2>
+
+          <motion.p
+            {...fadeUpDelay(0.08)}
+            className="text-white/72 text-[15px] md:text-[16px] leading-[1.75] max-w-[600px] mb-16 md:mb-20"
+          >
+            The redesigned first session moves in one direction — open, start a
+            single action, reflect, and see progress. Each screen resolves one
+            decision before handing off to the next.
+          </motion.p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {firstSessionFlow.map((s, i) => (
+              <motion.div
+                key={s.step}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: 0.06 * i, ease: [0.25, 0.1, 0.25, 1] as const }}
+                className="flex flex-col"
+              >
+                <div className="flex items-center gap-2.5 mb-4">
+                  <span className="font-['Lora',serif] text-white/48 text-[15px] leading-none">
+                    {s.step}
+                  </span>
+                  <div className="h-px flex-1 bg-white/[0.08]" />
+                  {s.state && (
+                    <span className="text-[9px] uppercase tracking-[1.4px] font-medium text-[#F98E1F]/90 border border-[#F98E1F]/30 rounded-full px-2 py-[3px]">
+                      {s.state}
+                    </span>
+                  )}
+                </div>
+                <div
+                  className="w-full rounded-[14px] overflow-hidden bg-white/[0.02] border border-white/[0.06]"
+                  style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.35)" }}
+                >
+                  <img src={s.imageSrc} alt={s.imageAlt} className="w-full h-auto block" />
+                </div>
+                <h3 className="mt-5 text-white/92 text-[15px] md:text-[16px] font-medium leading-[1.35]">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-white/72 text-[13px] md:text-[14px] leading-[1.6]">
+                  {s.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1086,7 +1247,7 @@ export default function HarmoniCaseStudy() {
             </motion.div>
           </div>
 
-          <BackToProjects />
+          <NextProjectNav {...caseStudyNav("/work/harmoni")} />
         </div>
       </section>
     </div>
