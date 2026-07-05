@@ -92,72 +92,15 @@
   100% { opacity: 1; }
 }
 
-/* ─── Staggered entrance animations ─── */
-
-.heroEntrance--availability {
-  opacity: 0;
-  transform: translateY(6px);
-  animation: fadeSlideUp 450ms cubic-bezier(0.25, 0.1, 0.25, 1) 240ms forwards;
-}
-
-.heroEntrance--portrait {
-  opacity: 0;
-  transform: scale(0.975) translateY(6px);
-  animation: portraitIn 650ms cubic-bezier(0.25, 0.1, 0.25, 1) 150ms forwards;
-}
-
-.heroEntrance--meta {
-  opacity: 0;
-  transform: translateY(8px);
-  animation: fadeSlideUp 500ms cubic-bezier(0.25, 0.1, 0.25, 1) 320ms forwards;
-}
-
-.heroEntrance--headline {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeSlideUp 600ms cubic-bezier(0.25, 0.1, 0.25, 1) 420ms forwards;
-}
-
-.heroEntrance--cta {
-  opacity: 0;
-  transform: translateY(8px);
-  animation: fadeSlideUp 500ms cubic-bezier(0.25, 0.1, 0.25, 1) 560ms forwards;
-}
-
-@keyframes portraitIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.975) translateY(6px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Entrance choreography lives in hero-sequence.css
+   ("From System to Human" load sequence). */
 
 /* ─── Reduced motion ─── */
 
 @media (prefers-reduced-motion: reduce) {
-  .heroBloom,
-  .heroEntrance--availability,
-  .heroEntrance--portrait,
-  .heroEntrance--meta,
-  .heroEntrance--headline,
-  .heroEntrance--cta {
+  .heroBloom {
     animation: none;
     opacity: 1;
-    transform: none;
   }
 }
 

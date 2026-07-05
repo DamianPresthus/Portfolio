@@ -2,6 +2,7 @@
 @import './tailwind.css';
 @import './theme.css';
 @import './hero.css';
+@import './hero-sequence.css';
 
 html,
 body,

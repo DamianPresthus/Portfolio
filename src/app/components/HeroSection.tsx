@@ -1,14 +1,55 @@
 import imgPortrait from "../../assets/optimized/damian-portrait-1200.webp";
 import svgPaths from "../../imports/svg-fa3xoaab76";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { PortraitResolve } from "./hero/PortraitResolve";
+import { SketchLayer } from "./hero/SketchLayer";
+import { WarmthField } from "./hero/WarmthField";
+import { getInitialHeroMode, useMarkPlayedOnComplete } from "./hero/useHeroSequence";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  /**
+   * Fallback switch: if portrait-midfi.png doesn't register cleanly against
+   * the photo, set true to run the two-step wireframe → photo sequence.
+   */
+  twoStepPortrait?: boolean;
+  /** Roughen the wireframe SVG slightly if the provided asset reads too clean. */
+  roughenWireframe?: boolean;
+}
+
+export function HeroSection({
+  twoStepPortrait = false,
+  roughenWireframe = false,
+}: HeroSectionProps = {}) {
   const [availHovered, setAvailHovered] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
+
+  // "Paper to Product" sequence state. Mode is decided once, before
+  // first paint: sequence on first visit, static on replay/reduced motion.
+  const [mode] = useState(getInitialHeroMode);
+  const [run, setRun] = useState(false);
+  const isSeq = mode === "sequence";
+
+  // Portrait layers only exist md+ (the column is hidden on mobile) —
+  // don't spend mobile bandwidth on wireframe/mid-fi.
+  const [hasPortrait] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 768px)").matches,
+  );
+
+  // Start the clock when the wireframe is ready; 600ms safety cap so a
+  // slow asset can never hold the page hostage. Mobile starts immediately.
+  useEffect(() => {
+    if (!isSeq || run) return;
+    const cap = window.setTimeout(() => setRun(true), hasPortrait ? 600 : 30);
+    return () => window.clearTimeout(cap);
+  }, [isSeq, run, hasPortrait]);
+
+  useMarkPlayedOnComplete(mode, run);
 
   // Parallax for portrait
   const { scrollY } = useScroll();
@@ -26,27 +67,31 @@ export function HeroSection() {
   };
 
   return (
-    <section ref={heroRef} className="relative w-full overflow-hidden">
+    <section
+      ref={heroRef}
+      className={`relative w-full overflow-hidden hs ${isSeq ? "hs--seq" : "hs--static"}${run ? " hs-run" : ""}`}
+    >
       {/* Hero container + line wrapper */}
       <div className="relative">
         {/* Hero container — fixed height, no border-radius */}
         <div className="hero w-full" style={{ height: "clamp(560px, 60vw, 715px)" }}>
-          {/* Light bloom overlay — animates on load */}
+          {/* Light bloom overlay — static ambience; the warmth field owns motion */}
           <div className="heroBloom" aria-hidden="true">
-            <motion.div
-              className="heroBloom__inner"
-              animate={
-                prefersReducedMotion
-                  ? undefined
-                  : { scale: [1, 1.04, 1], opacity: [1, 0.7, 1] }
-              }
-              transition={
-                prefersReducedMotion
-                  ? undefined
-                  : { duration: 8, repeat: Infinity, ease: "easeInOut" }
-              }
-            />
+            <div className="heroBloom__inner" />
           </div>
+
+          {/* Ambient warmth loop — lazy-mounted after LCP */}
+          <WarmthField heroRef={heroRef} />
+
+          {/* Grid echo — carries structure through the paper→dark transition */}
+          {isSeq && (
+            <div className="hsGrid" aria-hidden="true">
+              <div className="hsGrid__cols px-8 md:px-12 lg:px-16" />
+            </div>
+          )}
+
+          {/* Paper sketch — Phases 1–3, lifts at 1500ms */}
+          {isSeq && <SketchLayer />}
 
           {/* Content layer */}
           <div className="relative z-10 h-full flex flex-col px-8 md:px-12 lg:px-16">
@@ -55,7 +100,8 @@ export function HeroSection() {
               <Link
                 to="/"
                 aria-label="Damian A Præsthus — home"
-                className="group inline-flex items-end gap-[3px] no-underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[6px] focus-visible:outline-[#F98E1F]"
+                className="hs-in group inline-flex items-end gap-[3px] no-underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[6px] focus-visible:outline-[#F98E1F]"
+                style={{ "--hs-delay": "2300ms" } as CSSProperties}
               >
                 <span className="font-['Lora',serif] font-medium text-[23px] leading-[0.9] tracking-[0.05em] text-white/92 transition-colors duration-300 group-hover:text-white">
                   DAP
@@ -76,20 +122,16 @@ export function HeroSection() {
                     column so the portrait base aligns with the CTA row) */}
                 <div className="hidden md:flex md:col-span-5 items-end self-end h-full md:pb-12 lg:pb-[48px]">
                   <motion.div
-                    className="heroPortrait heroEntrance--portrait w-full max-w-[400px] lg:max-w-[430px] flex items-end"
+                    className="heroPortrait w-full max-w-[400px] lg:max-w-[430px] flex items-end"
                     style={{ y: prefersReducedMotion ? 0 : portraitY }}
                   >
-                    <div className="heroPortrait__frame">
-                      <img
-                        src={imgPortrait}
-                        alt="Damian A Præsthus"
-                        width={1200}
-                        height={1600}
-                        loading="eager"
-                        decoding="async"
-                        className="heroPortrait__image w-full h-auto block object-contain max-h-[450px] lg:max-h-[500px]"
-                      />
-                    </div>
+                    <PortraitResolve
+                      mode={hasPortrait ? mode : "static"}
+                      photoSrc={imgPortrait}
+                      twoStep={twoStepPortrait}
+                      roughen={roughenWireframe}
+                      onWireSettled={() => setRun(true)}
+                    />
                   </motion.div>
                 </div>
 
@@ -104,7 +146,8 @@ export function HeroSection() {
                         behavior: "smooth",
                       })
                     }
-                    className="heroEntrance--availability inline-flex items-center gap-[6px] cursor-pointer group mt-10 md:mt-14 mb-1 md:mb-2.5 w-fit no-underline bg-transparent border-0 p-0"
+                    className="hs-in inline-flex items-center gap-[6px] cursor-pointer group mt-10 md:mt-14 mb-1 md:mb-2.5 w-fit no-underline bg-transparent border-0 p-0"
+                    style={{ "--hs-delay": "2400ms" } as CSSProperties}
                     aria-label="Available for UX roles — scroll to contact footer"
                     onMouseEnter={() => setAvailHovered(true)}
                     onMouseLeave={() => setAvailHovered(false)}
@@ -137,7 +180,10 @@ export function HeroSection() {
                   </button>
 
                   {/* Identity line */}
-                  <p className="heroEntrance--meta hidden md:block font-['Plus_Jakarta_Sans',sans-serif] text-[14px] tracking-[0.08em] uppercase text-white/92 font-medium leading-[21px]">
+                  <p
+                    className="hs-in hidden md:block font-['Plus_Jakarta_Sans',sans-serif] text-[14px] tracking-[0.08em] uppercase text-white/92 font-medium leading-[21px]"
+                    style={{ "--hs-delay": "2450ms" } as CSSProperties}
+                  >
                     DAMIAN A PR&AElig;STHUS{" "}
                     <span>
                       <span className="text-white/58 mx-1">/</span>{" "}
@@ -150,97 +196,63 @@ export function HeroSection() {
                   {/* 22px spacer */}
                   <div className="h-2 md:h-[22px]" />
 
-                  {/* Headline */}
-                  <div className="heroEntrance--headline max-w-[560px]">
+                  {/* Headline — real h1 in the DOM from t=0, rises once the
+                      canvas has settled */}
+                  <div className="max-w-[560px]">
                     {/* Orange accent dots */}
-                    <div className="hidden md:flex items-center gap-[6px] mb-4">
+                    <div
+                      className="hs-in hidden md:flex items-center gap-[6px] mb-4"
+                      style={{ "--hs-delay": "2400ms" } as CSSProperties}
+                    >
                       {[0, 1, 2].map((i) => (
-                        <motion.span
+                        <span
                           key={i}
                           className="w-[5px] h-[5px] rounded-full bg-[#F98E1F]/30"
-                          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={
-                            prefersReducedMotion
-                              ? { duration: 0 }
-                              : { delay: 0.5 + i * 0.1, duration: 0.4 }
-                          }
                         />
                       ))}
                     </div>
                     <h1
-                      className="font-['Lora',serif] font-normal text-white"
-                      style={{ lineHeight: "1.06", letterSpacing: "-0.7px" }}
+                      className="hs-in font-['Lora',serif] font-normal text-white"
+                      style={
+                        {
+                          lineHeight: "1.06",
+                          letterSpacing: "-0.7px",
+                          "--hs-delay": "2300ms",
+                        } as CSSProperties
+                      }
                     >
-                      {["Building systems", null, "with human", "behaviour."].map(
-                        (line, i) => (
-                          <motion.span
-                            key={i}
-                            className="block text-[32px] md:text-[48px] lg:text-[60px]"
-                            initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                              delay: prefersReducedMotion ? 0 : 0.45 + i * 0.12,
-                              duration: prefersReducedMotion ? 0 : 0.55,
-                              ease: [0.25, 0.1, 0.25, 1],
-                            }}
-                          >
-                            {line === null ? (
-                              <>
-                                that{" "}
-                                <motion.span
-                                  className="text-[#F98E1F] inline-block"
-                                  initial={
-                                    prefersReducedMotion
-                                      ? false
-                                      : {
-                                          opacity: 0,
-                                        }
-                                  }
-                                  animate={{
-                                    opacity: 1,
-                                  }}
-                                  transition={{
-                                    delay: prefersReducedMotion ? 0 : 1.0,
-                                    duration: prefersReducedMotion ? 0 : 0.9,
-                                    ease: "easeOut",
-                                  }}
-                                >
-                                  evolve
-                                </motion.span>
-                              </>
-                            ) : (
-                              line
-                            )}
-                          </motion.span>
-                        )
-                      )}
+                      <span className="block text-[32px] md:text-[48px] lg:text-[60px]">
+                        Designing systems
+                      </span>
+                      <span className="block text-[32px] md:text-[48px] lg:text-[60px]">
+                        that <span className="text-[#F98E1F]">evolve</span>
+                      </span>
+                      <span className="block text-[32px] md:text-[48px] lg:text-[60px]">
+                        through real use.
+                      </span>
                     </h1>
                   </div>
 
                   {/* Subline — concrete role clarity */}
-                  <motion.p
-                    className="mt-6 max-w-[480px] font-['Plus_Jakarta_Sans',sans-serif] text-[15px] md:text-[16px] leading-[1.6] text-white/72"
-                    initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: prefersReducedMotion ? 0 : 1.15,
-                      duration: prefersReducedMotion ? 0 : 0.6,
-                      ease: [0.25, 0.1, 0.25, 1],
-                    }}
+                  <p
+                    className="hs-in mt-6 max-w-[480px] font-['Plus_Jakarta_Sans',sans-serif] text-[15px] md:text-[16px] leading-[1.6] text-white/72"
+                    style={{ "--hs-delay": "2550ms" } as CSSProperties}
                   >
                     UX/UI designer combining{" "}
                     <span className="text-white/92">research</span>,{" "}
                     <span className="text-white/92">interface design</span>, and{" "}
-                    <span className="text-white/92">implementation</span>{" "}
-                    to create clear products people actually use.
-                  </motion.p>
+                    <span className="text-white/92">React implementation</span>{" "}
+                    to turn early ideas into usable product experiences.
+                  </p>
 
                   {/* 40px spacer */}
                   <div className="h-8 md:h-10" />
 
-                  {/* CTA buttons */}
-                  <div className="heroEntrance--cta flex flex-wrap items-center gap-3 sm:gap-4">
+                  {/* CTA buttons — in the DOM and clickable from t=0 */}
+                  <div
+                    className="hs-in flex flex-wrap items-center gap-3 sm:gap-4"
+                    style={{ "--hs-delay": "2700ms" } as CSSProperties}
+                  >
                     {/* Primary — VIEW WORK with expanding dark pill hover */}
                     <button className="relative h-12 rounded-full cursor-pointer group overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F98E1F]"
                       style={{ width: '167px' }}
