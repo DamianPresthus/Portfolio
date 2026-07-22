@@ -166,6 +166,7 @@ export function HeroSection({
                   gravity={[0, -10.5, 0]}
                   interactive={false}
                   anchorXFactor={0.06}
+                  entryIntensity={0.35}
                 />
               </div>
             </Suspense>

@@ -54,6 +54,14 @@ export interface IDCardProps {
   interactive?: boolean;
   /** Horizontal lanyard anchor position as a factor of the scene width. */
   anchorXFactor?: number;
+  /**
+   * Scales the entry spin (initial rotation + angular velocity), 0-1.
+   * The rope/gravity/damping are fixed world-unit constants, so the full
+   * (1.0) spin swings through an arc wide enough to exceed a mobile
+   * canvas's frustum regardless of container or camera size — this is
+   * the lever that actually shrinks the swing itself.
+   */
+  entryIntensity?: number;
   className?: string;
 }
 
@@ -136,6 +144,7 @@ interface BadgeCardProps {
   clipColor: string;
   startPosition: [number, number, number];
   interactive: boolean;
+  entryIntensity: number;
 }
 
 function BadgeCard({
@@ -144,6 +153,7 @@ function BadgeCard({
   clipColor,
   startPosition,
   interactive,
+  entryIntensity,
 }: BadgeCardProps) {
   const texture = useTexture(frontImage);
   const portraitTexture = useTexture(defaultPortraitImage);
@@ -417,8 +427,8 @@ function BadgeCard({
       ref={bodyRef}
       type={bodyType}
       position={startPosition}
-      rotation={[0, 0, ENTRY_ROTATION_Z]}
-      angularVelocity={[0, 0, -1.15]}
+      rotation={[0, 0, ENTRY_ROTATION_Z * entryIntensity]}
+      angularVelocity={[0, 0, -1.15 * entryIntensity]}
       enabledTranslations={[true, true, false]}
       enabledRotations={[false, false, true]}
       colliders={false}
@@ -678,10 +688,16 @@ function LanyardScene({
   clipColor,
   interactive,
   anchorXFactor,
+  entryIntensity,
 }: Required<
   Pick<
     IDCardProps,
-    "frontImage" | "stringColor" | "clipColor" | "interactive" | "anchorXFactor"
+    | "frontImage"
+    | "stringColor"
+    | "clipColor"
+    | "interactive"
+    | "anchorXFactor"
+    | "entryIntensity"
   >
 >) {
   const viewport = useThree((state) => state.viewport);
@@ -712,7 +728,7 @@ function LanyardScene({
     const lastRopePosition = ropePositions[ropePositions.length - 1];
     const rotatedCardAttach = CARD_ATTACH.clone().applyAxisAngle(
       Z_AXIS,
-      ENTRY_ROTATION_Z,
+      ENTRY_ROTATION_Z * entryIntensity,
     );
 
     return [
@@ -720,7 +736,7 @@ function LanyardScene({
       lastRopePosition[1] - rotatedCardAttach.y,
       0,
     ];
-  }, [ropePositions]);
+  }, [ropePositions, entryIntensity]);
 
   return (
     <>
@@ -750,6 +766,7 @@ function LanyardScene({
         clipColor={clipColor}
         startPosition={cardStart}
         interactive={interactive}
+        entryIntensity={entryIntensity}
       />
       <CardConstraint rope={segmentFive} card={card} />
       <LanyardResizeStabilizer
@@ -771,6 +788,7 @@ export function IDCard({
   gravity = [0, -10.5, 0],
   interactive = true,
   anchorXFactor = ROPE_ANCHOR_X_FACTOR,
+  entryIntensity = 1,
   className,
 }: IDCardProps) {
   return (
@@ -812,6 +830,7 @@ export function IDCard({
               clipColor={clipColor}
               interactive={interactive}
               anchorXFactor={anchorXFactor}
+              entryIntensity={entryIntensity}
             />
           </Physics>
           <Environment resolution={64}>
