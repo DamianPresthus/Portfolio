@@ -127,15 +127,23 @@
 }
 
 @media (max-width: 767px) {
+  /* Sized and positioned via real width/height/top/right (never `transform`)
+     so react-three-fiber measures this box directly: it reads the
+     container's post-transform rect to size the canvas, then the browser
+     re-applies any transform on top when painting, silently compounding
+     the scale. width/height keep the hero's own aspect ratio, which keeps
+     the lanyard scene's world-space framing identical to the full-bleed
+     version — only the pixel area it renders into shrinks. */
   .heroMobilePhysics {
     display: block;
     position: absolute;
     z-index: 4;
-    inset: 0;
+    top: 2.75rem;
+    right: 9vw;
+    width: 54%;
+    height: 54%;
     pointer-events: none;
     opacity: 0.8;
-    transform: scale(0.8) translate3d(-4%, -6%, 0);
-    transform-origin: 74% 16%;
   }
 
   .heroMobileCard {
@@ -143,7 +151,7 @@
     position: absolute;
     z-index: 4;
     top: 8.75rem;
-    right: -5vw;
+    right: 2vw;
     width: min(42vw, 178px);
     pointer-events: none;
     opacity: 0.8;

@@ -155,13 +155,19 @@ export function HeroSection({
                 </div>
               }
             >
-              <IDCard
-                className="heroMobilePhysics"
-                frontImage={imgIDCard}
-                gravity={[0, -10.5, 0]}
-                interactive={false}
-                anchorXFactor={0.28}
-              />
+              {/* IDCard's root div sets an inline width/height: 100% style,
+                  which would beat a CSS class trying to resize it directly
+                  (inline styles always win over stylesheet rules). Sizing
+                  the box on this wrapper instead lets IDCard fill 100% of
+                  it as intended. */}
+              <div className="heroMobilePhysics">
+                <IDCard
+                  frontImage={imgIDCard}
+                  gravity={[0, -10.5, 0]}
+                  interactive={false}
+                  anchorXFactor={0.06}
+                />
+              </div>
             </Suspense>
           ))}
 
