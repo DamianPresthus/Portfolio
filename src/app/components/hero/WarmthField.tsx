@@ -12,12 +12,12 @@ interface WarmthFieldProps {
 
 /**
  * Ambient warmth behind the hero content — zero assets.
- * Two counter-drifting radial gradients (25s / 35s loops, transform-only,
+ * Two counter-drifting blurred color fields (25s / 35s loops, transform-only,
  * screen blend) stand in for a light loop; hero-sequence.css owns the look.
  * - Mounts nothing until LCP has fired (initial paint never waits on it).
  * - Reduced motion: the drift keyframes are disabled in CSS, leaving the
  *   gradients as a static overlay.
- * - Fine pointers get a heavily damped radial warmth overlay that drifts
+ * - Fine pointers get a heavily damped warmth overlay that drifts
  *   toward the cursor (800ms ease-out, ±28px) — felt, not seen.
  */
 export function WarmthField({ heroRef }: WarmthFieldProps) {

@@ -12,6 +12,8 @@ import {
   stagger,
   SectionDivider,
   AmbientGlow,
+  H2,
+  H3_ROW,
 } from "../components/case-study/shared";
 
 /* ───────────────────────────────────────────────────
@@ -22,7 +24,7 @@ function AboutNav() {
   return (
     <nav
       aria-label="About page navigation"
-      className="fixed top-0 left-0 right-0 z-50 bg-[#161A1F]/80 backdrop-blur-md border-b border-white/[0.06]"
+      className="fixed top-0 left-0 right-0 z-50 bg-ink/80 backdrop-blur-md border-b border-white/[0.06]"
     >
       <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-6">
         <Link
@@ -139,7 +141,7 @@ export default function About() {
   }, [location.hash]);
 
   return (
-    <div className="min-h-screen bg-[#161A1F] font-['Plus_Jakarta_Sans',sans-serif] antialiased">
+    <div className="min-h-screen bg-ink font-['Plus_Jakarta_Sans',sans-serif] antialiased">
       <AboutNav />
 
       {/* ── SECTION 1 — Intro (Dark) ──────────────────── */}
@@ -151,10 +153,9 @@ export default function About() {
           <motion.div
             {...fadeUp}
             transition={{ ...baseTrans, delay: 0.05 }}
-            className="flex items-center gap-3 mb-16 md:mb-20"
+            className="mb-16 md:mb-20"
           >
-            <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium">
+            <p className="text-[11px] tracking-[0.08em] uppercase text-white/48 font-medium">
               About
             </p>
           </motion.div>
@@ -165,8 +166,7 @@ export default function About() {
             <div className="md:col-span-7 lg:col-span-7 order-2 md:order-1">
               <motion.h1
                 {...fadeUpDelay(0.08)}
-                className="font-['Lora',serif] font-normal text-white text-[26px] md:text-[36px] lg:text-[44px]"
-                style={{ lineHeight: "1.12", letterSpacing: "-0.4px" }}
+                className="font-['EB_Garamond',serif] font-bold text-white text-[36px] md:text-[48px] lg:text-[60px] leading-[1.12] tracking-[-0.02em]"
               >
                 Systems should adapt
                 <br className="hidden md:block" />
@@ -204,11 +204,10 @@ export default function About() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.24 }}
-                  className="my-12 border-l-2 border-[#F98E1F]/25 pl-6"
+                  className="my-12 border-l-2 border-accent/25 pl-6"
                 >
                   <p
-                    className="font-['Lora',serif] font-normal text-white/92 text-[20px] md:text-[23px] max-w-[540px]"
-                    style={{ lineHeight: "1.45", letterSpacing: "-0.3px" }}
+                    className="font-['EB_Garamond',serif] font-semibold text-white/92 text-[20px] md:text-[23px] max-w-[540px] leading-[1.45] tracking-[-0.015em]"
                   >
                     The next step should always be clear.
                   </p>
@@ -270,7 +269,7 @@ export default function About() {
                   <p className="text-white/92 text-[15px] font-medium font-['Plus_Jakarta_Sans',sans-serif] tracking-wide">
                     Damian Aaby Præsthus
                   </p>
-                  <p className="text-white/48 text-[12px] tracking-[1.6px] uppercase mt-1">
+                  <p className="text-white/48 text-[12px] tracking-[0.08em] uppercase mt-1">
                     UX Designer &amp; Developer
                   </p>
                 </motion.div>
@@ -300,9 +299,8 @@ export default function About() {
             
             <div className="p-8 md:p-10 lg:p-12">
               {/* Section label */}
-              <div className="flex items-center gap-3 mb-10">
-                <div className="w-5 h-px bg-[#F98E1F]/40" />
-                <p className="text-[10px] tracking-[2.4px] uppercase text-white/48 font-medium">
+              <div className="mb-10">
+                <p className="text-[10px] tracking-[0.08em] uppercase text-white/48 font-medium">
                   Capabilities
                 </p>
               </div>
@@ -316,15 +314,14 @@ export default function About() {
                     transition={stagger(i, 0.08)}
                     className={`${i > 0 ? "sm:border-l sm:border-white/[0.06] sm:pl-10 md:pl-12" : ""} ${i < PROFILE_COLUMNS.length - 1 ? "sm:pr-10 md:pr-12" : ""}`}
                   >
-                    <p className="text-[10px] tracking-[2.4px] uppercase text-white/48 font-medium mb-5">
+                    <p className="text-[10px] tracking-[0.08em] uppercase text-white/48 font-medium mb-5">
                       {col.label}
                     </p>
                     <ul className="space-y-3">
                       {col.items.map((item) => (
                         <li
                           key={item}
-                          className="text-white/72 text-[15px] md:text-[16px] cursor-default"
-                          style={{ lineHeight: "1.5" }}
+                          className="text-white/72 text-[15px] md:text-[16px] leading-[1.5] cursor-default"
                         >
                           {item}
                         </li>
@@ -343,21 +340,19 @@ export default function About() {
       </section>
 
       {/* ── SECTION 3 — Experience (Light) ────────────── */}
-      <section className="relative bg-[#F4F3F0] py-24 md:py-32 overflow-hidden">
+      <section className="relative bg-paper py-24 md:py-32 overflow-hidden">
         <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
           <motion.div
             {...fadeUp}
-            className="flex items-center gap-3 mb-3"
+            className="mb-3"
           >
-            <div className="w-5 h-px bg-[#F98E1F]/30" />
-            <p className="text-[11px] tracking-[2.4px] uppercase text-[#161A1F]/48 font-medium">
+            <p className="text-[11px] tracking-[0.08em] uppercase text-ink/48 font-medium">
               Experience
             </p>
           </motion.div>
           <motion.h2
             {...fadeUpDelay(0.06)}
-            className="font-['Lora',serif] font-normal text-[#161A1F] text-[24px] md:text-[32px] lg:text-[36px] mb-6"
-            style={{ lineHeight: "1.2", letterSpacing: "-0.3px" }}
+            className={`${H2} text-ink mb-6`}
           >
             Professional background
           </motion.h2>
@@ -373,20 +368,16 @@ export default function About() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 items-start">
                   {/* Left — Meta block */}
                   <div className="md:col-span-5">
-                    <h3
-                      className="font-['Plus_Jakarta_Sans',sans-serif] font-semibold text-[#161A1F] text-[17px] md:text-[18px]"
-                      style={{ lineHeight: "1.35" }}
-                    >
+                    <h3 className={`${H3_ROW} text-ink`}>
                       {exp.company}
                     </h3>
                     <p
-                      className="text-[14px] md:text-[15px] text-[#161A1F]/58 mt-[5px]"
-                      style={{ lineHeight: "1.4" }}
+                      className="text-[14px] md:text-[15px] text-ink/58 mt-[5px] leading-[1.4]"
                     >
                       {exp.role}
                     </p>
                     {exp.meta && (
-                      <p className="text-[12px] md:text-[13px] text-[#161A1F]/48 mt-[4px]">
+                      <p className="text-[12px] md:text-[13px] text-ink/48 mt-[4px]">
                         {exp.meta}
                       </p>
                     )}
@@ -394,7 +385,7 @@ export default function About() {
 
                   {/* Right — Description */}
                   <div className="md:col-span-7">
-                    <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[28px] max-w-[540px]">
+                    <p className="text-ink/58 text-[15px] md:text-[16px] leading-[28px] max-w-[540px]">
                       {exp.description}
                     </p>
                   </div>
@@ -413,17 +404,15 @@ export default function About() {
         <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
           <motion.div
             {...fadeUp}
-            className="flex items-center gap-3 mb-3"
+            className="mb-3"
           >
-            <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium">
+            <p className="text-[11px] tracking-[0.08em] uppercase text-white/48 font-medium">
               Education
             </p>
           </motion.div>
           <motion.h2
             {...fadeUpDelay(0.06)}
-            className="font-['Lora',serif] font-normal text-white text-[24px] md:text-[32px] lg:text-[36px] mb-6"
-            style={{ lineHeight: "1.2", letterSpacing: "-0.3px" }}
+            className={`${H2} text-white mb-6`}
           >
             Educational grounding
           </motion.h2>
@@ -434,18 +423,14 @@ export default function About() {
               {...fadeUpDelay(0.12)}
               className="md:col-span-6"
             >
-              <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium mb-6">
+              <p className="text-[11px] tracking-[0.08em] uppercase text-white/48 font-medium mb-6">
                 Degree
               </p>
-              <h3
-                className="font-['Plus_Jakarta_Sans',sans-serif] font-semibold text-white text-[17px] md:text-[18px]"
-                style={{ lineHeight: "1.35" }}
-              >
+              <h3 className={`${H3_ROW} text-white`}>
                 Bachelor in IT &mdash; Interaction Design
               </h3>
               <p
-                className="text-[14px] md:text-[15px] text-white/58 mt-[5px]"
-                style={{ lineHeight: "1.4" }}
+                className="text-[14px] md:text-[15px] text-white/58 mt-[5px] leading-[1.4]"
               >
                 Kristiania University of Applied Sciences
               </p>
@@ -462,15 +447,14 @@ export default function About() {
               {...fadeUpDelay(0.18)}
               className="md:col-span-6 md:border-l md:border-white/[0.06] md:pl-16"
             >
-              <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium mb-6">
+              <p className="text-[11px] tracking-[0.08em] uppercase text-white/48 font-medium mb-6">
                 Selected Courses
               </p>
 
               <div className="space-y-7">
                 <div>
                   <h4
-                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px]"
-                    style={{ lineHeight: "1.4" }}
+                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px] leading-[1.4]"
                   >
                     AI Data Fairness and Bias
                   </h4>
@@ -481,8 +465,7 @@ export default function About() {
 
                 <div>
                   <h4
-                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px]"
-                    style={{ lineHeight: "1.4" }}
+                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px] leading-[1.4]"
                   >
                     AI, Business &amp; the Future of Work
                   </h4>
@@ -493,8 +476,7 @@ export default function About() {
 
                 <div>
                   <h4
-                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px]"
-                    style={{ lineHeight: "1.4" }}
+                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px] leading-[1.4]"
                   >
                     AI: Ethics &amp; Societal Challenges
                   </h4>
@@ -505,8 +487,7 @@ export default function About() {
 
                 <div>
                   <h4
-                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px]"
-                    style={{ lineHeight: "1.4" }}
+                    className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/92 text-[15px] md:text-[16px] leading-[1.4]"
                   >
                     Google UX Design Certificate
                   </h4>
@@ -531,17 +512,15 @@ export default function About() {
         <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
           <motion.div
             {...fadeUp}
-            className="flex items-center gap-3 mb-3"
+            className="mb-3"
           >
-            <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] tracking-[2.4px] uppercase text-white/48 font-medium">
+            <p className="text-[11px] tracking-[0.08em] uppercase text-white/48 font-medium">
               Principles
             </p>
           </motion.div>
           <motion.h2
             {...fadeUpDelay(0.06)}
-            className="font-['Lora',serif] font-normal text-white text-[24px] md:text-[32px] lg:text-[36px] mb-6"
-            style={{ lineHeight: "1.2", letterSpacing: "-0.3px" }}
+            className={`${H2} text-white mb-6`}
           >
             How I approach design
           </motion.h2>
@@ -554,14 +533,13 @@ export default function About() {
                 transition={stagger(i, 0.08)}
                 className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-7 md:p-8"
               >
-                <div className="w-8 h-8 rounded-full bg-[#F98E1F]/[0.08] border border-[#F98E1F]/[0.12] flex items-center justify-center mb-5">
-                  <span className="text-[12px] font-medium text-[#F98E1F]/60">
+                <div className="w-8 h-8 rounded-full bg-accent/[0.08] border border-accent/[0.12] flex items-center justify-center mb-5">
+                  <span className="text-[12px] font-medium text-accent/60">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
                 <h3
-                  className="font-['Lora',serif] font-normal text-white text-[18px] md:text-[20px] mb-3"
-                  style={{ lineHeight: "1.3" }}
+                  className="font-['EB_Garamond',serif] font-semibold text-white text-[18px] md:text-[20px] mb-3 leading-[1.3]"
                 >
                   {p.title}
                 </h3>

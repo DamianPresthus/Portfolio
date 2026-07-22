@@ -73,7 +73,7 @@ export function PortraitResolve({
 
       <img
         src={photoSrc}
-        alt="Damian A Præsthus"
+        alt="Damian Aaby Præsthus"
         width={1200}
         height={1600}
         loading="eager"

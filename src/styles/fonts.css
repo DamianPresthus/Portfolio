@@ -1,1 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+/* Web fonts are loaded via <link> tags in index.html <head> so the
+   browser's preload scanner can fetch them before the JS bundle runs.
+   Keeping this out of the CSS @import chain avoids the extra request
+   round-trip (main.tsx → index.css → fonts.css → googleapis). */

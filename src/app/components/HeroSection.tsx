@@ -1,13 +1,38 @@
-import imgPortrait from "../../assets/optimized/damian-portrait-1200.webp";
+import imgIDCard from "../../assets/id-card-front.webp";
 import svgPaths from "../../imports/svg-fa3xoaab76";
-import { ChevronDown, ArrowRight } from "lucide-react";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { ArrowRight } from "lucide-react";
+import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { PortraitResolve } from "./hero/PortraitResolve";
+import { useReducedMotion } from "motion/react";
 import { SketchLayer } from "./hero/SketchLayer";
 import { WarmthField } from "./hero/WarmthField";
-import { getInitialHeroMode, useMarkPlayedOnComplete } from "./hero/useHeroSequence";
+import {
+  getInitialHeroMode,
+  HERO_TIMING,
+  useMarkPlayedOnComplete,
+} from "./hero/useHeroSequence";
+
+const loadIDCard = () => import("./IDCard");
+const IDCard = lazy(loadIDCard);
+const ID_CARD_REVEAL_LEAD_MS = 2000;
+const ID_CARD_REVEAL_DELAY_MS = Math.max(
+  0,
+  HERO_TIMING.total - ID_CARD_REVEAL_LEAD_MS,
+);
+
+function supportsWebGL() {
+  if (typeof window === "undefined") return false;
+
+  try {
+    const canvas = document.createElement("canvas");
+    return Boolean(
+      window.WebGLRenderingContext &&
+        (canvas.getContext("webgl2") || canvas.getContext("webgl")),
+    );
+  } catch {
+    return false;
+  }
+}
 
 interface HeroSectionProps {
   /**
@@ -26,15 +51,16 @@ export function HeroSection({
   const [availHovered, setAvailHovered] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [webGLAvailable] = useState(supportsWebGL);
 
   // "Paper to Product" sequence state. Mode is decided once, before
   // first paint: sequence on first visit, static on replay/reduced motion.
   const [mode] = useState(getInitialHeroMode);
   const [run, setRun] = useState(false);
+  const [showCard, setShowCard] = useState(false);
   const isSeq = mode === "sequence";
 
-  // Portrait layers only exist md+ (the column is hidden on mobile) —
-  // don't spend mobile bandwidth on wireframe/mid-fi.
+  // Portrait layers only exist md+ (the column is hidden on mobile).
   const [hasPortrait] = useState(
     () =>
       typeof window !== "undefined" &&
@@ -51,9 +77,27 @@ export function HeroSection({
 
   useMarkPlayedOnComplete(mode, run);
 
-  // Parallax for portrait
-  const { scrollY } = useScroll();
-  const portraitY = useTransform(scrollY, [0, 600], [0, -18]);
+  // Fetch the 3D chunk after the initial paint, then mount it shortly before
+  // the paper lift so the card can begin dropping during the choreography.
+  useEffect(() => {
+    if (prefersReducedMotion || !webGLAvailable) return;
+    const preload = window.setTimeout(() => void loadIDCard(), 0);
+    return () => window.clearTimeout(preload);
+  }, [prefersReducedMotion, webGLAvailable]);
+
+  useEffect(() => {
+    if (!isSeq) {
+      setShowCard(true);
+      return;
+    }
+
+    if (!run) return;
+    const reveal = window.setTimeout(
+      () => setShowCard(true),
+      ID_CARD_REVEAL_DELAY_MS,
+    );
+    return () => window.clearTimeout(reveal);
+  }, [isSeq, run]);
 
   // Handle smooth scroll to projects section
   const handleViewWork = () => {
@@ -83,6 +127,9 @@ export function HeroSection({
           {/* Ambient warmth loop — lazy-mounted after LCP */}
           <WarmthField heroRef={heroRef} />
 
+          {/* Soft dot matrix texture — m51.no inspired */}
+          <div className="hero-dot-grid" aria-hidden="true" />
+
           {/* Grid echo — carries structure through the paper→dark transition */}
           {isSeq && (
             <div className="hsGrid" aria-hidden="true">
@@ -93,50 +140,125 @@ export function HeroSection({
           {/* Paper sketch — Phases 1–3, lifts at 1500ms */}
           {isSeq && <SketchLayer />}
 
+          {/* Mobile uses the same live lanyard simulation as desktop, but the
+              canvas is fully touch-transparent. Reduced-motion and no-WebGL
+              devices keep the lightweight static fallback. */}
+          {!hasPortrait && showCard && (prefersReducedMotion || !webGLAvailable ? (
+            <div className="heroMobileCard heroMobileCard--static" aria-hidden="true">
+              <img src={imgIDCard} alt="" />
+            </div>
+          ) : (
+            <Suspense
+              fallback={
+                <div className="heroMobileCard heroMobileCard--static" aria-hidden="true">
+                  <img src={imgIDCard} alt="" />
+                </div>
+              }
+            >
+              <IDCard
+                className="heroMobilePhysics"
+                frontImage={imgIDCard}
+                gravity={[0, -10.5, 0]}
+                interactive={false}
+                anchorXFactor={0.28}
+              />
+            </Suspense>
+          ))}
+
+          {/* Hero-wide interaction plane. It sits above the ambient field but
+              below every piece of navigation and copy. The hero itself remains
+              the clipping boundary, so the card can roam the full composition
+              without escaping into the next section. */}
+          {hasPortrait && showCard && (
+            <div
+              className="absolute inset-0 z-[5] hidden md:block"
+              data-id-card-layer
+            >
+              {prefersReducedMotion || !webGLAvailable ? (
+                <img
+                  src={imgIDCard}
+                  alt="Damian Aaby Præsthus ID card"
+                  className="absolute left-[28%] top-1/2 h-[48%] w-auto -translate-x-1/2 -translate-y-1/2 object-contain"
+                />
+              ) : (
+                <Suspense
+                  fallback={
+                    <img
+                      src={imgIDCard}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute left-[28%] top-1/2 h-[48%] w-auto -translate-x-1/2 -translate-y-1/2 object-contain"
+                    />
+                  }
+                >
+                  <IDCard frontImage={imgIDCard} gravity={[0, -10.5, 0]} />
+                </Suspense>
+              )}
+            </div>
+          )}
+
           {/* Content layer */}
-          <div className="relative z-10 h-full flex flex-col px-8 md:px-12 lg:px-16">
+          <div className="pointer-events-none relative z-10 h-full flex flex-col px-8 md:px-12 lg:px-16">
             {/* Navigation */}
-            <nav aria-label="Site navigation" className="w-full max-w-[1200px] mx-auto flex items-center justify-between pt-8 shrink-0">
+            <nav aria-label="Site navigation" className="pointer-events-auto relative z-50 w-full max-w-[1200px] mx-auto flex items-center justify-between pt-8 shrink-0">
               <Link
                 to="/"
-                aria-label="Damian A Præsthus — home"
-                className="hs-in group inline-flex items-end gap-[3px] no-underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[6px] focus-visible:outline-[#F98E1F]"
+                aria-label="Damian Aaby Præsthus, home"
+                className="hs-in group inline-flex items-end gap-[3px] no-underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[6px] focus-visible:outline-accent"
                 style={{ "--hs-delay": "2300ms" } as CSSProperties}
               >
-                <span className="font-['Lora',serif] font-medium text-[23px] leading-[0.9] tracking-[0.05em] text-white/92 transition-colors duration-300 group-hover:text-white">
+                <span className="font-['Lora',serif] font-semibold text-[23px] leading-[0.9] tracking-[0.02em] text-white/92 transition-colors duration-300 group-hover:text-white">
                   DAP
                 </span>
                 <span
                   aria-hidden="true"
-                  className="mb-[3px] h-[5px] w-[5px] rounded-full bg-[#F98E1F] transition-transform duration-300 ease-out group-hover:scale-125"
+                  className="mb-[3px] h-[5px] w-[5px] rounded-full bg-accent transition-transform duration-300 ease-out group-hover:scale-125"
                 />
               </Link>
-              <span aria-hidden="true" />
+
+              {/* Top nav — Work / About / Contact */}
+              <div
+                className="hs-in flex items-center gap-5 sm:gap-7"
+                style={{ "--hs-delay": "2300ms" } as CSSProperties}
+              >
+                <button
+                  type="button"
+                  onClick={handleViewWork}
+                  className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.08em] uppercase font-medium text-white/58 hover:text-white/92 transition-colors duration-200 cursor-pointer bg-transparent border-0 p-0 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >
+                  Work
+                </button>
+                <Link
+                  to="/about"
+                  className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.08em] uppercase font-medium text-white/58 hover:text-white/92 transition-colors duration-200 no-underline rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >
+                  About
+                </Link>
+                <button
+                  type="button"
+                  onClick={() =>
+                    window.scrollTo({
+                      top: document.body.scrollHeight,
+                      behavior: "smooth",
+                    })
+                  }
+                  className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.08em] uppercase font-medium text-white/58 hover:text-white/92 transition-colors duration-200 cursor-pointer bg-transparent border-0 p-0 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >
+                  Contact
+                </button>
+              </div>
             </nav>
 
             {/* Main content area — fills remaining space */}
             <div className="flex-1 w-full max-w-[1200px] mx-auto flex items-end">
               {/* Two-column layout */}
               <div className="w-full grid grid-cols-1 md:grid-cols-12 items-end h-full">
-                {/* Left column — Portrait (bottom padding matches the right
-                    column so the portrait base aligns with the CTA row) */}
-                <div className="hidden md:flex md:col-span-5 items-end self-end h-full md:pb-12 lg:pb-[48px]">
-                  <motion.div
-                    className="heroPortrait w-full max-w-[400px] lg:max-w-[430px] flex items-end"
-                    style={{ y: prefersReducedMotion ? 0 : portraitY }}
-                  >
-                    <PortraitResolve
-                      mode={hasPortrait ? mode : "static"}
-                      photoSrc={imgPortrait}
-                      twoStep={twoStepPortrait}
-                      roughen={roughenWireframe}
-                      onWireSettled={() => setRun(true)}
-                    />
-                  </motion.div>
-                </div>
+                {/* Empty grid track preserves the existing headline measure
+                    while the card is free to move across the full hero. */}
+                <div className="hidden md:block md:col-span-5" aria-hidden="true" />
 
                 {/* Right column — Text content */}
-                <div className="col-span-1 md:col-span-7 flex flex-col justify-center pb-10 md:pb-16 lg:pb-20 md:pl-8 lg:pl-10">
+                <div className="heroCopy col-span-1 md:col-span-7 flex flex-col justify-center pb-10 md:pb-16 lg:pb-20 md:pl-8 lg:pl-10 md:-translate-y-7 lg:-translate-y-14">
                   {/* Availability indicator */}
                   <button
                     type="button"
@@ -146,7 +268,7 @@ export function HeroSection({
                         behavior: "smooth",
                       })
                     }
-                    className="hs-in inline-flex items-center gap-[6px] cursor-pointer group mt-10 md:mt-14 mb-1 md:mb-2.5 w-fit no-underline bg-transparent border-0 p-0"
+                    className="heroAvailability hs-in pointer-events-auto inline-flex items-center gap-[6px] cursor-pointer group mt-10 md:mt-14 mb-7 md:mb-8 w-fit no-underline bg-transparent border-0 p-0"
                     style={{ "--hs-delay": "2400ms" } as CSSProperties}
                     aria-label="Available for UX roles — scroll to contact footer"
                     onMouseEnter={() => setAvailHovered(true)}
@@ -160,7 +282,7 @@ export function HeroSection({
                       <span className="absolute inset-0 rounded-full bg-[#22C55E] animate-[dotPulse_2.8s_ease-in-out_infinite]" />
                     </span>
                     {/* Text */}
-                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.14em] uppercase text-white/72 font-medium leading-[18px] transition-all duration-300 group-hover:text-white/75">
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.08em] uppercase text-white/72 font-medium leading-[18px] transition-all duration-300 group-hover:text-white/75">
                       Available for UX Roles
                     </span>
                     {/* Hover arrow + "Contact" hint */}
@@ -179,55 +301,20 @@ export function HeroSection({
                     </span>
                   </button>
 
-                  {/* Identity line */}
-                  <p
-                    className="hs-in hidden md:block font-['Plus_Jakarta_Sans',sans-serif] text-[14px] tracking-[0.08em] uppercase text-white/92 font-medium leading-[21px]"
-                    style={{ "--hs-delay": "2450ms" } as CSSProperties}
-                  >
-                    DAMIAN A PR&AElig;STHUS{" "}
-                    <span>
-                      <span className="text-white/58 mx-1">/</span>{" "}
-                      <span className="font-normal text-white/58">
-                        UX DESIGNER + FRONT-END
-                      </span>
-                    </span>
-                  </p>
-
-                  {/* 22px spacer */}
-                  <div className="h-2 md:h-[22px]" />
-
                   {/* Headline — real h1 in the DOM from t=0, rises once the
                       canvas has settled */}
-                  <div className="max-w-[560px]">
-                    {/* Orange accent dots */}
-                    <div
-                      className="hs-in hidden md:flex items-center gap-[6px] mb-4"
-                      style={{ "--hs-delay": "2400ms" } as CSSProperties}
-                    >
-                      {[0, 1, 2].map((i) => (
-                        <span
-                          key={i}
-                          className="w-[5px] h-[5px] rounded-full bg-[#F98E1F]/30"
-                        />
-                      ))}
-                    </div>
+                  <div className="max-w-[600px]">
                     <h1
-                      className="hs-in font-['Lora',serif] font-normal text-white"
-                      style={
-                        {
-                          lineHeight: "1.06",
-                          letterSpacing: "-0.7px",
-                          "--hs-delay": "2300ms",
-                        } as CSSProperties
-                      }
+                      className="hs-in font-['EB_Garamond',serif] font-bold text-white leading-[1.08] tracking-[-0.015em]"
+                      style={{ "--hs-delay": "2300ms" } as CSSProperties}
                     >
-                      <span className="block text-[32px] md:text-[48px] lg:text-[60px]">
+                      <span className="block whitespace-nowrap text-[32px] md:text-[42px] lg:text-[52px]">
                         Designing systems
                       </span>
-                      <span className="block text-[32px] md:text-[48px] lg:text-[60px]">
-                        that <span className="text-[#F98E1F]">evolve</span>
+                      <span className="block text-[32px] md:text-[42px] lg:text-[52px]">
+                        that <span className="text-accent">evolve</span>
                       </span>
-                      <span className="block text-[32px] md:text-[48px] lg:text-[60px]">
+                      <span className="block text-[32px] md:text-[42px] lg:text-[52px]">
                         through real use.
                       </span>
                     </h1>
@@ -246,57 +333,36 @@ export function HeroSection({
                   </p>
 
                   {/* 40px spacer */}
-                  <div className="h-8 md:h-10" />
+                  <div className="heroCtaSpacer h-8 md:h-10" />
 
                   {/* CTA buttons — in the DOM and clickable from t=0 */}
                   <div
                     className="hs-in flex flex-wrap items-center gap-3 sm:gap-4"
                     style={{ "--hs-delay": "2700ms" } as CSSProperties}
                   >
-                    {/* Primary — VIEW WORK with expanding dark pill hover */}
-                    <button className="relative h-12 rounded-full cursor-pointer group overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F98E1F]"
-                      style={{ width: '167px' }}
+                    {/* Primary — expanding dark wipe preserves the orange outline */}
+                    <button
+                      type="button"
+                      className="hero-cta hero-cta--primary pointer-events-auto"
                       onClick={handleViewWork}
                     >
-                      {/* Orange base */}
-                      <div className="absolute inset-0 bg-[#F98E1F] rounded-full" />
-
-                      {/* Dark expanding pill — circle on right → full cover on hover */}
-                      <div
-                        className="absolute top-[2px] bottom-[2px] right-[2px] rounded-full bg-[rgba(11,15,20,0.92)] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] w-[44px] group-hover:w-[calc(100%-4px)]"
-                      />
-
-                      {/* Content layer */}
-                      <div className="relative z-10 flex items-center h-full pl-5 pr-[2px]">
-                        <span className="font-['Inter',sans-serif] font-normal text-[13px] text-[#1e1e1e] tracking-[0.5px] leading-normal whitespace-nowrap transition-colors duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:text-white">
-                          View Work
-                        </span>
-                        <span className="ml-auto w-[44px] h-[44px] rounded-full flex items-center justify-center shrink-0 opacity-80">
-                          <svg
-                            width="15"
-                            height="15"
-                            viewBox="0 0 15 15"
-                            fill="none"
-                            className="block"
-                          >
-                            <path
-                              clipRule="evenodd"
-                              d={svgPaths.pf577b40}
-                              fill="white"
-                              fillRule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                      </div>
+                      <span className="hero-cta__label">View Work</span>
+                      <span className="hero-cta__arrow" aria-hidden="true">
+                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                          <path
+                            clipRule="evenodd"
+                            d={svgPaths.pf577b40}
+                            fill="white"
+                            fillRule="evenodd"
+                          />
+                        </svg>
+                      </span>
                     </button>
 
                     {/* Secondary — About me */}
                     <Link
                       to="/about"
-                      className="h-12 min-w-[118px] rounded-full px-6 font-['Plus_Jakarta_Sans',sans-serif] font-medium text-[15px] text-white/72 tracking-[0.2px] leading-[14px] hover:text-white/92 hover:border-white/35 transition-colors cursor-pointer bg-transparent inline-flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F98E1F]"
-                      style={{
-                        border: "1.5px solid rgba(255,255,255,0.2)",
-                      }}
+                      className="hero-cta hero-cta--secondary pointer-events-auto"
                     >
                       About
                     </Link>
@@ -309,23 +375,6 @@ export function HeroSection({
 
       </div>
 
-      {/* Scroll indicator */}
-      <div className="flex justify-center pt-5 pb-5">
-        <motion.div
-          animate={prefersReducedMotion ? undefined : { y: [0, 4, 0] }}
-          transition={
-            prefersReducedMotion
-              ? undefined
-              : { duration: 2.4, repeat: Infinity, ease: "easeInOut" }
-          }
-        >
-          <ChevronDown
-            className="w-6 h-6 text-white/20"
-            strokeWidth={1.5}
-            aria-hidden="true"
-          />
-        </motion.div>
-      </div>
     </section>
   );
 }

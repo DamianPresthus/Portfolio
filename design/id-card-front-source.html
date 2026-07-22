@@ -1,0 +1,219 @@
+<!doctype html>
+<!--
+  Source comp for src/assets/id-card-front.webp (the 3D ID-card face texture).
+  Render at 1065x1590 (355:530, matches CARD_WIDTH/CARD_HEIGHT in IDCard.tsx),
+  screenshot the .card element with omitBackground so the rounded corners stay
+  transparent, then convert to WebP quality 92-95 (PNG is ~1.8MB because of the
+  baked grain; keep the grain coarse - baseFrequency ~0.4 - or lossy WebP will
+  smooth it away). The punched slot's +42px offset mirrors CARD_ATTACH.x so it
+  sits under the 3D clip. Portrait img points at src/assets/optimized/
+  damian-portrait-1200.webp via absolute file:// path - adjust before rendering.
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  html, body { margin: 0; padding: 0; background: transparent; }
+
+  .card {
+    position: relative;
+    width: 1065px;
+    height: 1590px;
+    border-radius: 84px;
+    overflow: hidden;
+    background: #1d2330;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* fine drafting grid */
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(244,243,240,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(244,243,240,0.05) 1px, transparent 1px);
+    background-size: 133px 133px;
+    background-position: 33px 0;
+  }
+
+  /* ambient light: warm keylight bottom-right, faint cool top-left, vignette */
+  .glow {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(58% 44% at 88% 97%, rgba(249,88,31,0.17), transparent 70%),
+      radial-gradient(40% 28% at 6% 2%, rgba(185,217,255,0.05), transparent 70%),
+      radial-gradient(52% 40% at 50% 34%, rgba(249,142,31,0.07), transparent 65%);
+  }
+  .vignette {
+    position: absolute; inset: 0;
+    background: radial-gradient(125% 120% at 50% 42%, transparent 58%, rgba(4,6,9,0.4) 100%);
+  }
+
+  /* soft well the portrait sits in */
+  .spot {
+    position: absolute;
+    left: 50%; top: 420px;
+    width: 940px; height: 1100px;
+    transform: translateX(-50%);
+    background:
+      radial-gradient(50% 50% at 50% 40%, rgba(244,243,240,0.085), transparent 70%),
+      radial-gradient(46% 46% at 52% 44%, rgba(249,142,31,0.1), transparent 72%);
+  }
+
+  .portrait {
+    position: absolute;
+    left: 50%; bottom: 120px;
+    height: 1300px;
+    transform: translateX(-52%);
+    filter:
+      saturate(0.97) contrast(1.02)
+      drop-shadow(0 34px 54px rgba(3,5,8,0.62))
+      drop-shadow(28px 8px 46px rgba(249,110,31,0.14));
+  }
+
+  /* header */
+  .header {
+    position: absolute; top: 0; left: 0; right: 0;
+    padding: 78px 86px 0;
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .logo {
+    font-family: 'Lora', serif; font-weight: 600;
+    font-size: 92px; line-height: 1; letter-spacing: 2px;
+    color: #F3F1ED;
+  }
+  .logo .dot { color: #F98E1F; }
+  .meta { text-align: right; padding-top: 16px; }
+  .meta .k {
+    font-size: 21px; letter-spacing: 0.3em;
+    color: rgba(244,243,240,0.42);
+  }
+  .meta .v {
+    margin-top: 14px;
+    font-size: 26px; letter-spacing: 0.3em;
+    color: rgba(244,243,240,0.8);
+  }
+
+  /* lower data panel with scrim over the portrait */
+  .panel {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 290px 86px 58px;
+    background: linear-gradient(180deg,
+      rgba(29,35,48,0) 0%,
+      rgba(26,31,43,0.86) 24%,
+      rgba(24,29,40,0.98) 50%,
+      rgba(23,28,38,1) 100%);
+  }
+  /* warm keylight re-asserted above the panel scrim */
+  .glow-top {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background: radial-gradient(56% 40% at 90% 100%, rgba(249,88,31,0.16), transparent 70%);
+  }
+  .name-row { display: flex; align-items: center; gap: 30px; }
+  .tick {
+    width: 10px; height: 68px; border-radius: 3px;
+    background: linear-gradient(180deg, #F98E1F, #F9581F);
+    flex: none;
+  }
+  .name {
+    font-family: 'Lora', serif; font-weight: 500;
+    font-size: 68px; line-height: 1.1; letter-spacing: 0;
+    color: #F3F1ED; white-space: nowrap;
+  }
+
+  .fields {
+    margin-top: 48px; padding-top: 46px;
+    border-top: 1px solid rgba(244,243,240,0.13);
+    display: flex; flex-direction: column; gap: 44px;
+  }
+  .field .k {
+    font-size: 26px; letter-spacing: 0.26em;
+    color: rgba(244,243,240,0.5);
+    margin-bottom: 16px;
+  }
+  .field .v {
+    font-size: 36px; letter-spacing: 0.06em;
+    color: rgba(244,243,240,0.95);
+    white-space: nowrap;
+  }
+
+  /* punched slot where the clip grabs (offset matches CARD_ATTACH.x) */
+  .slot {
+    position: absolute; top: 54px;
+    left: calc(50% + 42px); transform: translateX(-50%);
+    width: 208px; height: 30px; border-radius: 15px;
+    background: #04060a;
+    box-shadow:
+      inset 0 3px 5px rgba(0,0,0,0.95),
+      inset 0 -1px 1px rgba(255,255,255,0.07),
+      0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  /* print-proof corner ticks */
+  .tickmark { position: absolute; width: 26px; height: 26px; }
+  .tickmark.tl { top: 58px; left: 58px; border-top: 1px solid rgba(244,243,240,0.16); border-left: 1px solid rgba(244,243,240,0.16); }
+  .tickmark.tr { top: 58px; right: 58px; border-top: 1px solid rgba(244,243,240,0.16); border-right: 1px solid rgba(244,243,240,0.16); }
+  .tickmark.bl { bottom: 58px; left: 58px; border-bottom: 1px solid rgba(244,243,240,0.16); border-left: 1px solid rgba(244,243,240,0.16); }
+  .tickmark.br { bottom: 58px; right: 58px; border-bottom: 1px solid rgba(244,243,240,0.16); border-right: 1px solid rgba(244,243,240,0.16); }
+
+  .frame {
+    position: absolute; inset: 0; border-radius: 84px;
+    box-shadow: inset 0 0 0 2px rgba(244,243,240,0.13);
+  }
+
+  .noise {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.42' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+  }
+  .noise.lift {
+    background-position: 137px 71px;
+    opacity: 0.12;
+    mix-blend-mode: screen;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="grid"></div>
+    <div class="glow"></div>
+    <div class="spot"></div>
+    <img class="portrait" src="file:///Users/damian/Projects/DesignPortfolio/src/assets/optimized/damian-portrait-1200.webp" />
+    <div class="vignette"></div>
+
+    <div class="header">
+      <div class="logo">DAP<span class="dot">.</span></div>
+      <div class="meta">
+        <div class="k">PORTFOLIO ID</div>
+        <div class="v">01 / 2026</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="name-row">
+        <div class="tick"></div>
+        <div class="name">Damian Aaby Pr&aelig;sthus</div>
+      </div>
+      <div class="fields">
+        <div class="field">
+          <div class="k">ROLE</div>
+          <div class="v">UX/UI DESIGNER + FRONT-END</div>
+        </div>
+      </div>
+    </div>
+    <div class="glow-top"></div>
+
+    <div class="slot"></div>
+    <div class="tickmark tl"></div>
+    <div class="tickmark tr"></div>
+    <div class="tickmark bl"></div>
+    <div class="tickmark br"></div>
+    <div class="frame"></div>
+    <div class="noise"></div>
+    <div class="noise lift"></div>
+  </div>
+</body>
+</html>

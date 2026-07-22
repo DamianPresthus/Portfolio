@@ -35,6 +35,19 @@
   background-size: cover;
 }
 
+/* Soft Dot Matrix Grid — Faded towards edges (m51.no inspired) */
+.hero-dot-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, black 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, black 20%, transparent 85%);
+  opacity: 0.9;
+}
+
 /* Grain overlay */
 .hero::before {
   content: "";
@@ -101,6 +114,181 @@
   .heroBloom {
     animation: none;
     opacity: 1;
+  }
+}
+
+/* Used only while the mobile physics scene is loading or unavailable. */
+.heroMobileCard {
+  display: none;
+}
+
+.heroMobilePhysics {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .heroMobilePhysics {
+    display: block;
+    position: absolute;
+    z-index: 4;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .heroMobileCard {
+    display: block;
+    position: absolute;
+    z-index: 4;
+    top: 11.25rem;
+    right: -11vw;
+    width: min(54vw, 232px);
+    pointer-events: none;
+    transform: translate3d(0, 0, 0) rotate(3deg);
+    transform-origin: 68% -10.75rem;
+    filter: saturate(0.96) brightness(0.97) contrast(1.02);
+  }
+
+  .heroMobileCard::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: -10.75rem;
+    left: 68%;
+    width: 2px;
+    height: 10.9rem;
+    border-radius: 999px;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 13, 16, 0.2),
+      rgba(18, 22, 27, 0.92) 18%,
+      rgba(8, 10, 12, 0.96) 100%
+    );
+    box-shadow: 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .heroMobileCard::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: -0.15rem;
+    left: calc(68% - 13px);
+    width: 26px;
+    height: 29px;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 8px 8px 4px 4px;
+    background: linear-gradient(145deg, #4b4b4b, #1d2025 60%, #111317);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  .heroMobileCard img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.34);
+  }
+
+  /* The card drops from above the canvas, then settles into a quiet pendulum
+     swing from its lanyard anchor. */
+  .hs--seq .heroMobileCard {
+    transform: translate3d(0, -125svh, 0) rotate(12deg);
+  }
+
+  .hs--seq.hs-run .heroMobileCard {
+    animation:
+      heroMobileCardDrop 1260ms cubic-bezier(0.18, 0.92, 0.3, 1.08) 1200ms forwards,
+      heroMobileCardSway 4.8s ease-in-out 2460ms infinite alternate;
+  }
+
+  .heroMobileCard--static,
+  .hs--seq .heroMobileCard--static,
+  .hs--seq.hs-run .heroMobileCard--static {
+    animation: none;
+    transform: translate3d(0, 0, 0) rotate(3deg);
+  }
+
+  .heroCopy {
+    position: absolute;
+    top: clamp(28.5rem, 54svh, 43rem);
+    right: 2rem;
+    left: 2rem;
+    height: auto;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .heroAvailability {
+    margin-top: 0 !important;
+    margin-bottom: 1.125rem !important;
+  }
+
+  .heroCtaSpacer {
+    height: 1.75rem !important;
+  }
+}
+
+@keyframes heroMobileCardDrop {
+  0% {
+    transform: translate3d(0, -125svh, 0) rotate(12deg);
+  }
+  68% {
+    transform: translate3d(0, 14px, 0) rotate(-2.5deg);
+  }
+  84% {
+    transform: translate3d(0, -6px, 0) rotate(5deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(3deg);
+  }
+}
+
+@keyframes heroMobileCardSway {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(3deg);
+  }
+  100% {
+    transform: translate3d(0, 2px, 0) rotate(-2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hs--seq .heroMobileCard,
+  .hs--seq.hs-run .heroMobileCard {
+    animation: none;
+    transform: translate3d(0, 0, 0) rotate(3deg);
+  }
+}
+
+@media (max-width: 767px) and (max-height: 720px) {
+  .heroMobileCard {
+    top: 6rem;
+    right: -9vw;
+    width: min(40vw, 170px);
+    transform-origin: 68% -5.75rem;
+  }
+
+  .heroMobileCard::before {
+    top: -5.75rem;
+    height: 5.9rem;
+  }
+
+  .heroCopy {
+    top: clamp(21rem, 50svh, 23.5rem);
+    padding: 0;
+  }
+
+  .heroAvailability {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .heroCopy > p {
+    margin-top: 1rem;
+  }
+
+  .heroCtaSpacer {
+    height: 1rem !important;
   }
 }
 

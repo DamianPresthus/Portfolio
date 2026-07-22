@@ -1,3 +1,4 @@
+import { motion, MotionConfig } from "motion/react";
 import { Link } from "react-router";
 import {
   Mail,
@@ -5,32 +6,34 @@ import {
   Github,
   Linkedin,
   MapPin,
-  ArrowUpRight,
 } from "lucide-react";
 import { contact } from "../data/contact";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#161A1F] border-t border-white/[0.06]">
+    <footer className="bench-surface border-t border-white/[0.07]">
       <div
         aria-labelledby="footer-cta-heading"
-        className="max-w-[1400px] mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12 md:pb-16"
+        className="relative px-8 md:px-12 lg:px-16 pt-24 md:pt-32 pb-12 md:pb-16"
       >
+        <div className="max-w-[1200px] mx-auto">
+        <MotionConfig reducedMotion="user">
         {/* ── Lead composition ── */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-end">
           {/* Copy */}
           <div className="md:col-span-7">
-            <div className="flex items-center gap-3 mb-6">
-              <span aria-hidden="true" className="w-6 h-px bg-[#F98E1F]/45" />
-              <span className="text-[11px] tracking-[0.26em] uppercase text-white/58 font-medium">
+            {/* Viewport trigger on the row, not the tick — a scaleX(0)
+                element is zero-width and IntersectionObserver never
+                reports it intersecting. */}
+            <div className="mb-6">
+              <span className="block font-['Plus_Jakarta_Sans',sans-serif] text-[16px] tracking-[0.08em] uppercase text-white/58 font-medium leading-[18px]">
                 Get in touch
               </span>
             </div>
 
             <h2
               id="footer-cta-heading"
-              className="font-['Lora',serif] text-white text-[28px] md:text-[40px] lg:text-[48px] mb-7 max-w-[14ch]"
-              style={{ lineHeight: "1.08", letterSpacing: "-0.5px" }}
+              className="font-['EB_Garamond',serif] font-bold text-white text-[32px] md:text-[44px] lg:text-[56px] mb-7 max-w-[14ch] leading-[1.08] tracking-[-0.02em]"
             >
               Have a role or
               <br className="hidden sm:block" />
@@ -44,80 +47,70 @@ export function SiteFooter() {
           </div>
 
           {/* Buttons */}
-          <div className="md:col-span-5 flex flex-col sm:flex-row md:justify-end gap-3 sm:gap-4 md:items-center">
+          <div className="md:col-span-5 flex flex-col items-start sm:flex-row sm:items-center md:justify-end gap-3 sm:gap-4">
             <a
               href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Connect with Damian on LinkedIn (opens in new tab)"
-              className="
-                group inline-flex items-center justify-center gap-2
-                h-12 min-h-[44px] px-7 rounded-full
-                bg-[#F98E1F] text-[#161A1F]
-                text-[12px] tracking-[0.2em] uppercase font-medium
-                shadow-[0_8px_24px_-12px_rgba(249,142,31,0.55)]
-                transition-all duration-[180ms] ease-out
-                hover:bg-[#FFA13E] hover:-translate-y-[1px] hover:shadow-[0_12px_28px_-10px_rgba(249,142,31,0.7)]
-                active:translate-y-0 active:scale-[0.985]
-                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]
-              "
+              className="hero-cta footer-cta--linkedin"
             >
               <Linkedin
-                className="w-[16px] h-[16px] transition-transform duration-[180ms] ease-out group-hover:-rotate-6"
+                className="footer-cta__linkedin-icon h-[16px] w-[16px]"
                 strokeWidth={1.75}
+                aria-hidden="true"
               />
-              Let&rsquo;s connect
+              <span className="hero-cta__label">Let&rsquo;s connect</span>
             </a>
             <Link
               to="/about"
               aria-label="About me"
-              className="
-                group inline-flex items-center justify-center gap-2
-                h-12 min-h-[44px] px-7 rounded-full
-                border border-white/20 text-white/75
-                text-[12px] tracking-[0.2em] uppercase font-medium
-                transition-all duration-[180ms] ease-out
-                hover:text-white hover:border-white/45 hover:-translate-y-[1px]
-                active:translate-y-0 active:scale-[0.985]
-                focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/45
-              "
+              className="hero-cta hero-cta--secondary"
             >
               About me
-              <ArrowUpRight
-                className="w-[16px] h-[16px] transition-transform duration-[180ms] ease-out group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
-                strokeWidth={1.75}
-              />
             </Link>
           </div>
         </div>
 
-        {/* ── Quiet utility row ── */}
+        {/* ── Quiet utility row — calibration markings ── */}
         <div className="mt-20 md:mt-24 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <ul className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-x-7 gap-y-1">
+            {/* Status reading — answers the hero badge that links here */}
+            <li className="inline-flex items-center gap-2 min-h-[44px] py-2">
+              <span
+                className="relative w-[6px] h-[6px] rounded-full bg-[#22C55E] shrink-0"
+                aria-hidden="true"
+              >
+                <span className="absolute inset-0 rounded-full bg-[#22C55E] motion-safe:animate-[dotPulse_2.8s_ease-in-out_infinite]" />
+              </span>
+              <span className="font-['JetBrains_Mono',monospace] text-[12px] tabular-nums text-white/58">
+                Available for UX roles
+              </span>
+            </li>
             <li>
               <a
                 href={`mailto:${contact.email}`}
                 aria-label={`Email ${contact.email}`}
-                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
+                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/60 rounded-sm"
               >
                 <Mail
-                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
+                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-accent"
                   strokeWidth={1.5}
                 />
-                <span className="text-[13px]">{contact.email}</span>
+                <span className="font-['JetBrains_Mono',monospace] text-[12px] tabular-nums">{contact.email}</span>
               </a>
             </li>
             <li>
               <a
                 href={contact.phoneHref}
                 aria-label={`Call ${contact.phone}`}
-                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
+                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/60 rounded-sm"
               >
                 <Phone
-                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
+                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-accent"
                   strokeWidth={1.5}
                 />
-                <span className="text-[13px]">{contact.phone}</span>
+                <span className="font-['JetBrains_Mono',monospace] text-[12px] tabular-nums">{contact.phone}</span>
               </a>
             </li>
             <li>
@@ -126,13 +119,13 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile (opens in new tab)"
-                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
+                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/60 rounded-sm"
               >
                 <Linkedin
-                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
+                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-accent"
                   strokeWidth={1.5}
                 />
-                <span className="text-[13px]">LinkedIn</span>
+                <span className="font-['JetBrains_Mono',monospace] text-[12px] tabular-nums">LinkedIn</span>
               </a>
             </li>
             <li>
@@ -141,24 +134,26 @@ export function SiteFooter() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub profile (opens in new tab)"
-                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/60 rounded-sm"
+                className="group inline-flex items-center gap-2 min-h-[44px] py-2 text-white/58 hover:text-white transition-colors duration-[180ms] ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/60 rounded-sm"
               >
                 <Github
-                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-[#F98E1F]"
+                  className="w-[15px] h-[15px] text-white/48 transition-colors duration-[180ms] ease-out group-hover:text-accent"
                   strokeWidth={1.5}
                 />
-                <span className="text-[13px]">GitHub</span>
+                <span className="font-['JetBrains_Mono',monospace] text-[12px] tabular-nums">GitHub</span>
               </a>
             </li>
           </ul>
 
-          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 text-[12px] text-white/48">
+          <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 font-['JetBrains_Mono',monospace] text-[12px] tabular-nums text-white/48">
             <span className="inline-flex items-center gap-2">
               <MapPin className="w-[13px] h-[13px]" strokeWidth={1.5} />
               {contact.location}
             </span>
             <span>{contact.copyright}</span>
           </div>
+        </div>
+        </MotionConfig>
         </div>
       </div>
     </footer>

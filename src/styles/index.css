@@ -13,11 +13,13 @@ body,
 
 html {
   background: #161A1F;
+  overflow-x: hidden;
 }
 
 body {
   min-width: 320px;
   background: #161A1F;
+  overflow-x: hidden;
 }
 
 .home-page {
@@ -28,36 +30,45 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
+  isolation: isolate;
+  overflow: hidden;
   pointer-events: none;
   background-color: #161A1F;
-  background-image:
-    radial-gradient(980px 980px at 74% 10%, rgba(249, 142, 31, 0.15), rgba(22, 26, 31, 0) 62%),
-    radial-gradient(760px 820px at 17% 15%, rgba(52, 120, 150, 0.13), rgba(22, 26, 31, 0) 64%),
-    radial-gradient(1040px 980px at 60% 31%, rgba(249, 142, 31, 0.075), rgba(22, 26, 31, 0) 70%),
-    radial-gradient(880px 940px at 9% 55%, rgba(32, 90, 115, 0.10), rgba(22, 26, 31, 0) 70%),
-    linear-gradient(180deg, #11171C 0%, #141A20 42%, #13181E 72%, #161A1F 100%);
+  background-image: linear-gradient(
+    112deg,
+    #101A21 0%,
+    #162128 30%,
+    #1B1F20 56%,
+    #1B1A19 77%,
+    #151A1F 100%
+  );
   background-repeat: no-repeat;
 }
 
 .home-atmosphere::before {
   content: "";
   position: absolute;
-  inset: 0;
+  z-index: 0;
+  inset: -28% -14% 4% 38%;
+  border-radius: 50%;
   pointer-events: none;
-  opacity: 0.26;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E");
-  background-repeat: repeat;
+  background: rgba(196, 105, 50, 0.155);
+  box-shadow: -18vw 20vh 180px rgba(122, 78, 57, 0.06);
+  -webkit-filter: blur(120px);
+  filter: blur(120px);
 }
 
 .home-atmosphere::after {
   content: "";
   position: absolute;
+  z-index: 1;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(90deg, rgba(4, 8, 12, 0.42) 0%, rgba(4, 8, 12, 0) 24%, rgba(4, 8, 12, 0) 72%, rgba(4, 8, 12, 0.36) 100%),
-    radial-gradient(ellipse 90% 48% at 50% -10%, rgba(255, 255, 255, 0.035), rgba(22, 26, 31, 0) 62%);
+  opacity: 0.035;
+  background-image: url("../assets/hero-noise.svg?no-inline");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  mix-blend-mode: soft-light;
 }
 
 .home-page .hero {
@@ -68,6 +79,559 @@ body {
 .home-page .hero::before,
 .home-page .hero::after {
   display: none;
+}
+
+/* The hero is the raised top plane of the dark bench. Its shadow falls
+   into the neutral transition without tinting the surface below. */
+.home-hero-shell {
+  z-index: 3;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.home-hero-shell::before {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: -30px;
+  left: 0;
+  height: 30px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(2, 5, 8, 0.42),
+    rgba(2, 5, 8, 0.16) 48%,
+    transparent 100%
+  );
+}
+
+.home-hero-shell::after {
+  content: "";
+  position: absolute;
+  z-index: 21;
+  bottom: -1px;
+  left: 0;
+  width: 30%;
+  height: 1px;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  transform: translateX(-110%);
+  animation: hero-edge-sheen 14s ease-in-out infinite;
+}
+
+@keyframes hero-edge-sheen {
+  0% {
+    opacity: 0;
+    transform: translateX(-110%);
+  }
+  14% {
+    opacity: 0.38;
+  }
+  86% {
+    opacity: 0.38;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(445%);
+  }
+}
+
+/* ── Hero → projects threshold ────────────────────────────────
+   A short neutral threshold replaces the accidental viewport-height
+   spacer. The grid carries structure across the seam without adding
+   another light source or colour cast around the scroll cue. */
+.home-transition {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: clamp(56px, 5vw, 80px);
+  overflow: hidden;
+  background: var(--surface-dark);
+}
+
+.home-transition__grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.26;
+  background-image: linear-gradient(
+    to right,
+    transparent 0 calc(100% - 1px),
+    var(--annotation-rule-dark) calc(100% - 1px) 100%
+  );
+  background-position: center top;
+  background-repeat: repeat-x;
+  background-size: 96px 100%;
+}
+
+.home-transition__cue {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.36);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    color 180ms ease-out,
+    background-color 180ms ease-out;
+}
+
+.home-transition__cue svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 180ms ease-out;
+}
+
+.home-transition__cue:hover,
+.home-transition__cue:focus-visible {
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.home-transition__cue:hover svg,
+.home-transition__cue:focus-visible svg {
+  transform: translateY(2px);
+}
+
+.home-transition__cue:focus-visible,
+.hero-cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Hero CTAs share one silhouette and interaction tempo. The primary's
+   dark arrow well expands beneath the fixed content while the orange
+   ground remains visible as a precise inset outline. */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  border-radius: 999px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 200ms ease-out,
+    color 200ms ease-out,
+    border-color 200ms ease-out,
+    background-color 200ms ease-out,
+    box-shadow 200ms ease-out;
+}
+
+.hero-cta--primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 176px;
+  justify-content: space-between;
+  padding: 0 2px 0 20px;
+  border: 1px solid transparent;
+  color: var(--surface-dark);
+  background: var(--accent);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.22),
+    0 10px 26px -14px rgba(249, 142, 31, 0.65);
+}
+
+.hero-cta--primary::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  width: 48px;
+  border-radius: 999px;
+  background: rgba(11, 15, 20, 0.92);
+  transition: width 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-cta__label {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+  transition: color 300ms ease-out;
+}
+
+.hero-cta__arrow {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.9);
+  background: transparent;
+}
+
+.hero-cta__arrow svg {
+  opacity: 0.82;
+  transition:
+    transform 200ms ease-out,
+    opacity 200ms ease-out;
+}
+
+.hero-cta--primary:hover {
+  transform: translateY(-2px);
+  background: var(--accent-hover);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.26),
+    0 16px 32px -14px rgba(249, 142, 31, 0.72);
+}
+
+.hero-cta--primary:hover::before,
+.hero-cta--primary:focus-visible::before {
+  width: calc(100% - 4px);
+}
+
+.hero-cta--primary:hover .hero-cta__label,
+.hero-cta--primary:focus-visible .hero-cta__label {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.hero-cta--primary:hover .hero-cta__arrow svg {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+.hero-cta--secondary {
+  min-width: 118px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.018);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.hero-cta--secondary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+/* The footer keeps the hero CTA's silhouette and type but uses a
+   quieter LinkedIn-specific response instead of the hero's dark wipe. */
+.footer-cta--linkedin {
+  width: 176px;
+  gap: 10px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  color: var(--surface-dark);
+  background: var(--accent);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.22),
+    0 10px 26px -14px rgba(249, 142, 31, 0.58);
+}
+
+.footer-cta__linkedin-icon {
+  flex: 0 0 auto;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-cta--linkedin:hover {
+  transform: translateY(-2px);
+  background: var(--accent-hover);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.26),
+    0 15px 30px -14px rgba(249, 142, 31, 0.68);
+}
+
+.footer-cta--linkedin:hover .footer-cta__linkedin-icon {
+  transform: translateX(2px) rotate(-6deg);
+}
+
+.hero-cta:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* ── "Working file" paper surface ─────────────────────────────
+   The brand reading surface (matches the case-study cream).
+   Tooth grain stays ≤3% so it never reads as a dirty screen. */
+.paper-surface {
+  position: relative;
+  background-color: var(--surface-paper);
+}
+
+.paper-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Faint column grid at the hero→paper seam, echoing the hero sketch
+   grid, dissolving within the first ~420px of the section. */
+.paper-grid-echo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 420px;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--annotation-rule-light) 0 1px,
+    transparent 1px 96px
+  );
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Dark bench — the homepage project index (July 2026 amendment).
+   Mirror of .paper-surface: same feTurbulence grain, overlay blend
+   instead of multiply. Grain is the banding cure for the dark
+   field, not decoration; tune opacity 0.035–0.06 against banding.
+   ──────────────────────────────────────────────────────────────── */
+.bench-surface {
+  position: relative;
+  background-color: var(--surface-dark);
+}
+
+.bench-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Hero sketch-grid echo on the bench, dissolving within ~320px.
+   Effective line value ≈ 3.6% white (14% rule × 0.26 layer). */
+.bench-grid-echo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 320px;
+  pointer-events: none;
+  opacity: 0.26;
+  background-image: linear-gradient(
+    to right,
+    transparent 0 calc(100% - 1px),
+    var(--annotation-rule-dark) calc(100% - 1px) 100%
+  );
+  background-position: center top;
+  background-repeat: repeat-x;
+  background-size: 96px 100%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Bench card lighting model. Per-project hue arrives only as
+   light: an ambient bloom behind the card, a key light inside the
+   mockup well, and a 1px rule (the one color allowed at rest,
+   ≤30% alpha — light residue, not pigment). Hues are channel
+   triplets in theme.css; every alpha lives here. Only opacity and
+   transform ever animate — shadows are pre-rendered and faded.
+   ──────────────────────────────────────────────────────────────── */
+.card-shell {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+/* Ambient bloom — extends past the card's overflow clip */
+.card-shell::before {
+  content: "";
+  position: absolute;
+  inset: -48px;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    rgb(var(--card-light) / 0.28),
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+
+/* Pre-rendered elevation shadow — the card lifts away from it */
+.card-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 16px;
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+
+.card-shell:hover::before,
+.card-shell:focus-within::before,
+.card-shell:hover::after,
+.card-shell:focus-within::after {
+  opacity: 1;
+}
+
+/* Rest rule along the card's top edge; brightens under the bloom */
+.bench-card-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 30;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--card-light) / 0.3) 14%,
+    rgb(var(--card-light) / 0.3) 86%,
+    transparent
+  );
+}
+
+.bench-card-rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--card-light) / 0.6) 14%,
+    rgb(var(--card-light) / 0.6) 86%,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+
+.card-shell:hover .bench-card-rule::after,
+.card-shell:focus-within .bench-card-rule::after {
+  opacity: 1;
+}
+
+/* Key light — chases the pointer inside the mockup well on fine
+   pointers (useKeyLight writes the transform; this transition is
+   the 160ms lamp-chase). Everywhere else it is a static centred
+   light: a state change, not motion. Sits above the artifact —
+   light touches the screenshot. */
+.card-keylight {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 440px;
+  height: 440px;
+  margin: -220px 0 0 -220px;
+  border-radius: 9999px;
+  z-index: 20;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    rgb(var(--card-light) / 0.1),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 250ms ease-out, transform 160ms ease-out;
+  will-change: transform;
+}
+
+.card-shell:hover .card-keylight,
+.card-shell:focus-within .card-keylight {
+  opacity: 1;
+}
+
+/* Arrow chip border takes the project light while lit */
+.card-shell:hover .bench-card-chip,
+.card-shell:focus-within .bench-card-chip {
+  border-color: rgb(var(--card-light) / 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-shell::after {
+    display: none;
+  }
+
+  .home-transition__cue,
+  .home-transition__cue svg,
+  .hero-cta,
+  .hero-cta--primary::before,
+  .hero-cta__arrow svg,
+  .footer-cta__linkedin-icon,
+  .card-shell::before,
+  .card-shell::after,
+  .bench-card-rule::after {
+    transition: opacity 200ms ease-out;
+  }
+
+  .hero-cta--primary::before {
+    transition: none;
+  }
+
+  .home-transition__cue:hover svg,
+  .home-transition__cue:focus-visible svg,
+  .hero-cta--primary:hover,
+  .hero-cta--primary:hover .hero-cta__arrow svg,
+  .hero-cta--secondary:hover,
+  .footer-cta--linkedin:hover,
+  .footer-cta--linkedin:hover .footer-cta__linkedin-icon,
+  .hero-cta:active {
+    transform: none;
+  }
+
+  /* Static centred light only — no chase */
+  .card-keylight {
+    transition: opacity 200ms ease-out;
+    transform: none !important;
+  }
+}
+
+/* Mobile keeps the hero as a full viewport composition. */
+@media (max-width: 767px) {
+  .home-page .hero {
+    height: 100svh !important;
+    min-height: 100svh;
+  }
+
+  @supports (height: 100dvh) {
+    .home-page .hero {
+      height: 100dvh !important;
+      min-height: 100dvh;
+    }
+  }
+}
+
+/* At the md breakpoint the portrait column appears while the headline still
+   wraps to five lines. Give that composition enough height to keep both CTAs
+   inside the hero instead of clipping them below the fixed 560px canvas. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .home-page .hero {
+    height: 680px !important;
+  }
 }
 
 .project-card-dual-phone-shell {
@@ -103,12 +667,77 @@ body {
 }
 
 @media (max-width: 639px) {
+  .hero-cta--primary {
+    width: 166px;
+  }
+
+  .hero-cta--secondary {
+    min-width: 108px;
+    padding-inline: 20px;
+  }
+
   .home-atmosphere {
-    background-image:
-      radial-gradient(620px 760px at 80% 8%, rgba(249, 142, 31, 0.13), rgba(22, 26, 31, 0) 66%),
-      radial-gradient(480px 650px at 2% 14%, rgba(52, 120, 150, 0.105), rgba(22, 26, 31, 0) 66%),
-      radial-gradient(640px 820px at 77% 36%, rgba(249, 142, 31, 0.06), rgba(22, 26, 31, 0) 70%),
-      radial-gradient(520px 720px at 4% 61%, rgba(32, 90, 115, 0.09), rgba(22, 26, 31, 0) 70%),
-      linear-gradient(180deg, #11171C 0%, #141A20 44%, #13181E 74%, #161A1F 100%);
+    background-image: linear-gradient(
+      158deg,
+      #101A21 0%,
+      #162128 34%,
+      #1B1E1F 62%,
+      #161A1F 100%
+    );
+  }
+
+  .home-atmosphere::before {
+    inset: -18% -52% 28% 18%;
+    background: rgba(196, 105, 50, 0.12);
+    box-shadow: -28vw 20vh 120px rgba(122, 78, 57, 0.045);
+    -webkit-filter: blur(82px);
+    filter: blur(82px);
   }
 }
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .home-atmosphere::before {
+    inset: -24% -34% 10% 34%;
+    background: rgba(196, 105, 50, 0.14);
+    box-shadow: -22vw 18vh 150px rgba(122, 78, 57, 0.05);
+    -webkit-filter: blur(96px);
+    filter: blur(96px);
+  }
+}
+
+/* ───────────────────────────────────────────────────────────
+   Progressive Backdrop Blur Overlay (m51.no inspired)
+   Overlapping dual-layer blur with gradient opacity mask to
+   feather content scrolling under top-edge/nav smoothly.
+   ─────────────────────────────────────────────────────────── */
+.nav-blur-overlay {
+  position: fixed;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 130px;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.nav-blur-overlay > div {
+  position: absolute;
+  inset: 0;
+}
+
+/* Layer 1: Broad soft blur */
+.nav-blur-overlay > :nth-child(1) {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 75%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0) 75%);
+}
+
+/* Layer 2: Heavy blur + saturation boost near top edge */
+.nav-blur-overlay > :nth-child(2) {
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 35%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 35%);
+}
+

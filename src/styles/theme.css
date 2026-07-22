@@ -65,6 +65,64 @@
   --text-on-light-secondary: rgba(22, 26, 31, 0.72);
   --text-on-light-muted: rgba(22, 26, 31, 0.58);
   --text-on-light-label: rgba(22, 26, 31, 0.48);
+
+  /* ───────────────────────────────────────────────────────────
+     "Working File" brand tokens — single source of truth.
+     Accent: one orange for UI (buttons, ticks, focus, active
+     states), a deeper editorial variant for emphasis on dark.
+     Orange never carries text below ~24px on paper surfaces —
+     on light it is marks only (rules, ticks, progress lines).
+     ─────────────────────────────────────────────────────────── */
+  --accent: #F98E1F;
+  --accent-strong: #F9581F;
+  --accent-hover: #FFA13E;
+
+  /* Surfaces: dark = the studio (artifact presentation),
+     paper = the file (reading, evidence, index). */
+  --surface-dark: #161A1F;
+  --surface-dark-raised: #1B2026;
+  --surface-paper: #F4F3F0;
+  --surface-paper-raised: #FFFFFF;
+
+  /* Hairlines + annotation layer (labels reuse the contrast tiers). */
+  --hairline-light: rgba(22, 26, 31, 0.08);
+  --hairline-dark: rgba(255, 255, 255, 0.07);
+  --annotation-rule-light: rgba(22, 26, 31, 0.14);
+  --annotation-rule-dark: rgba(255, 255, 255, 0.14);
+
+  /* Per-project identity — ambient tints for card mockup zones
+     (4–8% washes) and one hue for ticks/hover hints. Never used
+     in chrome, typography, or buttons. */
+  --proj-harmoni: #D98B73;
+  --proj-harmoni-tint: rgba(217, 139, 115, 0.09);
+  --proj-matspar: #34B36F;
+  --proj-matspar-tint: rgba(52, 179, 111, 0.07);
+  --proj-fristil: #161A1F;
+  --proj-fristil-tint: rgba(22, 26, 31, 0.04);
+  --proj-corruption-fighter: #00338D;
+  --proj-corruption-fighter-tint: rgba(0, 51, 141, 0.09);
+
+  /* ───────────────────────────────────────────────────────────
+     Dark bench — homepage artifact presentation (July 2026
+     amendment). The project index leaves paper and joins the
+     studio: cards are lit artifacts on the dark bench. Paper
+     remains the reading surface (case studies).
+     Per-project light: channel triplets consumed only through
+     rgb(var(--card-light) / <alpha>) in the card layer — alphas
+     live in one place (styles/index.css), hues live only here.
+     Fristil's light is deliberately paper-white: the photography
+     label is lit like a gallery print.
+     ─────────────────────────────────────────────────────────── */
+  --surface-dark-well: #14171A;   /* mockup recess inside cards  */
+  --surface-dark-hover: #20252C;  /* card ground, raised on hover */
+  --surface-paper-well: #ECEAE4;  /* figure recess on paper (Pass 4) */
+
+  --proj-harmoni-light: 217 139 115;  /* = --proj-harmoni          */
+  --proj-fristil-light: 240 238 233;  /* paper-white gallery light */
+  --proj-corruption-fighter-light: 50 112 214; /* KPMG blue lifted for
+                                                  emitted light       */
+  --proj-matspar-light: 82 191 122;   /* #34B36F lifted; the paper
+                                         value muddies on dark     */
 }
 
 /* Semantic text utilities mapped to the contrast tiers above.
@@ -119,6 +177,19 @@
 }
 
 @theme inline {
+  /* Working File tokens → Tailwind utilities
+     (bg-accent, text-ink/72, bg-paper, border-ink/8, …) */
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-hover: var(--accent-hover);
+  --color-ink: var(--surface-dark);
+  --color-ink-raised: var(--surface-dark-raised);
+  --color-ink-well: var(--surface-dark-well);
+  --color-ink-hover: var(--surface-dark-hover);
+  --color-paper-well: var(--surface-paper-well);
+  --color-paper: var(--surface-paper);
+  --color-paper-raised: var(--surface-paper-raised);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

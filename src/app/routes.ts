@@ -5,13 +5,15 @@ import { SiteLayout } from "./components/SiteLayout";
 const Home = lazy(() => import("./pages/Home"));
 const HarmoniCaseStudy = lazy(() => import("./pages/HarmoniCaseStudy"));
 const FristilCaseStudy = lazy(() => import("./pages/FristilCaseStudy"));
-const F1CaseStudy = lazy(() => import("./pages/F1CaseStudy"));
+const CorruptionFighterCaseStudy = lazy(
+  () => import("./pages/CorruptionFighterCaseStudy"),
+);
 const MatSparCaseStudy = lazy(() => import("./pages/MatSparCaseStudy"));
 const About = lazy(() => import("./pages/About"));
 
 const fallback = createElement(
   "div",
-  { className: "min-h-screen bg-[#161A1F] flex items-center justify-center" },
+  { className: "min-h-screen bg-ink flex items-center justify-center" },
   createElement("div", {
     className:
       "w-5 h-5 border-2 border-white/20 border-t-white/60 rounded-full animate-spin",
@@ -31,7 +33,15 @@ export const router = createHashRouter([
       { path: "/", Component: wrap(Home) },
       { path: "/work/harmoni", Component: wrap(HarmoniCaseStudy) },
       { path: "/work/fristil", Component: wrap(FristilCaseStudy) },
-      { path: "/work/f1-platform", Component: wrap(F1CaseStudy) },
+      {
+        path: "/work/corruption-fighter",
+        Component: wrap(CorruptionFighterCaseStudy),
+      },
+      /* Compatibility alias for previously shared portfolio links. */
+      {
+        path: "/work/f1-platform",
+        Component: wrap(CorruptionFighterCaseStudy),
+      },
       { path: "/work/matspar", Component: wrap(MatSparCaseStudy) },
       { path: "/about", Component: wrap(About) },
     ],

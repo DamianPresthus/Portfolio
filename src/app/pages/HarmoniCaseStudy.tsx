@@ -1,1255 +1,530 @@
-import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router";
-import { motion } from "motion/react";
-import { useRef, useState, useEffect } from "react";
+import { motion, MotionConfig } from "motion/react";
 
-// Hero — colored home screen (Dagens øvelse)
-import imgHeroScreen from "figma:asset/8bcf6d47ead6e4a649fc8a16abc1da242b61040f.png";
-// Project card screens (dual phone hero)
-import imgHarmoniOnboarding from "figma:asset/09863dc3638a4cd55c70eb4dbf183102e48dfff3.png";
-import imgHarmoniHome from "figma:asset/0017b3730e543b50eba675afb9ad48715cc403b2.png";
-// IA diagram
-import imgIA from "figma:asset/36e7b634f62b6307b2649df71f4bbefad33e540c.png";
-// Hi-fi screens
-import imgPodcast from "figma:asset/0a9cce5ad50bc3019c72c76b1dcdf40881385c0f.png";
-import imgProfile from "figma:asset/c02c5cb093af8e033599dcd2e7daabb0bf93121d.png";
+import imgV2Home from "figma:asset/8bcf6d47ead6e4a649fc8a16abc1da242b61040f.png";
+import imgOnboarding from "../../assets/harmoni/onboarding.png";
+import imgFramedOnboarding from "figma:asset/09863dc3638a4cd55c70eb4dbf183102e48dfff3.png";
+import imgFramedHome from "figma:asset/0017b3730e543b50eba675afb9ad48715cc403b2.png";
 import imgMood from "figma:asset/b90a02378d8c4bf4295101f31ec3c8a0706daef4.png";
-// Wireframes (used in before/after)
-import imgWireframes from "figma:asset/ca1766a3e9a634b2e20b5692fa8ba865652106be.png";
-// All four screens overview
-import imgProfilScreen from "figma:asset/65a0c25c35deea4988b0c3ac985e3897da830f59.png";
-// Design system
-import imgColors from "figma:asset/32c9691357f95709704a14b42cc7f9796a4b5293.png";
-import imgTypography from "figma:asset/45b12c0c244867215ba66a150274b72142d34951.png";
-// Figma-imported Profil screen component
-import ProfilScreen from "../../imports/Group82";
-import { ResourceLink, NextProjectNav, caseStudyNav } from "../components/case-study/shared";
+import imgProfil from "figma:asset/65a0c25c35deea4988b0c3ac985e3897da830f59.png";
+import imgPodcast from "figma:asset/0a9cce5ad50bc3019c72c76b1dcdf40881385c0f.png";
+import imgIA from "figma:asset/36e7b634f62b6307b2649df71f4bbefad33e540c.png";
+import imgV1Hjem from "../../assets/harmoni/v1-hjem-skjerm.png";
+import imgCropScales from "../../assets/harmoni/crop-scales.png";
+import imgCropTypeA from "../../assets/harmoni/crop-type-a.png";
+import imgCropTypeB from "../../assets/harmoni/crop-type-b.png";
+import imgCropTypeButtons from "../../assets/harmoni/crop-type-buttons.png";
+import imgCropProgresjon from "../../assets/harmoni/crop-progresjon.png";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 14 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" } as const,
-  transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as const },
-};
+import {
+  CaseStudyNav,
+  CaseStudyHero,
+  ResourceLink,
+  NextProjectNav,
+  caseStudyNav,
+  MONO,
+  H2,
+  H3_ROW,
+  H4_STEP,
+  SectionEyebrow,
+  FigCaption,
+  Well,
+  drawParent,
+  drawRule,
+  type CaseStudySection,
+} from "../components/case-study/shared";
 
-const fadeUpDelay = (delay: number) => ({
-  ...fadeUp,
-  transition: { ...fadeUp.transition, delay },
-});
+const HARMONI_LIGHT = "var(--proj-harmoni-light)";
 
-/* First-session flow — real screens, in the order a new user meets them. */
-type FlowStep = {
-  step: string;
-  title: string;
-  description: string;
-  imageSrc: string;
-  imageAlt: string;
-  /** Optional interaction-state tag (e.g. Feedback, Completion). */
-  state?: string;
-};
+const SECTIONS: CaseStudySection[] = [
+  { id: "context", label: "Context" },
+  { id: "understanding", label: "Understanding" },
+  { id: "moving", label: "Navigation" },
+  { id: "flow", label: "Flow" },
+  { id: "testing", label: "Testing" },
+  { id: "system", label: "System" },
+  { id: "outcome", label: "Outcome" },
+];
 
-const firstSessionFlow: FlowStep[] = [
+const prototypeUrl =
+  "https://www.figma.com/proto/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1";
+const figmaFileUrl =
+  "https://www.figma.com/design/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1";
+
+/* Prose measure for the whole page (the case-study reading system's
+   580–620px rule). Heading scale (H2/H3/H4) is imported from shared. */
+const PROSE_LIGHT = "max-w-[620px] text-[16px] leading-[1.75] text-ink/72";
+const PROSE_DARK = "max-w-[620px] text-[16px] leading-[1.75] text-white/64";
+
+const firstSessionFlow = [
   {
     step: "01",
     title: "Welcome",
-    imageSrc: imgHarmoniOnboarding,
-    imageAlt:
-      "Welcome screen — a friendly illustration, one line of purpose, and a single Kom i gang button",
-    description:
-      "One line of purpose and a single button. Value is shown before any account wall.",
+    description: "A short introduction explains what Harmoni offers.",
+    imageSrc: imgOnboarding,
+    imageAlt: "Harmoni welcome screen with illustration and Kom i gang button",
   },
   {
     step: "02",
-    title: "Start the session",
-    imageSrc: imgHeroScreen,
-    imageAlt:
-      "Home screen opening on one primary action — Start today's exercise",
-    description:
-      "Home opens on one primary action. Activities and articles wait below the fold.",
+    title: "Browse podcasts",
+    description: "The podcast screen uses the same navigation and content hierarchy as the home screen.",
+    imageSrc: imgPodcast,
+    imageAlt: "Harmoni podcast screen with search, popular episodes, and new releases",
   },
   {
     step: "03",
-    state: "Feedback",
-    title: "Reflect",
-    imageSrc: imgMood,
-    imageAlt:
-      "Mood check-in screen with an AI summary that reflects the entry back to the user",
-    description:
-      "A lightweight mood check-in. The AI summary reflects the entry back — a response, not a form.",
+    title: "Review progress",
+    description: "The profile gives users an overview of their recent mood entries and active days.",
+    imageSrc: imgProfil,
+    imageAlt: "Harmoni profile screen with progress and active-day cards",
   },
   {
     step: "04",
-    state: "Completion",
-    title: "See progress",
-    imageSrc: imgProfilScreen,
-    imageAlt:
-      "Profile screen showing an active-day streak and progress toward a wellbeing goal",
-    description:
-      "Streak and goal progress close the loop and give a reason to return tomorrow.",
+    title: "Track mood",
+    description: "The weekly view shows how the user’s recorded mood has changed over time.",
+    imageSrc: imgMood,
+    imageAlt: "Harmoni mood screen showing recent entries and a weekly chart",
   },
 ];
 
-function SectionDivider({ light = false }: { light?: boolean }) {
-  return (
-    <div
-      aria-hidden="true"
-      className="h-px"
-      style={{
-        background: light
-          ? "linear-gradient(90deg, transparent 5%, rgba(0,0,0,0.06) 30%, rgba(0,0,0,0.06) 70%, transparent 95%)"
-          : "linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent 95%)",
-      }}
-    />
-  );
-}
+const testingFindings = [
+  {
+    title: "Råd og tips was difficult to find",
+    text: "Four of the five participants struggled to find the section about signs of mental health difficulties. We moved Råd og tips to a more visible position in the main navigation.",
+  },
+  {
+    title: "Static screens appeared scrollable",
+    text: "Several participants tried to scroll screens that did not move. We made longer screens scrollable and arranged related content vertically on the same page.",
+  },
+  {
+    title: "The opening screens needed more guidance",
+    text: "Participants asked for a clearer introduction, more imagery, and more spacing. We added a short introduction and gave the content more room in the final prototype.",
+  },
+];
 
-function DeviceMockup({
-  src,
-  alt,
-  className = "",
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`relative ${className}`}
-      style={{
-        filter:
-          "drop-shadow(0 24px 64px rgba(0,0,0,0.35)) drop-shadow(0 8px 20px rgba(0,0,0,0.18))",
-      }}
-    >
-      <div
-        className="relative w-full overflow-hidden"
-        style={{
-          aspectRatio: "390 / 844",
-          background:
-            "linear-gradient(135deg, #2a2d32 0%, #1f2227 50%, #1a1d22 100%)",
-          borderRadius: "52px",
-          padding: "3px",
-        }}
-      >
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            borderRadius: "52px",
-            boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.08)",
-          }}
-        />
-        <div
-          className="relative w-full h-full bg-black overflow-hidden"
-          style={{ borderRadius: "49px" }}
-        >
-          <div
-            aria-hidden="true"
-            className="absolute top-[12px] left-1/2 -translate-x-1/2 z-30"
-            style={{
-              width: "120px",
-              height: "35px",
-              background: "#000",
-              borderRadius: "20px",
-            }}
-          />
-          <img
-            src={src}
-            alt={alt}
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/** Renders the Figma Profil component scaled to fill its parent width */
-function ScaledProfilScreen() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(0);
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const updateScale = () => {
-      setScale(el.clientWidth / 393);
-    };
-    updateScale();
-    const observer = new ResizeObserver(() => updateScale());
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative w-full overflow-hidden rounded-lg bg-[#fbf4f1]"
-      style={{ aspectRatio: "393 / 852" }}
-      role="img"
-      aria-label="Final profile screen — mood check-in, health metrics, and activity tracking"
-    >
-      <div
-        className="absolute top-0 left-0 w-[393px] h-[852px]"
-        style={{
-          transformOrigin: "top left",
-          transform: `scale(${scale})`,
-        }}
-      >
-        <ProfilScreen />
-      </div>
-    </div>
-  );
-}
+/* Accent underlines drawn on the revised home screen. Percentages
+   locate the marks on the 786×1704 export: the Råd & Tips tab that
+   moved into the main navigation, and the Dagens øvelse headline the
+   redesign made dominant. Both labels are visible in the frame. */
+const v2Marks = [
+  { left: "76.8%", width: "18%", top: "12.9%" },
+  { left: "4.2%", width: "50%", top: "21.4%" },
+];
 
 export default function HarmoniCaseStudy() {
   return (
-    <div className="min-h-screen font-['Plus_Jakarta_Sans',sans-serif] antialiased">
-      {/* Navigation */}
-      <nav aria-label="Case study navigation" className="fixed top-0 left-0 right-0 z-50 bg-[#161A1F]/80 backdrop-blur-md border-b border-white/[0.06]">
-        <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-6">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-white/72 hover:text-white/92 transition-colors duration-200 group"
-          >
-            <ArrowLeft
-              className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
-              strokeWidth={1.5}
-            />
-            <span className="text-[14px] font-medium tracking-wide">
-              Back to work
-            </span>
-          </Link>
-        </div>
-      </nav>
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen bg-ink font-['Plus_Jakarta_Sans',sans-serif] antialiased">
+        <CaseStudyNav sections={SECTIONS} />
 
-      {/* ═══════════════════════════════════════
-          1. HERO — Dark
-          ═══════════════════════════════════════ */}
-      <section className="relative w-full min-h-screen flex items-center overflow-hidden pt-20">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-br from-[#161A1F] via-[#1a1f26] to-[#161A1F]"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-30"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(120,170,240,0.08) 0%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-[0.015]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
-
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-14 md:py-20 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
-            {/* Left — Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1] as const }}
-              className="flex flex-col"
-            >
-              <h1 className="font-['Lora',serif] font-normal text-white text-[56px] md:text-[68px] lg:text-[80px] leading-[1.05] tracking-[-0.03em] mb-4">
-                Harmoni
-              </h1>
-              <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-medium text-white/72 text-[20px] md:text-[22px] leading-[1.4] tracking-[-0.01em] mb-6">
-                Mental health app focused on daily habit activation
-              </h2>
-              <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/72 text-[16px] md:text-[17px] leading-[1.65] max-w-[540px] mb-8">
-                A mental health concept app designed to help users start one
-                meaningful daily action with less friction. Usability testing
-                revealed hesitation during onboarding and unclear next steps,
-                leading to a simplified structure, clearer hierarchy, and
-                stronger first-session activation.
-              </p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] as const }}
-                className="mt-2 max-w-[460px] flex flex-col gap-[15px]"
-              >
-                {[
-                  { label: "Role", value: "Product Designer" },
-                  { label: "Focus", value: "UX Research · Interaction Design · Usability Testing" },
-                  { label: "Year", value: "2024" },
-                ].map((row) => (
-                  <div key={row.label} className="flex items-baseline gap-5">
-                    <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/48 font-medium">
-                      {row.label}
-                    </span>
-                    <span className="text-[15px] md:text-[16px] text-white/72 font-medium tracking-[-0.01em]">
-                      {row.value}
-                    </span>
-                  </div>
-                ))}
-                <div className="flex items-baseline gap-5">
-                  <span className="w-[80px] shrink-0 text-[12px] uppercase tracking-[2px] text-white/48 font-medium">
-                    Outcome
-                  </span>
-                  <span className="text-[15px] md:text-[16px] text-white/75 font-medium tracking-[-0.01em]">
-                    Improved <span className="text-white/92">first-session activation</span>
-                  </span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.28, ease: [0.25, 0.1, 0.25, 1] as const }}
-                className="mt-8"
-              >
-                <ResourceLink
-                  href="https://www.figma.com/proto/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1"
-                  label="Open Figma prototype"
-                  variant="ghost"
-                  tone="dark"
-                />
-              </motion.div>
-            </motion.div>
-
-            {/* Right — Dual phone mockup */}
-            <motion.div
-              initial={{ opacity: 0, scale: 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.08,
-                ease: [0.25, 0.1, 0.25, 1] as const,
-              }}
-              className="flex items-center justify-center lg:justify-end"
-            >
-              <div className="relative w-full max-w-[420px] lg:max-w-[460px]">
-                <div
-                  className="flex items-end justify-center gap-3 md:gap-4"
+        <CaseStudyHero
+          lightVar="--proj-harmoni-light"
+          eyebrow="Four-person school project · Kristiania"
+          title="Harmoni"
+          lede="A mental health concept for small, manageable steps in everyday life."
+          body="Harmoni was a school project I worked on together with three other students. We explored how a mental health app could support young adults experiencing mild to moderate mental health difficulties. We researched the concept, created the information architecture, and designed a clickable Figma prototype that we tested with five participants."
+          stats={[
+            { value: "4", label: "Student team members", targetId: "context" },
+            { value: "5", label: "Usability test participants", targetId: "testing" },
+            { value: "Figma", label: "Prototype deliverable", targetId: "outcome" },
+          ]}
+          actions={
+            <>
+              <ResourceLink href={prototypeUrl} label="Open Figma prototype" tone="dark" />
+              <ResourceLink href={figmaFileUrl} label="View Figma file" tone="dark" />
+            </>
+          }
+          media={
+            <div className="flex items-center justify-center gap-3 md:gap-5 lg:gap-6">
+              <div className="w-[42%] max-w-[280px]">
+                <img
+                  src={imgFramedOnboarding}
+                  alt="Harmoni app onboarding screen showing a friendly wave illustration"
+                  loading="eager"
+                  decoding="async"
+                  className="block h-auto w-full"
                   style={{
                     filter:
-                      "drop-shadow(0 14px 44px rgba(0,0,0,0.22)) drop-shadow(0 6px 18px rgba(0,0,0,0.10))",
-                  }}
-                >
-                  {/* Phone 1 — Onboarding */}
-                  <div className="w-[46%]">
-                    <img
-                      src={imgHarmoniOnboarding}
-                      alt="Harmoni app onboarding screen showing a friendly wave illustration"
-                      className="w-full h-auto block rounded-[12px] sm:rounded-[14px]"
-                      style={{
-                        boxShadow:
-                          "0 14px 44px -10px rgba(0,0,0,0.22), 0 6px 18px -6px rgba(0,0,0,0.10)",
-                      }}
-                    />
-                  </div>
-                  {/* Phone 2 — Home (raised for depth) */}
-                  <div
-                    className="w-[46%]"
-                    style={{
-                      transform: "translateY(-24px) scale(0.975)",
-                      transformOrigin: "bottom center",
-                    }}
-                  >
-                    <img
-                      src={imgHarmoniHome}
-                      alt="Harmoni app homepage showing daily exercise overview"
-                      className="w-full h-auto block rounded-[12px] sm:rounded-[14px]"
-                      style={{
-                        boxShadow:
-                          "0 14px 44px -10px rgba(0,0,0,0.22), 0 6px 18px -6px rgba(0,0,0,0.10)",
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Ambient glow behind devices */}
-                <div
-                  aria-hidden="true"
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"
-                  style={{
-                    width: "140%",
-                    height: "130%",
-                    background:
-                      "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(120,170,240,0.06) 0%, rgba(100,150,220,0.03) 40%, transparent 75%)",
-                    filter: "blur(50px)",
+                      "drop-shadow(0 24px 48px rgba(0,0,0,0.5)) drop-shadow(0 8px 18px rgba(0,0,0,0.35))",
                   }}
                 />
               </div>
-            </motion.div>
-          </div>
-        </div>
-
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(200,210,220,0.02) 0%, transparent 100%)",
-          }}
+              <div className="w-[44%] max-w-[300px] -translate-y-5 scale-[0.975] md:-translate-y-8">
+                <img
+                  src={imgFramedHome}
+                  alt="Harmoni app homepage showing daily exercise overview"
+                  loading="eager"
+                  decoding="async"
+                  className="block h-auto w-full"
+                  style={{
+                    filter:
+                      "drop-shadow(0 24px 48px rgba(0,0,0,0.5)) drop-shadow(0 8px 18px rgba(0,0,0,0.35))",
+                  }}
+                />
+              </div>
+            </div>
+          }
         />
-      </section>
 
-      {/* ═══════════════════════════════════════
-          2. PROBLEM & STRUCTURAL CHALLENGE — Dark
-          ═══════════════════════════════════════ */}
-      <section className="relative w-full bg-[#161A1F] overflow-hidden">
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40">
-          <motion.div
-            {...fadeUp}
-            className="flex items-center gap-3 mb-10 md:mb-14"
-          >
-            <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/58 font-medium">
-              Problem &amp; Structure
-            </p>
-          </motion.div>
+        {/* ── The paper spine: context → IA band → home-screen evidence.
+            Dark returns only for the key-screens reveal; reference
+            material (IA, design system) sits on recessed well bands. ── */}
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-start">
-            {/* Left — Problem statement */}
-            <div className="lg:col-span-5">
-              <motion.h2
-                {...fadeUp}
-                className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] mb-8"
-              >
-                The challenge was structural,{" "}
-                <span className="text-white/58">not visual.</span>
-              </motion.h2>
-
-              <motion.p
-                {...fadeUpDelay(0.08)}
-                className="text-white/58 text-[15px] md:text-[16px] leading-[1.75] max-w-[460px]"
-              >
-                Retention in mental health products often depends on whether
-                users take action in the first session. If the first interaction
-                feels unclear, routine rarely forms. In early testing, Harmoni
-                failed in the first minute.
-              </motion.p>
-
-              <motion.p
-                {...fadeUpDelay(0.11)}
-                className="text-white/58 text-[15px] md:text-[16px] leading-[1.75] max-w-[460px] mt-5"
-              >
-                Users opened the app and did not know where to begin. The home
-                screen displayed multiple tools without indicating priority.
-                There was no defined entry point. Participants paused, explored
-                without direction, and in several cases abandoned the task
-                before starting an exercise.
-              </motion.p>
-
-              <motion.p
-                {...fadeUpDelay(0.13)}
-                className="text-white/58 text-[14px] md:text-[15px] leading-[1.65] max-w-[460px] mt-5 italic"
-              >
-                Five moderated usability tests using ten task scenarios
-                confirmed the pattern.
-              </motion.p>
-
-              {/* Friction points */}
-              <motion.div
-                {...fadeUpDelay(0.16)}
-                className="mt-10 space-y-4"
-              >
-                {[
-                  "No primary action defined on the home screen",
-                  "Users attempted to scroll on static layouts",
-                  "Onboarding did not communicate purpose clearly",
-                ].map((point, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/20 mt-2 shrink-0" />
-                    <p className="text-white/48 text-[14px] leading-[1.6]">
-                      {point}
-                    </p>
-                  </div>
-                ))}
-              </motion.div>
-
-              <motion.p
-                {...fadeUpDelay(0.18)}
-                className="mt-14 md:mt-16 text-white/72 text-[15px] md:text-[16px] leading-[1.75] max-w-[580px]"
-              >
-                The issue was not missing functionality. It was hierarchy.
-              </motion.p>
+        <section id="context" className="paper-surface relative w-full scroll-mt-20 overflow-hidden">
+          <div className="relative z-10 mx-auto max-w-[1200px] px-8 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
+            <SectionEyebrow index="01" label="Project methods and process" />
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-7">
+                <h2 className={`${H2} text-ink`}>
+                  A user-centred, iterative process
+                </h2>
+              </div>
+              <div className="space-y-5 lg:col-span-5">
+                <p className="text-[16px] leading-[1.75] text-ink/72">
+                  We used a user-centred design process throughout the project. Before moving into visual detail, we used conceptual modelling to define the app&apos;s content, functions, and navigation. This gave us a shared structure to build the prototype from.
+                </p>
+                <p className="text-[16px] leading-[1.75] text-ink/72">
+                  We then tested the prototype with five participants through task-based usability sessions. I helped document interviews, time spent, clicks, and navigation issues, then used the findings with the team to refine the flow, add scrolling where it was expected, and make the navigation clearer.
+                </p>
+              </div>
             </div>
 
-            {/* Right — IA diagram */}
-            <motion.div
-              {...fadeUpDelay(0.1)}
-              className="lg:col-span-7 flex justify-center lg:justify-end"
-            >
-              <div className="w-full max-w-[600px] bg-white rounded-lg p-6 md:p-8">
-                <img
-                  src={imgIA}
-                  alt="Information architecture diagram — Welcome, Sign Up, Home, Profile navigation structure"
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
+            {/* Project metadata as a colophon strip, not content cards. */}
+            <div className="mt-14 grid grid-cols-1 divide-y divide-ink/10 border-y border-ink/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+              {[
+                ["Audience", "Young adults with mild to moderate mental health difficulties, plus people supporting a friend"],
+                ["Project work", "Research, wireframes, information architecture, high-fidelity prototyping, and usability testing"],
+                ["Project scope", "School project ending in a high-fidelity Figma prototype"],
+                ["Team", "Damian Præsthus, Mark Daniel Reyes, Elin Halvorsen, Henrik Bjørbekk"],
+              ].map(([label, value]) => (
+                <div key={label} className="py-5 lg:px-6 lg:first:pl-0 lg:last:pr-0">
+                  <p className={`${MONO} mb-2.5 text-[10px] uppercase tracking-[0.08em] text-ink/48`}>{label}</p>
+                  <p className="text-[14px] leading-[1.6] text-ink/72">{value}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══════════════════════════════════════
-          3. CORE PRODUCT EXPERIENCE — Light
-          ═══════════════════════════════════════ */}
-      <section className="relative w-full bg-[#F4F3F0] overflow-hidden">
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40">
-          <motion.div
-            {...fadeUp}
-            className="flex items-center gap-3 mb-10 md:mb-14"
-          >
-            <div className="w-5 h-px bg-[#F98E1F]/30" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/58 font-medium">
-              Core Experience
-            </p>
-          </motion.div>
+        {/* Reference interlude: the IA map recessed into the file — a
+            tonal band, not a polarity flip. */}
+        <section
+          id="understanding"
+          className="paper-surface relative w-full scroll-mt-20 overflow-hidden"
+          style={{ backgroundColor: "var(--surface-paper-well)" }}
+        >
+          <div className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-ink/[0.06]" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-ink/[0.06]" aria-hidden="true" />
+          <div className="relative z-10 mx-auto max-w-[1200px] px-8 py-14 md:px-12 md:py-16 lg:px-16">
+            <SectionEyebrow index="02" label="App structure" />
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <h2 className={`${H2} text-ink`}>
+                  Introducing Harmoni without overwhelming the user
+                </h2>
+                <p className={`mt-6 ${PROSE_LIGHT}`}>
+                  Harmoni included exercises, articles, podcasts, mood tracking, peer support, and advice for helping a friend. With several features competing for attention, the opening screens needed to communicate what the app offered and where the user should begin. We grouped the features into clear sections and used the home screen as the main starting point for the daily exercise.
+                </p>
+                <div className="mt-8 border-l-2 border-[rgb(var(--proj-harmoni-light)/0.55)] pl-5">
+                  <p className={`${MONO} mb-3 text-[10px] uppercase tracking-[0.08em] text-ink/48`}>Interface language</p>
+                  <p className="text-[14px] leading-[1.75] text-ink/58">
+                    The prototype was designed in Norwegian. Key labels shown in the case study include “Dagens øvelse” for Today’s exercise, “Råd og tips” for Advice and tips, and “Hjelp en venn” for Help a friend.
+                  </p>
+                </div>
+              </div>
 
-          <motion.h2
-            {...fadeUpDelay(0.04)}
-            className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] max-w-[640px] mb-6"
-          >
-            Designing a structured, supportive experience.
-          </motion.h2>
-
-          <motion.p
-            {...fadeUpDelay(0.08)}
-            className="text-[#161A1F]/72 text-[15px] md:text-[16px] leading-[1.7] max-w-[520px] mb-16 md:mb-20"
-          >
-            I redefined the product around one measurable goal: first session
-            task initiation. Each screen was assigned one primary purpose.
-            Home focused on starting the daily exercise. Podcast supported
-            content exploration. Profile tracked consistency and progress.
-            Mood enabled reflection. Secondary modules were moved below the
-            first viewport. The daily exercise became the only dominant action
-            on the home screen. Cognitive load was reduced by limiting what
-            appeared at each level and clarifying progression.
-          </motion.p>
-
-          {/* 4-screen grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {[
-              {
-                src: imgHeroScreen,
-                alt: "Home screen — Today's Exercise with start button and popular activities",
-                label: "Home",
-              },
-              {
-                src: imgPodcast,
-                alt: "Podcast discovery screen with episode listings",
-                label: "Podcast",
-              },
-              {
-                src: imgProfilScreen,
-                alt: "User profile showing active days and mood statistics",
-                label: "Profile",
-              },
-              {
-                src: imgMood,
-                alt: "Mood check-in screen with emotional summary",
-                label: "Mood",
-              },
-            ].map((screen, i) => (
-              <motion.div
-                key={screen.label}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.06 * i,
-                  ease: [0.25, 0.1, 0.25, 1] as const,
-                }}
-                className="flex flex-col items-center"
-              >
-                <div
-                  className="w-full rounded-2xl overflow-hidden bg-white"
-                  style={{
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
-                  }}
-                >
+              <div className="lg:col-span-7">
+                <div className="rounded-[12px] border border-ink/10 bg-paper-raised p-4 md:p-5">
                   <img
-                    src={screen.src}
-                    alt={screen.alt}
-                    className="w-full h-auto"
+                    src={imgIA}
+                    alt="Harmoni information architecture diagram showing onboarding, home, exercises, support, and profile areas"
+                    loading="lazy"
+                    decoding="async"
+                    className="block h-auto w-full rounded-[6px]"
                   />
                 </div>
-                <p className="mt-4 text-[12px] md:text-[13px] tracking-[1.6px] uppercase text-[#161A1F]/58 font-medium">
-                  {screen.label}
-                </p>
-              </motion.div>
-            ))}
+                <FigCaption fig="02" className="mt-4">
+                  The information architecture connects onboarding, the home screen, support, exercises, and profile tools.
+                </FigCaption>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══════════════════════════════════════
-          4. BEFORE / AFTER — Dark
-          From early wireframes to resolved interface
-          ═══════════════════════════════════════ */}
-      <section className="relative w-full bg-[#161A1F] overflow-hidden">
-        {/* Ambient glow */}
-        <div
-          aria-hidden="true"
-          className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(140,170,210,0.025) 0%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-        />
-
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-28 md:py-36 lg:py-44">
-          <motion.div
-            {...fadeUp}
-            className="flex items-center gap-3 mb-10 md:mb-14"
-          >
-            <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/58 font-medium">
-              Key Interaction &middot; First Session
-            </p>
-          </motion.div>
-
-          <motion.h2
-            {...fadeUp}
-            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] max-w-[720px] mb-6"
-          >
-            From hesitation{" "}
-            <span className="text-white/58">to first action.</span>
-          </motion.h2>
-
-          <motion.p
-            {...fadeUpDelay(0.06)}
-            className="text-white/72 text-[15px] md:text-[16px] leading-[1.75] max-w-[620px] mb-16 md:mb-24"
-          >
-            The main issue was not that users disliked the interface. They were
-            unsure what action the product expected from them first. In the
-            first version, multiple entry points competed for attention, so
-            participants hesitated before starting the session. I redesigned the
-            first session around one clear primary action and moved supporting
-            content lower in the hierarchy.
-          </motion.p>
-
-          <motion.div {...fadeUpDelay(0.09)} className="-mt-8 mb-16 md:mb-24">
-            <ResourceLink
-              href="https://www.figma.com/proto/bPH9Iw8WCGkhd2K7J13m7w/Design-Prosjekt?node-id=770-1244&t=WANB5iXtnuuBcMqx-1"
-              label="Explore the prototype"
-              variant="ghost"
-              tone="dark"
-            />
-          </motion.div>
-
-          {/* Before / After comparison — annotated */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 items-start">
-            {/* V1 — competing entry points */}
-            <motion.div {...fadeUpDelay(0.08)}>
-              <div className="flex items-center gap-2.5 mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#E08A3C]" aria-hidden="true" />
-                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/58 font-medium">
-                  Version 1 &middot; Competing entry points
-                </p>
-              </div>
-              <div className="w-full rounded-lg overflow-hidden bg-white/[0.03] border border-white/[0.06] p-4 md:p-6">
-                <img
-                  src={imgWireframes}
-                  alt="First version — early wireframes exposing session, activities, podcast, and articles with equal visual weight"
-                  className="w-full h-auto rounded opacity-90"
-                />
-              </div>
-              <div className="mt-6 space-y-3.5 max-w-[480px]">
-                <div className="flex items-start gap-3">
-                  <span className="mt-[7px] w-2 h-2 rounded-full bg-[#E08A3C] shrink-0" aria-hidden="true" />
-                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.65]">
-                    <span className="text-white/92 font-medium">Competing entry points.</span>{" "}
-                    Session, activities, and podcast all read as equally
-                    actionable — no single starting point was prioritized.
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="mt-[7px] w-2 h-2 rounded-full bg-white/25 shrink-0" aria-hidden="true" />
-                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.65]">
-                    <span className="text-white/92 font-medium">2 of 5 participants</span>{" "}
-                    hesitated before starting the session.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* V2 — single primary action */}
-            <motion.div {...fadeUpDelay(0.14)}>
-              <div className="flex items-center gap-2.5 mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#4FB477]" aria-hidden="true" />
-                <p className="text-[11px] md:text-[12px] uppercase tracking-[2.4px] text-white/58 font-medium">
-                  Version 2 &middot; Single primary action
-                </p>
-              </div>
-              <div
-                className="w-full max-w-[300px] rounded-[18px] overflow-hidden border border-white/[0.06]"
-                style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.35)" }}
-              >
-                <img
-                  src={imgHeroScreen}
-                  alt="Second version — home screen with one dominant Start action for today's exercise"
-                  className="w-full h-auto block"
-                />
-              </div>
-              <div className="mt-6 space-y-3.5 max-w-[480px]">
-                <div className="flex items-start gap-3">
-                  <span className="mt-[7px] w-2 h-2 rounded-full bg-[#4FB477] shrink-0" aria-hidden="true" />
-                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.65]">
-                    <span className="text-white/92 font-medium">One dominant action.</span>{" "}
-                    &ldquo;Start today&rsquo;s exercise&rdquo; leads; activities
-                    and articles moved below the first viewport.
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="mt-[7px] w-2 h-2 rounded-full bg-[#4FB477] shrink-0" aria-hidden="true" />
-                  <p className="text-white/72 text-[14px] md:text-[15px] leading-[1.65]">
-                    <span className="text-white/92 font-medium">5 of 5 participants</span>{" "}
-                    initiated the session without hesitation.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Usability test signal — raw artifact */}
-          <motion.div
-            {...fadeUpDelay(0.1)}
-            className="mt-16 md:mt-20 max-w-[720px] rounded-xl border border-white/[0.08] bg-white/[0.02] p-7 md:p-9"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-5 h-px bg-[#F98E1F]/50" />
-              <p className="text-[10px] uppercase tracking-[2.4px] text-white/58 font-medium">
-                Usability test signal
+        <section id="moving" className="paper-surface relative w-full scroll-mt-20 overflow-hidden">
+          <div className="relative z-10 mx-auto max-w-[1200px] px-8 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
+            <SectionEyebrow index="03" label="Home screen" />
+            <div>
+              <h2 className={`${H2} max-w-[820px] text-ink`}>
+                Making the starting point clearer
+              </h2>
+              <p className={`mt-6 ${PROSE_LIGHT}`}>
+                In the tested wireframe, the daily exercise, activities, and support chat competed for attention. Participants also tried to scroll screens that were static. In the revised design, we made the daily exercise more prominent and allowed the home screen to scroll, placing secondary content further down the page.
               </p>
             </div>
-            <dl className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-1 sm:gap-5">
-                <dt className="text-[11px] uppercase tracking-[1.6px] text-white/48 font-medium pt-0.5">Task</dt>
-                <dd className="text-white/72 text-[14px] md:text-[15px] leading-[1.6]">
-                  Start today&rsquo;s guided session.
-                </dd>
+
+            {/* The core evidence: the tested wireframe beside the
+                revised design, with drawn marks on what changed — the
+                dominant Dagens øvelse and the Råd & Tips tab that moved
+                into the main navigation. */}
+            <motion.div {...drawParent} className="mt-12 grid max-w-[760px] grid-cols-2 gap-6 md:gap-10">
+              <div>
+                <p className={`${MONO} mb-3 text-[10px] uppercase tracking-[0.08em] text-ink/48`}>Tested wireframe</p>
+                <Well className="p-2.5 md:p-3">
+                  <img
+                    src={imgV1Hjem}
+                    alt="Tested Harmoni home wireframe"
+                    loading="lazy"
+                    decoding="async"
+                    className="block h-auto w-full rounded-[6px]"
+                  />
+                </Well>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-1 sm:gap-5">
-                <dt className="text-[11px] uppercase tracking-[1.6px] text-white/48 font-medium pt-0.5">Observation</dt>
-                <dd className="text-white/72 text-[14px] md:text-[15px] leading-[1.6]">
-                  2 of 5 participants paused on the first screen because the
-                  podcast card and session card appeared equally actionable.
-                </dd>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-1 sm:gap-5">
-                <dt className="text-[11px] uppercase tracking-[1.6px] text-white/48 font-medium pt-0.5">Design response</dt>
-                <dd className="text-white/92 text-[14px] md:text-[15px] leading-[1.6] font-medium">
-                  I reduced the competing card hierarchy and made the session CTA
-                  the only primary action.
-                </dd>
-              </div>
-            </dl>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          4B. FIRST SESSION FLOW — Dark
-          ═══════════════════════════════════════ */}
-      <section className="relative w-full bg-[#161A1F] overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="absolute top-[22%] left-1/2 -translate-x-1/2 w-[1000px] h-[560px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(140,170,210,0.03) 0%, transparent 70%)",
-            filter: "blur(60px)",
-          }}
-        />
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40">
-          <motion.div {...fadeUp} className="flex items-center gap-3 mb-10 md:mb-14">
-            <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/58 font-medium">
-              First Session Flow
-            </p>
-          </motion.div>
-
-          <motion.h2
-            {...fadeUpDelay(0.04)}
-            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] max-w-[680px] mb-6"
-          >
-            Start to reflection, without a dead end.
-          </motion.h2>
-
-          <motion.p
-            {...fadeUpDelay(0.08)}
-            className="text-white/72 text-[15px] md:text-[16px] leading-[1.75] max-w-[600px] mb-16 md:mb-20"
-          >
-            The redesigned first session moves in one direction — open, start a
-            single action, reflect, and see progress. Each screen resolves one
-            decision before handing off to the next.
-          </motion.p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {firstSessionFlow.map((s, i) => (
-              <motion.div
-                key={s.step}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: 0.06 * i, ease: [0.25, 0.1, 0.25, 1] as const }}
-                className="flex flex-col"
-              >
-                <div className="flex items-center gap-2.5 mb-4">
-                  <span className="font-['Lora',serif] text-white/48 text-[15px] leading-none">
-                    {s.step}
-                  </span>
-                  <div className="h-px flex-1 bg-white/[0.08]" />
-                  {s.state && (
-                    <span className="text-[9px] uppercase tracking-[1.4px] font-medium text-[#F98E1F]/90 border border-[#F98E1F]/30 rounded-full px-2 py-[3px]">
-                      {s.state}
-                    </span>
-                  )}
-                </div>
-                <div
-                  className="w-full rounded-[14px] overflow-hidden bg-white/[0.02] border border-white/[0.06]"
-                  style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.35)" }}
-                >
-                  <img src={s.imageSrc} alt={s.imageAlt} className="w-full h-auto block" />
-                </div>
-                <h3 className="mt-5 text-white/92 text-[15px] md:text-[16px] font-medium leading-[1.35]">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-white/72 text-[13px] md:text-[14px] leading-[1.6]">
-                  {s.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          5A. COLOR SYSTEM — Light
-          ═══════════════════════════════════════ */}
-      <section className="relative w-full bg-[#F4F3F0] overflow-hidden">
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40">
-          <motion.div
-            {...fadeUp}
-            className="flex items-center gap-3 mb-10 md:mb-14"
-          >
-            <div className="w-5 h-px bg-[#F98E1F]/30" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium">
-              Design System &middot; Color
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16 md:mb-20">
-            <div className="lg:col-span-5">
-              <motion.h2
-                {...fadeUp}
-                className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] mb-8"
-              >
-                Semantic color system.
-              </motion.h2>
-
-              <motion.div
-                {...fadeUpDelay(0.08)}
-                className="space-y-5 max-w-[440px]"
-              >
-                <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75]">
-                  Color was assigned by function rather than preference. Red
-                  was reserved exclusively for emergency support. Green
-                  indicated completion or progress.
-                </p>
-                <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75]">
-                  Neutral tones carried the majority of content to reduce
-                  emotional overload. Contrast ratios were tested to meet
-                  accessibility guidelines while maintaining warmth.
-                </p>
-              </motion.div>
-            </div>
-
-            <motion.div
-              {...fadeUpDelay(0.1)}
-              className="lg:col-span-7"
-            >
-              <div
-                className="w-full rounded-lg overflow-hidden bg-white p-5 md:p-8"
-                style={{
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-                }}
-              >
-                <img
-                  src={imgColors}
-                  alt="Semantic color palette — primary, grey, success, danger, warning, info scales"
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
-          <SectionDivider light />
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          5B. TYPOGRAPHY SCALE — Light
-          ═══════════════════════════════════════ */}
-      <section className="relative w-full bg-[#F4F3F0] overflow-hidden">
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24 md:py-32 lg:py-40">
-          <motion.div
-            {...fadeUp}
-            className="flex items-center gap-3 mb-10 md:mb-14"
-          >
-            <div className="w-5 h-px bg-[#F98E1F]/30" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-[#161A1F]/48 font-medium">
-              Design System &middot; Typography
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-5">
-              <motion.h2
-                {...fadeUp}
-                className="font-['Lora',serif] font-normal text-[#161A1F] text-[32px] md:text-[40px] lg:text-[46px] leading-[1.12] tracking-[-0.02em] mb-8"
-              >
-                Typography scale.
-              </motion.h2>
-
-              <motion.div
-                {...fadeUpDelay(0.08)}
-                className="space-y-5 max-w-[440px]"
-              >
-                <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75]">
-                  The type system reinforces hierarchy in emotionally
-                  sensitive contexts. Headlines guide focus. Body text remains
-                  readable at minimum supported sizes.
-                </p>
-                <p className="text-[#161A1F]/58 text-[15px] md:text-[16px] leading-[1.75]">
-                  Line height was increased to reduce visual density on
-                  smaller screens. Accessibility informed minimum sizing and
-                  contrast decisions.
-                </p>
-              </motion.div>
-            </div>
-
-            <motion.div
-              {...fadeUpDelay(0.1)}
-              className="lg:col-span-7 flex justify-center"
-            >
-              <div
-                className="w-full max-w-[520px] rounded-lg overflow-hidden bg-white p-5 md:p-8"
-                style={{
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-                }}
-              >
-                <img
-                  src={imgTypography}
-                  alt="Typography scale — headlines, subtitles, body, captions, labels"
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          6. OUTCOME — Dark, dominant
-          ═══════════════════════════════════════ */}
-      <section className="relative w-full bg-[#161A1F] overflow-hidden">
-        {/* Warm ambient glow */}
-        <div
-          aria-hidden="true"
-          className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 55% at 50% 45%, rgba(200,160,110,0.03) 0%, transparent 70%)",
-            filter: "blur(70px)",
-          }}
-        />
-
-        <div className="relative z-10 max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-28 md:py-40 lg:py-48">
-          <motion.div
-            {...fadeUp}
-            className="flex items-center gap-3 mb-10 md:mb-14"
-          >
-            <div className="w-5 h-px bg-[#F98E1F]/40" />
-            <p className="text-[11px] md:text-[12px] uppercase tracking-[2.8px] text-white/48 font-medium">
-              Outcome
-            </p>
-          </motion.div>
-
-          <motion.h2
-            {...fadeUpDelay(0.04)}
-            className="font-['Lora',serif] font-normal text-white/92 text-[32px] md:text-[42px] lg:text-[50px] leading-[1.1] tracking-[-0.02em] max-w-[780px] mb-6 md:mb-8"
-          >
-            Three behavioral shifts{" "}
-            <span className="text-white/58">
-              between version one and version two.
-            </span>
-          </motion.h2>
-
-          <motion.p
-            {...fadeUpDelay(0.08)}
-            className="text-white/48 text-[15px] md:text-[16px] leading-[1.7] max-w-[580px] mb-20 md:mb-28"
-          >
-            Each change in the interface was tested against a specific
-            behavioral metric. The following results reflect what five
-            participants did during their first session with the revised
-            prototype.
-          </motion.p>
-
-          {/* ── Behavioral comparison blocks ── */}
-          <div className="space-y-8 md:space-y-10 mb-24 md:mb-32">
-            {/* Behavior 1: Task Initiation */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.5,
-                ease: [0.25, 0.1, 0.25, 1] as const,
-              }}
-              className="rounded-lg border border-white/[0.07] bg-white/[0.015] overflow-hidden"
-            >
-              {/* Header */}
-              <div className="px-7 md:px-9 pt-7 md:pt-8 pb-5 border-b border-white/[0.05]">
-                <div className="flex items-center gap-3">
-                  <span className="font-['Lora',serif] text-white/10 text-[36px] md:text-[42px] leading-none tracking-[-0.03em]">
-                    01
-                  </span>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-1">
-                      Behavior
-                    </p>
-                    <h3 className="text-white/92 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
-                      Task Initiation
-                    </h3>
+              <div>
+                <p className={`${MONO} mb-3 text-[10px] uppercase tracking-[0.08em] text-ink/48`}>Revised home screen</p>
+                <Well light={HARMONI_LIGHT} className="p-2.5 md:p-3">
+                  <div className="relative">
+                    <img
+                      src={imgV2Home}
+                      alt="Revised Harmoni home screen with Dagens øvelse as the dominant action and Råd & Tips in the main navigation"
+                      loading="lazy"
+                      decoding="async"
+                      className="block h-auto w-full rounded-[6px]"
+                    />
+                    {v2Marks.map((mark) => (
+                      <motion.div
+                        key={mark.top}
+                        variants={drawRule}
+                        className="absolute h-[2px] origin-left rounded-full bg-accent"
+                        style={{ left: mark.left, width: mark.width, top: mark.top }}
+                      />
+                    ))}
                   </div>
-                </div>
-              </div>
-
-              {/* V1 / Design Change / V2 grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3">
-                <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    Version One
-                  </p>
-                  <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.6]">
-                    2 of 5 participants hesitated on the home screen. Multiple
-                    elements competed for attention and no single action was
-                    visually prioritized.
-                  </p>
-                </div>
-
-                <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    What Changed
-                  </p>
-                  <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.6]">
-                    Reduced the home screen to one primary action. Secondary
-                    modules were moved below the first viewport.
-                  </p>
-                </div>
-
-                <div className="px-7 md:px-9 py-5 md:py-6">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    Version Two
-                  </p>
-                  <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.6] font-medium">
-                    5 of 5 participants started the daily exercise without
-                    prompting.
-                  </p>
-                </div>
+                </Well>
               </div>
             </motion.div>
-
-            {/* Behavior 2: Layout Navigation */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.5,
-                delay: 0.06,
-                ease: [0.25, 0.1, 0.25, 1] as const,
-              }}
-              className="rounded-lg border border-white/[0.07] bg-white/[0.015] overflow-hidden"
-            >
-              <div className="px-7 md:px-9 pt-7 md:pt-8 pb-5 border-b border-white/[0.05]">
-                <div className="flex items-center gap-3">
-                  <span className="font-['Lora',serif] text-white/10 text-[36px] md:text-[42px] leading-none tracking-[-0.03em]">
-                    02
-                  </span>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-1">
-                      Behavior
-                    </p>
-                    <h3 className="text-white/92 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
-                      Layout Navigation
-                    </h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3">
-                <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    Version One
-                  </p>
-                  <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.6]">
-                    3 of 5 participants attempted to scroll on static screens
-                    and encountered dead ends in the layout.
-                  </p>
-                </div>
-
-                <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    What Changed
-                  </p>
-                  <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.6]">
-                    Converted static screen layouts to scroll based flows with
-                    continuous content hierarchy.
-                  </p>
-                </div>
-
-                <div className="px-7 md:px-9 py-5 md:py-6">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    Version Two
-                  </p>
-                  <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.6] font-medium">
-                    0 layout related navigation errors were observed across all
-                    five sessions.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Behavior 3: Onboarding Comprehension */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.5,
-                delay: 0.12,
-                ease: [0.25, 0.1, 0.25, 1] as const,
-              }}
-              className="rounded-lg border border-white/[0.07] bg-white/[0.015] overflow-hidden"
-            >
-              <div className="px-7 md:px-9 pt-7 md:pt-8 pb-5 border-b border-white/[0.05]">
-                <div className="flex items-center gap-3">
-                  <span className="font-['Lora',serif] text-white/10 text-[36px] md:text-[42px] leading-none tracking-[-0.03em]">
-                    03
-                  </span>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium mb-1">
-                      Behavior
-                    </p>
-                    <h3 className="text-white/92 text-[17px] md:text-[19px] font-medium leading-[1.35] tracking-[-0.01em]">
-                      Onboarding Comprehension
-                    </h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3">
-                <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    Version One
-                  </p>
-                  <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.6]">
-                    2 of 5 participants could not describe the app's core
-                    purpose after completing onboarding.
-                  </p>
-                </div>
-
-                <div className="px-7 md:px-9 py-5 md:py-6 md:border-r border-b md:border-b-0 border-white/[0.04]">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    What Changed
-                  </p>
-                  <p className="text-white/58 text-[14px] md:text-[15px] leading-[1.6]">
-                    Shortened the onboarding sequence and introduced a live
-                    preview of the daily exercise before requiring commitment.
-                  </p>
-                </div>
-
-                <div className="px-7 md:px-9 py-5 md:py-6">
-                  <p className="text-[10px] uppercase tracking-[2px] text-white/48 font-medium mb-3">
-                    Version Two
-                  </p>
-                  <p className="text-white/75 text-[14px] md:text-[15px] leading-[1.6] font-medium">
-                    4 of 5 participants accurately described the app's purpose
-                    after onboarding.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            <FigCaption fig="03" className="mt-5 max-w-[760px]">
+              The tested home screen wireframe and the revised high-fidelity design.
+            </FigCaption>
           </div>
+        </section>
 
-          {/* Scope */}
-          <motion.div
-            {...fadeUpDelay(0.12)}
-            className="mb-16 max-w-[580px]"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-5 h-px bg-[#F98E1F]/40" />
-              <p className="text-[10px] uppercase tracking-[2.4px] text-white/48 font-medium">
-                Scope
+        {/* ── The one dark interlude: the finished screens under studio
+            light. ── */}
+        <section id="flow" className="bench-surface relative w-full scroll-mt-20 overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse 70% 45% at 50% 0%, rgb(var(--proj-harmoni-light) / 0.06), transparent 65%)",
+            }}
+          />
+          <div className="relative z-10 mx-auto max-w-[1200px] px-8 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
+            <SectionEyebrow index="04" label="Key screens" dark />
+            <div>
+              <h2 className={`${H2} max-w-[760px] text-white`}>
+                From introduction to mood tracking
+              </h2>
+              <p className={`mt-6 ${PROSE_DARK}`}>
+                These screens show how users are introduced to Harmoni, then move into the podcast, profile, and mood tools using the same navigation and content hierarchy as the home screen.
               </p>
             </div>
-            <p className="text-white/48 text-[14px] md:text-[15px] leading-[1.65]">
-              Testing measured first session usability only. Participants
-              completed one guided session with the revised prototype. Long
-              term retention and repeat engagement were not tested.
-            </p>
-          </motion.div>
 
-          {/* Divider */}
-          <SectionDivider />
-
-          {/* Reflection */}
-          <div className="pt-20 md:pt-28 max-w-[580px]">
-            <motion.div
-              {...fadeUp}
-              className="flex items-center gap-3 mb-10"
-            >
-              <div className="w-5 h-px bg-[#F98E1F]/40" />
-              <h3 className="font-['Lora',serif] font-normal text-white/92 text-[24px] md:text-[28px] leading-[1.2] tracking-[-0.01em]">
-                What changed in my approach
-              </h3>
-            </motion.div>
-            <motion.div {...fadeUpDelay(0.06)} className="space-y-6">
-              <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.8]">
-                I initially assumed clear layout and labeling would be
-                sufficient. Testing showed that{" "}
-                <span className="text-white/72 font-medium">
-                  hierarchy and action priority
-                </span>{" "}
-                mattered more than visual clarity alone.
-              </p>
-
-              <p className="text-white/58 text-[15px] md:text-[16px] leading-[1.8]">
-                Defining one primary action per screen reduced hesitation more
-                effectively than adding explanation. I now define the primary
-                behavioral metric before designing additional features and
-                validate structure before layering functionality.
-              </p>
-
-              <p className="text-white/48 text-[15px] md:text-[16px] leading-[1.8]">
-                If the project continued, the next step would be measuring
-                repeat engagement across multiple sessions rather than focusing
-                solely on first use.
-              </p>
+            <motion.div {...drawParent} className="mt-12">
+              <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 lg:grid lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:gap-0 lg:overflow-visible lg:pb-0">
+                {firstSessionFlow.map((step, index) => (
+                  <div key={step.step} className="contents">
+                    {index > 0 && (
+                      <div aria-hidden="true" className="hidden items-center self-center px-3 lg:flex xl:px-4">
+                        <motion.div
+                          variants={drawRule}
+                          className="h-px w-8 origin-left xl:w-10"
+                          style={{ background: "rgb(var(--proj-harmoni-light) / 0.35)" }}
+                        />
+                      </div>
+                    )}
+                    <div className="w-[62vw] max-w-[225px] shrink-0 snap-center lg:w-auto lg:max-w-none">
+                      <p className={`${MONO} mb-3 text-[10px] tabular-nums tracking-[0.08em] text-white/40`}>{step.step}</p>
+                      <Well dark light={HARMONI_LIGHT} className="w-full max-w-[235px] p-2">
+                        <img
+                          src={step.imageSrc}
+                          alt={step.imageAlt}
+                          loading="lazy"
+                          decoding="async"
+                          className="block h-auto w-full rounded-[8px]"
+                        />
+                      </Well>
+                      <h3 className={`mt-4 ${H4_STEP} text-white/92`}>{step.title}</h3>
+                      <p className="mt-2 max-w-[235px] text-[12px] leading-[1.65] text-white/48">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <FigCaption fig="04" dark className="mt-8">
+                Welcome, podcast, profile, and mood screens shown in full.
+              </FigCaption>
             </motion.div>
           </div>
+        </section>
 
-          <NextProjectNav {...caseStudyNav("/work/harmoni")} />
-        </div>
-      </section>
-    </div>
+        <section id="testing" className="paper-surface relative w-full scroll-mt-20 overflow-hidden">
+          <div className="relative z-10 mx-auto max-w-[1200px] px-8 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
+            <SectionEyebrow index="05" label="User testing" />
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <h2 className={`${H2} text-ink`}>
+                  Where participants hesitated
+                </h2>
+                <p className={`mt-6 ${PROSE_LIGHT}`}>
+                  We tested the wireframes with five participants aged 19 to 44. Each session lasted around 20 minutes and focused on whether participants understood the app’s purpose, could find its main features, and could complete common tasks without help.
+                </p>
+                <p className={`mt-5 ${PROSE_LIGHT}`}>
+                  Participants completed ten tasks across onboarding, content discovery, support features, the daily exercise, and mood tracking. One team member moderated while the rest of us observed and documented where participants hesitated or needed help.
+                </p>
+              </div>
+
+              <div className="grid content-start gap-4 lg:col-span-7">
+                {testingFindings.map((finding, index) => (
+                  <div
+                    key={finding.title}
+                    className="grid grid-cols-[40px_1fr] gap-5 rounded-[12px] border border-ink/8 bg-paper-raised p-6"
+                  >
+                    <span className={`${MONO} text-[11px] tabular-nums text-ink/36`}>0{index + 1}</span>
+                    <div>
+                      <h3 className={`mb-2 ${H3_ROW} text-ink/92`}>{finding.title}</h3>
+                      <p className="text-[14px] leading-[1.7] text-ink/64">{finding.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-12 max-w-[620px] rounded-[12px] border border-ink/8 bg-paper-raised p-6 md:p-7">
+              <p className={`${MONO} mb-3 text-[10px] uppercase tracking-[0.08em] text-ink/48`}>Testing limitations</p>
+              <p className="text-[15px] leading-[1.7] text-ink/64">
+                The participant group was small and did not include mental health professionals. Because we only tested the wireframes once, the changes in the high-fidelity prototype were not validated in a second round.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Second reference interlude: the design system as curated
+            specimens on the recessed band — not full boards. */}
+        <section
+          id="system"
+          className="paper-surface relative w-full scroll-mt-20 overflow-hidden"
+          style={{ backgroundColor: "var(--surface-paper-well)" }}
+        >
+          <div className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-ink/[0.06]" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-ink/[0.06]" aria-hidden="true" />
+          <div className="relative z-10 mx-auto max-w-[1200px] px-8 py-14 md:px-12 md:py-16 lg:px-16">
+            <SectionEyebrow index="06" label="Visual system" />
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <h2 className={`${H2} text-ink`}>
+                  A colourful but calm visual system
+                </h2>
+                <p className={`mt-6 ${PROSE_LIGHT}`}>
+                  Participants asked for more imagery, colour, and spacing. In the high-fidelity prototype, we responded with a softer palette, nature photography, and more room between elements.
+                </p>
+                <p className={`mt-5 ${PROSE_LIGHT}`}>
+                  We used blue as the primary interface colour, green for progress, yellow for warnings, and red only for emergency information. Most screens use neutral backgrounds so the semantic colours stand out clearly.
+                </p>
+                <p className={`mt-5 ${PROSE_LIGHT}`}>
+                  Clarendon is used for the main headings, while Space Grotesk is used throughout the interface. Differences in size and weight create a clear hierarchy between headings, body text, labels, and buttons.
+                </p>
+
+                {/* Colour doing its job in the product: the green
+                    progress card from the Profil screen. */}
+                <figure className="mt-8 m-0 max-w-[340px]">
+                  <div className="rounded-[12px] border border-ink/10 bg-paper-raised p-2.5">
+                    <img
+                      src={imgCropProgresjon}
+                      alt="Målinger for psykisk helse cards from the Profil screen — a green Status card showing 60% Fremgang beside the Humør card"
+                      loading="lazy"
+                      decoding="async"
+                      className="block h-auto w-full rounded-[6px]"
+                    />
+                  </div>
+                  <FigCaption fig="05" className="mt-3">
+                    Progress cards from the Profil screen — green marks Fremgang (progress).
+                  </FigCaption>
+                </figure>
+              </div>
+
+              <div className="lg:col-span-7">
+                <div>
+                  <div className="rounded-[12px] border border-ink/10 bg-paper-raised p-4 md:p-5">
+                    <img
+                      src={imgCropScales}
+                      alt="Harmoni colour scales — primary, grey, green for success, red for danger, and yellow for warning"
+                      loading="lazy"
+                      decoding="async"
+                      className="block h-auto w-full rounded-[6px]"
+                    />
+                  </div>
+                  <FigCaption fig="06" className="mt-3">
+                    Neutral, primary, and semantic colour scales used in the prototype.
+                  </FigCaption>
+                </div>
+
+                <div className="mt-8">
+                  <div className="rounded-[12px] border border-ink/10 bg-paper-raised p-4 md:p-5">
+                    <div className="flex flex-col items-stretch gap-6 sm:flex-row sm:items-start sm:gap-5 md:gap-7">
+                      <img
+                        src={imgCropTypeA}
+                        alt="Harmoni headline styles H1 to H5 with sizes"
+                        loading="lazy"
+                        decoding="async"
+                        className="block h-auto w-full min-w-0 rounded-[4px] sm:w-auto sm:flex-1"
+                      />
+                      <img
+                        src={imgCropTypeB}
+                        alt="Harmoni subtitle, body, caption, and label styles with sizes"
+                        loading="lazy"
+                        decoding="async"
+                        className="block h-auto w-full min-w-0 rounded-[4px] sm:w-auto sm:flex-1"
+                      />
+                      <img
+                        src={imgCropTypeButtons}
+                        alt="Harmoni button text styles from Giant to Tiny with sizes"
+                        loading="lazy"
+                        decoding="async"
+                        className="block h-auto w-full min-w-0 rounded-[4px] sm:w-auto sm:flex-1"
+                      />
+                    </div>
+                  </div>
+                  <FigCaption fig="07" className="mt-3">
+                    Heading, body, label, caption, and button styles.
+                  </FigCaption>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="outcome" className="paper-surface relative w-full scroll-mt-20 overflow-hidden">
+          <div className="relative z-10 mx-auto max-w-[1200px] px-8 py-16 md:px-12 md:py-20 lg:px-16 lg:py-24">
+            <SectionEyebrow index="07" label="Final prototype" />
+            <div>
+              <h2 className={`${H2} max-w-[760px] text-ink`}>
+                What we delivered
+              </h2>
+              <p className={`mt-6 ${PROSE_LIGHT}`}>
+                We finished the project with a high-fidelity Figma prototype based on the issues found during wireframe testing. In the completed design, we moved Råd og tips to a more prominent position, added scrolling where participants expected it, and made the daily exercise the main action on the home screen.
+              </p>
+
+              <div className="mt-10 max-w-[620px] rounded-[12px] border border-ink/8 bg-paper-raised p-6 md:p-7">
+                <p className={`${MONO} mb-3 text-[10px] uppercase tracking-[0.08em] text-ink/48`}>Next step</p>
+                <p className="text-[15px] leading-[1.7] text-ink/64">
+                  Test the high-fidelity prototype with a broader participant group and check whether users can find Råd og tips, understand the introduction, and begin the daily exercise without guidance.
+                </p>
+              </div>
+            </div>
+
+            <NextProjectNav {...caseStudyNav("/work/harmoni")} light />
+          </div>
+        </section>
+      </div>
+    </MotionConfig>
   );
 }

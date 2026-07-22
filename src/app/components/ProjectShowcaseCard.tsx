@@ -1,8 +1,14 @@
+import type { CSSProperties } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useKeyLight } from "./useKeyLight";
 
 export interface ProjectData {
+  /** Stable slug — also the /work/:slug route segment */
+  slug?: string;
+  /** Two-digit working-file index, e.g. "01" */
+  index?: string;
   title: string;
   /** Short project type, e.g. "Mental health app prototype" */
   type: string;
@@ -21,100 +27,80 @@ export interface ProjectData {
   secondImageAlt?: string;
   secondImageWidth?: number;
   secondImageHeight?: number;
-  /** Optional accent hue for the subtle aurora glow (CSS color) */
-  glowColor?: string;
+  /** Paper-context wash for pagination thumbnails (CSS color) */
+  tint?: string;
+  /** Bench light — space-separated RGB channel-triplet var (theme.css) */
+  light?: string;
   /** Optional link to case study page */
   href?: string;
 }
 
+/**
+ * Bench card — a lit artifact on the dark studio bench. The mockup
+ * well is a recess; the project's hue arrives only as light (ambient
+ * bloom, key light, 1px rest rule — see styles/index.css). Chrome,
+ * text, and CTAs stay on the shared ink/accent tokens.
+ */
 export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
   const isPhone = project.mockupType === "phone";
   const isDualPhone = project.mockupType === "dualPhone";
   const isLaptop = project.mockupType === "laptop";
-  const isWideDevice = isDualPhone || isLaptop;
-  const glow = project.glowColor || "rgba(249,88,31,0.04)";
+  const light = project.light || "240 238 233";
+  const { lightRef, wellProps } = useKeyLight();
 
   /*
    * Unified shadow system — shared by all device types.
-   * Soft studio-lit look: same blur, opacity, and vertical offset everywhere.
+   * Black-based: the old ink-toned paper values vanish on the dark well.
    */
   const deviceShadowFilter =
-    "drop-shadow(0 14px 44px rgba(0,0,0,0.22)) drop-shadow(0 6px 18px rgba(0,0,0,0.10))";
+    "drop-shadow(0 18px 40px rgba(0,0,0,0.5)) drop-shadow(0 6px 16px rgba(0,0,0,0.35))";
   const deviceShadowBox =
-    "0 14px 44px -10px rgba(0,0,0,0.22), 0 6px 18px -6px rgba(0,0,0,0.10)";
-
-  /* For wide devices, soften glow alpha while keeping intensity balanced across card types */
-  const softGlow = isWideDevice
-    ? glow.replace(/[\d.]+\)$/, (m) => `${Math.max(parseFloat(m) * 0.75, 0.025)})`)
-    : glow;
+    "0 18px 40px -12px rgba(0,0,0,0.55), 0 6px 16px -8px rgba(0,0,0,0.40)";
 
   const cardClassName =
-    "group relative w-full flex flex-col rounded-[16px] overflow-hidden bg-[#1b2026] border border-[rgba(255,255,255,0.07)] cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[rgba(255,255,255,0.12)] hover:shadow-[0_16px_48px_-12px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F98E1F]/50 outline-none";
+    "group relative z-10 w-full flex flex-col rounded-[16px] overflow-hidden bg-ink-raised border border-white/[0.07] cursor-pointer transition-[transform,background-color] duration-300 ease-out motion-safe:hover:-translate-y-1 hover:bg-ink-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent/50 outline-none";
 
   const cardContent = (
     <>
-      {/* Mockup zone */}
+      {/* Rest rule — the card's only color at rest (light residue) */}
+      <div aria-hidden="true" className="bench-card-rule" />
+
+      {/* Mockup well — a recess in the bench; the artifact is the
+          bright object. Pointer events feed the key light. */}
       <div
-        className="relative w-full overflow-hidden"
+        className="relative w-full overflow-hidden bg-ink-well"
         style={{
           aspectRatio: isDualPhone
-            ? "16 / 9"
+            ? "16 / 10"
             : isPhone
             ? "4 / 3.5"
             : "16 / 9",
-          maxHeight: "300px",
+          maxHeight: isDualPhone ? "360px" : "300px",
         }}
+        {...wellProps}
       >
-        {/* Background surface */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[#1d2229]"
-        />
-
-        {/* Subtle aurora radial glow */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: isWideDevice
-              ? `radial-gradient(ellipse 90% 38% at 50% 62%, ${softGlow}, transparent 80%)`
-              : `radial-gradient(ellipse 60% 50% at 50% 60%, ${glow}, transparent 70%)`,
-          }}
-        />
-
-        {/* Aurora glow on top — intensifies on hover */}
-        <div
-          aria-hidden="true"
-          className={`absolute inset-0 pointer-events-none transition-opacity duration-500 ${
-            isWideDevice
-              ? "opacity-40 group-hover:opacity-65"
-              : "opacity-60 group-hover:opacity-100"
-          }`}
-          style={{
-            background: isWideDevice
-              ? `radial-gradient(ellipse 85% 35% at 50% 60%, ${softGlow}, transparent 80%)`
-              : `radial-gradient(ellipse 55% 45% at 50% 55%, ${glow}, transparent 70%)`,
-          }}
-        />
+        {/* Key light — chases the pointer; static centred fallback */}
+        <div aria-hidden="true" ref={lightRef} className="card-keylight" />
 
         {/* Device mockup image */}
         {isPhone ? (
           <div className="relative z-10 flex items-end justify-center h-full pt-8 md:pt-10 px-8">
-            <div className="w-[55%] max-w-[200px] transition-transform duration-300 ease-out group-hover:scale-[1.02]">
+            <div className="w-[58%] max-w-[220px] transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.02]">
               <ImageWithFallback
                 src={project.image}
                 alt={project.imageAlt}
                 width={project.imageWidth}
                 height={project.imageHeight}
-                className="w-full h-auto block rounded-[12px] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.6)]"
+                className="w-full h-auto block rounded-[12px]"
+                style={{ boxShadow: deviceShadowBox }}
               />
             </div>
           </div>
         ) : isDualPhone ? (
-          <div className="project-card-dual-phone-shell relative z-10 flex items-end justify-center h-full px-8 sm:px-12 md:px-14 lg:px-16">
-            <div className="flex items-end justify-center gap-2 md:gap-3 transition-transform duration-300 ease-out group-hover:scale-[1.015]">
+          <div className="project-card-dual-phone-shell relative z-10 flex items-center justify-center h-full px-6 sm:px-10 md:px-12 lg:px-14 py-8">
+            <div className="flex items-center justify-center gap-2 md:gap-3 transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.015]">
               {/* Phone 1 — Onboarding (natural baseline, primary) */}
-              <div className="w-[30%] sm:w-[34%] md:w-[37%] max-w-[165px]">
+              <div className="w-[31%] sm:w-[35%] md:w-[37%] max-w-[176px]">
                 <ImageWithFallback
                   src={project.image}
                   alt={project.imageAlt}
@@ -128,7 +114,7 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
               </div>
               {/* Phone 2 — Homepage (raised + subtly scaled for depth) */}
               <div
-                className="project-card-dual-phone-secondary w-[30%] sm:w-[34%] md:w-[37%] max-w-[165px]"
+                className="project-card-dual-phone-secondary w-[32%] sm:w-[36%] md:w-[39%] max-w-[190px]"
               >
                 <ImageWithFallback
                   src={project.secondImage || project.image}
@@ -144,9 +130,9 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
             </div>
           </div>
         ) : isLaptop ? (
-          <div className="relative z-10 flex items-end justify-center h-full px-6 sm:px-10 md:px-12 pt-4 md:pt-5 pb-0">
+          <div className="relative z-10 flex items-end justify-center h-full px-5 sm:px-8 md:px-10 pt-4 md:pt-5 pb-0">
             <div
-              className="w-[84%] max-w-[400px] transition-transform duration-300 ease-out group-hover:scale-[1.015]"
+              className="w-[88%] max-w-[460px] transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.015]"
               style={{
                 filter: deviceShadowFilter,
               }}
@@ -274,14 +260,14 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
                   width: "80%",
                   height: "6px",
                   marginTop: "2px",
-                  background: "radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.18) 0%, transparent 100%)",
+                  background: "radial-gradient(ellipse 100% 100% at 50% 0%, rgba(0,0,0,0.45) 0%, transparent 100%)",
                 }}
               />
             </div>
           </div>
         ) : (
           <div className="relative z-10 flex items-end justify-center h-full pt-6 md:pt-8 px-6 md:px-10">
-            <div className="w-[92%] max-w-[520px] transition-transform duration-300 ease-out group-hover:scale-[1.015] overflow-hidden">
+            <div className="w-[92%] max-w-[520px] transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.015] overflow-hidden">
               {/* Browser chrome hint */}
               <div className="bg-[#1a1e24] rounded-t-[8px] px-3 py-2 flex items-center gap-1.5">
                 <span className="w-[7px] h-[7px] rounded-full bg-white/[0.08]" />
@@ -295,7 +281,8 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
                   alt={project.imageAlt}
                   width={project.imageWidth}
                   height={project.imageHeight}
-                  className="w-full h-auto block shadow-[0_8px_32px_-8px_rgba(0,0,0,0.6)]"
+                  className="w-full h-auto block"
+                  style={{ boxShadow: deviceShadowBox }}
                 />
               </div>
             </div>
@@ -303,16 +290,14 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
         )}
       </div>
 
-      {/* Subtle separator line between mockup and text */}
-      <div
-        aria-hidden="true"
-        className="w-full border-t border-[rgba(255,255,255,0.07)]"
-      />
+      {/* Hairline between mockup and caption */}
+      <div aria-hidden="true" className="w-full border-t border-white/[0.07]" />
 
-      {/* Info zone */}
+      {/* Caption zone — calibration markings on the bench card */}
       <div className="flex flex-col px-7 pt-5 pb-7 gap-0 flex-1">
-        {/* Type eyebrow */}
-        <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-[rgba(255,255,255,0.58)] font-medium leading-[16px]">
+        {/* Index + type eyebrow — mono, reads as instrument labelling */}
+        <span className="font-['JetBrains_Mono',monospace] text-[11px] tracking-[0.08em] uppercase text-white/48 font-medium leading-[16px] tabular-nums">
+          {project.index ? `${project.index} · ` : ""}
           {project.type}
         </span>
 
@@ -320,15 +305,15 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
 
         {/* Title + arrow row */}
         <div className="flex items-start justify-between gap-4">
-          <h3 className="font-['Lora',serif] font-normal text-[rgba(255,255,255,0.92)] text-[22px] md:text-[24px] leading-[30px] tracking-[-0.2px]">
+          <h3 className="font-['EB_Garamond',serif] font-semibold text-white/92 text-[22px] md:text-[24px] leading-[30px] tracking-[-0.01em]">
             {project.title}
           </h3>
           <span
-            className="shrink-0 mt-0.5 inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/10 bg-white/[0.02] transition-all duration-300 group-hover:border-[#F98E1F]/45 group-hover:bg-[#F98E1F]/10"
+            className="bench-card-chip shrink-0 mt-0.5 inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/12 bg-white/[0.04] transition-colors duration-300 group-hover:bg-white/[0.06]"
             aria-hidden="true"
           >
             <ArrowUpRight
-              className="w-[18px] h-[18px] transition-all duration-300 text-white/48 group-hover:text-[#F98E1F] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              className="w-[18px] h-[18px] transition-all duration-300 text-white/48 group-hover:text-white/92 motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5"
               strokeWidth={1.5}
             />
           </span>
@@ -337,46 +322,57 @@ export function ProjectShowcaseCard({ project }: { project: ProjectData }) {
         {project.description ? (
           <>
             <div className="h-2" />
-            <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-[rgba(255,255,255,0.72)] text-[14px] md:text-[15px] leading-[23.25px] max-w-[420px]">
+            <p className="font-['Plus_Jakarta_Sans',sans-serif] font-normal text-white/72 text-[14px] md:text-[15px] leading-[23.25px] max-w-[420px]">
               {project.description}
             </p>
           </>
         ) : null}
 
-        {/* Meta block — Role + Outcome */}
-        <div className="mt-5 pt-5 border-t border-white/[0.06] grid grid-cols-[78px_1fr] gap-x-5 gap-y-[10px] max-w-[460px]">
-          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-white/48 leading-[18px]">
+        {/* Meta block — Outcome leads, Role follows. 96px label column
+            is fixed in every card so values align site-wide. */}
+        <div className="mt-5 pt-5 border-t border-white/[0.07] grid grid-cols-[96px_1fr] gap-x-5 gap-y-[10px] max-w-[460px]">
+          <span className="font-['JetBrains_Mono',monospace] text-[11px] tracking-[0.08em] uppercase text-white/48 leading-[18px] tabular-nums">
+            Outcome
+          </span>
+          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[13px] md:text-[14px] text-white/92 leading-[20px] tabular-nums">
+            {project.outcome}
+          </span>
+          <span className="font-['JetBrains_Mono',monospace] text-[11px] tracking-[0.08em] uppercase text-white/48 leading-[18px] tabular-nums">
             Role
           </span>
           <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[13px] md:text-[14px] text-white/72 leading-[20px]">
             {project.role}
-          </span>
-          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[11px] tracking-[1.4px] uppercase text-white/48 leading-[18px]">
-            Outcome
-          </span>
-          <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[13px] md:text-[14px] text-white/92 leading-[20px]">
-            {project.outcome}
           </span>
         </div>
       </div>
     </>
   );
 
-  return project.href ? (
-    <Link
-      to={project.href}
-      aria-label={`View ${project.title} case study`}
-      className={cardClassName}
+  /* The shell hosts the lighting pseudo-elements (ambient bloom +
+     pre-rendered shadow) so they can extend past the card's
+     overflow clip. --card-light feeds every light in the model. */
+  return (
+    <div
+      className="card-shell"
+      style={{ "--card-light": light } as CSSProperties}
     >
-      {cardContent}
-    </Link>
-  ) : (
-    <a
-      href="#"
-      aria-label={`View ${project.title} project`}
-      className={cardClassName}
-    >
-      {cardContent}
-    </a>
+      {project.href ? (
+        <Link
+          to={project.href}
+          aria-label={`View ${project.title} case study`}
+          className={cardClassName}
+        >
+          {cardContent}
+        </Link>
+      ) : (
+        <a
+          href="#"
+          aria-label={`View ${project.title} project`}
+          className={cardClassName}
+        >
+          {cardContent}
+        </a>
+      )}
+    </div>
   );
 }
