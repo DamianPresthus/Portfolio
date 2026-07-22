@@ -79,11 +79,12 @@ export function HeroSection({
 
   // Fetch the 3D chunk after the initial paint, then mount it shortly before
   // the paper lift so the card can begin dropping during the choreography.
+  // Mobile never mounts IDCard (see below), so only desktop needs this.
   useEffect(() => {
-    if (prefersReducedMotion || !webGLAvailable) return;
+    if (!hasPortrait || prefersReducedMotion || !webGLAvailable) return;
     const preload = window.setTimeout(() => void loadIDCard(), 0);
     return () => window.clearTimeout(preload);
-  }, [prefersReducedMotion, webGLAvailable]);
+  }, [hasPortrait, prefersReducedMotion, webGLAvailable]);
 
   useEffect(() => {
     if (!isSeq) {
@@ -140,37 +141,19 @@ export function HeroSection({
           {/* Paper sketch — Phases 1–3, lifts at 1500ms */}
           {isSeq && <SketchLayer />}
 
-          {/* Mobile uses the same live lanyard simulation as desktop, but the
-              canvas is fully touch-transparent. Reduced-motion and no-WebGL
-              devices keep the lightweight static fallback. */}
-          {!hasPortrait && showCard && (prefersReducedMotion || !webGLAvailable ? (
-            <div className="heroMobileCard heroMobileCard--static" aria-hidden="true">
-              <img src={imgIDCard} alt="" />
+          {/* Mobile uses a CSS-driven drop + sway (not the WebGL physics
+              rig desktop gets): a physics swing is bounded by fixed
+              world-unit rope/rotation constants, so on a narrow canvas its
+              amplitude can exceed the frame depending on device frame
+              timing — a CSS keyframe animation always ends at its defined
+              end state regardless of dropped frames, which removes that
+              failure mode entirely. `prefers-reduced-motion` is handled by
+              the same class in hero.css, so no JS branch is needed here. */}
+          {!hasPortrait && showCard && (
+            <div className="heroMobileCard" aria-hidden="true">
+              <img src={imgIDCard} alt="Damian Aaby Præsthus ID card" />
             </div>
-          ) : (
-            <Suspense
-              fallback={
-                <div className="heroMobileCard heroMobileCard--static" aria-hidden="true">
-                  <img src={imgIDCard} alt="" />
-                </div>
-              }
-            >
-              {/* IDCard's root div sets an inline width/height: 100% style,
-                  which would beat a CSS class trying to resize it directly
-                  (inline styles always win over stylesheet rules). Sizing
-                  the box on this wrapper instead lets IDCard fill 100% of
-                  it as intended. */}
-              <div className="heroMobilePhysics">
-                <IDCard
-                  frontImage={imgIDCard}
-                  gravity={[0, -10.5, 0]}
-                  interactive={false}
-                  anchorXFactor={0.06}
-                  entryIntensity={0.35}
-                />
-              </div>
-            </Suspense>
-          ))}
+          )}
 
           {/* Hero-wide interaction plane. It sits above the ambient field but
               below every piece of navigation and copy. The hero itself remains
