@@ -291,27 +291,40 @@ body {
     opacity 200ms ease-out;
 }
 
-.hero-cta--primary:hover {
-  transform: translateY(-2px);
-  background: var(--accent-hover);
-  box-shadow:
-    inset 0 1px rgba(255, 255, 255, 0.26),
-    0 16px 32px -14px rgba(249, 142, 31, 0.72);
+/* Pure :hover effects are gated to hover-capable pointers only. Touch
+   browsers apply CSS :hover on the first tap and reserve the second tap
+   for the actual click, so an ungated :hover here would make every CTA
+   require two taps to activate. :focus-visible stays unconditional so
+   keyboard navigation keeps its feedback on every device. */
+@media (hover: hover) {
+  .hero-cta--primary:hover {
+    transform: translateY(-2px);
+    background: var(--accent-hover);
+    box-shadow:
+      inset 0 1px rgba(255, 255, 255, 0.26),
+      0 16px 32px -14px rgba(249, 142, 31, 0.72);
+  }
+
+  .hero-cta--primary:hover::before {
+    width: calc(100% - 4px);
+  }
+
+  .hero-cta--primary:hover .hero-cta__label {
+    color: rgba(255, 255, 255, 0.96);
+  }
+
+  .hero-cta--primary:hover .hero-cta__arrow svg {
+    transform: translateX(2px);
+    opacity: 1;
+  }
 }
 
-.hero-cta--primary:hover::before,
 .hero-cta--primary:focus-visible::before {
   width: calc(100% - 4px);
 }
 
-.hero-cta--primary:hover .hero-cta__label,
 .hero-cta--primary:focus-visible .hero-cta__label {
   color: rgba(255, 255, 255, 0.96);
-}
-
-.hero-cta--primary:hover .hero-cta__arrow svg {
-  transform: translateX(2px);
-  opacity: 1;
 }
 
 .hero-cta--secondary {
@@ -323,11 +336,13 @@ body {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
 }
 
-.hero-cta--secondary:hover {
-  transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.32);
-  color: rgba(255, 255, 255, 0.92);
-  background: rgba(255, 255, 255, 0.055);
+@media (hover: hover) {
+  .hero-cta--secondary:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.32);
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.055);
+  }
 }
 
 /* The footer keeps the hero CTA's silhouette and type but uses a
@@ -610,18 +625,14 @@ body {
   }
 }
 
-/* Mobile keeps the hero as a full viewport composition. */
+/* Mobile keeps the hero as a full viewport composition. `svh` (not `dvh`)
+   is deliberate: `dvh` tracks the browser chrome collapsing on scroll,
+   which grows the hero mid-scroll. `svh` stays fixed at the smallest
+   (chrome-visible) viewport size. */
 @media (max-width: 767px) {
   .home-page .hero {
     height: 100svh !important;
     min-height: 100svh;
-  }
-
-  @supports (height: 100dvh) {
-    .home-page .hero {
-      height: 100dvh !important;
-      min-height: 100dvh;
-    }
   }
 }
 

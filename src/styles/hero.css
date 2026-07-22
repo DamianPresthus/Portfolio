@@ -133,16 +133,20 @@
     z-index: 4;
     inset: 0;
     pointer-events: none;
+    opacity: 0.8;
+    transform: scale(0.8) translate3d(-4%, -6%, 0);
+    transform-origin: 74% 16%;
   }
 
   .heroMobileCard {
     display: block;
     position: absolute;
     z-index: 4;
-    top: 11.25rem;
-    right: -11vw;
-    width: min(54vw, 232px);
+    top: 8.75rem;
+    right: -5vw;
+    width: min(42vw, 178px);
     pointer-events: none;
+    opacity: 0.8;
     transform: translate3d(0, 0, 0) rotate(3deg);
     transform-origin: 68% -10.75rem;
     filter: saturate(0.96) brightness(0.97) contrast(1.02);
@@ -263,9 +267,9 @@
 
 @media (max-width: 767px) and (max-height: 720px) {
   .heroMobileCard {
-    top: 6rem;
-    right: -9vw;
-    width: min(40vw, 170px);
+    top: 4.25rem;
+    right: -4vw;
+    width: min(32vw, 132px);
     transform-origin: 68% -5.75rem;
   }
 
