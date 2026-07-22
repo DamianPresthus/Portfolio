@@ -84,7 +84,7 @@ export function SiteFooter() {
                 <span className="absolute inset-0 rounded-full bg-[#22C55E] motion-safe:animate-[dotPulse_2.8s_ease-in-out_infinite]" />
               </span>
               <span className="font-['JetBrains_Mono',monospace] text-[12px] tabular-nums text-white/58">
-                Available for UX roles
+                Open to Product Design and Front End roles
               </span>
             </li>
             <li>

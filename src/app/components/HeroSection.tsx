@@ -277,7 +277,7 @@ export function HeroSection({
                     }
                     className="heroAvailability hs-in pointer-events-auto inline-flex items-center gap-[6px] cursor-pointer group mt-10 md:mt-14 mb-7 md:mb-8 w-fit no-underline bg-transparent border-0 p-0"
                     style={{ "--hs-delay": "2400ms" } as CSSProperties}
-                    aria-label="Available for UX roles — scroll to contact footer"
+                    aria-label="Open to product design and front end roles — scroll to contact footer"
                     onMouseEnter={() => setAvailHovered(true)}
                     onMouseLeave={() => setAvailHovered(false)}
                   >
@@ -290,7 +290,7 @@ export function HeroSection({
                     </span>
                     {/* Text */}
                     <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.08em] uppercase text-white/72 font-medium leading-[18px] transition-all duration-300 group-hover:text-white/75">
-                      Available for UX Roles
+                      Open to Product Design and Front End Roles
                     </span>
                     {/* Hover arrow + "Contact" hint */}
                     <span
