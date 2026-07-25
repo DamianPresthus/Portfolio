@@ -1,17 +1,25 @@
 <!doctype html>
 <!--
-  Source comp for src/assets/id-card-front.webp (the 3D ID-card face texture).
+  Source comp for src/assets/id-card-front.webp (the 3D ID-card face texture)
+  and src/assets/id-card-front-mobile.webp (the CSS mobile card).
   Render at 1065x1590 (355:530, matches CARD_WIDTH/CARD_HEIGHT in IDCard.tsx),
   screenshot the .card element with omitBackground so the rounded corners stay
   transparent, then convert to WebP quality 92-95 (PNG is ~1.8MB because of the
   baked grain; keep the grain coarse - baseFrequency ~0.4 - or lossy WebP will
   smooth it away). The punched slot's +42px offset mirrors CARD_ATTACH.x so it
-  sits under the 3D clip. Portrait img points at src/assets/optimized/
-  damian-portrait-1200.webp via absolute file:// path - adjust before rendering.
+  sits under the 3D clip. Render with ?slot=hidden for the mobile texture,
+  where the CSS clip replaces the punched slot entirely. Portrait img points at
+  src/assets/optimized/damian-portrait-1200.webp via absolute file:// path -
+  adjust before rendering.
 -->
 <html>
 <head>
 <meta charset="utf-8" />
+<script>
+  if (new URLSearchParams(window.location.search).get("slot") === "hidden") {
+    document.documentElement.dataset.slot = "hidden";
+  }
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -150,6 +158,7 @@
       inset 0 -1px 1px rgba(255,255,255,0.07),
       0 1px 0 rgba(255,255,255,0.05);
   }
+  html[data-slot="hidden"] .slot { display: none; }
 
   /* print-proof corner ticks */
   .tickmark { position: absolute; width: 26px; height: 26px; }

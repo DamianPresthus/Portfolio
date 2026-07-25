@@ -1,4 +1,5 @@
 import imgIDCard from "../../assets/id-card-front.webp";
+import imgIDCardMobile from "../../assets/id-card-front-mobile.webp";
 import svgPaths from "../../imports/svg-fa3xoaab76";
 import { ArrowRight } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from "react";
@@ -151,7 +152,7 @@ export function HeroSection({
               the same class in hero.css, so no JS branch is needed here. */}
           {!hasPortrait && showCard && (
             <div className="heroMobileCard" aria-hidden="true">
-              <img src={imgIDCard} alt="Damian Aaby Præsthus ID card" />
+              <img src={imgIDCardMobile} alt="Damian Aaby Præsthus ID card" />
             </div>
           )}
 
