@@ -272,8 +272,8 @@ export function HeroSection({
                       <span className="absolute inset-0 rounded-full bg-[#22C55E] animate-[dotPulse_2.8s_ease-in-out_infinite]" />
                     </span>
                     {/* Text */}
-                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[12px] tracking-[0.08em] uppercase text-white/72 font-medium leading-[18px] transition-all duration-300 group-hover:text-white/75">
-                      Open to Product Design and Front End Roles
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[10px] sm:text-[12px] tracking-[0.06em] sm:tracking-[0.08em] uppercase text-white/72 font-medium leading-[18px] transition-all duration-300 group-hover:text-white/75">
+                      Open to Product Design &amp; Front End Roles
                     </span>
                     {/* Hover arrow + "Contact" hint */}
                     <span
