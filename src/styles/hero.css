@@ -133,7 +133,7 @@
     pointer-events: none;
     opacity: 0.8;
     transform: translate3d(0, 0, 0) rotate(3deg);
-    transform-origin: 68% -10.75rem;
+    transform-origin: 50% -10.75rem;
     filter: saturate(0.96) brightness(0.97) contrast(1.02);
   }
 
@@ -142,7 +142,7 @@
     position: absolute;
     z-index: 0;
     top: -10.75rem;
-    left: 68%;
+    left: 50%;
     width: 2px;
     height: 10.9rem;
     border-radius: 999px;
@@ -160,7 +160,7 @@
     position: absolute;
     z-index: 2;
     top: -0.15rem;
-    left: calc(68% - 13px);
+    left: calc(50% - 13px);
     width: 26px;
     height: 29px;
     border: 1px solid rgba(0, 0, 0, 0.75);
