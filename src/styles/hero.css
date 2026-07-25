@@ -124,17 +124,19 @@
 
 @media (max-width: 767px) {
   .heroMobileCard {
+    --lanyard-x: 50%;
+
     display: block;
     position: absolute;
     z-index: 4;
-    top: 8.75rem;
+    top: 8rem;
     right: 11vw;
-    width: min(42vw, 178px);
+    width: min(47vw, 196px);
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 0.98;
     transform: translate3d(0, 0, 0) rotate(3deg);
-    transform-origin: 50% -10.75rem;
-    filter: saturate(0.96) brightness(0.97) contrast(1.02);
+    transform-origin: var(--lanyard-x) -10.75rem;
+    filter: saturate(1) brightness(1.05) contrast(1.04);
   }
 
   .heroMobileCard::before {
@@ -142,10 +144,11 @@
     position: absolute;
     z-index: 0;
     top: -10.75rem;
-    left: 50%;
+    left: var(--lanyard-x);
     width: 2px;
     height: 10.9rem;
     border-radius: 999px;
+    transform: translateX(-50%);
     background: linear-gradient(
       to bottom,
       rgba(10, 13, 16, 0.2),
@@ -160,13 +163,14 @@
     position: absolute;
     z-index: 2;
     top: -0.15rem;
-    left: calc(50% - 13px);
-    width: 26px;
-    height: 29px;
+    left: var(--lanyard-x);
+    width: 28px;
+    height: 31px;
     border: 1px solid rgba(0, 0, 0, 0.75);
     border-radius: 8px 8px 4px 4px;
-    background: linear-gradient(145deg, #4b4b4b, #1d2025 60%, #111317);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(145deg, #55585d, #24272c 58%, #111317);
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.45);
+    transform: translateX(-50%);
   }
 
   .heroMobileCard img {
@@ -176,7 +180,9 @@
     width: 100%;
     height: auto;
     border-radius: 18px;
-    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.34);
+    box-shadow:
+      0 28px 62px rgba(0, 0, 0, 0.46),
+      0 0 0 1px rgba(255, 255, 255, 0.035);
   }
 
   /* The card drops from above the canvas, then settles into a quiet pendulum
@@ -247,8 +253,8 @@
   .heroMobileCard {
     top: 4.25rem;
     right: 11vw;
-    width: min(32vw, 132px);
-    transform-origin: 68% -5.75rem;
+    width: min(40vw, 160px);
+    transform-origin: var(--lanyard-x) -5.75rem;
   }
 
   .heroMobileCard::before {
